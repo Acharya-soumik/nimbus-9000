@@ -49,12 +49,10 @@ const legalNoticeFAQs: FAQItem[] = [
         <p>
           The cost varies based on the complexity of the case and the lawyer's
           fees. With Vakil Tech, we offer transparent pricing starting from{" "}
-          <span className="font-semibold text-[oklch(64%_0.18_15)]">
-            ₹499
-          </span>
-          , making legal services accessible to everyone.
+          <span className="font-semibold text-[oklch(64%_0.18_15)]">₹499</span>,
+          making legal services accessible to everyone.
         </p>
-        <p>This includes drafting, review, and sending via registered post.</p>
+        <p>This includes drafting, review, and sending via Speed Post.</p>
       </div>
     ),
   },
@@ -98,7 +96,7 @@ const generalFAQs: FAQItem[] = [
     id: "turnaround-time",
     question: "What is the typical turnaround time?",
     answer:
-      "For most services, we complete the drafting and review within 24-48 hours. The complete process, including delivery via registered post, typically takes 5-7 business days.",
+      "For most services, we complete the drafting and review within 24-48 hours. The complete process, including delivery via Speed Post, typically takes 5-7 business days.",
   },
   {
     id: "track-status",
@@ -168,12 +166,14 @@ const quickFAQs: FAQItem[] = [
   {
     id: "q2",
     question: "Do you provide lawyer consultation?",
-    answer: "Yes, all our packages include a free consultation with a legal expert.",
+    answer:
+      "Yes, all our packages include a free consultation with a legal expert.",
   },
   {
     id: "q3",
     question: "Can I make changes after submission?",
-    answer: "Yes, minor changes can be made before the notice is sent. Major changes may require additional fees.",
+    answer:
+      "Yes, minor changes can be made before the notice is sent. Major changes may require additional fees.",
   },
 ];
 

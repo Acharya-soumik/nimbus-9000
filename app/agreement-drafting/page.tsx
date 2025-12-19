@@ -337,7 +337,7 @@ export default function AgreementDraftingPage() {
             "@type": "LegalService",
             name: "VakilTech - Agreement Drafting Services",
             description:
-              "Professional agreement drafting services online from ₹999. Rental agreements, employment contracts, NDAs, partnership deeds & more. Drafted by High Court advocates.",
+              "Professional agreement drafting services online from ₹999. Rental agreements, employment contracts, NDAs, partnership deeds & more. Drafted by Licensed Advocates.",
             url: "https://vakiltech.in/agreement-drafting",
             priceRange: "₹999 - ₹4,999",
             areaServed: {
@@ -377,7 +377,8 @@ export default function AgreementDraftingPage() {
           __html: JSON.stringify({
             "@context": "https://schema.org",
             "@type": "Article",
-            headline: "Online Agreement Drafting Services India | Legal Contracts",
+            headline:
+              "Online Agreement Drafting Services India | Legal Contracts",
             description:
               "Professional agreement drafting services online from ₹999. Rental agreements, employment contracts, NDAs, partnership deeds & more.",
             author: {
@@ -394,7 +395,7 @@ export default function AgreementDraftingPage() {
               },
             },
             datePublished: "2024-01-15",
-            dateModified: new Date().toISOString().split('T')[0],
+            dateModified: new Date().toISOString().split("T")[0],
             mainEntityOfPage: {
               "@type": "WebPage",
               "@id": "https://vakiltech.in/agreement-drafting",
@@ -459,7 +460,7 @@ export default function AgreementDraftingPage() {
                 "@type": "HowToStep",
                 position: 3,
                 name: "Expert Drafting",
-                text: "Our High Court advocates draft your customized agreement with all legal provisions and clauses.",
+                text: "Our Licensed Advocates draft your customized agreement with all legal provisions and clauses.",
               },
               {
                 "@type": "HowToStep",
@@ -480,7 +481,7 @@ export default function AgreementDraftingPage() {
             "@type": "WebPage",
             name: "Online Agreement Drafting Services India | VakilTech",
             description:
-              "Professional agreement drafting services online from ₹999. Drafted by High Court advocates.",
+              "Professional agreement drafting services online from ₹999. Drafted by Licensed Advocates.",
             url: "https://vakiltech.in/agreement-drafting",
             speakable: {
               "@type": "SpeakableSpecification",
@@ -489,7 +490,8 @@ export default function AgreementDraftingPage() {
             about: {
               "@type": "Thing",
               name: "Agreement Drafting Services",
-              description: "Professional online agreement drafting services in India",
+              description:
+                "Professional online agreement drafting services in India",
             },
           }),
         }}

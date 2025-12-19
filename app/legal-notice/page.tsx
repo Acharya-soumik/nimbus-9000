@@ -28,7 +28,8 @@ import { realSampleNotices } from "@/lib/legal-notice/real-sample-notices";
 import { PageViewTracker } from "@/components/analytics/PageViewTracker";
 
 // Use the real money recovery notice
-const moneyRecoveryNotice: SampleNoticeContent = realSampleNotices["money-recovery"];
+const moneyRecoveryNotice: SampleNoticeContent =
+  realSampleNotices["money-recovery"];
 
 // FAQ data for Legal Notice page
 const legalNoticeFAQs: FAQItem[] = [
@@ -76,8 +77,8 @@ const legalNoticeFAQs: FAQItem[] = [
           , making legal services accessible to everyone.
         </p>
         <p>
-          This includes drafting by High Court advocates, unlimited revisions,
-          sending via registered post, and 24/7 support.
+          This includes drafting by Licensed Advocates, unlimited revisions,
+          sending via Speed Post, and 24/7 support.
         </p>
       </div>
     ),
@@ -92,13 +93,13 @@ const legalNoticeFAQs: FAQItem[] = [
     id: "how-long-takes",
     question: "How long does the process take?",
     answer:
-      "With Vakil Tech, the drafting process typically takes 24-48 hours. Once drafted and approved by you, the notice is sent via registered post, which takes 5-7 business days for delivery. You'll receive tracking updates at every step.",
+      "With Vakil Tech, the drafting process typically takes 24-48 hours. Once drafted and approved by you, the notice is sent via Speed Post, which takes 5-7 business days for delivery. You'll receive tracking updates at every step.",
   },
   {
     id: "do-i-need-lawyer",
     question: "Do I need to visit a lawyer's office?",
     answer:
-      "No! Our entire process is 100% online. Simply fill out our form, and our experienced High Court advocates will draft your notice. You can review, request revisions, and approve everything from the comfort of your home.",
+      "No! Our entire process is 100% online. Simply fill out our form, and our experienced Licensed Advocates will draft your notice. You can review, request revisions, and approve everything from the comfort of your home.",
   },
   {
     id: "what-documents-needed",
@@ -163,7 +164,7 @@ export default function LegalNoticePage() {
             "@type": "LegalService",
             name: "VakilTech - Legal Notice Services",
             description:
-              "Professional legal notice drafting and sending services in India. Drafted by High Court advocates and sent via registered post.",
+              "Professional legal notice drafting and sending services in India. Drafted by Licensed Advocates and sent via Speed Post.",
             url: "https://vakiltech.in/legal-notice",
             priceRange: "₹1,499 - ₹3,999",
             areaServed: {
@@ -191,7 +192,8 @@ export default function LegalNoticePage() {
                   itemOffered: {
                     "@type": "Service",
                     name: "Money Recovery Legal Notice",
-                    description: "Legal notice for recovery of pending dues, salary, or payments",
+                    description:
+                      "Legal notice for recovery of pending dues, salary, or payments",
                   },
                 },
                 {
@@ -199,7 +201,8 @@ export default function LegalNoticePage() {
                   itemOffered: {
                     "@type": "Service",
                     name: "Cheque Bounce Legal Notice",
-                    description: "Legal action under Section 138 of Negotiable Instruments Act",
+                    description:
+                      "Legal action under Section 138 of Negotiable Instruments Act",
                   },
                 },
                 {
@@ -207,7 +210,8 @@ export default function LegalNoticePage() {
                   itemOffered: {
                     "@type": "Service",
                     name: "Property Dispute Legal Notice",
-                    description: "Legal notice for property possession and builder delays",
+                    description:
+                      "Legal notice for property possession and builder delays",
                   },
                 },
               ],
@@ -218,8 +222,8 @@ export default function LegalNoticePage() {
               reviewCount: "500",
             },
           }),
-          }}
-        />
+        }}
+      />
 
       {/* Article Schema for AEO/AISEO */}
       <script
@@ -228,9 +232,10 @@ export default function LegalNoticePage() {
           __html: JSON.stringify({
             "@context": "https://schema.org",
             "@type": "Article",
-            headline: "Send Legal Notice Online India | Expert Advocates | VakilTech",
+            headline:
+              "Send Legal Notice Online India | Expert Advocates | VakilTech",
             description:
-              "Send legal notice online in India from ₹1,499. Drafted by High Court advocates, sent via registered post. Money recovery, cheque bounce, property disputes & more.",
+              "Send legal notice online in India from ₹1,499. Drafted by Licensed Advocates, sent via Speed Post. Money recovery, cheque bounce, property disputes & more.",
             author: {
               "@type": "Organization",
               name: "VakilTech Legal Team",
@@ -245,7 +250,7 @@ export default function LegalNoticePage() {
               },
             },
             datePublished: "2024-01-15",
-            dateModified: new Date().toISOString().split('T')[0],
+            dateModified: new Date().toISOString().split("T")[0],
             mainEntityOfPage: {
               "@type": "WebPage",
               "@id": "https://vakiltech.in/legal-notice",
@@ -288,7 +293,7 @@ export default function LegalNoticePage() {
             "@type": "HowTo",
             name: "How to Send a Legal Notice Online in India",
             description:
-              "Complete step-by-step guide to send a legal notice online through VakilTech. Get expert legal notices drafted by High Court advocates.",
+              "Complete step-by-step guide to send a legal notice online through VakilTech. Get expert legal notices drafted by Licensed Advocates.",
             totalTime: "PT48H",
             estimatedCost: {
               "@type": "MonetaryAmount",
@@ -307,14 +312,14 @@ export default function LegalNoticePage() {
                 "@type": "HowToStep",
                 position: 2,
                 name: "Expert Lawyer Drafts Your Notice",
-                text: "Our experienced High Court advocates review your case details and draft a professional, legally sound legal notice. You can review and request unlimited revisions until you're satisfied.",
+                text: "Our experienced Licensed Advocates review your case details and draft a professional, legally sound legal notice. You can review and request unlimited revisions until you're satisfied.",
                 image: "https://vakiltech.in/assets/common/consut-lawyer.png",
               },
               {
                 "@type": "HowToStep",
                 position: 3,
-                name: "Notice Sent via Registered Post",
-                text: "Once you approve the final draft, we send your legal notice via Registered Post with Acknowledgement Due (RPAD) for complete legal validity and proof of delivery.",
+                name: "Notice Sent via Speed Post",
+                text: "Once you approve the final draft, we send your legal notice via Speed Post with Acknowledgement Due (RPAD) for complete legal validity and proof of delivery.",
                 image: "https://vakiltech.in/assets/common/registered-post.png",
               },
             ],
@@ -331,7 +336,7 @@ export default function LegalNoticePage() {
             "@type": "WebPage",
             name: "Send Legal Notice Online India | VakilTech",
             description:
-              "Send legal notice online in India from ₹1,499. Drafted by High Court advocates, sent via registered post.",
+              "Send legal notice online in India from ₹1,499. Drafted by Licensed Advocates, sent via Speed Post.",
             url: "https://vakiltech.in/legal-notice",
             speakable: {
               "@type": "SpeakableSpecification",
@@ -346,269 +351,269 @@ export default function LegalNoticePage() {
         }}
       />
       <main>
-      {/* Breadcrumb Navigation */}
-      <div className="mx-auto max-w-7xl px-4 pt-6 sm:px-6 lg:px-8">
-        <Breadcrumb
-          items={[
-            { label: "Home", href: "/" },
-            { label: "Legal Notice", href: "/send-legal-notice" },
-          ]}
-        />
-      </div>
-      <HeroSection />
-      <HowWeWorkTimeline />
-      {/* Why Safer Section */}
-      <WhySaferSection />
-      {/* Multi-Step Form Section */}
-      <section
-        id="multi-step-form"
-        className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8"
-      >
-        <div className="mx-auto max-w-md">
-          <div className="mb-8 text-center">
-            <h2 className="text-2xl font-bold text-text-heading sm:text-3xl">
-              Get Your Legal Notice Drafted
-            </h2>
-            <p className="mt-2 text-text-medium">
-              Fill out the form below to get started
-            </p>
-          </div>
-          <MultiStepForm
-            onSubmit={handleFormSubmit}
-            onStepChange={(step) => console.log("Step changed:", step)}
-            serviceType="Legal Notice"
-            servicePrice={1499}
+        {/* Breadcrumb Navigation */}
+        <div className="mx-auto max-w-7xl px-4 pt-6 sm:px-6 lg:px-8">
+          <Breadcrumb
+            items={[
+              { label: "Home", href: "/" },
+              { label: "Legal Notice", href: "/send-legal-notice" },
+            ]}
           />
         </div>
-      </section>{" "}
-      {/* Pricing Section */}
-      <section className="bg-background-gray py-12 lg:py-16">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="mb-10 text-center">
-            <h2 className="text-2xl font-bold text-text-heading sm:text-3xl lg:text-4xl">
-              Simple, Transparent Pricing
-            </h2>
-            <p className="mt-2 text-text-medium">
-              No hidden charges, pay only for what you need
-            </p>
-          </div>
+        <HeroSection />
+        <HowWeWorkTimeline />
+        {/* Why Safer Section */}
+        <WhySaferSection />
+        {/* Multi-Step Form Section */}
+        <section
+          id="multi-step-form"
+          className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8"
+        >
           <div className="mx-auto max-w-md">
-            <PricingCard
-              badge="BEST VALUE PACK"
-              originalPrice={3999}
-              currentPrice={1499}
-              unit="/ notice"
-              features={[
-                "Drafted by High Court Advocate",
-                "Sent via Registered Post",
-                "Unlimited Revisions",
-                "24/7 Support",
-                "Legal Consultation",
-              ]}
-              totalLabel="TOTAL PAYABLE"
-              showPaymentBreakdown={true}
-              advancePayment={499}
-              finalPayment={1000}
+            <div className="mb-8 text-center">
+              <h2 className="text-2xl font-bold text-text-heading sm:text-3xl">
+                Get Your Legal Notice Drafted
+              </h2>
+              <p className="mt-2 text-text-medium">
+                Fill out the form below to get started
+              </p>
+            </div>
+            <MultiStepForm
+              onSubmit={handleFormSubmit}
+              onStepChange={(step) => console.log("Step changed:", step)}
+              serviceType="Legal Notice"
+              servicePrice={1499}
             />
           </div>
-        </div>
-      </section>
-      {/* Sample Notice Preview Section */}
-      <SampleNoticeSection
-        noticeCategory="Money Recovery"
-        title="See a Real Legal Notice Format"
-        subtitle="Preview a professionally drafted legal notice."
-        buttonText="View Sample Notice"
-        onButtonClick={() => setShowSampleNoticeModal(true)}
-      />
-      {/* Popular Legal Notices Section */}
-      <PopularLegalNotices
-        notices={[
-          {
-            id: "recovery-of-money",
-            title: "Money Recovery",
-            description: "Recover pending dues, salary, or payments legally.",
-            iconType: "rupee",
-            href: "/legal-notice/legal-notice-for-money-recovery",
-          },
-          {
-            id: "cheque-bounce",
-            title: "Cheque Bounce",
-            description: "Legal action under Section 138 of NI Act.",
-            iconType: "cheque",
-            href: "/legal-notice/cheque-bounce-legal-notice",
-          },
-          {
-            id: "outstanding-payment",
-            title: "Outstanding Payment",
-            description: "Recover unpaid invoices and business dues.",
-            iconType: "rupee",
-            href: "/legal-notice/legal-notice-for-outstanding-payment",
-          },
-          {
-            id: "unpaid-salary",
-            title: "Unpaid Salary",
-            description: "Recover unpaid wages and employment dues.",
-            iconType: "rupee",
-            href: "/legal-notice/legal-notice-for-unpaid-salary",
-          },
-          {
-            id: "divorce",
-            title: "Divorce Notice",
-            description: "Legal notice for divorce proceedings.",
-            iconType: "loan",
-            href: "/legal-notice/legal-notice-for-divorce",
-          },
-          {
-            id: "maintenance",
-            title: "Maintenance",
-            description: "Claim maintenance under Section 125 CrPC.",
-            iconType: "rupee",
-            href: "/legal-notice/maintenance-legal-notice",
-          },
-          {
-            id: "tenant-eviction",
-            title: "Tenant Eviction",
-            description: "Lawful eviction process for landlords.",
-            iconType: "loan",
-            href: "/legal-notice/legal-notice-to-tenant",
-          },
-          {
-            id: "rent-arrears",
-            title: "Rent Arrears",
-            description: "Recover unpaid rent from tenants.",
-            iconType: "rupee",
-            href: "/legal-notice/legal-notice-for-rent-arrears",
-          },
-          {
-            id: "builder-delay",
-            title: "Builder Delay",
-            description: "Notice for delayed property possession.",
-            iconType: "loan",
-            href: "/legal-notice/legal-notice-to-builder",
-          },
-          {
-            id: "property-possession",
-            title: "Property Possession",
-            description: "Demand timely property handover.",
-            iconType: "loan",
-            href: "/legal-notice/legal-notice-for-property-possession",
-          },
-          {
-            id: "consumer-complaint",
-            title: "Consumer Complaint",
-            description: "Assert consumer rights for defects.",
-            iconType: "cheque",
-            href: "/legal-notice/consumer-complaint-legal-notice",
-          },
-          {
-            id: "eviction",
-            title: "Eviction Notice",
-            description: "Legal eviction with proper procedure.",
-            iconType: "loan",
-            href: "/legal-notice/eviction-legal-notice",
-          },
-          {
-            id: "cruelty-desertion",
-            title: "Cruelty/Desertion",
-            description: "Matrimonial cruelty and desertion cases.",
-            iconType: "loan",
-            href: "/legal-notice/legal-notice-for-cruelty-or-desertion",
-          },
-        ]}
-      />
-      {/* Testimonials Section */}
-      <TestimonialsSection className="bg-background-gray" />
-      {/* Serving Cities Section */}
-      <ServingCitiesSection
-        onCityClick={(cityId) => {
-          console.log("City clicked:", cityId);
-        }}
-        onViewAllClick={() => {
-          console.log("View all cities clicked");
-        }}
-      />
-      {/* FAQ Section */}
-      <FAQSection
-        faqs={legalNoticeFAQs}
-        title="Frequently Asked Questions"
-        subtitle="Everything you need to know about legal notices"
-        showDove={true}
-        enableSchema={true}
-      />
-      {/* Info Section Variants for Testing */}
-      <section className="mx-auto max-w-7xl space-y-12 px-4 py-12 sm:px-6 lg:px-8">
-        {/* Variant 1 - Side by side on desktop */}
-        <div id="info-variant-1" className="mx-auto max-w-md lg:max-w-none">
-          <InfoSectionVariant1 />
-        </div>
+        </section>{" "}
+        {/* Pricing Section */}
+        <section className="bg-background-gray py-12 lg:py-16">
+          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <div className="mb-10 text-center">
+              <h2 className="text-2xl font-bold text-text-heading sm:text-3xl lg:text-4xl">
+                Simple, Transparent Pricing
+              </h2>
+              <p className="mt-2 text-text-medium">
+                No hidden charges, pay only for what you need
+              </p>
+            </div>
+            <div className="mx-auto max-w-md">
+              <PricingCard
+                badge="BEST VALUE PACK"
+                originalPrice={3999}
+                currentPrice={1499}
+                unit="/ notice"
+                features={[
+                  "Drafted by Licensed Advocate",
+                  "Sent via Speed Post",
+                  "Unlimited Revisions",
+                  "24/7 Support",
+                  "Legal Consultation",
+                ]}
+                totalLabel="TOTAL PAYABLE"
+                showPaymentBreakdown={true}
+                advancePayment={499}
+                finalPayment={1000}
+              />
+            </div>
+          </div>
+        </section>
+        {/* Sample Notice Preview Section */}
+        <SampleNoticeSection
+          noticeCategory="Money Recovery"
+          title="See a Real Legal Notice Format"
+          subtitle="Preview a professionally drafted legal notice."
+          buttonText="View Sample Notice"
+          onButtonClick={() => setShowSampleNoticeModal(true)}
+        />
+        {/* Popular Legal Notices Section */}
+        <PopularLegalNotices
+          notices={[
+            {
+              id: "recovery-of-money",
+              title: "Money Recovery",
+              description: "Recover pending dues, salary, or payments legally.",
+              iconType: "rupee",
+              href: "/legal-notice/legal-notice-for-money-recovery",
+            },
+            {
+              id: "cheque-bounce",
+              title: "Cheque Bounce",
+              description: "Legal action under Section 138 of NI Act.",
+              iconType: "cheque",
+              href: "/legal-notice/cheque-bounce-legal-notice",
+            },
+            {
+              id: "outstanding-payment",
+              title: "Outstanding Payment",
+              description: "Recover unpaid invoices and business dues.",
+              iconType: "rupee",
+              href: "/legal-notice/legal-notice-for-outstanding-payment",
+            },
+            {
+              id: "unpaid-salary",
+              title: "Unpaid Salary",
+              description: "Recover unpaid wages and employment dues.",
+              iconType: "rupee",
+              href: "/legal-notice/legal-notice-for-unpaid-salary",
+            },
+            {
+              id: "divorce",
+              title: "Divorce Notice",
+              description: "Legal notice for divorce proceedings.",
+              iconType: "loan",
+              href: "/legal-notice/legal-notice-for-divorce",
+            },
+            {
+              id: "maintenance",
+              title: "Maintenance",
+              description: "Claim maintenance under Section 125 CrPC.",
+              iconType: "rupee",
+              href: "/legal-notice/maintenance-legal-notice",
+            },
+            {
+              id: "tenant-eviction",
+              title: "Tenant Eviction",
+              description: "Lawful eviction process for landlords.",
+              iconType: "loan",
+              href: "/legal-notice/legal-notice-to-tenant",
+            },
+            {
+              id: "rent-arrears",
+              title: "Rent Arrears",
+              description: "Recover unpaid rent from tenants.",
+              iconType: "rupee",
+              href: "/legal-notice/legal-notice-for-rent-arrears",
+            },
+            {
+              id: "builder-delay",
+              title: "Builder Delay",
+              description: "Notice for delayed property possession.",
+              iconType: "loan",
+              href: "/legal-notice/legal-notice-to-builder",
+            },
+            {
+              id: "property-possession",
+              title: "Property Possession",
+              description: "Demand timely property handover.",
+              iconType: "loan",
+              href: "/legal-notice/legal-notice-for-property-possession",
+            },
+            {
+              id: "consumer-complaint",
+              title: "Consumer Complaint",
+              description: "Assert consumer rights for defects.",
+              iconType: "cheque",
+              href: "/legal-notice/consumer-complaint-legal-notice",
+            },
+            {
+              id: "eviction",
+              title: "Eviction Notice",
+              description: "Legal eviction with proper procedure.",
+              iconType: "loan",
+              href: "/legal-notice/eviction-legal-notice",
+            },
+            {
+              id: "cruelty-desertion",
+              title: "Cruelty/Desertion",
+              description: "Matrimonial cruelty and desertion cases.",
+              iconType: "loan",
+              href: "/legal-notice/legal-notice-for-cruelty-or-desertion",
+            },
+          ]}
+        />
+        {/* Testimonials Section */}
+        <TestimonialsSection className="bg-background-gray" />
+        {/* Serving Cities Section */}
+        <ServingCitiesSection
+          onCityClick={(cityId) => {
+            console.log("City clicked:", cityId);
+          }}
+          onViewAllClick={() => {
+            console.log("View all cities clicked");
+          }}
+        />
+        {/* FAQ Section */}
+        <FAQSection
+          faqs={legalNoticeFAQs}
+          title="Frequently Asked Questions"
+          subtitle="Everything you need to know about legal notices"
+          showDove={true}
+          enableSchema={true}
+        />
+        {/* Info Section Variants for Testing */}
+        <section className="mx-auto max-w-7xl space-y-12 px-4 py-12 sm:px-6 lg:px-8">
+          {/* Variant 1 - Side by side on desktop */}
+          <div id="info-variant-1" className="mx-auto max-w-md lg:max-w-none">
+            <InfoSectionVariant1 />
+          </div>
 
-        {/* Grid of Variant 2 and 3 on desktop */}
-        <div className="grid gap-8 lg:grid-cols-2">
-          <div id="info-variant-2">
-            <InfoSectionVariant2 />
+          {/* Grid of Variant 2 and 3 on desktop */}
+          <div className="grid gap-8 lg:grid-cols-2">
+            <div id="info-variant-2">
+              <InfoSectionVariant2 />
+            </div>
+            <div id="info-variant-3">
+              <InfoSectionVariant3 />
+            </div>
           </div>
-          <div id="info-variant-3">
-            <InfoSectionVariant3 />
-          </div>
-        </div>
-      </section>
-      {/* Discount Offer Modal */}
-      <DiscountOfferModal
-        isOpen={showDiscountModal}
-        onClose={() => setShowDiscountModal(false)}
-        offer={{
-          headline: "Trust Our Process",
-          originalPrice: 499,
-          discountedPrice: 299,
-          savings: 200,
-          currency: "₹",
-          expiresInSeconds: 360,
-        }}
-        onClaimOffer={handleClaimOffer}
-        onDismiss={() => setShowDiscountModal(false)}
-      />
-      {/* Exit Intent Modal */}
-      <ExitIntentModal
-        isOpen={showExitModal}
-        onClose={() => setShowExitModal(false)}
-        headline="Wait! Before You Go"
-        subheadline="We noticed you're about to leave. Help us understand why:"
-        onClaimOffer={handleClaimOffer}
-        onBookConsultation={handleBookConsultation}
-        onDismiss={() => setShowExitModal(false)}
-        originalPrice={499}
-      />
-      {/* Sample Notice Modal */}
-      <SampleNoticeModal
-        open={showSampleNoticeModal}
-        onOpenChange={setShowSampleNoticeModal}
-        noticeCategory="Money Recovery"
-        noticeContent={moneyRecoveryNotice}
-        ctaLabel="Need a notice like this?"
-        ctaSubtitle="Our lawyers draft & send it for you."
-        ctaButtonText="Generate Your Own Notice"
-        onCtaClick={() => {
-          setShowSampleNoticeModal(false);
-          // Scroll to form section
-          document
-            .querySelector("#multi-step-form")
-            ?.scrollIntoView({ behavior: "smooth" });
-        }}
-      />
-      {/* WhatsApp Floater */}
-      <WhatsAppFloater
-        phoneNumber="919876543210"
-        message="Hi! I'm interested in getting a legal notice drafted. Can you help me?"
-      />
-      {/* Sticky CTA Bar (Mobile) */}
-      <StickyCTABar
-        price="From ₹1,499"
-        ctaText="Get Started"
-        onCtaClick={scrollToForm}
-        formSectionId="multi-step-form"
-      />
-    </main>
+        </section>
+        {/* Discount Offer Modal */}
+        <DiscountOfferModal
+          isOpen={showDiscountModal}
+          onClose={() => setShowDiscountModal(false)}
+          offer={{
+            headline: "Trust Our Process",
+            originalPrice: 499,
+            discountedPrice: 299,
+            savings: 200,
+            currency: "₹",
+            expiresInSeconds: 360,
+          }}
+          onClaimOffer={handleClaimOffer}
+          onDismiss={() => setShowDiscountModal(false)}
+        />
+        {/* Exit Intent Modal */}
+        <ExitIntentModal
+          isOpen={showExitModal}
+          onClose={() => setShowExitModal(false)}
+          headline="Wait! Before You Go"
+          subheadline="We noticed you're about to leave. Help us understand why:"
+          onClaimOffer={handleClaimOffer}
+          onBookConsultation={handleBookConsultation}
+          onDismiss={() => setShowExitModal(false)}
+          originalPrice={499}
+        />
+        {/* Sample Notice Modal */}
+        <SampleNoticeModal
+          open={showSampleNoticeModal}
+          onOpenChange={setShowSampleNoticeModal}
+          noticeCategory="Money Recovery"
+          noticeContent={moneyRecoveryNotice}
+          ctaLabel="Need a notice like this?"
+          ctaSubtitle="Our lawyers draft & send it for you."
+          ctaButtonText="Generate Your Own Notice"
+          onCtaClick={() => {
+            setShowSampleNoticeModal(false);
+            // Scroll to form section
+            document
+              .querySelector("#multi-step-form")
+              ?.scrollIntoView({ behavior: "smooth" });
+          }}
+        />
+        {/* WhatsApp Floater */}
+        <WhatsAppFloater
+          phoneNumber="919876543210"
+          message="Hi! I'm interested in getting a legal notice drafted. Can you help me?"
+        />
+        {/* Sticky CTA Bar (Mobile) */}
+        <StickyCTABar
+          price="From ₹1,499"
+          ctaText="Get Started"
+          onCtaClick={scrollToForm}
+          formSectionId="multi-step-form"
+        />
+      </main>
     </>
   );
 }

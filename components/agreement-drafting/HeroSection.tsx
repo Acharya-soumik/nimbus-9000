@@ -203,7 +203,7 @@ export function AgreementHeroSection({ className }: AgreementHeroSectionProps) {
                       Expert Legal Drafting
                     </p>
                     <p className="text-center text-xs text-text-muted">
-                      By High Court Advocates
+                      By Licensed Advocates
                     </p>
                   </div>
                 </div>
@@ -222,7 +222,7 @@ export function AgreementHeroSection({ className }: AgreementHeroSectionProps) {
             <PricingCard
               currentPrice={999}
               features={[
-                "Drafted by High Court Advocate",
+                "Drafted by Licensed Advocate",
                 "24-Hour Delivery Guaranteed",
                 "Unlimited Revisions Included",
               ]}
@@ -331,7 +331,7 @@ export function AgreementHeroSection({ className }: AgreementHeroSectionProps) {
             <PricingCard
               currentPrice={999}
               features={[
-                "Drafted by High Court Advocate",
+                "Drafted by Licensed Advocate",
                 "24-Hour Delivery Guaranteed",
                 "Unlimited Revisions Included",
               ]}

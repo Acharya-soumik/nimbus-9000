@@ -38,7 +38,7 @@ const defaultSteps: TimelineStep[] = [
   {
     title: "Fill Form",
     description:
-      "Fill simple details about your case. Our AI assists you in providing the right information.",
+      "Fill in your information. Make advance payment. Our network lawyers call you for consultation over call. You are asked to share all revelation information/documents for review.",
     icon: "/assets/common/fill-form.png",
   },
   {
@@ -49,7 +49,8 @@ const defaultSteps: TimelineStep[] = [
   },
   {
     title: "Dispatch",
-    description: "Sent via Registered Post with Acknowledgement Due (RPAD).",
+    description:
+      "Sent via India Post and scanned copy along with postal acknowledgement receipt is share with you.",
     icon: "/assets/common/registered-post.png",
   },
 ];
@@ -73,6 +74,8 @@ const TimelineStepContent = ({
             src={step.icon}
             alt={step.title}
             className="w-24 h-24 md:w-28 md:h-28 object-contain"
+            width={100}
+            height={100}
           />
         </div>
       )}

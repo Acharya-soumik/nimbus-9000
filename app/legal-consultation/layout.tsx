@@ -6,9 +6,9 @@ import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title:
-    "Online Lawyer Consultation ₹299 | Talk to Expert High Court Advocates | VakilTech",
+    "Online Lawyer Consultation ₹299 | Talk to Expert Licensed Advocates | VakilTech",
   description:
-    "Get instant legal consultation online from experienced High Court advocates. Starting at just ₹299. 24/7 support, 100% confidential. Book your consultation now!",
+    "Get instant legal consultation online from experienced Licensed Advocates. Starting at just ₹299. 24/7 support, 100% confidential. Book your consultation now!",
   keywords: [
     "online lawyer consultation",
     "legal advice online India",
@@ -35,7 +35,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Online Lawyer Consultation ₹299 | VakilTech",
     description:
-      "Get instant legal consultation from High Court advocates. Starting ₹299. 24/7 support, 100% confidential.",
+      "Get instant legal consultation from Licensed Advocates. Starting ₹299. 24/7 support, 100% confidential.",
     url: "/legal-consultation",
     siteName: "VakilTech",
     locale: "en_IN",
@@ -53,7 +53,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Online Lawyer Consultation ₹299 | VakilTech",
     description:
-      "Get instant legal consultation from High Court advocates. Starting ₹299. 24/7 support.",
+      "Get instant legal consultation from Licensed Advocates. Starting ₹299. 24/7 support.",
     images: ["/assets/legal-notice/hero.png"],
   },
   robots: {
@@ -74,8 +74,9 @@ export const metadata: Metadata = {
   other: {
     // AEO/AISEO optimizations for AI engines
     "answer-to": "How to get online legal consultation in India?",
-    "question": "Where can I consult a lawyer online?",
-    "solution": "VakilTech provides expert online legal consultation starting at ₹299",
+    question: "Where can I consult a lawyer online?",
+    solution:
+      "VakilTech provides expert online legal consultation starting at ₹299",
   },
 };
 

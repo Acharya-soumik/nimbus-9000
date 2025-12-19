@@ -295,7 +295,7 @@ export const consultationFeatures: SafetyFeature[] = [
     image: "/assets/common/consut-lawyer.png",
     title: "Real Experts, Not Juniors",
     description:
-      "Connect with verified High Court advocates. 10+ years average experience.",
+      "Connect with verified Licensed Advocates. 10+ years average experience.",
   },
   {
     image: "/assets/common/save-money.png",
@@ -365,7 +365,7 @@ export const heroContent = {
   trustBadges: [
     {
       icon: "Building2",
-      title: "High Court Advocates",
+      title: "Licensed Advocates",
       subtitle: "Not just lawyers",
     },
     {
@@ -391,7 +391,7 @@ export const heroContent = {
     unit: "/ consultation",
     features: [
       "15 Min Video/Phone Call",
-      "High Court Advocate",
+      "Licensed Advocate",
       "Free Follow-up Included",
       "Money-Back Guarantee",
     ],

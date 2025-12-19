@@ -28,8 +28,8 @@ export function PricingCard({
   currentPrice = 1499,
   unit = "/ notice",
   features = [
-    "Drafted by High Court Advocate",
-    "Sent via Registered Post (RPAD)",
+    "Drafted by Licensed Advocate",
+    "Sent via Speed Post (RPAD)",
     "Unlimited Revisions Included",
   ],
   totalLabel = "TOTAL PAYABLE",
@@ -136,4 +136,3 @@ export function PricingCard({
 }
 
 export default PricingCard;
-

@@ -2,7 +2,11 @@ import React from "react";
 import type { FAQItem } from "@/components/ui/faq-section";
 import type { AccordionSection } from "@/components/legal-notice/InfoSectionVariant2";
 import type { SampleNoticeContent } from "@/components/legal-notice/SampleNoticeModal";
-import { moneyRecoverySections, chequeBounceSections, outstandingPaymentSections } from "./notice-seo-content";
+import {
+  moneyRecoverySections,
+  chequeBounceSections,
+  outstandingPaymentSections,
+} from "./notice-seo-content";
 import { realSampleNotices } from "./real-sample-notices";
 
 /* =============================================================================
@@ -84,7 +88,7 @@ export const moneyRecoveryData: NoticeTypeData = {
     title:
       "Legal Notice for Recovery of Money | Online Drafting ₹1499 | VakilTech",
     description:
-      "Send money recovery notice online. Professionally drafted by High Court advocates. Sent via registered post. 24-48 hour delivery. ₹1499 all inclusive.",
+      "Send money recovery notice online. Professionally drafted by Licensed Advocates. Sent via Speed Post. 24-48 hour delivery. ₹1499 all inclusive.",
     keywords: [
       "legal notice for recovery of money",
       "money recovery legal notice",
@@ -105,7 +109,7 @@ export const moneyRecoveryData: NoticeTypeData = {
     ],
     badges: [
       { icon: "clock", text: "48-Hour Drafting" },
-      { icon: "shield", text: "Drafted by High Court Advocates" },
+      { icon: "shield", text: "Drafted by Licensed Advocates" },
     ],
   },
 
@@ -185,10 +189,15 @@ export const moneyRecoveryData: NoticeTypeData = {
       answer: (
         <div className="space-y-2">
           <p>
-            A legal notice for recovery of money is a formal written document sent by a creditor to a debtor demanding payment of outstanding dues. It serves as an official warning before filing a civil suit and gives the recipient a final opportunity to settle the debt out of court.
+            A legal notice for recovery of money is a formal written document
+            sent by a creditor to a debtor demanding payment of outstanding
+            dues. It serves as an official warning before filing a civil suit
+            and gives the recipient a final opportunity to settle the debt out
+            of court.
           </p>
           <p>
-            The notice must contain details of the debt, amount owed, legal basis for the claim, and a specific timeframe for payment.
+            The notice must contain details of the debt, amount owed, legal
+            basis for the claim, and a specific timeframe for payment.
           </p>
         </div>
       ),
@@ -212,10 +221,14 @@ export const moneyRecoveryData: NoticeTypeData = {
       answer: (
         <div className="space-y-2">
           <p>
-            While not always legally mandatory, sending a legal notice is highly recommended and often required by courts. It demonstrates that you attempted to resolve the matter amicably before litigation.
+            While not always legally mandatory, sending a legal notice is highly
+            recommended and often required by courts. It demonstrates that you
+            attempted to resolve the matter amicably before litigation.
           </p>
           <p>
-            In many cases, courts may ask if you sent a notice before filing suit. A properly sent legal notice strengthens your case and shows good faith.
+            In many cases, courts may ask if you sent a notice before filing
+            suit. A properly sent legal notice strengthens your case and shows
+            good faith.
           </p>
         </div>
       ),
@@ -233,12 +246,13 @@ export const moneyRecoveryData: NoticeTypeData = {
         <div className="space-y-2">
           <p>
             With VakilTech, our money recovery legal notice service costs just{" "}
-            <span className="font-semibold text-primary">₹1,499</span>, which includes:
+            <span className="font-semibold text-primary">₹1,499</span>, which
+            includes:
           </p>
           <ul className="list-disc pl-5 space-y-1">
-            <li>Professional drafting by High Court advocates</li>
+            <li>Professional drafting by Licensed Advocates</li>
             <li>Unlimited revisions until you're satisfied</li>
-            <li>Sending via registered post with tracking</li>
+            <li>Sending via Speed Post with tracking</li>
             <li>48-hour delivery guaranteed</li>
             <li>Legal consultation support</li>
           </ul>
@@ -263,10 +277,15 @@ export const moneyRecoveryData: NoticeTypeData = {
       answer: (
         <div className="space-y-2">
           <p>
-            Technically yes, but it's strongly not recommended. A legal notice must follow specific legal format, language, and procedures to be valid and effective in court.
+            Technically yes, but it's strongly not recommended. A legal notice
+            must follow specific legal format, language, and procedures to be
+            valid and effective in court.
           </p>
           <p>
-            A notice drafted by a qualified advocate carries much more weight, uses proper legal terminology, cites relevant laws, and is more likely to result in payment or be admissible as evidence if you need to file a lawsuit later.
+            A notice drafted by a qualified advocate carries much more weight,
+            uses proper legal terminology, cites relevant laws, and is more
+            likely to result in payment or be admissible as evidence if you need
+            to file a lawsuit later.
           </p>
         </div>
       ),
@@ -275,7 +294,7 @@ export const moneyRecoveryData: NoticeTypeData = {
       id: "how-long-takes",
       question: "How long does the drafting and sending process take?",
       answer:
-        "With VakilTech, our advocates draft your legal notice within 24-48 hours after you provide all necessary details. Once you review and approve the draft, we send it via registered post (RPAD), which typically takes 5-7 business days for delivery. You'll receive tracking updates throughout the process.",
+        "With VakilTech, our advocates draft your legal notice within 24-48 hours after you provide all necessary details. Once you review and approve the draft, we send it via Speed Post (RPAD), which typically takes 5-7 business days for delivery. You'll receive tracking updates throughout the process.",
     },
   ],
 };
@@ -290,8 +309,7 @@ export const chequeBounceData: NoticeTypeData = {
   cluster: "money-recovery",
 
   seo: {
-    title:
-      "Cheque Bounce Legal Notice | Section 138 Notice ₹1499 | VakilTech",
+    title: "Cheque Bounce Legal Notice | Section 138 Notice ₹1499 | VakilTech",
     description:
       "Send cheque bounce notice under Section 138 of NI Act. Professionally drafted by experts. Mandatory 15-day notice period. ₹1499 all inclusive.",
     keywords: [
@@ -467,7 +485,8 @@ export const outstandingPaymentData: NoticeTypeData = {
   hero: {
     badge: "BUSINESS PAYMENT RECOVERY",
     headline: "Recover Outstanding Business Payments Fast!",
-    subheadline: "Specialized legal notices for unpaid invoices and business dues",
+    subheadline:
+      "Specialized legal notices for unpaid invoices and business dues",
     flipWords: [
       "B2B Recovery",
       "Invoice Payment",
@@ -885,14 +904,21 @@ export const divorceNoticeData: NoticeTypeData = {
     },
     {
       id: "mutual-vs-contested",
-      question: "What's the difference between mutual consent and contested divorce?",
+      question:
+        "What's the difference between mutual consent and contested divorce?",
       answer: (
         <div className="space-y-2">
           <p>
-            <strong>Mutual Consent Divorce:</strong> Both spouses agree to divorce. It's faster (6-18 months), less expensive, and less stressful. Requires a joint petition after living separately for 1 year.
+            <strong>Mutual Consent Divorce:</strong> Both spouses agree to
+            divorce. It's faster (6-18 months), less expensive, and less
+            stressful. Requires a joint petition after living separately for 1
+            year.
           </p>
           <p>
-            <strong>Contested Divorce:</strong> One spouse seeks divorce and the other opposes it. Requires proving legal grounds. Takes 2-5 years, involves more court appearances, and is more expensive and emotionally taxing.
+            <strong>Contested Divorce:</strong> One spouse seeks divorce and the
+            other opposes it. Requires proving legal grounds. Takes 2-5 years,
+            involves more court appearances, and is more expensive and
+            emotionally taxing.
           </p>
         </div>
       ),
@@ -1873,7 +1899,9 @@ export const builderNoticeData: NoticeTypeData = {
             text: "Right to timely possession as per",
             highlight: "registered agreement",
           },
-          { text: "Refund with interest if possession delayed beyond grace period" },
+          {
+            text: "Refund with interest if possession delayed beyond grace period",
+          },
           { text: "Compensation for defects and quality issues" },
           { text: "Interest on delayed possession at prescribed rate" },
           { text: "Right to approach RERA authority for fast resolution" },
@@ -2064,7 +2092,8 @@ export const propertyPossessionNoticeData: NoticeTypeData = {
     },
     {
       id: "what-if-ready-but-not-offering",
-      question: "What if property is ready but builder is not offering possession?",
+      question:
+        "What if property is ready but builder is not offering possession?",
       answer:
         "If construction is complete but builder is delaying handover (often to collect additional charges or due to occupation certificate delay), send immediate possession demand notice. Threaten RERA complaint if not handed over within 15-30 days. You can also claim continued interest/rent for delay period. Builder cannot withhold possession without valid reason.",
     },
@@ -2082,7 +2111,8 @@ export const propertyPossessionNoticeData: NoticeTypeData = {
     },
     {
       id: "part-possession",
-      question: "What if builder offers part possession (flat ready but amenities pending)?",
+      question:
+        "What if builder offers part possession (flat ready but amenities pending)?",
       answer:
         "You can: accept flat possession but don't pay full amount—hold back 10-15% until amenities are complete, take possession under protest (written statement that amenities are pending), continue claiming delay interest until full project including amenities is complete, or refuse possession until everything including amenities is ready. Document everything in writing.",
     },
@@ -2230,7 +2260,8 @@ export const consumerComplaintNoticeData: NoticeTypeData = {
     },
     {
       id: "notice-mandatory",
-      question: "Is sending a legal notice mandatory before consumer complaint?",
+      question:
+        "Is sending a legal notice mandatory before consumer complaint?",
       answer:
         "While not strictly mandatory under Consumer Protection Act, sending a legal notice is highly recommended because: it gives the company one last chance to resolve (avoiding litigation), creates documentary evidence of your complaint attempt, shows good faith to the consumer forum, and many companies resolve issues after receiving formal notice. Most consumer forums expect notice to have been sent first.",
     },

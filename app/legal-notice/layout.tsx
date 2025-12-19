@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Send Legal Notice Online India | Expert Advocates | VakilTech",
   description:
-    "Send legal notice online in India from ₹1,499. Drafted by High Court advocates, sent via registered post. Money recovery, cheque bounce, property disputes & more. Get started in 24 hours.",
+    "Send legal notice online in India from ₹1,499. Drafted by Licensed Advocates, sent via Speed Post. Money recovery, cheque bounce, property disputes & more. Get started in 24 hours.",
   keywords: [
     "legal notice online",
     "send legal notice",
@@ -20,7 +20,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Send Legal Notice Online India | Expert Advocates | VakilTech",
     description:
-      "Send legal notice online in India from ₹1,499. Drafted by High Court advocates, sent via registered post. Money recovery, cheque bounce, property disputes & more.",
+      "Send legal notice online in India from ₹1,499. Drafted by Licensed Advocates, sent via Speed Post. Money recovery, cheque bounce, property disputes & more.",
     type: "website",
     url: "https://vakiltech.in/legal-notice",
     siteName: "VakilTech",
@@ -30,7 +30,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Send Legal Notice Online India | Expert Advocates | VakilTech",
     description:
-      "Send legal notice online in India from ₹1,499. Drafted by High Court advocates, sent via registered post.",
+      "Send legal notice online in India from ₹1,499. Drafted by Licensed Advocates, sent via Speed Post.",
   },
   alternates: {
     canonical: "https://vakiltech.in/legal-notice",
@@ -49,8 +49,9 @@ export const metadata: Metadata = {
   other: {
     // AEO/AISEO optimizations for AI engines
     "answer-to": "How to send a legal notice online in India?",
-    "question": "What is the best way to send a legal notice in India?",
-    "solution": "VakilTech provides online legal notice services starting at ₹1,499",
+    question: "What is the best way to send a legal notice in India?",
+    solution:
+      "VakilTech provides online legal notice services starting at ₹1,499",
   },
 };
 

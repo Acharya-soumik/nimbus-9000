@@ -169,7 +169,7 @@ export const whyVakilTechContent = {
     },
     {
       traditional: "Junior lawyers handle your case secretly",
-      vakiltech: "VakilTech: Supreme Court/High Court advocates only",
+      vakiltech: "VakilTech: Supreme Court/Licensed Advocates only",
       icon: "UserCheck",
       highlight: "Senior Experts Only",
     },
@@ -315,7 +315,7 @@ export const teamContent = {
   sectionSubtitle: "A collective of legal experts, technologists, and problem-solvers",
   teamStats: [
     { value: "50+", label: "Years Combined Legal Experience" },
-    { value: "10+", label: "High Court Advocates" },
+    { value: "10+", label: "Licensed Advocates" },
     { value: "5+", label: "Supreme Court Practitioners" },
     { value: "20+", label: "Legal Tech Specialists" },
   ] as TeamStat[],
@@ -424,7 +424,7 @@ export const servicesCTAContent = {
     {
       title: "Legal Notice",
       description:
-        "Get a custom-drafted legal notice from a High Court advocate. Perfect for money recovery, property disputes, or any situation requiring formal legal communication.",
+        "Get a custom-drafted legal notice from a Licensed Advocate. Perfect for money recovery, property disputes, or any situation requiring formal legal communication.",
       price: "₹1,499",
       features: ["24-hour draft", "Unlimited revisions", "Registered post delivery"],
       href: "/legal-notice",
@@ -436,7 +436,7 @@ export const servicesCTAContent = {
       description:
         "Talk to an expert advocate about your legal concerns. Get clarity on your options, rights, and next steps.",
       price: "₹299",
-      features: ["Video/phone call", "High Court advocate", "Follow-up included"],
+      features: ["Video/phone call", "Licensed Advocate", "Follow-up included"],
       href: "/legal-consultation",
       icon: "MessageCircle",
       badge: "Quick Help",

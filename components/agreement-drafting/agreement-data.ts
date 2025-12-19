@@ -665,7 +665,7 @@ export const agreementTimelineSteps: TimelineStep[] = [
   {
     title: "Expert Drafting",
     description:
-      "Our High Court advocates draft your agreement with industry-specific clauses and legal compliance. Every clause is reviewed for accuracy.",
+      "Our Licensed Advocates draft your agreement with industry-specific clauses and legal compliance. Every clause is reviewed for accuracy.",
     badge: "24-Hour Delivery",
   },
   {
@@ -711,8 +711,8 @@ export const whyChooseUsPoints = [
   },
   {
     id: "quality",
-    title: "High Court Advocates",
-    description: "Every agreement is drafted by experienced High Court advocates with industry expertise.",
+    title: "Licensed Advocates",
+    description: "Every agreement is drafted by experienced Licensed Advocates with industry expertise.",
     iconType: "shield",
   },
   {
@@ -755,7 +755,7 @@ export const heroFlipWords = [
 export const heroFeatureBadges = [
   {
     id: "advocates",
-    title: "High Court Advocates",
+    title: "Licensed Advocates",
     subtitle: "Expert drafting",
   },
   {

@@ -24,7 +24,7 @@ export const metadata: Metadata = {
   title:
     "VakilTech - Online Legal Services India | Legal Notice, Consultation & Agreements",
   description:
-    "India's leading online legal services platform. Send legal notices (₹1,499), get expert consultations (₹299), and draft agreements. Handled by High Court advocates. 100% online, 24/7 support.",
+    "India's leading online legal services platform. Send legal notices (₹1,499), get expert consultations (₹299), and draft agreements. Handled by Licensed Advocates. 100% online, 24/7 support.",
   keywords: [
     "VakilTech",
     "online legal services India",
@@ -47,7 +47,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "VakilTech - Online Legal Services India",
     description:
-      "India's leading online legal services platform. Legal notices, consultations & agreements by High Court advocates.",
+      "India's leading online legal services platform. Legal notices, consultations & agreements by Licensed Advocates.",
     url: "https://vakiltech.in",
     siteName: "VakilTech",
     locale: "en_IN",
@@ -57,7 +57,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "VakilTech - Online Legal Services India",
     description:
-      "Legal notices, consultations & agreements by High Court advocates. 100% online, affordable, professional.",
+      "Legal notices, consultations & agreements by Licensed Advocates. 100% online, affordable, professional.",
   },
   robots: {
     index: true,
@@ -107,7 +107,7 @@ export default function RootLayout({
               logo: "https://vakiltech.in/logo.png",
               foundingDate: "2023",
               description:
-                "India's leading online legal services platform providing affordable legal notices, consultations, and agreement drafting services through experienced High Court advocates.",
+                "India's leading online legal services platform providing affordable legal notices, consultations, and agreement drafting services through experienced Licensed Advocates.",
               address: {
                 "@type": "PostalAddress",
                 addressCountry: "IN",
@@ -152,7 +152,7 @@ export default function RootLayout({
                     "@type": "Service",
                     name: "Legal Consultation",
                     description:
-                      "Expert legal consultation from High Court advocates",
+                      "Expert legal consultation from Licensed Advocates",
                   },
                   price: "299",
                   priceCurrency: "INR",

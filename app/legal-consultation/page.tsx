@@ -112,25 +112,6 @@ function ConsultationHeroSection() {
       </div>
 
       <div className="relative z-10 mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8 lg:py-12">
-        {/* Breadcrumb */}
-        <nav className="mb-4 flex items-center gap-2 text-sm text-text-muted lg:mb-6">
-          <span className="flex items-center gap-1">
-            <svg
-              className="h-4 w-4"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-            >
-              <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
-              <polyline points="9 22 9 12 15 12 15 22" />
-            </svg>
-            Home
-          </span>
-          <span className="text-text-muted">{">"}</span>
-          <span className="font-medium text-text-body">Legal Consultation</span>
-        </nav>
-
         {/* Desktop Layout */}
         <div className="hidden lg:grid lg:grid-cols-2 lg:items-start lg:gap-12">
           {/* Left Column - Text Content */}
@@ -667,7 +648,7 @@ export default function LegalConsultationPage() {
             "@type": "LegalService",
             name: "VakilTech Legal Consultation",
             description:
-              "Online legal consultation services from expert High Court advocates",
+              "Online legal consultation services from expert Licensed Advocates",
             url: "https://vakiltech.com/legal-consultation",
             priceRange: "₹299 - ₹999",
             areaServed: {
@@ -726,9 +707,10 @@ export default function LegalConsultationPage() {
           __html: JSON.stringify({
             "@context": "https://schema.org",
             "@type": "Article",
-            headline: "Online Lawyer Consultation ₹299 | Talk to Expert High Court Advocates",
+            headline:
+              "Online Lawyer Consultation ₹299 | Talk to Expert Licensed Advocates",
             description:
-              "Get instant legal consultation online from experienced High Court advocates. Starting at just ₹299. 24/7 support, 100% confidential.",
+              "Get instant legal consultation online from experienced Licensed Advocates. Starting at just ₹299. 24/7 support, 100% confidential.",
             author: {
               "@type": "Organization",
               name: "VakilTech Legal Team",
@@ -743,7 +725,7 @@ export default function LegalConsultationPage() {
               },
             },
             datePublished: "2024-01-15",
-            dateModified: new Date().toISOString().split('T')[0],
+            dateModified: new Date().toISOString().split("T")[0],
             mainEntityOfPage: {
               "@type": "WebPage",
               "@id": "https://vakiltech.in/legal-consultation",
@@ -784,7 +766,7 @@ export default function LegalConsultationPage() {
             "@type": "WebPage",
             name: "Online Lawyer Consultation ₹299 | VakilTech",
             description:
-              "Get instant legal consultation from High Court advocates. Starting ₹299. 24/7 support, 100% confidential.",
+              "Get instant legal consultation from Licensed Advocates. Starting ₹299. 24/7 support, 100% confidential.",
             url: "https://vakiltech.in/legal-consultation",
             speakable: {
               "@type": "SpeakableSpecification",
@@ -793,7 +775,8 @@ export default function LegalConsultationPage() {
             about: {
               "@type": "Thing",
               name: "Legal Consultation Services",
-              description: "Professional online legal consultation services in India",
+              description:
+                "Professional online legal consultation services in India",
             },
           }),
         }}

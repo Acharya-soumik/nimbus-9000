@@ -31,10 +31,7 @@ interface BlogPostClientProps {
  * CLIENT COMPONENT
  * ============================================================================= */
 
-export function BlogPostClient({
-  post,
-  relatedPosts,
-}: BlogPostClientProps) {
+export function BlogPostClient({ post, relatedPosts }: BlogPostClientProps) {
   const [currentUrl, setCurrentUrl] = React.useState("");
 
   React.useEffect(() => {
@@ -83,9 +80,10 @@ export function BlogPostClient({
             {/* Introduction with Key Takeaway */}
             <HighlightBox type="key-takeaway" title="Key Takeaway">
               <p>
-                This article covers essential information that can help you navigate
-                legal matters effectively. Make sure to consult with a qualified
-                advocate for specific advice related to your situation.
+                This article covers essential information that can help you
+                navigate legal matters effectively. Make sure to consult with a
+                qualified advocate for specific advice related to your
+                situation.
               </p>
             </HighlightBox>
 
@@ -95,7 +93,7 @@ export function BlogPostClient({
             {/* Mid-content Service Ad */}
             <ServiceAdCard
               serviceName="Legal Notice Service"
-              serviceDescription="Get your legal notice drafted by expert advocates. Professional, legally sound, and delivered via registered post."
+              serviceDescription="Get your legal notice drafted by expert advocates. Professional, legally sound, and delivered via Speed Post."
               price={{ current: 1499, original: 3999 }}
               badge="POPULAR SERVICE"
               ctaText="Get Started"
@@ -114,8 +112,9 @@ export function BlogPostClient({
             {/* Legal Insight Box */}
             <HighlightBox type="legal-insight">
               <p>
-                Always keep copies of all legal documents and correspondence. They may
-                be crucial evidence if the matter escalates to court proceedings.
+                Always keep copies of all legal documents and correspondence.
+                They may be crucial evidence if the matter escalates to court
+                proceedings.
               </p>
             </HighlightBox>
 
@@ -128,7 +127,13 @@ export function BlogPostClient({
                 url={currentUrl}
                 title={post.title.rendered}
                 variant="buttons"
-                platforms={["twitter", "facebook", "linkedin", "whatsapp", "copy"]}
+                platforms={[
+                  "twitter",
+                  "facebook",
+                  "linkedin",
+                  "whatsapp",
+                  "copy",
+                ]}
               />
             </div>
 
@@ -180,7 +185,13 @@ export function BlogPostClient({
                   url={currentUrl}
                   title={post.title.rendered}
                   variant="icons"
-                  platforms={["twitter", "facebook", "linkedin", "whatsapp", "copy"]}
+                  platforms={[
+                    "twitter",
+                    "facebook",
+                    "linkedin",
+                    "whatsapp",
+                    "copy",
+                  ]}
                 />
               </div>
 
@@ -227,9 +238,3 @@ export function BlogPostClient({
 }
 
 export default BlogPostClient;
-
-
-
-
-
-

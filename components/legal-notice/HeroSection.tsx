@@ -239,8 +239,8 @@ export function HeroSection({
               currentPrice={1499}
               badge="BEST VALUE PACK"
               features={[
-                "Drafted by High Court Advocate",
-                "Sent via Registered Post (RPAD)",
+                "Drafted by Licensed Advocate",
+                "Sent via Speed Post (RPAD)",
                 "Unlimited Revisions Included",
               ]}
             />
@@ -312,8 +312,8 @@ export function HeroSection({
             currentPrice={499}
             badge="BEST VALUE PACK"
             features={[
-              "Drafted by High Court Advocate",
-              "Sent via Registered Post (RPAD)",
+              "Drafted by Licensed Advocate",
+              "Sent via Speed Post (RPAD)",
               "Unlimited Revisions Included",
             ]}
           /> */}

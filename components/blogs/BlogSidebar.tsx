@@ -210,7 +210,7 @@ export function BlogSidebar({
   // Default service ad data
   const defaultServiceAd: ServiceAdCardProps = {
     serviceName: "Legal Notice Service",
-    serviceDescription: "Get your legal notice drafted by expert advocates and delivered via registered post.",
+    serviceDescription: "Get your legal notice drafted by expert advocates and delivered via Speed Post.",
     price: { current: 1499, original: 3999 },
     badge: "POPULAR SERVICE",
     ctaText: "Get Started",

@@ -189,7 +189,7 @@ export function ServingCitiesSection({
   className,
   title = "Serving All Major",
   titleHighlight = "Cities",
-  subtitle = "Select your city to find specialized local legal experts.",
+  subtitle = "We serve in all major and tier 2 cities in India.",
   cities = defaultCities,
   viewAllText = "We support over 100+ cities in India",
   viewAllHref,
@@ -272,4 +272,3 @@ export function ServingCitiesSection({
 }
 
 export default ServingCitiesSection;
-

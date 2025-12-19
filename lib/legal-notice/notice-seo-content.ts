@@ -68,7 +68,7 @@ export const moneyRecoverySections: ContentSection[] = [
   {
     heading: "What Happens After Sending the Notice?",
     content:
-      "After the legal notice is sent via registered post (with acknowledgment due), the recipient has the specified time period (usually 15-30 days) to respond. Three outcomes are possible:",
+      "After the legal notice is sent via Speed Post (with acknowledgment due), the recipient has the specified time period (usually 15-30 days) to respond. Three outcomes are possible:",
     listItems: [
       "Full payment: The debtor clears the outstanding amount completely, resolving the matter",
       "Negotiation/Settlement: The debtor's lawyer responds proposing a payment plan, partial settlement, or negotiation",
@@ -83,7 +83,7 @@ export const moneyRecoverySections: ContentSection[] = [
   {
     heading: "Cost of Sending a Money Recovery Notice",
     content:
-      "With VakilTech, you can send a professionally drafted legal notice for money recovery for just ₹1,499 (all inclusive with no hidden charges). This comprehensive service includes: consultation with experienced High Court advocates who understand money recovery laws, professional drafting tailored specifically to your case facts, unlimited revisions until you're completely satisfied with the notice, sending via registered post with tracking and acknowledgment proof, and ongoing guidance on next legal steps if needed. Traditional legal services typically charge ₹5,000-15,000 or more for the same service, making VakilTech's offering highly cost-effective.",
+      "With VakilTech, you can send a professionally drafted legal notice for money recovery for just ₹1,499 (all inclusive with no hidden charges). This comprehensive service includes: consultation with experienced Licensed Advocates who understand money recovery laws, professional drafting tailored specifically to your case facts, unlimited revisions until you're completely satisfied with the notice, sending via Speed Post with tracking and acknowledgment proof, and ongoing guidance on next legal steps if needed. Traditional legal services typically charge ₹5,000-15,000 or more for the same service, making VakilTech's offering highly cost-effective.",
   },
 ];
 
@@ -122,8 +122,7 @@ export const chequeBounceSections: ContentSection[] = [
   },
   {
     heading: "What Should a Cheque Bounce Notice Contain?",
-    content:
-      "A legally compliant cheque bounce notice must include:",
+    content: "A legally compliant cheque bounce notice must include:",
     listItems: [
       "Details of the cheque (number, date, amount, bank)",
       "Date when cheque was presented and dishonored",
@@ -165,8 +164,7 @@ export const outstandingPaymentSections: ContentSection[] = [
   },
   {
     heading: "When to Send Outstanding Payment Notice",
-    content:
-      "You should send an outstanding payment notice when:",
+    content: "You should send an outstanding payment notice when:",
     listItems: [
       "Invoices remain unpaid beyond payment terms (30/60/90 days)",
       "Client ignores payment reminders and follow-up communications",
@@ -317,8 +315,7 @@ export const divorceSections: ContentSection[] = [
   },
   {
     heading: "What Should a Divorce Notice Contain?",
-    content:
-      "A comprehensive divorce notice should include:",
+    content: "A comprehensive divorce notice should include:",
     listItems: [
       "Marriage details: date, place, registration proof",
       "Detailed grounds for divorce with specific incidents and dates",
@@ -393,8 +390,7 @@ export const maintenanceSections: ContentSection[] = [
   },
   {
     heading: "When Can Maintenance Be Denied?",
-    content:
-      "Maintenance can be refused in certain situations:",
+    content: "Maintenance can be refused in certain situations:",
     listItems: [
       "Wife is living in adultery with another man",
       "Wife refuses to live with husband without valid reason",
@@ -474,8 +470,7 @@ export const crueltyDesertionSections: ContentSection[] = [
   },
   {
     heading: "What Should a Cruelty/Desertion Notice Contain?",
-    content:
-      "An effective notice must provide detailed evidence:",
+    content: "An effective notice must provide detailed evidence:",
     listItems: [
       "Specific incidents of cruelty with dates, times, and descriptions",
       "Names of witnesses who saw or heard the incidents",

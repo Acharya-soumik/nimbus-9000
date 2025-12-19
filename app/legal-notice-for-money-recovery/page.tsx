@@ -210,8 +210,8 @@ export default function MoneyRecoveryPage() {
               currentPrice={1499}
               unit="/ notice"
               features={[
-                "Drafted by High Court Advocate",
-                "Sent via Registered Post",
+                "Drafted by Licensed Advocate",
+                "Sent via Speed Post",
                 "Unlimited Revisions",
                 "24/7 Support",
                 "Legal Consultation",

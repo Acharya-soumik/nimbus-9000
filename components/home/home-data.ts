@@ -53,7 +53,7 @@ export const homeHeroContent = {
     { value: "4.9/5", label: "Client Rating" },
   ],
   trustBadges: [
-    "High Court Advocates",
+    "Licensed Advocates",
     "100% Confidential",
     "Money-Back Guarantee",
   ],
@@ -68,12 +68,12 @@ export const services: Service[] = [
     id: "legal-notice",
     title: "Legal Notice",
     description:
-      "Get professionally drafted legal notices sent via registered post. Perfect for money recovery, property disputes, cheque bounce, and more.",
+      "Get professionally drafted legal notices sent via Speed Post. Perfect for money recovery, property disputes, cheque bounce, and more.",
     price: "₹499",
     originalPrice: "₹1,499",
     features: [
-      "Drafted by High Court Advocate",
-      "Sent via Registered Post (RPAD)",
+      "Drafted by Licensed Advocate",
+      "Sent via Speed Post (RPAD)",
       "Unlimited Revisions",
       "24/7 Support",
       "Delivery Tracking",
@@ -87,12 +87,12 @@ export const services: Service[] = [
     id: "legal-consultation",
     title: "Legal Consultation",
     description:
-      "Talk to expert High Court advocates via video/phone call. Get clear advice on property, family, business, employment, and other legal matters.",
+      "Talk to expert Licensed Advocates via video/phone call. Get clear advice on property, family, business, employment, and other legal matters.",
     price: "₹299",
     originalPrice: "₹999",
     features: [
       "15-45 Min Video/Phone Call",
-      "High Court Advocate",
+      "Licensed Advocate",
       "Follow-up Support Included",
       "100% Confidential",
       "Same-Day Availability",
@@ -109,7 +109,7 @@ export const services: Service[] = [
       "Get a professionally drafted agreement for your business or personal needs. Perfect for rental agreements, employment contracts, partnership agreements, and more.",
     price: "Varies by Document Type",
     features: [
-      "Drafted by High Court Advocate",
+      "Drafted by Licensed Advocate",
       "Unlimited Revisions",
       "24/7 Support",
       "Delivery Tracking",
@@ -130,7 +130,7 @@ export const homeFeatures: SafetyFeature[] = [
     image: "/assets/common/consut-lawyer.png",
     title: "Expert Advocates",
     description:
-      "Connect with verified High Court advocates, not junior lawyers.",
+      "Connect with verified Licensed Advocates, not junior lawyers.",
   },
   {
     image: "/assets/common/save-money.png",
@@ -169,7 +169,7 @@ export const homeTimelineSteps: TimelineStep[] = [
   {
     title: "Get Expert Help",
     description:
-      "Our High Court advocates review your case and deliver professional legal assistance.",
+      "Our Licensed Advocates review your case and deliver professional legal assistance.",
     icon: "/assets/common/registered-post.png",
   },
 ];
@@ -183,25 +183,25 @@ export const homeFAQs: FAQItem[] = [
     id: "what-is-vakiltech",
     question: "What is VakilTech?",
     answer:
-      "VakilTech is India's trusted online legal services platform. We connect you with experienced High Court advocates for legal notices, consultations, and document services - all at affordable prices without the hassle of traditional lawyer visits.",
+      "VakilTech is India's trusted online legal services platform. We connect you with experienced Licensed Advocates for legal notices, consultations, and document services - all at affordable prices without the hassle of traditional lawyer visits.",
   },
   {
     id: "services-offered",
     question: "What services does VakilTech offer?",
     answer:
-      "We currently offer two main services: 1) Legal Notice drafting and delivery - professionally drafted notices sent via registered post for money recovery, property disputes, cheque bounce, etc. 2) Legal Consultation - video/phone consultations with expert advocates for any legal matter.",
+      "We currently offer two main services: 1) Legal Notice drafting and delivery - professionally drafted notices sent via Speed Post for money recovery, property disputes, cheque bounce, etc. 2) Legal Consultation - video/phone consultations with expert advocates for any legal matter.",
   },
   {
     id: "how-different",
     question: "How is VakilTech different from traditional lawyers?",
     answer:
-      "VakilTech offers 80% lower costs, 100% online convenience, verified High Court advocates, transparent pricing with no hidden fees, and a money-back guarantee. Traditional lawyers often charge ₹2,000+ for a simple consultation, while we start at just ₹299.",
+      "VakilTech offers 80% lower costs, 100% online convenience, verified Licensed Advocates, transparent pricing with no hidden fees, and a money-back guarantee. Traditional lawyers often charge ₹2,000+ for a simple consultation, while we start at just ₹299.",
   },
   {
     id: "is-it-legitimate",
     question: "Is VakilTech legitimate? Are the lawyers real?",
     answer:
-      "Yes, absolutely. All our advocates are Bar Council registered with verifiable credentials. We've served 15,000+ clients with a 4.9/5 rating. Your legal matters are handled by experienced High Court advocates, not paralegals or AI.",
+      "Yes, absolutely. All our advocates are Bar Council registered with verifiable credentials. We've served 15,000+ clients with a 4.9/5 rating. Your legal matters are handled by experienced Licensed Advocates, not paralegals or AI.",
   },
   {
     id: "confidential",
