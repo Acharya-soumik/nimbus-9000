@@ -3,6 +3,7 @@
 import React from "react";
 import { Timeline } from "@/components/aceternity/timeline";
 import { colors } from "@/lib/design-system/theme";
+import Image from "next/image";
 
 /**
  * Timeline step data structure
@@ -68,7 +69,7 @@ const TimelineStepContent = ({
       {/* Icon if provided */}
       {step.icon && (
         <div className="mb-4">
-          <img
+          <Image
             src={step.icon}
             alt={step.title}
             className="w-24 h-24 md:w-28 md:h-28 object-contain"

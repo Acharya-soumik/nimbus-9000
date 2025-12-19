@@ -25,6 +25,7 @@ import type { FAQItem } from "@/components/ui/faq-section";
 import { WhatsAppFloater } from "@/components/ui/whatsapp-floater";
 import { StickyCTABar } from "@/components/legal-consultation/StickyCTABar";
 import { realSampleNotices } from "@/lib/legal-notice/real-sample-notices";
+import { PageViewTracker } from "@/components/analytics/PageViewTracker";
 
 // Use the real money recovery notice
 const moneyRecoveryNotice: SampleNoticeContent = realSampleNotices["money-recovery"];
@@ -149,7 +150,202 @@ export default function LegalNoticePage() {
   };
 
   return (
-    <main>
+    <>
+      {/* Page View Tracking */}
+      <PageViewTracker serviceType="Legal Notice" />
+
+      {/* LegalService Schema Markup */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "LegalService",
+            name: "VakilTech - Legal Notice Services",
+            description:
+              "Professional legal notice drafting and sending services in India. Drafted by High Court advocates and sent via registered post.",
+            url: "https://vakiltech.in/legal-notice",
+            priceRange: "₹1,499 - ₹3,999",
+            areaServed: {
+              "@type": "Country",
+              name: "India",
+            },
+            provider: {
+              "@type": "Organization",
+              name: "VakilTech",
+              url: "https://vakiltech.in",
+              logo: "https://vakiltech.in/logo.png",
+              contactPoint: {
+                "@type": "ContactPoint",
+                telephone: "+91-9876543210",
+                contactType: "Customer Service",
+                availableLanguage: ["English", "Hindi"],
+              },
+            },
+            hasOfferCatalog: {
+              "@type": "OfferCatalog",
+              name: "Legal Notice Services",
+              itemListElement: [
+                {
+                  "@type": "Offer",
+                  itemOffered: {
+                    "@type": "Service",
+                    name: "Money Recovery Legal Notice",
+                    description: "Legal notice for recovery of pending dues, salary, or payments",
+                  },
+                },
+                {
+                  "@type": "Offer",
+                  itemOffered: {
+                    "@type": "Service",
+                    name: "Cheque Bounce Legal Notice",
+                    description: "Legal action under Section 138 of Negotiable Instruments Act",
+                  },
+                },
+                {
+                  "@type": "Offer",
+                  itemOffered: {
+                    "@type": "Service",
+                    name: "Property Dispute Legal Notice",
+                    description: "Legal notice for property possession and builder delays",
+                  },
+                },
+              ],
+            },
+            aggregateRating: {
+              "@type": "AggregateRating",
+              ratingValue: "4.8",
+              reviewCount: "500",
+            },
+          }),
+          }}
+        />
+
+      {/* Article Schema for AEO/AISEO */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Article",
+            headline: "Send Legal Notice Online India | Expert Advocates | VakilTech",
+            description:
+              "Send legal notice online in India from ₹1,499. Drafted by High Court advocates, sent via registered post. Money recovery, cheque bounce, property disputes & more.",
+            author: {
+              "@type": "Organization",
+              name: "VakilTech Legal Team",
+              url: "https://vakiltech.in/about",
+            },
+            publisher: {
+              "@type": "Organization",
+              name: "VakilTech",
+              logo: {
+                "@type": "ImageObject",
+                url: "https://vakiltech.in/logo.png",
+              },
+            },
+            datePublished: "2024-01-15",
+            dateModified: new Date().toISOString().split('T')[0],
+            mainEntityOfPage: {
+              "@type": "WebPage",
+              "@id": "https://vakiltech.in/legal-notice",
+            },
+          }),
+        }}
+      />
+
+      {/* BreadcrumbList Schema for AEO */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            itemListElement: [
+              {
+                "@type": "ListItem",
+                position: 1,
+                name: "Home",
+                item: "https://vakiltech.in",
+              },
+              {
+                "@type": "ListItem",
+                position: 2,
+                name: "Legal Notice",
+                item: "https://vakiltech.in/legal-notice",
+              },
+            ],
+          }),
+        }}
+      />
+
+      {/* HowTo Schema for Process Steps (AEO Optimization) */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "HowTo",
+            name: "How to Send a Legal Notice Online in India",
+            description:
+              "Complete step-by-step guide to send a legal notice online through VakilTech. Get expert legal notices drafted by High Court advocates.",
+            totalTime: "PT48H",
+            estimatedCost: {
+              "@type": "MonetaryAmount",
+              currency: "INR",
+              value: "1499",
+            },
+            step: [
+              {
+                "@type": "HowToStep",
+                position: 1,
+                name: "Fill the Online Form",
+                text: "Provide your details and case information through our simple online form. Our AI assistant helps you provide accurate information about your legal issue.",
+                image: "https://vakiltech.in/assets/common/fill-form.png",
+              },
+              {
+                "@type": "HowToStep",
+                position: 2,
+                name: "Expert Lawyer Drafts Your Notice",
+                text: "Our experienced High Court advocates review your case details and draft a professional, legally sound legal notice. You can review and request unlimited revisions until you're satisfied.",
+                image: "https://vakiltech.in/assets/common/consut-lawyer.png",
+              },
+              {
+                "@type": "HowToStep",
+                position: 3,
+                name: "Notice Sent via Registered Post",
+                text: "Once you approve the final draft, we send your legal notice via Registered Post with Acknowledgement Due (RPAD) for complete legal validity and proof of delivery.",
+                image: "https://vakiltech.in/assets/common/registered-post.png",
+              },
+            ],
+          }),
+        }}
+      />
+
+      {/* WebPage Schema with Speakable (for voice assistants and AI engines) */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "WebPage",
+            name: "Send Legal Notice Online India | VakilTech",
+            description:
+              "Send legal notice online in India from ₹1,499. Drafted by High Court advocates, sent via registered post.",
+            url: "https://vakiltech.in/legal-notice",
+            speakable: {
+              "@type": "SpeakableSpecification",
+              cssSelector: ["h1", "h2", ".prose"],
+            },
+            about: {
+              "@type": "Thing",
+              name: "Legal Notice Services",
+              description: "Professional online legal notice services in India",
+            },
+          }),
+        }}
+      />
+      <main>
       {/* Breadcrumb Navigation */}
       <div className="mx-auto max-w-7xl px-4 pt-6 sm:px-6 lg:px-8">
         <Breadcrumb
@@ -180,6 +376,8 @@ export default function LegalNoticePage() {
           <MultiStepForm
             onSubmit={handleFormSubmit}
             onStepChange={(step) => console.log("Step changed:", step)}
+            serviceType="Legal Notice"
+            servicePrice={1499}
           />
         </div>
       </section>{" "}
@@ -208,6 +406,9 @@ export default function LegalNoticePage() {
                 "Legal Consultation",
               ]}
               totalLabel="TOTAL PAYABLE"
+              showPaymentBreakdown={true}
+              advancePayment={499}
+              finalPayment={1000}
             />
           </div>
         </div>
@@ -333,6 +534,7 @@ export default function LegalNoticePage() {
         title="Frequently Asked Questions"
         subtitle="Everything you need to know about legal notices"
         showDove={true}
+        enableSchema={true}
       />
       {/* Info Section Variants for Testing */}
       <section className="mx-auto max-w-7xl space-y-12 px-4 py-12 sm:px-6 lg:px-8">
@@ -407,5 +609,6 @@ export default function LegalNoticePage() {
         formSectionId="multi-step-form"
       />
     </main>
+    </>
   );
 }

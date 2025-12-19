@@ -191,7 +191,7 @@ export function ServingCitiesSection({
   titleHighlight = "Cities",
   subtitle = "Select your city to find specialized local legal experts.",
   cities = defaultCities,
-  viewAllText = "View all 100+ cities in India",
+  viewAllText = "We support over 100+ cities in India",
   viewAllHref,
   onCityClick,
   onViewAllClick,
@@ -223,7 +223,9 @@ export function ServingCitiesSection({
           </h2>
 
           {/* Subtitle */}
-          <p className="mt-3 text-base text-text-medium lg:text-lg">{subtitle}</p>
+          <p className="mt-3 text-base text-text-medium lg:text-lg">
+            {subtitle}
+          </p>
         </div>
 
         {/* City Cards Grid */}
@@ -270,9 +272,4 @@ export function ServingCitiesSection({
 }
 
 export default ServingCitiesSection;
-
-
-
-
-
 

@@ -51,7 +51,6 @@ const leadInsertSchema = z.object({
   service: z.enum(['legal-notice', 'legal-consultation', 'legal-drafts-bundle', 'agreement-drafting', 'legal-notice-for-money-recovery']),
   description: z.string().max(1000).optional().nullable(),
   legal_notice_type: z.string().max(255).optional().nullable(),
-  service_details: z.string().max(255).optional().nullable(), // For bundle type and other service-specific details
   payment_status: z.literal('pending'),
   status: z.literal('new'),
   custom_id: z.string().min(1).max(50),
@@ -122,7 +121,6 @@ export async function POST(request: NextRequest): Promise<NextResponse<LeadSubmi
         service: validatedData.service,
         description: validatedData.description || null,
         legal_notice_type: validatedData.legalNoticeType || null,
-        service_details: (validatedData as any).serviceDetails || null,
         payment_status: 'pending' as const,
         status: 'new' as const,
         custom_id: serviceBasedCustomId,
@@ -168,7 +166,6 @@ export async function POST(request: NextRequest): Promise<NextResponse<LeadSubmi
       service: validatedData.service,
       description: validatedData.description || null,
       legal_notice_type: validatedData.legalNoticeType || null,
-      service_details: (validatedData as any).serviceDetails || null,
       payment_status: 'pending' as const,
       status: 'new' as const,
       custom_id: customId,

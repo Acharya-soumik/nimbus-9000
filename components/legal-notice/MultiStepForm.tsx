@@ -18,6 +18,11 @@ import { countryCodes, defaultCountryCode } from "@/lib/data/country-codes";
 import type { CountryCode } from "@/lib/validators/phone-validation";
 import { SimpleCombobox } from "@/components/ui/simple-combobox";
 import { getCityOptions } from "@/lib/data/indian-cities";
+import {
+  trackFormStart,
+  trackFormStep,
+  trackFormSubmission,
+} from "@/lib/analytics/dataLayer";
 
 /* =============================================================================
  * LAZY-LOADED COMPONENTS
@@ -31,7 +36,10 @@ const Lottie = dynamic(() => import("lottie-react"), {
 });
 
 const ExitIntentModal = dynamic(
-  () => import("./ExitIntentModal").then((mod) => ({ default: mod.ExitIntentModal })),
+  () =>
+    import("./ExitIntentModal").then((mod) => ({
+      default: mod.ExitIntentModal,
+    })),
   { ssr: false }
 );
 
@@ -47,7 +55,7 @@ const step1Schema = z.object({
 
 // Step 2 validation schema
 const step2Schema = z.object({
-  noticeType: z.string().min(1, "Please select a notice type"),
+  noticeType: z.string().min(1, "Please select an option"),
   description: z.string().optional().or(z.literal("")),
   city: z.string().min(1, "Please enter your city"),
 });
@@ -69,6 +77,8 @@ export interface MultiStepFormProps {
   onSubmit?: (data: FormStepData) => void;
   onStepChange?: (step: number) => void;
   initialData?: Partial<FormStepData>;
+  serviceType?: string;
+  servicePrice?: number;
 }
 
 /* =============================================================================
@@ -261,6 +271,7 @@ interface Step1Props {
   phoneValidationError: string;
   setPhoneValidationError: (value: string) => void;
   onNext: () => void;
+  formTitle: string;
 }
 
 function FormStep1({
@@ -272,6 +283,7 @@ function FormStep1({
   phoneValidationError,
   setPhoneValidationError,
   onNext,
+  formTitle,
 }: Step1Props) {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -302,9 +314,13 @@ function FormStep1({
         shouldValidate: true,
       });
     } else {
-      form.setValue("whatsappNumber", selectedCountryCode.dialCode + cleanedValue, {
-        shouldValidate: true,
-      });
+      form.setValue(
+        "whatsappNumber",
+        selectedCountryCode.dialCode + cleanedValue,
+        {
+          shouldValidate: true,
+        }
+      );
     }
   };
 
@@ -356,7 +372,7 @@ function FormStep1({
           {/* Form Title */}
           <div className="mb-4 text-center">
             <h3 className="font-serif text-xl font-bold italic text-text-heading sm:text-2xl">
-              Start Your Legal Notice
+              {formTitle}
             </h3>
             <p className="mt-1 text-sm text-text-muted">
               Takes less than 2 minutes to file
@@ -408,10 +424,12 @@ function FormStep1({
             >
               WHATSAPP NUMBER
             </label>
-            <div className={cn(
-              "flex overflow-hidden rounded-xl border bg-gray-50/50 transition-all focus-within:border-primary focus-within:bg-white focus-within:ring-2 focus-within:ring-primary/20",
-              phoneValidationError ? "border-red-500" : "border-gray-200"
-            )}>
+            <div
+              className={cn(
+                "flex overflow-hidden rounded-xl border bg-gray-50/50 transition-all focus-within:border-primary focus-within:bg-white focus-within:ring-2 focus-within:ring-primary/20",
+                phoneValidationError ? "border-red-500" : "border-gray-200"
+              )}
+            >
               <div className="flex items-center gap-2 border-r border-gray-200 bg-transparent px-3 py-3.5">
                 <span className="text-lg">{selectedCountryCode.flag}</span>
                 <span className="text-sm font-medium text-text-body">
@@ -428,14 +446,18 @@ function FormStep1({
               />
             </div>
             {phoneValidationError && (
-              <p className="mt-1 text-sm text-red-500">{phoneValidationError}</p>
+              <p className="mt-1 text-sm text-red-500">
+                {phoneValidationError}
+              </p>
             )}
           </div>
 
           {/* Submit Button */}
           <button
             type="submit"
-            disabled={!form.formState.isValid || !!phoneValidationError || !phoneNumber}
+            disabled={
+              !form.formState.isValid || !!phoneValidationError || !phoneNumber
+            }
             className="flex w-full items-center justify-center gap-2 rounded-2xl py-4 text-base font-semibold text-white transition-all hover:scale-[1.02] hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-primary/30 active:scale-[0.98] disabled:opacity-50 disabled:cursor-not-allowed"
             style={{
               background:
@@ -462,18 +484,67 @@ interface Step2Props {
   onBack: () => void;
   onNext: () => void;
   isSubmitting: boolean;
+  serviceType: string;
 }
 
-function FormStep2({ form, onBack, onNext, isSubmitting }: Step2Props) {
-  const noticeTypes = [
-    "Divorce Notice",
-    "Cheque Bounce Notice",
-    "Recovery Notice",
-    "Property Dispute Notice",
-    "Employment Notice",
-    "Consumer Complaint Notice",
-    "Other Legal Notice",
-  ];
+// Field configuration based on service type
+const getFieldConfig = (serviceType: string) => {
+  const serviceKey = serviceType.toLowerCase();
+
+  const configMap: Record<
+    string,
+    {
+      fieldLabel: string;
+      fieldPlaceholder: string;
+      options: string[];
+    }
+  > = {
+    "legal notice": {
+      fieldLabel: "LEGAL NOTICE TYPE",
+      fieldPlaceholder: "Select notice type",
+      options: [
+        "Divorce Notice",
+        "Cheque Bounce Notice",
+        "Recovery Notice",
+        "Property Dispute Notice",
+        "Employment Notice",
+        "Consumer Complaint Notice",
+        "Other Legal Notice",
+      ],
+    },
+    "legal consultation": {
+      fieldLabel: "CONSULTATION TYPE",
+      fieldPlaceholder: "Select consultation type",
+      options: [
+        "Family Law",
+        "Property Dispute",
+        "Employment Law",
+        "Consumer Rights",
+        "Criminal Law",
+        "Civil Matter",
+        "Other Legal Matter",
+      ],
+    },
+    "agreement drafting": {
+      fieldLabel: "AGREEMENT TYPE",
+      fieldPlaceholder: "Select agreement type",
+      options: [
+        "Rental Agreement",
+        "Employment Agreement",
+        "Partnership Deed",
+        "NDA Agreement",
+        "Service Agreement",
+        "Sale Agreement",
+        "Other Agreement",
+      ],
+    },
+  };
+
+  return configMap[serviceKey] || configMap["legal notice"];
+};
+
+function FormStep2({ form, onBack, onNext, isSubmitting, serviceType }: Step2Props) {
+  const fieldConfig = getFieldConfig(serviceType);
 
   // City autocomplete state
   const [selectedCity, setSelectedCity] = React.useState<string>(
@@ -493,10 +564,10 @@ function FormStep2({ form, onBack, onNext, isSubmitting }: Step2Props) {
 
         {/* Form Fields */}
         <div className="space-y-5">
-          {/* Legal Notice Type */}
+          {/* Service Type Field (Dynamic) */}
           <div>
             <label className="mb-2 block text-xs font-bold uppercase tracking-wide text-text-heading">
-              LEGAL NOTICE TYPE
+              {fieldConfig.fieldLabel}
             </label>
             <div className="relative">
               <select
@@ -508,8 +579,8 @@ function FormStep2({ form, onBack, onNext, isSubmitting }: Step2Props) {
                     : "border-gray-200"
                 )}
               >
-                <option value="">Select notice type</option>
-                {noticeTypes.map((type) => (
+                <option value="">{fieldConfig.fieldPlaceholder}</option>
+                {fieldConfig.options.map((type) => (
                   <option key={type} value={type}>
                     {type}
                   </option>
@@ -616,6 +687,9 @@ interface Step3Props {
   onSubmit: () => void;
   onEdit: () => void;
   isProcessing: boolean;
+  advanceLabel: string;
+  originalPrice: number;
+  serviceType: string;
 }
 
 function FormStep3({
@@ -626,7 +700,11 @@ function FormStep3({
   onSubmit,
   onEdit,
   isProcessing,
+  advanceLabel,
+  originalPrice,
+  serviceType,
 }: Step3Props) {
+  const fieldConfig = getFieldConfig(serviceType);
   return (
     <>
       {/* Scrollable Content */}
@@ -660,7 +738,7 @@ function FormStep3({
         <div className="mb-6 rounded-2xl border border-gray-200 bg-gray-50/50 p-5">
           <div className="flex items-center justify-between">
             <span className="text-sm font-semibold uppercase tracking-wide text-text-muted">
-              LEGAL NOTICE ADVANCE
+              {advanceLabel}
             </span>
             <div className="flex items-baseline gap-2">
               <span className="text-3xl font-bold text-success">
@@ -674,10 +752,10 @@ function FormStep3({
           {isDiscounted && (
             <div className="mt-3 flex items-center gap-2">
               <span className="text-sm text-text-muted line-through">
-                Original Price ₹499
+                Original Price ₹{originalPrice}
               </span>
               <span className="rounded bg-success-light px-2 py-0.5 text-xs font-bold text-success-darker">
-                SAVE ₹{499 - currentPrice}
+                SAVE ₹{originalPrice - currentPrice}
               </span>
             </div>
           )}
@@ -722,10 +800,17 @@ function FormStep3({
             </div>
             <div className="flex justify-between">
               <span className="text-text-muted">Phone</span>
-              <span className="text-text-body">{data.whatsappNumber || "-"}</span>
+              <span className="text-text-body">
+                {data.whatsappNumber || "-"}
+              </span>
             </div>
             <div className="flex justify-between">
-              <span className="text-text-muted">Notice Type</span>
+              <span className="text-text-muted">
+                {fieldConfig.fieldLabel
+                  .split(" ")
+                  .map((word) => word.charAt(0) + word.slice(1).toLowerCase())
+                  .join(" ")}
+              </span>
               <span className="text-text-body">{data.noticeType || "-"}</span>
             </div>
             <div className="flex justify-between">
@@ -786,7 +871,43 @@ export function MultiStepForm({
   onSubmit,
   onStepChange,
   initialData = {},
+  serviceType = "Legal Notice",
+  servicePrice = 499,
 }: MultiStepFormProps) {
+  // Helper function to generate dynamic text based on service type
+  const getServiceText = (type: string) => {
+    const serviceKey = type.toLowerCase();
+
+    const textMap: Record<string, {
+      formTitle: string;
+      advanceLabel: string;
+      apiService: string;
+      paymentDescription: string;
+    }> = {
+      "legal notice": {
+        formTitle: "Start Your Legal Notice",
+        advanceLabel: "LEGAL NOTICE ADVANCE",
+        apiService: "legal-notice",
+        paymentDescription: "Legal Notice",
+      },
+      "legal consultation": {
+        formTitle: "Book Your Consultation",
+        advanceLabel: "CONSULTATION FEE",
+        apiService: "legal-consultation",
+        paymentDescription: "Legal Consultation",
+      },
+      "agreement drafting": {
+        formTitle: "Start Agreement Drafting",
+        advanceLabel: "AGREEMENT ADVANCE",
+        apiService: "agreement-drafting",
+        paymentDescription: "Agreement Drafting",
+      },
+    };
+
+    return textMap[serviceKey] || textMap["legal notice"];
+  };
+
+  const serviceText = getServiceText(serviceType);
   const [currentStep, setCurrentStep] = React.useState(1);
   const [isModalOpen, setIsModalOpen] = React.useState(false);
   const [leadId, setLeadId] = React.useState<string | null>(null);
@@ -797,7 +918,7 @@ export function MultiStepForm({
   // Exit intent state
   const [showExitIntent, setShowExitIntent] = React.useState(false);
   const [exitOfferShown, setExitOfferShown] = React.useState(false);
-  const [currentPrice, setCurrentPrice] = React.useState(499);
+  const [currentPrice, setCurrentPrice] = React.useState(servicePrice);
   const [isDiscounted, setIsDiscounted] = React.useState(false);
 
   // Phone validation state
@@ -887,7 +1008,7 @@ export function MultiStepForm({
           name: completeData.fullName,
           whatsappNumber: completeData.whatsappNumber,
           location: completeData.city,
-          service: "legal-notice",
+          service: serviceText.apiService,
           description: completeData.description,
           legalNoticeType: completeData.noticeType,
         }),
@@ -934,7 +1055,9 @@ export function MultiStepForm({
       typeof window === "undefined" ||
       !(window as Window & typeof globalThis & { Razorpay?: unknown }).Razorpay
     ) {
-      toast.error("Payment system is still loading. Please wait and try again.");
+      toast.error(
+        "Payment system is still loading. Please wait and try again."
+      );
       return;
     }
 
@@ -949,10 +1072,10 @@ export function MultiStepForm({
         body: JSON.stringify({
           amount: amountInPaise,
           currency: "INR",
-          receipt: `legal-notice_${Date.now()}`,
+          receipt: `${serviceText.apiService}_${Date.now()}`,
           notes: {
             leadId: leadId || "",
-            service: "legal-notice",
+            service: serviceText.apiService,
             discounted: isDiscounted,
           },
         }),
@@ -971,13 +1094,14 @@ export function MultiStepForm({
         amount: amount,
         currency: "INR",
         name: "Vakil Tech",
-        description: `Legal Notice - ${formData.noticeType}`,
+        description: `${serviceText.paymentDescription} - ${formData.noticeType}`,
         order_id: orderId,
         modal: {
           escape: false,
           ondismiss: () => {
             toast.error("Payment cancelled.");
             setIsProcessingPayment(false);
+            setIsModalOpen(true); // Reopen modal when payment is cancelled
           },
         },
         handler: async (response: {
@@ -995,6 +1119,9 @@ export function MultiStepForm({
           color: "#EF5A6F",
         },
       };
+
+      // Close our modal before opening Razorpay
+      setIsModalOpen(false);
 
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       const razorpay = new (window as any).Razorpay(options);
@@ -1025,7 +1152,9 @@ export function MultiStepForm({
       const verifyData = await verifyResponse.json();
 
       if (verifyData.verified) {
-        toast.success("Payment successful! Our lawyer will contact you within 3 hours.");
+        toast.success(
+          "Payment successful! Our lawyer will contact you within 3 hours."
+        );
         onSubmit?.(formData as FormStepData);
 
         setTimeout(() => {
@@ -1098,28 +1227,40 @@ export function MultiStepForm({
           phoneValidationError={phoneValidationError}
           setPhoneValidationError={setPhoneValidationError}
           onNext={handleStep1Next}
+          formTitle={serviceText.formTitle}
         />
       )}
 
       {/* Responsive Modal for Steps 2-3 */}
       <Modal open={isModalOpen} onOpenChange={handleModalClose}>
         <ModalContent
-          className="flex h-full max-h-dvh flex-col p-0 sm:h-auto sm:max-h-[90vh] sm:max-w-md"
+          className={cn(
+            "flex h-full max-h-dvh flex-col p-0 sm:h-auto sm:max-h-[90vh] sm:max-w-md",
+            isProcessingPayment && "pointer-events-none"
+          )}
+          overlayClassName={isProcessingPayment ? "pointer-events-none" : undefined}
           showCloseButton={true}
           drawerProps={{
-            className: "!max-h-dvh !mt-0 !rounded-t-3xl flex flex-col",
+            className: cn(
+              "!max-h-dvh !mt-0 !rounded-t-3xl flex flex-col",
+              isProcessingPayment && "pointer-events-none"
+            ),
           }}
         >
           <ModalHeader className="sr-only">
             <ModalTitle>
-              {currentStep === 2 ? "Legal Notice Details" : "Secure Payment"}
+              {currentStep === 2
+                ? `${serviceType} Details`
+                : "Secure Payment"}
             </ModalTitle>
           </ModalHeader>
 
           {/* Visible Header - Fixed */}
           <div className="shrink-0 px-4 pt-4 pb-2 text-center">
             <h2 className="text-lg font-bold text-text-heading">
-              {currentStep === 2 ? "Legal Notice Details" : "Secure Payment"}
+              {currentStep === 2
+                ? `${serviceType} Details`
+                : "Secure Payment"}
             </h2>
           </div>
 
@@ -1129,6 +1270,7 @@ export function MultiStepForm({
               onBack={() => handleStepChange(1)}
               onNext={handleStep2Submit}
               isSubmitting={isCreatingLead}
+              serviceType={serviceType}
             />
           )}
 
@@ -1141,6 +1283,9 @@ export function MultiStepForm({
               onSubmit={handlePayment}
               onEdit={handleEdit}
               isProcessing={isProcessingPayment}
+              advanceLabel={serviceText.advanceLabel}
+              originalPrice={servicePrice}
+              serviceType={serviceType}
             />
           )}
         </ModalContent>
@@ -1156,7 +1301,7 @@ export function MultiStepForm({
           setShowExitIntent(false);
           handleStepChange(1);
         }}
-        originalPrice={499}
+        originalPrice={servicePrice}
       />
     </div>
   );

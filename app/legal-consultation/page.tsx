@@ -6,6 +6,7 @@ import Script from "next/script";
 import dynamic from "next/dynamic";
 import { useEffect, useState } from "react";
 import { cn } from "@/lib/utils";
+import { PageViewTracker } from "@/components/analytics/PageViewTracker";
 
 // Design System
 import { MeshGradient } from "@paper-design/shaders-react";
@@ -238,7 +239,12 @@ function ConsultationHeroSection() {
 
           {/* Right Column - Form + Pricing Card */}
           <div className="space-y-6 lg:pl-4">
-            <MultiStepForm onSubmit={() => {}} onStepChange={() => {}} />
+            <MultiStepForm
+              onSubmit={() => {}}
+              onStepChange={() => {}}
+              serviceType="Legal Consultation"
+              servicePrice={299}
+            />
             <PricingCard
               badge={heroContent.pricingCard.badge}
               originalPrice={heroContent.pricingCard.originalPrice}
@@ -335,7 +341,12 @@ function ConsultationHeroSection() {
 
           {/* Form Section - Below image on mobile */}
           <div className="mt-8 space-y-6">
-            <MultiStepForm onSubmit={() => {}} onStepChange={() => {}} />
+            <MultiStepForm
+              onSubmit={() => {}}
+              onStepChange={() => {}}
+              serviceType="Legal Consultation"
+              servicePrice={299}
+            />
             <PricingCard
               badge={heroContent.pricingCard.badge}
               originalPrice={heroContent.pricingCard.originalPrice}
@@ -413,6 +424,9 @@ export default function LegalConsultationPage() {
 
   return (
     <main>
+      {/* Page View Tracking */}
+      <PageViewTracker serviceType="Legal Consultation" />
+
       <Breadcrumb
         items={[
           { label: "Home", href: "/" },
@@ -462,6 +476,8 @@ export default function LegalConsultationPage() {
           <MultiStepForm
             onSubmit={handleFormSubmit}
             onStepChange={(step) => console.log("Step changed:", step)}
+            serviceType="Legal Consultation"
+            servicePrice={299}
           />
         </div>
       </section>
@@ -698,6 +714,87 @@ export default function LegalConsultationPage() {
                     : "Please visit our website for detailed information.",
               },
             })),
+          }),
+        }}
+      />
+
+      {/* AEO/AISEO Schemas */}
+      <Script
+        id="article-schema"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Article",
+            headline: "Online Lawyer Consultation ₹299 | Talk to Expert High Court Advocates",
+            description:
+              "Get instant legal consultation online from experienced High Court advocates. Starting at just ₹299. 24/7 support, 100% confidential.",
+            author: {
+              "@type": "Organization",
+              name: "VakilTech Legal Team",
+              url: "https://vakiltech.in/about",
+            },
+            publisher: {
+              "@type": "Organization",
+              name: "VakilTech",
+              logo: {
+                "@type": "ImageObject",
+                url: "https://vakiltech.in/logo.png",
+              },
+            },
+            datePublished: "2024-01-15",
+            dateModified: new Date().toISOString().split('T')[0],
+            mainEntityOfPage: {
+              "@type": "WebPage",
+              "@id": "https://vakiltech.in/legal-consultation",
+            },
+          }),
+        }}
+      />
+      <Script
+        id="breadcrumb-schema"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            itemListElement: [
+              {
+                "@type": "ListItem",
+                position: 1,
+                name: "Home",
+                item: "https://vakiltech.in",
+              },
+              {
+                "@type": "ListItem",
+                position: 2,
+                name: "Legal Consultation",
+                item: "https://vakiltech.in/legal-consultation",
+              },
+            ],
+          }),
+        }}
+      />
+      <Script
+        id="webpage-schema"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "WebPage",
+            name: "Online Lawyer Consultation ₹299 | VakilTech",
+            description:
+              "Get instant legal consultation from High Court advocates. Starting ₹299. 24/7 support, 100% confidential.",
+            url: "https://vakiltech.in/legal-consultation",
+            speakable: {
+              "@type": "SpeakableSpecification",
+              cssSelector: ["h1", "h2", ".prose"],
+            },
+            about: {
+              "@type": "Thing",
+              name: "Legal Consultation Services",
+              description: "Professional online legal consultation services in India",
+            },
           }),
         }}
       />

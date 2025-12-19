@@ -124,7 +124,7 @@ export function TrustBadgesBar({
   return (
     <div
       className={cn(
-        "w-full bg-background-gray-light/50 border-y border-gray-100 py-3",
+        "w-full border-y border-gray-100 py-3 bg-white mb-2",
         className
       )}
     >

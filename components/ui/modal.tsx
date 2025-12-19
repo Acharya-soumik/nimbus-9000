@@ -119,6 +119,7 @@ type ModalContentProps = {
 	children: React.ReactNode;
 	className?: string;
 	showCloseButton?: boolean;
+	overlayClassName?: string;
 	drawerProps?: React.ComponentProps<typeof DrawerContent>;
 	dialogProps?: Omit<React.ComponentProps<typeof DialogContent>, 'showCloseButton'>;
 };
@@ -127,21 +128,22 @@ const ModalContent = ({
 	className,
 	children,
 	showCloseButton = true,
+	overlayClassName,
 	drawerProps,
 	dialogProps,
 }: ModalContentProps) => {
 	const { isMobile } = useModalContext();
-	
+
 	if (isMobile) {
 		return (
-			<DrawerContent className={className} {...drawerProps}>
+			<DrawerContent className={className} overlayClassName={overlayClassName} {...drawerProps}>
 				{children}
 			</DrawerContent>
 		);
 	}
-	
+
 	return (
-		<DialogContent className={className} showCloseButton={showCloseButton} {...dialogProps}>
+		<DialogContent className={className} showCloseButton={showCloseButton} overlayClassName={overlayClassName} {...dialogProps}>
 			{children}
 		</DialogContent>
 	);

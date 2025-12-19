@@ -257,7 +257,7 @@ function NoticeCard({ notice }: NoticeCardProps) {
 
   return (
     <Link
-      href={`/${notice.slug}`}
+      href={`${notice.slug}`}
       className={cn(
         "group flex w-full items-center gap-4 rounded-2xl bg-white p-4 shadow-sm ring-1 ring-gray-100/80",
         "transition-all duration-200 hover:shadow-md hover:ring-primary/20"
@@ -486,7 +486,7 @@ export function RelatedNoticesSection({
         {/* View All CTA */}
         <div className="mt-10 text-center lg:mt-12">
           <Link
-            href="/send-legal-notice"
+            href="/legal-notice"
             className="inline-flex items-center gap-2 rounded-xl border-2 border-primary bg-white px-6 py-3 text-base font-semibold text-primary transition-all hover:bg-primary hover:text-white lg:px-8 lg:py-4 lg:text-lg"
           >
             View All Legal Notices

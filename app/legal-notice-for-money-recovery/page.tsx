@@ -217,6 +217,9 @@ export default function MoneyRecoveryPage() {
                 "Legal Consultation",
               ]}
               totalLabel="TOTAL PAYABLE"
+              showPaymentBreakdown={true}
+              advancePayment={499}
+              finalPayment={1000}
             />
           </div>
         </div>

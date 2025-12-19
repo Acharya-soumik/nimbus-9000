@@ -24,9 +24,9 @@ export const metadata: Metadata = {
 };
 
 interface ThankYouPageProps {
-  searchParams: {
+  searchParams: Promise<{
     payment_id?: string;
-  };
+  }>;
 }
 
 /**
@@ -52,7 +52,7 @@ function formatDate(timestamp: number): string {
 export default async function ThankYouPage({
   searchParams,
 }: ThankYouPageProps) {
-  const paymentId = searchParams.payment_id;
+  const { payment_id: paymentId } = await searchParams;
 
   // Redirect if no payment_id provided
   if (!paymentId) {

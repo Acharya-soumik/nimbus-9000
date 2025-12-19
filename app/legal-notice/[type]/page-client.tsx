@@ -45,6 +45,181 @@ export function LegalNoticeTypePageClient({ data }: LegalNoticeTypePageClientPro
   };
 
   return (
+    <>
+      {/* LegalService Schema Markup */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "LegalService",
+            name: `VakilTech - ${data.title}`,
+            description: data.seo.description,
+            url: `https://vakiltech.in/legal-notice/${data.slug}`,
+            priceRange: "₹1,499 - ₹3,999",
+            areaServed: {
+              "@type": "Country",
+              name: "India",
+            },
+            provider: {
+              "@type": "Organization",
+              name: "VakilTech",
+              url: "https://vakiltech.in",
+              logo: "https://vakiltech.in/logo.png",
+              contactPoint: {
+                "@type": "ContactPoint",
+                telephone: "+91-9876543210",
+                contactType: "Customer Service",
+                availableLanguage: ["English", "Hindi"],
+              },
+            },
+            aggregateRating: {
+              "@type": "AggregateRating",
+              ratingValue: "4.8",
+              reviewCount: "500",
+            },
+            offers: {
+              "@type": "Offer",
+              price: "1499",
+              priceCurrency: "INR",
+              availability: "https://schema.org/InStock",
+            },
+          }),
+        }}
+      />
+
+      {/* Article Schema for AEO/AISEO */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Article",
+            headline: data.seo.title,
+            description: data.seo.description,
+            author: {
+              "@type": "Organization",
+              name: "VakilTech Legal Team",
+              url: "https://vakiltech.in/about",
+            },
+            publisher: {
+              "@type": "Organization",
+              name: "VakilTech",
+              logo: {
+                "@type": "ImageObject",
+                url: "https://vakiltech.in/logo.png",
+              },
+            },
+            datePublished: "2024-01-15",
+            dateModified: new Date().toISOString().split('T')[0],
+            mainEntityOfPage: {
+              "@type": "WebPage",
+              "@id": `https://vakiltech.in/legal-notice/${data.slug}`,
+            },
+            keywords: data.seo.keywords.join(", "),
+          }),
+        }}
+      />
+
+      {/* BreadcrumbList Schema for AEO */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            itemListElement: [
+              {
+                "@type": "ListItem",
+                position: 1,
+                name: "Home",
+                item: "https://vakiltech.in",
+              },
+              {
+                "@type": "ListItem",
+                position: 2,
+                name: "Legal Notice",
+                item: "https://vakiltech.in/legal-notice",
+              },
+              {
+                "@type": "ListItem",
+                position: 3,
+                name: data.title,
+                item: `https://vakiltech.in/legal-notice/${data.slug}`,
+              },
+            ],
+          }),
+        }}
+      />
+
+      {/* HowTo Schema for Process Steps (AEO Optimization) */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "HowTo",
+            name: `How to Send ${data.title} Online`,
+            description: `Step-by-step guide to send ${data.title.toLowerCase()} through VakilTech`,
+            totalTime: "PT48H",
+            estimatedCost: {
+              "@type": "MonetaryAmount",
+              currency: "INR",
+              value: "1499",
+            },
+            step: [
+              {
+                "@type": "HowToStep",
+                position: 1,
+                name: "Fill the Online Form",
+                text: "Provide your details and case information through our simple online form. Our AI assistant helps you provide accurate information.",
+                image: "https://vakiltech.in/assets/common/fill-form.png",
+              },
+              {
+                "@type": "HowToStep",
+                position: 2,
+                name: "Expert Lawyer Drafts Your Notice",
+                text: "Our High Court advocates review your case and draft a professional legal notice. You can review and request unlimited revisions.",
+                image: "https://vakiltech.in/assets/common/consut-lawyer.png",
+              },
+              {
+                "@type": "HowToStep",
+                position: 3,
+                name: "Notice Sent via Registered Post",
+                text: "Once approved, we send your legal notice via Registered Post with Acknowledgement Due (RPAD) for legal validity.",
+                image: "https://vakiltech.in/assets/common/registered-post.png",
+              },
+            ],
+          }),
+        }}
+      />
+
+      {/* WebPage Schema with Speakable (for voice assistants) */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "WebPage",
+            name: data.seo.title,
+            description: data.seo.description,
+            url: `https://vakiltech.in/legal-notice/${data.slug}`,
+            speakable: {
+              "@type": "SpeakableSpecification",
+              cssSelector: ["h1", "h2", ".prose"],
+            },
+            mainEntity: {
+              "@type": "Service",
+              name: data.title,
+              description: data.content.introduction,
+              provider: {
+                "@type": "Organization",
+                name: "VakilTech",
+              },
+            },
+          }),
+        }}
+      />
     <main>
       {/* Breadcrumb Navigation */}
       <div className="mx-auto max-w-7xl px-4 pt-6 sm:px-6 lg:px-8">
@@ -263,6 +438,9 @@ export function LegalNoticeTypePageClient({ data }: LegalNoticeTypePageClientPro
                 "Legal Consultation",
               ]}
               totalLabel="TOTAL PAYABLE"
+              showPaymentBreakdown={true}
+              advancePayment={499}
+              finalPayment={1000}
             />
           </div>
         </div>
@@ -296,6 +474,7 @@ export function LegalNoticeTypePageClient({ data }: LegalNoticeTypePageClientPro
         title="Frequently Asked Questions"
         subtitle={`Everything you need to know about ${data.title.toLowerCase()}`}
         showDove={true}
+        enableSchema={true}
       />
 
       {/* Sample Notice Modal */}
@@ -319,5 +498,6 @@ export function LegalNoticeTypePageClient({ data }: LegalNoticeTypePageClientPro
         message={`Hi! I need help with ${data.title.toLowerCase()}. Can you assist me?`}
       />
     </main>
+    </>
   );
 }

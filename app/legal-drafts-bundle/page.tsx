@@ -9,6 +9,9 @@ export const metadata: Metadata = {
     "Download 3500+ professional legal drafts instantly at ₹499 (80% OFF). Ready-to-use legal templates including agreements, contracts, notices, petitions, affidavits in Hindi, English & Marathi. Perfect for lawyers, law students & businesses. Lifetime access + Regular updates.",
   keywords: [
     "legal drafts bundle",
+    "how to download legal drafts",
+    "legal templates India",
+    "legal document templates",
     "legal templates India",
     "legal documents download",
     "Hindi legal drafts",
@@ -71,6 +74,10 @@ export const metadata: Metadata = {
     "price:currency": "INR",
     "product:availability": "in stock",
     "product:condition": "new",
+    // AEO/AISEO optimizations for AI engines
+    "answer-to": "Where can I download legal drafts templates in India?",
+    "question": "How to get legal document templates in Hindi and English?",
+    "solution": "VakilTech offers 3500+ legal drafts bundle for instant download at ₹499",
   },
 };
 
@@ -204,6 +211,85 @@ export default function LegalDraftsBundlePage() {
     ],
   };
 
+  // AEO/AISEO Schemas
+  const articleJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline: "3500+ Legal Drafts Templates Bundle | Instant Download at ₹499",
+    description:
+      "Download 3500+ professional legal drafts instantly at ₹499 (80% OFF). Ready-to-use legal templates in Hindi, English & Marathi.",
+    author: {
+      "@type": "Organization",
+      name: "VakilTech Legal Team",
+      url: "https://vakiltech.in/about",
+    },
+    publisher: {
+      "@type": "Organization",
+      name: "VakilTech",
+      logo: {
+        "@type": "ImageObject",
+        url: "https://vakiltech.in/logo.png",
+      },
+    },
+    datePublished: "2024-01-15",
+    dateModified: new Date().toISOString().split('T')[0],
+    mainEntityOfPage: {
+      "@type": "WebPage",
+      "@id": "https://vakiltech.in/legal-drafts-bundle",
+    },
+  };
+
+  const webPageJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    name: "Legal Drafts Bundle | 3500+ Templates | VakilTech",
+    description:
+      "Download 3500+ professional legal drafts instantly at ₹499. Ready-to-use templates for lawyers, law students & businesses.",
+    url: "https://vakiltech.in/legal-drafts-bundle",
+    speakable: {
+      "@type": "SpeakableSpecification",
+      cssSelector: ["h1", "h2", ".prose"],
+    },
+    about: {
+      "@type": "Thing",
+      name: "Legal Document Templates",
+      description: "Comprehensive collection of legal drafts and templates",
+    },
+  };
+
+  const howToJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "HowTo",
+    name: "How to Download Legal Drafts Bundle",
+    description: "Simple 3-step process to get instant access to 3500+ legal templates",
+    totalTime: "PT5M",
+    estimatedCost: {
+      "@type": "MonetaryAmount",
+      currency: "INR",
+      value: "499",
+    },
+    step: [
+      {
+        "@type": "HowToStep",
+        position: 1,
+        name: "Choose Your Bundle",
+        text: "Select from Hindi, English, Marathi, or the complete bundle with all languages.",
+      },
+      {
+        "@type": "HowToStep",
+        position: 2,
+        name: "Complete Payment",
+        text: "Make a secure payment of ₹499 through Razorpay using UPI, cards, or net banking.",
+      },
+      {
+        "@type": "HowToStep",
+        position: 3,
+        name: "Instant Download",
+        text: "Your bundle starts downloading immediately. You'll also receive an email with the download link for future access.",
+      },
+    ],
+  };
+
   return (
     <>
       <script
@@ -217,6 +303,18 @@ export default function LegalDraftsBundlePage() {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(webPageJsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(howToJsonLd) }}
       />
       <BundleLanding />
     </>

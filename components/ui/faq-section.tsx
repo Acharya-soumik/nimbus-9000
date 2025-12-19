@@ -54,6 +54,8 @@ export interface FAQSectionProps {
   defaultOpenId?: string;
   /** Allow multiple items to be open at once */
   allowMultiple?: boolean;
+  /** Enable FAQ Schema (JSON-LD structured data) for SEO */
+  enableSchema?: boolean;
 }
 
 // =============================================================================
@@ -70,15 +72,55 @@ export function FAQSection({
   itemClassName,
   defaultOpenId,
   allowMultiple = false,
+  enableSchema = false,
 }: FAQSectionProps) {
+  // Helper function to extract text from React nodes
+  const getTextFromReactNode = (node: React.ReactNode): string => {
+    if (typeof node === "string") return node;
+    if (typeof node === "number") return String(node);
+    if (Array.isArray(node)) return node.map(getTextFromReactNode).join(" ");
+    if (node && typeof node === "object" && "props" in node) {
+      const element = node as { props: { children?: React.ReactNode } };
+      return getTextFromReactNode(element.props.children);
+    }
+    return "";
+  };
+
+  // Generate FAQ Schema for SEO
+  const faqSchema = enableSchema
+    ? {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        mainEntity: faqs.map((faq) => ({
+          "@type": "Question",
+          name: faq.question,
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: getTextFromReactNode(faq.answer),
+          },
+        })),
+      }
+    : null;
+
   return (
-    <section
-      className={cn(
-        "relative w-full py-16 md:py-24",
-        "px-4 sm:px-6 lg:px-8",
-        className
+    <>
+      {/* FAQ Schema Markup */}
+      {enableSchema && faqSchema && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(faqSchema),
+          }}
+        />
       )}
-    >
+
+      <section
+        className={cn(
+          "relative w-full py-16 md:py-24",
+          "px-4 sm:px-6 lg:px-8",
+          className
+        )}
+      >
       <div className="mx-auto max-w-4xl">
         {/* Title Section with Dove */}
         <div className="mb-12 text-center">
@@ -268,6 +310,7 @@ export function FAQSection({
         }
       `}</style>
     </section>
+    </>
   );
 }
 

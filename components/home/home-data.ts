@@ -99,8 +99,25 @@ export const services: Service[] = [
     ],
     href: "/legal-consultation",
     ctaText: "Book Consultation",
-    badge: "STARTING AT",
+    badge: "STARTING AT ₹299",
     iconType: "consultation",
+  },
+  {
+    id: "agreement-drafting",
+    title: "Agreement Drafting",
+    description:
+      "Get a professionally drafted agreement for your business or personal needs. Perfect for rental agreements, employment contracts, partnership agreements, and more.",
+    price: "Varies by Document Type",
+    features: [
+      "Drafted by High Court Advocate",
+      "Unlimited Revisions",
+      "24/7 Support",
+      "Delivery Tracking",
+    ],
+    href: "/agreement-drafting",
+    ctaText: "Draft Agreement",
+    badge: "Custom Drafted",
+    iconType: "notice",
   },
 ];
 
@@ -228,8 +245,3 @@ export const homeStats: HomeStat[] = [
   { value: "30", label: "Expert Advocates", suffix: "+" },
   { value: "4.9", label: "Average Rating", suffix: "/5" },
 ];
-
-
-
-
-

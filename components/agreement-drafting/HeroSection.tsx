@@ -213,7 +213,12 @@ export function AgreementHeroSection({ className }: AgreementHeroSectionProps) {
 
           {/* Right Column - Form + Pricing Card */}
           <div className="space-y-6 lg:pl-4">
-            <MultiStepForm onSubmit={() => {}} onStepChange={() => {}} />
+            <MultiStepForm
+              onSubmit={() => {}}
+              onStepChange={() => {}}
+              serviceType="Agreement Drafting"
+              servicePrice={999}
+            />
             <PricingCard
               currentPrice={999}
               features={[
@@ -317,7 +322,12 @@ export function AgreementHeroSection({ className }: AgreementHeroSectionProps) {
 
           {/* Form Section - Below image on mobile */}
           <div className="mt-8 space-y-6">
-            <MultiStepForm onSubmit={() => {}} onStepChange={() => {}} />
+            <MultiStepForm
+              onSubmit={() => {}}
+              onStepChange={() => {}}
+              serviceType="Agreement Drafting"
+              servicePrice={999}
+            />
             <PricingCard
               currentPrice={999}
               features={[
@@ -334,3 +344,4 @@ export function AgreementHeroSection({ className }: AgreementHeroSectionProps) {
 }
 
 export default AgreementHeroSection;
+

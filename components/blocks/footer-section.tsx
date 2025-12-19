@@ -86,6 +86,19 @@ export function Footer() {
             height={40}
             className="h-10 w-auto bg-white rounded"
           />
+          <p className="text-white/80 text-sm max-w-md">
+            <b>vakiltech</b> connects legal professionals and clients, serving
+            as a service aggregator to foster communication. We are not agents
+            for lawyers; our role is to facilitate connections between lawyers
+            and clients. You can{" "}
+            <a
+              href="/terms-of-use"
+              className="text-white underline hover:text-white/90"
+            >
+              read more here
+            </a>
+            .
+          </p>
           <p className="text-white mt-8 text-sm md:mt-0">
             © {new Date().getFullYear()} VakilTech. All rights reserved.
           </p>
@@ -113,6 +126,30 @@ export function Footer() {
             </AnimatedContainer>
           ))}
         </div>
+      </div>
+
+      {/* Legal Links Section */}
+      <div className="mt-8 w-full border-t border-white/10 pt-6">
+        <nav className="flex flex-wrap justify-center gap-4 text-sm text-white/80">
+          <a
+            href="/privacy-policy"
+            className="transition-colors hover:text-white"
+          >
+            Privacy Policy
+          </a>
+          <a
+            href="/terms-and-conditions"
+            className="transition-colors hover:text-white"
+          >
+            Terms and Conditions
+          </a>
+          <a
+            href="/terms-of-use"
+            className="transition-colors hover:text-white"
+          >
+            Terms of Use
+          </a>
+        </nav>
       </div>
     </footer>
   );

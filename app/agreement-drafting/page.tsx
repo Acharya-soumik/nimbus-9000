@@ -23,6 +23,7 @@ import {
 } from "@/components/legal-notice";
 import { FAQSection } from "@/components/ui/faq-section";
 import { WhatsAppFloater } from "@/components/ui/whatsapp-floater";
+import { PageViewTracker } from "@/components/analytics/PageViewTracker";
 
 /**
  * Agreement Drafting Service Page
@@ -87,6 +88,9 @@ export default function AgreementDraftingPage() {
 
   return (
     <main>
+      {/* Page View Tracking */}
+      <PageViewTracker serviceType="Agreement Drafting" />
+
       {/* Hero Section with Teal Theme */}
       <AgreementHeroSection />
 
@@ -322,6 +326,173 @@ export default function AgreementDraftingPage() {
       <WhatsAppFloater
         phoneNumber="919876543210"
         message="Hi! I'm interested in getting an agreement drafted. Can you help me?"
+      />
+
+      {/* SEO Schema Markup */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "LegalService",
+            name: "VakilTech - Agreement Drafting Services",
+            description:
+              "Professional agreement drafting services online from ₹999. Rental agreements, employment contracts, NDAs, partnership deeds & more. Drafted by High Court advocates.",
+            url: "https://vakiltech.in/agreement-drafting",
+            priceRange: "₹999 - ₹4,999",
+            areaServed: {
+              "@type": "Country",
+              name: "India",
+            },
+            provider: {
+              "@type": "Organization",
+              name: "VakilTech",
+              url: "https://vakiltech.in",
+              logo: "https://vakiltech.in/logo.png",
+              contactPoint: {
+                "@type": "ContactPoint",
+                telephone: "+91-9876543210",
+                contactType: "Customer Service",
+                availableLanguage: ["English", "Hindi"],
+              },
+            },
+            aggregateRating: {
+              "@type": "AggregateRating",
+              ratingValue: "4.8",
+              reviewCount: "500",
+            },
+            offers: {
+              "@type": "Offer",
+              price: "999",
+              priceCurrency: "INR",
+              availability: "https://schema.org/InStock",
+            },
+          }),
+        }}
+      />
+
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Article",
+            headline: "Online Agreement Drafting Services India | Legal Contracts",
+            description:
+              "Professional agreement drafting services online from ₹999. Rental agreements, employment contracts, NDAs, partnership deeds & more.",
+            author: {
+              "@type": "Organization",
+              name: "VakilTech Legal Team",
+              url: "https://vakiltech.in/about",
+            },
+            publisher: {
+              "@type": "Organization",
+              name: "VakilTech",
+              logo: {
+                "@type": "ImageObject",
+                url: "https://vakiltech.in/logo.png",
+              },
+            },
+            datePublished: "2024-01-15",
+            dateModified: new Date().toISOString().split('T')[0],
+            mainEntityOfPage: {
+              "@type": "WebPage",
+              "@id": "https://vakiltech.in/agreement-drafting",
+            },
+          }),
+        }}
+      />
+
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            itemListElement: [
+              {
+                "@type": "ListItem",
+                position: 1,
+                name: "Home",
+                item: "https://vakiltech.in",
+              },
+              {
+                "@type": "ListItem",
+                position: 2,
+                name: "Agreement Drafting",
+                item: "https://vakiltech.in/agreement-drafting",
+              },
+            ],
+          }),
+        }}
+      />
+
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "HowTo",
+            name: "How to Get Legal Agreements Drafted Online",
+            description:
+              "Step-by-step guide to get professional legal agreements drafted online through VakilTech",
+            totalTime: "PT48H",
+            estimatedCost: {
+              "@type": "MonetaryAmount",
+              currency: "INR",
+              value: "999",
+            },
+            step: [
+              {
+                "@type": "HowToStep",
+                position: 1,
+                name: "Select Agreement Type",
+                text: "Choose from our wide range of agreement types including rental, employment, NDA, partnership, and more.",
+              },
+              {
+                "@type": "HowToStep",
+                position: 2,
+                name: "Provide Details",
+                text: "Fill out our simple online form with the specific details and clauses you need in your agreement.",
+              },
+              {
+                "@type": "HowToStep",
+                position: 3,
+                name: "Expert Drafting",
+                text: "Our High Court advocates draft your customized agreement with all legal provisions and clauses.",
+              },
+              {
+                "@type": "HowToStep",
+                position: 4,
+                name: "Review & Revise",
+                text: "Review the draft and request unlimited revisions until you're completely satisfied.",
+              },
+            ],
+          }),
+        }}
+      />
+
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "WebPage",
+            name: "Online Agreement Drafting Services India | VakilTech",
+            description:
+              "Professional agreement drafting services online from ₹999. Drafted by High Court advocates.",
+            url: "https://vakiltech.in/agreement-drafting",
+            speakable: {
+              "@type": "SpeakableSpecification",
+              cssSelector: ["h1", "h2", ".prose"],
+            },
+            about: {
+              "@type": "Thing",
+              name: "Agreement Drafting Services",
+              description: "Professional online agreement drafting services in India",
+            },
+          }),
+        }}
       />
     </main>
   );
