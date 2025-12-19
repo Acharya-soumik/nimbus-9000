@@ -1,26 +1,738 @@
 @import "tailwindcss";
+@import "tailwindcss/theme" layer(theme);
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+/* =============================================================================
+ * DESIGN SYSTEM CSS CUSTOM PROPERTIES
+ * All colors use OKLCH color space for perceptual uniformity
+ * ============================================================================= */
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* ---------------------------------------------------------------------------
+   * PRIMARY ACTION COLORS (Coral/Red Family)
+   * Used for: CTA buttons, progress bars, primary actions
+   * --------------------------------------------------------------------------- */
+  --color-primary: oklch(64% 0.18 15); /* Main coral red #EF5A6F */
+  --color-primary-bright: oklch(63% 0.22 25); /* Bright red #EF4444 */
+  --color-primary-dark: oklch(58% 0.22 25); /* Dark red #DC2626 */
+  --color-primary-coral: oklch(61% 0.2 18); /* Coral shade #E8505B */
+  --color-primary-foreground: oklch(100% 0 0); /* White text on primary */
+
+  /* ---------------------------------------------------------------------------
+   * SUCCESS COLORS (Green Family)
+   * Used for: Checkmarks, success states, pricing displays
+   * --------------------------------------------------------------------------- */
+  --color-success: oklch(67% 0.15 165); /* Emerald green #10B981 */
+  --color-success-base: oklch(65% 0.16 145); /* Green #4CAF50 */
+  --color-success-dark: oklch(50% 0.14 145); /* Dark green #2E7D32 */
+  --color-success-darker: oklch(42% 0.12 150); /* Very dark green #166534 */
+  --color-success-light: oklch(92% 0.06 145); /* Light green bg #D4F4DD */
+  --color-success-foreground: oklch(100% 0 0); /* White text on success */
+
+  /* ---------------------------------------------------------------------------
+   * WARNING/URGENCY COLORS (Orange/Yellow Family)
+   * Used for: Badges, highlights, urgency messaging, countdown timers
+   * --------------------------------------------------------------------------- */
+  --color-warning: oklch(72% 0.16 50); /* Orange #FB923C */
+  --color-warning-bright: oklch(70% 0.18 45); /* Bright orange #F97316 */
+  --color-warning-coral: oklch(70% 0.16 30); /* Coral orange #FF8C69 */
+  --color-warning-light: oklch(75% 0.14 45); /* Light orange #FFA366 */
+  --color-warning-mid: oklch(73% 0.15 40); /* Mid orange #FF9966 */
+  --color-warning-dark: oklch(62% 0.16 55); /* Dark orange #D97706 */
+  --color-warning-yellow: oklch(82% 0.14 90); /* Yellow #F5C842 */
+  --color-warning-yellow-bright: oklch(87% 0.13 95); /* Bright yellow #FFD54F */
+  --color-warning-yellow-orange: oklch(80% 0.14 70); /* Orange yellow #FFB74D */
+  --color-warning-gold: oklch(80% 0.13 85); /* Gold yellow #FBBF24 */
+  --color-warning-gold-dark: oklch(60% 0.13 80); /* Dark gold #CA8A04 */
+  --color-warning-brown: oklch(35% 0.1 65); /* Brown #92400E */
+  --color-warning-yellow-brown: oklch(45% 0.11 75); /* Yellow brown #8B6914 */
+
+  /* ---------------------------------------------------------------------------
+   * INFO/ACCENT COLORS (Blue Family)
+   * Used for: Icons, informational elements, accents
+   * --------------------------------------------------------------------------- */
+  --color-info: oklch(60% 0.18 250); /* Blue #3B82F6 */
+  --color-info-light: oklch(92% 0.05 250); /* Light blue bg #DBEAFE */
+  --color-info-foreground: oklch(100% 0 0); /* White text on info */
+
+  /* ---------------------------------------------------------------------------
+   * TEAL ACCENT COLORS (For Agreement Drafting Service)
+   * Used for: Agreement page primary actions, badges, accents
+   * --------------------------------------------------------------------------- */
+  --color-teal: oklch(65% 0.16 175); /* Main teal #14B8A6 */
+  --color-teal-light: oklch(92% 0.05 175); /* Light teal bg #CCFBF1 */
+  --color-teal-lighter: oklch(97% 0.02 175); /* Very light teal #F0FDFA */
+  --color-teal-dark: oklch(55% 0.14 175); /* Dark teal #0D9488 */
+  --color-teal-darker: oklch(48% 0.12 175); /* Darker teal #0F766E */
+  --color-teal-foreground: oklch(100% 0 0); /* White text on teal */
+
+  /* Agreement page specific gradient */
+  --gradient-agreement-hero: radial-gradient(
+    circle at top left,
+    oklch(97% 0.02 175) 0%,
+    oklch(92% 0.05 175) 100%
+  );
+
+  /* ---------------------------------------------------------------------------
+   * BACKGROUND COLORS (Peach/Pink/White/Gray Family)
+   * Used for: Page backgrounds, card backgrounds, section backgrounds
+   * --------------------------------------------------------------------------- */
+  --color-bg-white: oklch(100% 0 0); /* Pure white #FFFFFF */
+  --color-bg-peach: oklch(98% 0.01 30); /* Very light peach #FFF5F2 */
+  --color-bg-pink-light: oklch(95% 0.03 30); /* Light pink #FFE8E0 */
+  --color-bg-yellow-light: oklch(98% 0.02 90); /* Very light yellow #FFF9E6 */
+  --color-bg-cream: oklch(95% 0.05 90); /* Cream #FEF3C7 */
+  --color-bg-pink-pale: oklch(95% 0.03 20); /* Pale pink #FDE8E8 */
+  --color-bg-red-light: oklch(93% 0.04 20); /* Light red #FEE2E2 */
+  --color-bg-gray-light: oklch(99% 0 0); /* Very light gray #F9FAFB */
+  --color-bg-gray: oklch(97% 0 0); /* Light gray #F5F5F5 */
+
+  /* ---------------------------------------------------------------------------
+   * TEXT COLORS (Gray/Black Family)
+   * Used for: Headings, body text, labels, muted text
+   * --------------------------------------------------------------------------- */
+  --color-text-heading: oklch(15% 0 0); /* Very dark gray #1A1A1A */
+  --color-text-dark: oklch(20% 0 0); /* Dark gray #1F2937 */
+  --color-text-body: oklch(22% 0 0); /* Dark gray #2C2C2C */
+  --color-text-title: oklch(28% 0 0); /* Medium-dark gray #374151 */
+  --color-text-medium: oklch(38% 0 0); /* Medium gray #4B5563 */
+  --color-text-base: oklch(45% 0 0); /* Gray #666666 */
+  --color-text-label: oklch(50% 0 0); /* Medium-light gray #6B7280 */
+  --color-text-muted: oklch(67% 0 0); /* Light gray #9CA3AF */
+  --color-text-white: oklch(100% 0 0); /* White text */
+
+  /* ---------------------------------------------------------------------------
+   * BORDER COLORS (Gray Family)
+   * Used for: Borders, dividers, separators
+   * --------------------------------------------------------------------------- */
+  --color-border: oklch(92% 0 0); /* Light gray #E5E7EB */
+  --color-border-input: oklch(86% 0 0); /* Gray #D1D5DB */
+  --color-border-subtle: oklch(95% 0 0); /* Very light gray */
+
+  /* ---------------------------------------------------------------------------
+   * SPECIAL COLORS
+   * Used for: Overlays, unique elements
+   * --------------------------------------------------------------------------- */
+  --color-backdrop: oklch(0% 0 0 / 0.5); /* Black backdrop 50% */
+  --color-brown: oklch(35% 0.08 50); /* Brown #8B4513 */
+
+  /* ---------------------------------------------------------------------------
+   * GRADIENT PRESETS
+   * All gradients use OKLCH colors for smooth transitions
+   * --------------------------------------------------------------------------- */
+  --gradient-hero: radial-gradient(
+    circle at top left,
+    var(--color-bg-peach) 0%,
+    var(--color-bg-pink-light) 100%
+  );
+  --gradient-pricing: linear-gradient(
+    90deg,
+    var(--color-warning-yellow-bright) 0%,
+    var(--color-warning-yellow-orange) 100%
+  );
+  --gradient-info-card: linear-gradient(
+    135deg,
+    var(--color-warning-coral) 0%,
+    var(--color-warning-light) 100%
+  );
+  --gradient-banner: linear-gradient(
+    90deg,
+    var(--color-warning) 0%,
+    var(--color-warning-dark) 100%
+  );
+  --gradient-card-subtle: radial-gradient(
+    circle at top,
+    var(--color-bg-white) 0%,
+    var(--color-bg-gray) 100%
+  );
+
+  /* ---------------------------------------------------------------------------
+   * TYPOGRAPHY TOKENS
+   * Font sizes, weights, line heights, letter spacing
+   * --------------------------------------------------------------------------- */
+  /* Font Families */
+  --font-sans: "Acme", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-mono: "B612 Mono", "Courier New", Consolas, Monaco, "Andale Mono",
+    "Ubuntu Mono", monospace;
+  --font-serif: Georgia, "Times New Roman", Times, serif;
+
+  /* Font Sizes */
+  --font-size-display: 3.75rem; /* 60px - Hero headings */
+  --font-size-h1: 2.25rem; /* 36px - Main headings */
+  --font-size-h2: 1.75rem; /* 28px - Card headings */
+  --font-size-h3: 1.5rem; /* 24px - Subheadings */
+  --font-size-price: 3rem; /* 48px - Price displays */
+  --font-size-body: 1rem; /* 16px - Body text */
+  --font-size-small: 0.875rem; /* 14px - Labels */
+  --font-size-tiny: 0.75rem; /* 12px - Badges */
+
+  /* Font Weights */
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+
+  /* Line Heights */
+  --line-height-tight: 1.25;
+  --line-height-normal: 1.5;
+  --line-height-relaxed: 1.625;
+  --line-height-loose: 2;
+
+  /* Letter Spacing */
+  --letter-spacing-tighter: -0.05em;
+  --letter-spacing-normal: 0;
+  --letter-spacing-wide: 0.025em;
+  --letter-spacing-widest: 0.1em;
+
+  /* ---------------------------------------------------------------------------
+   * SHADOW SYSTEM
+   * 7 levels from 2xs to 2xl with component aliases
+   * --------------------------------------------------------------------------- */
+  --shadow-2xs: 0 1px 2px oklch(0% 0 0 / 0.05);
+  --shadow-xs: 0 1px 3px oklch(0% 0 0 / 0.1), 0 1px 2px oklch(0% 0 0 / 0.06);
+  --shadow-sm: 0 2px 4px oklch(0% 0 0 / 0.1), 0 1px 2px oklch(0% 0 0 / 0.06);
+  --shadow-md: 0 4px 6px oklch(0% 0 0 / 0.1), 0 2px 4px oklch(0% 0 0 / 0.06);
+  --shadow-lg: 0 10px 15px oklch(0% 0 0 / 0.1), 0 4px 6px oklch(0% 0 0 / 0.05);
+  --shadow-xl: 0 20px 25px oklch(0% 0 0 / 0.1), 0 10px 10px oklch(0% 0 0 / 0.04);
+  --shadow-2xl: 0 25px 50px oklch(0% 0 0 / 0.25);
+
+  /* Component Shadow Aliases */
+  --shadow-card: var(--shadow-xs);
+  --shadow-card-hover: var(--shadow-md);
+  --shadow-modal: var(--shadow-2xl);
+  --shadow-button: var(--shadow-sm);
+
+  /* ---------------------------------------------------------------------------
+   * BORDER RADIUS SYSTEM
+   * 8 levels from 4px to full rounding with component aliases
+   * --------------------------------------------------------------------------- */
+  --radius-2xs: 0.25rem; /* 4px */
+  --radius-xs: 0.375rem; /* 6px */
+  --radius-sm: 0.5rem; /* 8px */
+  --radius-md: 0.75rem; /* 12px */
+  --radius-lg: 1rem; /* 16px */
+  --radius-xl: 1.25rem; /* 20px */
+  --radius-2xl: 1.5rem; /* 24px */
+  --radius-full: 9999px; /* Fully rounded */
+
+  /* Component Radius Aliases */
+  --radius-card: var(--radius-lg); /* 16px */
+  --radius-card-lg: var(--radius-2xl); /* 24px */
+  --radius-button: var(--radius-md); /* 12px */
+  --radius-button-lg: var(--radius-lg); /* 16px */
+  --radius-badge: var(--radius-full); /* Fully rounded */
+  --radius-input: var(--radius-md); /* 12px */
+  --radius-modal: var(--radius-2xl); /* 24px */
+
+  /* ---------------------------------------------------------------------------
+   * COMPONENT SPACING TOKENS
+   * Component-specific spacing values
+   * --------------------------------------------------------------------------- */
+  --spacing-badge: 0.75rem; /* 12px - Badge padding */
+  --spacing-card: 1.5rem; /* 24px - Card padding */
+  --spacing-card-lg: 2rem; /* 32px - Large card padding */
+  --spacing-section: 4rem; /* 64px - Section spacing */
+  --spacing-section-lg: 6rem; /* 96px - Large section spacing */
+  --spacing-form-gap: 1rem; /* 16px - Form field gaps */
+
+  /* ---------------------------------------------------------------------------
+   * TRANSITION DURATIONS
+   * Standard timing for animations and transitions
+   * --------------------------------------------------------------------------- */
+  --duration-fast: 150ms;
+  --duration-base: 200ms;
+  --duration-slow: 300ms;
+
+  /* ---------------------------------------------------------------------------
+   * Z-INDEX LAYERS
+   * Stacking order for overlays and layered elements
+   * --------------------------------------------------------------------------- */
+  --z-dropdown: 1000;
+  --z-sticky: 1020;
+  --z-fixed: 1030;
+  --z-modal-backdrop: 1040;
+  --z-modal: 1050;
+  --z-popover: 1060;
+  --z-tooltip: 1070;
+
+  /* ---------------------------------------------------------------------------
+   * LEGACY VARIABLES (for backward compatibility)
+   * --------------------------------------------------------------------------- */
+
+  --radius: 0.625rem;
+
+  --background: oklch(1 0 0);
+
+  --foreground: oklch(0.145 0 0);
+
+  --card: oklch(1 0 0);
+
+  --card-foreground: oklch(0.145 0 0);
+
+  --popover: oklch(1 0 0);
+
+  --popover-foreground: oklch(0.145 0 0);
+
+  --primary: oklch(0.205 0 0);
+
+  --primary-foreground: oklch(0.985 0 0);
+
+  --secondary: oklch(0.97 0 0);
+
+  --secondary-foreground: oklch(0.205 0 0);
+
+  --muted: oklch(0.97 0 0);
+
+  --muted-foreground: oklch(0.556 0 0);
+
+  --accent: oklch(0.97 0 0);
+
+  --accent-foreground: oklch(0.205 0 0);
+
+  --destructive: oklch(0.577 0.245 27.325);
+
+  --border: oklch(0.922 0 0);
+
+  --input: oklch(0.922 0 0);
+
+  --ring: oklch(0.708 0 0);
+
+  --chart-1: oklch(0.646 0.222 41.116);
+
+  --chart-2: oklch(0.6 0.118 184.704);
+
+  --chart-3: oklch(0.398 0.07 227.392);
+
+  --chart-4: oklch(0.828 0.189 84.429);
+
+  --chart-5: oklch(0.769 0.188 70.08);
+
+  --sidebar: oklch(0.985 0 0);
+
+  --sidebar-foreground: oklch(0.145 0 0);
+
+  --sidebar-primary: oklch(0.205 0 0);
+
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+
+  --sidebar-accent: oklch(0.97 0 0);
+
+  --sidebar-accent-foreground: oklch(0.205 0 0);
+
+  --sidebar-border: oklch(0.922 0 0);
+
+  --sidebar-ring: oklch(0.708 0 0);
 }
+
+/* =============================================================================
+ * DARK MODE COLORS (Future-proof)
+ * These will be used when dark mode is implemented
+ * ============================================================================= */
+
+.dark {
+  /* Background colors for dark mode */
+  --color-bg-dark: oklch(15% 0 0); /* Dark background */
+  --color-bg-dark-card: oklch(20% 0 0); /* Card background */
+  --color-bg-dark-input: oklch(18% 0 0); /* Input background */
+
+  /* Text colors for dark mode */
+  --color-text-dark-primary: oklch(95% 0 0); /* Primary text */
+  --color-text-dark-muted: oklch(70% 0 0); /* Muted text */
+
+  /* Border colors for dark mode */
+  --color-border-dark: oklch(30% 0 0); /* Borders */
+
+  /* Legacy variables for dark mode */
+  --background: oklch(0.145 0 0);
+  --foreground: oklch(0.985 0 0);
+  --card: oklch(0.205 0 0);
+  --card-foreground: oklch(0.985 0 0);
+  --popover: oklch(0.205 0 0);
+  --popover-foreground: oklch(0.985 0 0);
+  --primary: oklch(0.922 0 0);
+  --primary-foreground: oklch(0.205 0 0);
+  --secondary: oklch(0.269 0 0);
+  --secondary-foreground: oklch(0.985 0 0);
+  --muted: oklch(0.269 0 0);
+  --muted-foreground: oklch(0.708 0 0);
+  --accent: oklch(0.269 0 0);
+  --accent-foreground: oklch(0.985 0 0);
+  --destructive: oklch(0.704 0.191 22.216);
+  --border: oklch(1 0 0 / 10%);
+  --input: oklch(1 0 0 / 15%);
+  --ring: oklch(0.556 0 0);
+  --chart-1: oklch(0.488 0.243 264.376);
+  --chart-2: oklch(0.696 0.17 162.48);
+  --chart-3: oklch(0.769 0.188 70.08);
+  --chart-4: oklch(0.627 0.265 303.9);
+  --chart-5: oklch(0.645 0.246 16.439);
+  --sidebar: oklch(0.205 0 0);
+  --sidebar-foreground: oklch(0.985 0 0);
+  --sidebar-primary: oklch(0.488 0.243 264.376);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.269 0 0);
+  --sidebar-accent-foreground: oklch(0.985 0 0);
+  --sidebar-border: oklch(1 0 0 / 10%);
+  --sidebar-ring: oklch(0.556 0 0);
+}
+
+/* =============================================================================
+ * TAILWIND CSS v4 THEME INTEGRATION
+ * Expose CSS custom properties to Tailwind's JIT compiler
+ * ============================================================================= */
 
 @theme inline {
-  --color-background: var(--background);
+  /* ---------------------------------------------------------------------------
+   * COLOR UTILITIES
+   * Expose all color tokens to Tailwind
+   * --------------------------------------------------------------------------- */
+  --color-primary: var(--color-primary);
+  --color-primary-bright: var(--color-primary-bright);
+  --color-primary-dark: var(--color-primary-dark);
+  --color-primary-coral: var(--color-primary-coral);
+  --color-primary-foreground: var(--color-primary-foreground);
+
+  --color-success: var(--color-success);
+  --color-success-base: var(--color-success-base);
+  --color-success-dark: var(--color-success-dark);
+  --color-success-darker: var(--color-success-darker);
+  --color-success-light: var(--color-success-light);
+  --color-success-foreground: var(--color-success-foreground);
+
+  --color-warning: var(--color-warning);
+  --color-warning-bright: var(--color-warning-bright);
+  --color-warning-coral: var(--color-warning-coral);
+  --color-warning-light: var(--color-warning-light);
+  --color-warning-mid: var(--color-warning-mid);
+  --color-warning-dark: var(--color-warning-dark);
+  --color-warning-yellow: var(--color-warning-yellow);
+  --color-warning-yellow-bright: var(--color-warning-yellow-bright);
+  --color-warning-yellow-orange: var(--color-warning-yellow-orange);
+  --color-warning-gold: var(--color-warning-gold);
+  --color-warning-gold-dark: var(--color-warning-gold-dark);
+  --color-warning-brown: var(--color-warning-brown);
+  --color-warning-yellow-brown: var(--color-warning-yellow-brown);
+
+  --color-info: var(--color-info);
+  --color-info-light: var(--color-info-light);
+  --color-info-foreground: var(--color-info-foreground);
+
+  --color-teal: var(--color-teal);
+  --color-teal-light: var(--color-teal-light);
+  --color-teal-lighter: var(--color-teal-lighter);
+  --color-teal-dark: var(--color-teal-dark);
+  --color-teal-darker: var(--color-teal-darker);
+  --color-teal-foreground: var(--color-teal-foreground);
+  --gradient-agreement-hero: var(--gradient-agreement-hero);
+
+  --color-background: var(--color-bg-white);
+  --color-background-peach: var(--color-bg-peach);
+  --color-background-pink-light: var(--color-bg-pink-light);
+  --color-background-gray-light: var(--color-bg-gray-light);
+  --color-background-gray: var(--color-bg-gray);
+
+  --color-text-heading: var(--color-text-heading);
+  --color-text-dark: var(--color-text-dark);
+  --color-text-body: var(--color-text-body);
+  --color-text-title: var(--color-text-title);
+  --color-text-medium: var(--color-text-medium);
+  --color-text-base: var(--color-text-base);
+  --color-text-label: var(--color-text-label);
+  --color-text-muted: var(--color-text-muted);
+  --color-text-white: var(--color-text-white);
+
+  --color-border: var(--color-border);
+  --color-border-input: var(--color-border-input);
+  --color-border-subtle: var(--color-border-subtle);
+
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+
+  /* ---------------------------------------------------------------------------
+   * FONT FAMILY UTILITIES
+   * Expose custom fonts to Tailwind
+   * --------------------------------------------------------------------------- */
+  --font-sans: var(--font-sans);
+  --font-mono: var(--font-mono);
+  --font-serif: var(--font-serif);
+
+  /* ---------------------------------------------------------------------------
+   * CUSTOM GRADIENT UTILITIES
+   * These will be available as: bg-gradient-hero, bg-gradient-pricing, etc.
+   * --------------------------------------------------------------------------- */
+  --gradient-hero: var(--gradient-hero);
+  --gradient-pricing: var(--gradient-pricing);
+  --gradient-info-card: var(--gradient-info-card);
+  --gradient-banner: var(--gradient-banner);
+  --gradient-card-subtle: var(--gradient-card-subtle);
+
+  /* ---------------------------------------------------------------------------
+   * SHADOW UTILITIES
+   * Expose shadow system to Tailwind
+   * --------------------------------------------------------------------------- */
+  --shadow-2xs: var(--shadow-2xs);
+  --shadow-xs: var(--shadow-xs);
+  --shadow-sm: var(--shadow-sm);
+  --shadow-md: var(--shadow-md);
+  --shadow-lg: var(--shadow-lg);
+  --shadow-xl: var(--shadow-xl);
+  --shadow-2xl: var(--shadow-2xl);
+  --shadow-card: var(--shadow-card);
+  --shadow-card-hover: var(--shadow-card-hover);
+  --shadow-modal: var(--shadow-modal);
+  --shadow-button: var(--shadow-button);
+
+  /* ---------------------------------------------------------------------------
+   * BORDER RADIUS UTILITIES
+   * Expose radius scale to Tailwind
+   * --------------------------------------------------------------------------- */
+  --radius-2xs: var(--radius-2xs);
+  --radius-xs: var(--radius-xs);
+  --radius-sm: var(--radius-sm);
+  --radius-md: var(--radius-md);
+  --radius-lg: var(--radius-lg);
+  --radius-xl: var(--radius-xl);
+  --radius-2xl: var(--radius-2xl);
+  --radius-full: var(--radius-full);
+  --radius-card: var(--radius-card);
+  --radius-card-lg: var(--radius-card-lg);
+  --radius-button: var(--radius-button);
+  --radius-button-lg: var(--radius-button-lg);
+  --radius-badge: var(--radius-badge);
+  --radius-input: var(--radius-input);
+  --radius-modal: var(--radius-modal);
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --radius-3xl: calc(var(--radius) + 12px);
+  --radius-4xl: calc(var(--radius) + 16px);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+/* =============================================================================
+ * CUSTOM UTILITY CLASSES
+ * Additional utilities beyond Tailwind's default set
+ * ============================================================================= */
+
+@layer utilities {
+  /* Gradient Background Utilities */
+  .bg-gradient-hero {
+    background-image: var(--gradient-hero);
+  }
+
+  .bg-gradient-pricing {
+    background-image: var(--gradient-pricing);
+  }
+
+  .bg-gradient-info-card {
+    background-image: var(--gradient-info-card);
+  }
+
+  .bg-gradient-banner {
+    background-image: var(--gradient-banner);
+  }
+
+  .bg-gradient-card-subtle {
+    background-image: var(--gradient-card-subtle);
+  }
+
+  .bg-gradient-agreement-hero {
+    background-image: var(--gradient-agreement-hero);
+  }
+
+  /* Border Gradient Utilities */
+  .border-gradient-pricing {
+    border-image: var(--gradient-pricing) 1;
+  }
+
+  /* Shadow Component Utilities */
+  .shadow-card {
+    box-shadow: var(--shadow-card);
+  }
+
+  .shadow-card-hover {
+    box-shadow: var(--shadow-card-hover);
+  }
+
+  .shadow-modal {
+    box-shadow: var(--shadow-modal);
+  }
+
+  .shadow-button {
+    box-shadow: var(--shadow-button);
+  }
+
+  /* Border Radius Component Utilities */
+  .rounded-card {
+    border-radius: var(--radius-card);
+  }
+
+  .rounded-card-lg {
+    border-radius: var(--radius-card-lg);
+  }
+
+  .rounded-button {
+    border-radius: var(--radius-button);
+  }
+
+  .rounded-button-lg {
+    border-radius: var(--radius-button-lg);
+  }
+
+  .rounded-badge {
+    border-radius: var(--radius-badge);
+  }
+
+  .rounded-input {
+    border-radius: var(--radius-input);
+  }
+
+  .rounded-modal {
+    border-radius: var(--radius-modal);
   }
 }
 
+/* =============================================================================
+ * FONT FACE DECLARATIONS
+ * Load custom fonts with proper fallbacks
+ * ============================================================================= */
+
+@font-face {
+  font-family: "Acme";
+  src: url("/fonts/acme/acme-regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "B612 Mono";
+  src: url("/fonts/b612-mono/b612-mono-regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "B612 Mono";
+  src: url("/fonts/b612-mono/b612-mono-bold.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* =============================================================================
+ * BASE STYLES
+ * Global element styling
+ * ============================================================================= */
+
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans);
+  font-size: var(--font-size-body);
+  line-height: var(--line-height-normal);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Ensure smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Box sizing handled by Tailwind utilities */
+* {
+  box-sizing: border-box;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+@theme inline {
+  --animate-scroll: scroll var(--animation-duration, 40s)
+    var(--animation-direction, forwards) linear infinite;
+
+  @keyframes scroll {
+    to {
+      transform: translate(calc(-50% - 0.5rem));
+    }
+  }
+
+  /* Marquee animation for infinite scroll */
+  --animate-marquee: marquee var(--duration, 30s) linear infinite;
+
+  @keyframes marquee {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
+  }
+
+  /* Subtle shake animation for sample notice card */
+  --animate-notice-shake: notice-shake 0.6s ease-out;
+
+  @keyframes notice-shake {
+    0%,
+    100% {
+      transform: rotate(-2deg) translateX(0);
+    }
+    10% {
+      transform: rotate(-2deg) translateX(-5px);
+    }
+    20% {
+      transform: rotate(-2deg) translateX(5px);
+    }
+    30% {
+      transform: rotate(-2deg) translateX(-4px);
+    }
+    40% {
+      transform: rotate(-2deg) translateX(4px);
+    }
+    50% {
+      transform: rotate(-2deg) translateX(-3px);
+    }
+    60% {
+      transform: rotate(-2deg) translateX(3px);
+    }
+    70% {
+      transform: rotate(-2deg) translateX(-2px);
+    }
+    80% {
+      transform: rotate(-2deg) translateX(2px);
+    }
+    90% {
+      transform: rotate(-2deg) translateX(-1px);
+    }
+  }
 }
