@@ -246,3 +246,4 @@ export const homeStats: HomeStat[] = [
   { value: "4.9", label: "Average Rating", suffix: "/5" },
 ];
 
+

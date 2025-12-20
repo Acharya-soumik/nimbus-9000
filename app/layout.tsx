@@ -43,7 +43,7 @@ export const metadata: Metadata = {
   },
   icons: {
     icon: [{ url: "/assets/favicon.png", type: "image/png" }],
-    apple: [{ url: "/assets/favicon.png", type: "image/png" }],
+    apple: [{ url: "/assets/apple-touch-icon.png", type: "image/png" }],
   },
   openGraph: {
     title: "VakilTech - Online Legal Services India",
@@ -87,7 +87,7 @@ export default function RootLayout({
       <head>
         {/* Favicons and Icons */}
         <link rel="icon" href="/assets/favicon.png" type="image/png" />
-        <link rel="apple-touch-icon" href="/assets/favicon.png" />
+        <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png" />
         <meta name="theme-color" content="#EF5A6F" />
 
         {/* Google Tag Manager - Loads after page interactive */}
