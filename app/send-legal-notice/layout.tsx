@@ -22,7 +22,7 @@ export const metadata: Metadata = {
     description:
       "Send legal notice online in India from ₹1,499. Drafted by Licensed Advocates, sent via Speed Post. Money recovery, cheque bounce, property disputes & more.",
     type: "website",
-    url: "https://vakiltech.in/legal-notice",
+    url: "https://vakiltech.in/send-legal-notice",
     siteName: "VakilTech",
     locale: "en_IN",
   },
@@ -33,7 +33,7 @@ export const metadata: Metadata = {
       "Send legal notice online in India from ₹1,499. Drafted by Licensed Advocates, sent via Speed Post.",
   },
   alternates: {
-    canonical: "https://vakiltech.in/legal-notice",
+    canonical: "https://vakiltech.in/send-legal-notice",
   },
   robots: {
     index: true,

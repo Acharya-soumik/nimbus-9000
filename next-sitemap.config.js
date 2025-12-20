@@ -20,7 +20,7 @@ module.exports = {
   // Additional paths to include
   additionalPaths: async (config) => [
     await config.transform(config, '/'),
-    await config.transform(config, '/legal-notice'),
+    await config.transform(config, '/send-legal-notice'),
     await config.transform(config, '/legal-consultation'),
     await config.transform(config, '/agreement-drafting'),
     await config.transform(config, '/legal-drafts-bundle'),
@@ -33,7 +33,7 @@ module.exports = {
     // Custom priority for important pages
     const priorityMap = {
       '/': 1.0,
-      '/legal-notice': 0.9,
+      '/send-legal-notice': 0.9,
       '/legal-consultation': 0.9,
       '/agreement-drafting': 0.9,
       '/legal-drafts-bundle': 0.9,
@@ -45,7 +45,7 @@ module.exports = {
     const changefreqMap = {
       '/': 'daily',
       '/blogs': 'daily',
-      '/legal-notice': 'weekly',
+      '/send-legal-notice': 'weekly',
       '/legal-consultation': 'weekly',
       '/agreement-drafting': 'weekly',
       '/legal-drafts-bundle': 'weekly',

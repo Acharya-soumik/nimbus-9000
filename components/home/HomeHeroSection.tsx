@@ -126,7 +126,7 @@ export function HomeHeroSection({ className }: HomeHeroSectionProps) {
           {/* Dual CTAs */}
           <div className="mb-12 flex flex-col items-center justify-center gap-4 sm:flex-row">
             <Link
-              href="/legal-notice"
+              href="/send-legal-notice"
               className="group inline-flex w-full items-center justify-center gap-2 rounded-xl bg-primary px-8 py-4 text-base font-semibold text-white shadow-lg transition-all hover:bg-primary-dark hover:shadow-xl sm:w-auto"
             >
               <svg
@@ -206,4 +206,5 @@ export function HomeHeroSection({ className }: HomeHeroSectionProps) {
 }
 
 export default HomeHeroSection;
+
 

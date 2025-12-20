@@ -1,5 +1,5 @@
 import React from "react";
-import type { ContentCard } from "@/components/legal-notice/InteractiveContentSection";
+import type { ContentCard } from "@/components/send-legal-notice/InteractiveContentSection";
 
 /* =============================================================================
  * ICON COMPONENTS FOR CARDS

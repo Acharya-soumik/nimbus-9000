@@ -34,6 +34,7 @@ export function MetaPixel({ pixelId }: MetaPixelProps) {
   }, []);
 
   return (
+    <>
     <Script
       id="meta-pixel"
       strategy="lazyOnload" // Loads after everything else - ZERO blocking
@@ -48,8 +49,19 @@ export function MetaPixel({ pixelId }: MetaPixelProps) {
           s.parentNode.insertBefore(t,s)}(window, document,'script',
           'https://connect.facebook.net/en_US/fbevents.js');
           fbq('init', '${pixelId}');
+          fbq('track', 'PageView');
         `,
       }}
     />
+    <noscript>
+      <img
+        height="1"
+        width="1"
+        style={{ display: "none" }}
+        src={`https://www.facebook.com/tr?id=${pixelId}&ev=PageView&noscript=1`}
+        alt="meta-pixel"
+      />
+    </noscript>
+    </>
   );
 }

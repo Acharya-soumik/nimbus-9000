@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { getNoticeData, getAllNoticeSlugs } from "@/lib/legal-notice/notice-types-data";
+import { getNoticeData, getAllNoticeSlugs } from "@/lib/send-legal-notice/notice-types-data";
 
 interface LayoutProps {
   children: React.ReactNode;
@@ -27,7 +27,7 @@ export async function generateMetadata({ params }: LayoutProps): Promise<Metadat
       title: data.seo.title,
       description: data.seo.description,
       type: "website",
-      url: `https://vakiltech.in/legal-notice/${data.slug}`,
+      url: `https://vakiltech.in/send-legal-notice/${data.slug}`,
       siteName: "VakilTech",
     },
     twitter: {
@@ -36,7 +36,7 @@ export async function generateMetadata({ params }: LayoutProps): Promise<Metadat
       description: data.seo.description,
     },
     alternates: {
-      canonical: `https://vakiltech.in/legal-notice/${data.slug}`,
+      canonical: `https://vakiltech.in/send-legal-notice/${data.slug}`,
     },
   };
 }

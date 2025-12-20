@@ -3,11 +3,11 @@
 import { useEffect, useState } from "react";
 import Image from "next/image";
 import { cn } from "@/lib/utils";
-import { PricingCard } from "@/components/legal-notice/PricingCard";
+import { PricingCard } from "@/components/send-legal-notice/PricingCard";
 import { MeshGradient } from "@paper-design/shaders-react";
 import { FlipWords } from "@/components/aceternity/flip-words";
 import { heroFlipWords, heroFeatureBadges } from "./agreement-data";
-import { MultiStepForm } from "@/components/legal-notice/MultiStepForm";
+import { MultiStepForm } from "@/components/send-legal-notice/MultiStepForm";
 
 /**
  * Agreement Hero Section Props
@@ -344,4 +344,5 @@ export function AgreementHeroSection({ className }: AgreementHeroSectionProps) {
 }
 
 export default AgreementHeroSection;
+
 

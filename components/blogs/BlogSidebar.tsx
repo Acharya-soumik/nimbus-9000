@@ -214,7 +214,7 @@ export function BlogSidebar({
     price: { current: 1499, original: 3999 },
     badge: "POPULAR SERVICE",
     ctaText: "Get Started",
-    ctaLink: "/legal-notice",
+    ctaLink: "/send-legal-notice",
     variant: "sidebar",
   };
 
@@ -286,6 +286,7 @@ export function BlogSidebar({
 }
 
 export default BlogSidebar;
+
 
 
 

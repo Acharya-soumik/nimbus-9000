@@ -9,6 +9,7 @@ import {
   GoogleTagManagerNoScript,
 } from "@/components/analytics/GoogleTagManager";
 import { MetaPixel } from "@/components/analytics/MetaPixel";
+import { MicrosoftClarity } from "@/components/analytics/MicrosoftClarity";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -79,6 +80,7 @@ export default function RootLayout({
 }>) {
   const gtmId = process.env.NEXT_PUBLIC_GTM_ID || "";
   const metaPixelId = process.env.NEXT_PUBLIC_META_PIXEL_ID || "";
+  const clarityId = process.env.NEXT_PUBLIC_CLARITY_PROJECT_ID || "";
 
   return (
     <html lang="en">
@@ -93,6 +95,9 @@ export default function RootLayout({
 
         {/* Meta Pixel - Lazy loads */}
         {metaPixelId && <MetaPixel pixelId={metaPixelId} />}
+
+        {/* Microsoft Clarity */}
+        {clarityId && <MicrosoftClarity projectId={clarityId} />}
 
         {/* Organization Schema - Global for the entire website */}
         <script

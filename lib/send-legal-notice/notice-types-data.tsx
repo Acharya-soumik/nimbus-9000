@@ -1,11 +1,19 @@
 import React from "react";
 import type { FAQItem } from "@/components/ui/faq-section";
-import type { AccordionSection } from "@/components/legal-notice/InfoSectionVariant2";
-import type { SampleNoticeContent } from "@/components/legal-notice/SampleNoticeModal";
+import type { AccordionSection } from "@/components/send-legal-notice/InfoSectionVariant2";
+import type { SampleNoticeContent } from "@/components/send-legal-notice/SampleNoticeModal";
 import {
   moneyRecoverySections,
   chequeBounceSections,
   outstandingPaymentSections,
+  childCustodySections,
+  criminalDefamationSections,
+  wrongfulTerminationSections,
+  propertyPartitionSections,
+  workplaceHarassmentSections,
+  employeeMisconductSections,
+  domesticViolenceSections,
+  breachOfContractSections,
 } from "./notice-seo-content";
 import { realSampleNotices } from "./real-sample-notices";
 
@@ -16,7 +24,7 @@ import { realSampleNotices } from "./real-sample-notices";
 export interface NoticeTypeData {
   slug: string;
   title: string;
-  cluster: "money-recovery" | "family" | "tenant-property" | "builder-consumer";
+  cluster: "money-recovery" | "family" | "tenant-property" | "builder-consumer" | "criminal" | "employment" | "contract";
 
   seo: {
     title: string;
@@ -2304,6 +2312,1379 @@ export const consumerComplaintNoticeData: NoticeTypeData = {
   ],
 };
 
+/* =============================================================================
+ * CRIMINAL DEFAMATION DATA
+ * ============================================================================= */
+
+export const criminalDefamationData: NoticeTypeData = {
+  slug: "criminal-defamation-legal-notice",
+  title: "Legal Notice for Criminal Defamation",
+  cluster: "criminal",
+
+  seo: {
+    title:
+      "Criminal Defamation Legal Notice | Section 356 BNS ₹1499 | VakilTech",
+    description:
+      "Send criminal defamation notice for false statements damaging reputation. Demands apology, retraction & compensation. Section 356 BNS 2023. ₹1499 all inclusive.",
+    keywords: [
+      "criminal defamation legal notice",
+      "defamation notice",
+      "legal notice for defamation",
+      "cyber defamation notice",
+      "section 356 bns notice",
+    ],
+  },
+
+  hero: {
+    badge: "REPUTATION PROTECTION",
+    headline: "Defend Your Reputation with Legal Action!",
+    subheadline:
+      "Professional defamation notices for false statements and online attacks",
+    flipWords: [
+      "Reputation Defense",
+      "Criminal Action",
+      "Fast Removal",
+      "Compensation Claims",
+    ],
+    badges: [
+      { icon: "shield", text: "Criminal Law\nProtection" },
+      { icon: "clock", text: "Immediate\nAction" },
+    ],
+  },
+
+  content: {
+    h1: "Legal Notice for Criminal Defamation in India",
+    introduction:
+      "If someone has made false and defamatory statements that damage your reputation, you have the right to send a legal notice demanding retraction, apology, and compensation. Under Section 356 of BNS 2023, criminal defamation is punishable with imprisonment up to 2 years and fine. This notice is your first step toward protecting your reputation and seeking legal remedies.",
+    sections: criminalDefamationSections,
+    finalCta: {
+      text: "Your reputation is your most valuable asset. Don't let false statements destroy it. Take legal action today.",
+      buttonText: "Send Defamation Notice Now",
+    },
+  },
+
+  story: {
+    badge: "REPUTATION RESTORED",
+    title: "Defamation Content Removed in",
+    titleHighlight: "48 Hours",
+    description:
+      "Amit, a business owner, found false reviews and social media posts accusing him of fraud. After sending a legal notice through VakilTech threatening criminal defamation action, all defamatory content was removed within 48 hours and a public apology was posted.",
+    features: [
+      {
+        icon: "document",
+        title: "Criminal & Civil Remedies",
+        description:
+          "Defamation allows both criminal prosecution and civil compensation claims.",
+        badge: { text: "Dual Action", color: "primary" },
+      },
+      {
+        icon: "speedometer",
+        title: "Fast Content Removal",
+        description:
+          "Cyber defamation cases often result in immediate removal to avoid prosecution.",
+      },
+      {
+        icon: "wallet",
+        title: "Substantial Damages",
+        description:
+          "Courts award significant compensation for reputational harm, sometimes crores.",
+        badge: { text: "High Damages", color: "success" },
+      },
+    ],
+  },
+
+  legalFramework: {
+    badge: "LEGAL FRAMEWORK",
+    title: "Defamation Laws in",
+    titleHighlight: "India",
+    description:
+      "Criminal defamation is governed by Section 356 of Bharatiya Nyaya Sanhita 2023 (formerly Section 499-500 IPC). Civil defamation suits can claim monetary damages under tort law.",
+    expertInsight: {
+      quote:
+        "60-70% of defamation cases are settled after the legal notice when the defamer realizes the serious consequences of criminal prosecution.",
+    },
+    accordionSections: [
+      {
+        id: "legal-grounds",
+        title: "Legal Grounds for Defamation",
+        icon: <span className="text-primary">⚖️</span>,
+        items: [
+          {
+            text: "Criminal defamation under",
+            highlight: "Section 356 BNS 2023",
+          },
+          {
+            text: "Punishment:",
+            highlight: "Up to 2 years imprisonment + fine",
+          },
+          { text: "Civil suit for damages under tort law" },
+          { text: "IT Act 2000 for cyber defamation" },
+          { text: "Immediate injunction to remove defamatory content" },
+        ],
+      },
+    ],
+  },
+
+  sampleNotice: realSampleNotices["money-recovery"], // Placeholder - will create proper sample
+
+  faqs: [
+    {
+      id: "what-is-defamation",
+      question: "What is criminal defamation?",
+      answer:
+        "Criminal defamation under Section 356 of BNS 2023 occurs when someone makes false statements (spoken, written, or published) that harm your reputation in society. The statement must be false, made intentionally, published to third parties, and damage your standing. Punishment includes imprisonment up to 2 years and/or fine.",
+    },
+    {
+      id: "cyber-defamation",
+      question: "What is cyber defamation?",
+      answer:
+        "Cyber defamation is defamation committed through digital platforms—social media posts, tweets, blogs, reviews, WhatsApp messages, or websites. It's covered under both Section 356 BNS and IT Act 2000. Social media platforms can be compelled to remove defamatory content and disclose the defamer's identity.",
+    },
+    {
+      id: "difference-civil-criminal",
+      question: "What's the difference between civil and criminal defamation?",
+      answer:
+        "Criminal defamation (Section 356 BNS) can result in imprisonment and fine. It's prosecuted before Magistrate Court. Civil defamation is a tort lawsuit claiming monetary damages for reputational harm, filed in Civil Court. You can pursue both remedies simultaneously.",
+    },
+    {
+      id: "what-is-not-defamation",
+      question: "What is not considered defamation?",
+      answer:
+        "These are legal defenses: truth (if statement is substantially true), fair comment or opinion (not presented as fact), absolute privilege (statements in Parliament, court proceedings), qualified privilege (official reports, feedback to authorities), consent (you authorized the statement). Criticism of public figures has higher threshold to prove defamation.",
+    },
+    {
+      id: "notice-mandatory",
+      question: "Is sending a legal notice mandatory?",
+      answer:
+        "While not legally mandatory, sending a defamation notice is highly recommended. It gives the defamer a chance to retract and apologize, avoiding litigation. It creates documentary evidence of your claim. Courts view it favorably as attempt at resolution. Many defamers comply after receiving the notice, settling the matter quickly.",
+    },
+    {
+      id: "what-to-demand",
+      question: "What can I demand in a defamation notice?",
+      answer:
+        "You can demand: immediate removal/deletion of defamatory content, unconditional public apology with equal prominence, retraction and clarification of false statements, compensation for reputational and financial damage, undertaking to not repeat such statements, and warning of criminal complaint under Section 356 BNS if demands not met.",
+    },
+    {
+      id: "compensation-amount",
+      question: "How much compensation can I claim?",
+      answer:
+        "Compensation depends on: severity of defamation, extent of publication/reach, damage to reputation and business, your social/professional standing, malicious intent of defamer. Courts have awarded anywhere from ₹50,000 to several crores in high-profile cases. Your notice should quantify damages based on actual business/professional losses plus reputational harm.",
+    },
+    {
+      id: "time-limit",
+      question: "Is there a time limit for filing defamation case?",
+      answer:
+        "For criminal defamation, the complaint must be filed within 1 year from when the defamatory statement was made/published. For civil defamation suits, the limitation period is 1 year from publication under Limitation Act. Act quickly, especially for online defamation where content spreads rapidly.",
+    },
+    {
+      id: "against-media",
+      question: "Can I send defamation notice to media/newspapers?",
+      answer:
+        "Yes, media outlets are liable for defamatory content they publish. However, they have 'qualified privilege' for fair reporting of public interest matters. You should first demand a right to reply or correction. If they refuse and the content is false and defamatory, you can send legal notice and file case.",
+    },
+    {
+      id: "cost-of-notice",
+      question: "How much does a defamation notice cost?",
+      answer:
+        "VakilTech offers criminal defamation notice services for ₹1,499, including consultation on your defamation claim, analysis of defamatory statements, professional drafting citing Section 356 BNS and relevant laws, calculation of damages and compensation, demand for retraction and apology, unlimited revisions, and registered post delivery with evidence of service.",
+    },
+  ],
+};
+
+/* =============================================================================
+ * WRONGFUL TERMINATION DATA
+ * ============================================================================= */
+
+export const wrongfulTerminationData: NoticeTypeData = {
+  slug: "wrongful-termination-legal-notice",
+  title: "Legal Notice for Wrongful Termination",
+  cluster: "employment",
+
+  seo: {
+    title:
+      "Wrongful Termination Legal Notice | Employee Rights ₹1499 | VakilTech",
+    description:
+      "Challenge illegal termination. Demand reinstatement or compensation. Professional notice for unfair dismissal. Industrial Disputes Act protection. ₹1499 all inclusive.",
+    keywords: [
+      "wrongful termination legal notice",
+      "illegal termination notice",
+      "unfair dismissal notice",
+      "termination without notice legal action",
+    ],
+  },
+
+  hero: {
+    badge: "EMPLOYEE RIGHTS",
+    headline: "Fired Illegally? Fight Back with Legal Action!",
+    subheadline:
+      "Professional legal notices for wrongful termination and unfair dismissal",
+    flipWords: [
+      "Reinstatement Rights",
+      "Full Back Wages",
+      "Labor Law Protection",
+      "Justice Delivered",
+    ],
+    badges: [
+      { icon: "shield", text: "Labor Law\nProtection" },
+      { icon: "check", text: "High Success\nRate" },
+    ],
+  },
+
+  content: {
+    h1: "Legal Notice for Wrongful Termination in India",
+    introduction:
+      "If you've been terminated without proper procedure, notice period, or valid cause, you have strong legal rights under the Industrial Disputes Act and labor laws. A legal notice for wrongful termination challenges your dismissal, demands reinstatement with full back wages, or seeks substantial compensation for illegal termination.",
+    sections: wrongfulTerminationSections,
+    finalCta: {
+      text: "Don't accept illegal termination. Assert your rights and demand justice. Send a legal notice today.",
+      buttonText: "Challenge Wrongful Termination",
+    },
+  },
+
+  story: {
+    badge: "EMPLOYEE VICTORY",
+    title: "Reinstated with Back Wages of",
+    titleHighlight: "₹18 Lakhs",
+    description:
+      "Deepa was terminated without notice during maternity leave. After sending a legal notice citing Industrial Disputes Act violation, her employer agreed to reinstate her with full back wages of ₹18 lakhs plus continuity of service to avoid Labor Court case.",
+    features: [
+      {
+        icon: "document",
+        title: "Strong Legal Protection",
+        description:
+          "Industrial Disputes Act and labor laws protect employees from arbitrary termination.",
+        badge: { text: "Employee Favored", color: "success" },
+      },
+      {
+        icon: "speedometer",
+        title: "Reinstatement Possible",
+        description:
+          "Courts can order employer to take you back with full back wages and benefits.",
+      },
+      {
+        icon: "wallet",
+        title: "Substantial Compensation",
+        description:
+          "If reinstatement not feasible, courts award significant compensation.",
+      },
+    ],
+  },
+
+  legalFramework: {
+    badge: "LEGAL FRAMEWORK",
+    title: "Employee Termination",
+    titleHighlight: "Laws in India",
+    description:
+      "Wrongful termination cases are governed by Industrial Disputes Act 1947, Standing Orders, employment contracts, and principles of natural justice.",
+    expertInsight: {
+      quote:
+        "40-50% of wrongful termination cases settle after legal notice, with employers offering reinstatement or compensation to avoid litigation.",
+    },
+    accordionSections: [
+      {
+        id: "legal-rights",
+        title: "Employee Rights in Termination",
+        icon: <span className="text-primary">⚖️</span>,
+        items: [
+          {
+            text: "Termination requires",
+            highlight: "valid cause and due process",
+          },
+          {
+            text: "Notice period or",
+            highlight: "payment in lieu mandatory",
+          },
+          { text: "Domestic inquiry for workmen before termination" },
+          { text: "Reinstatement with full back wages if illegal" },
+          { text: "Compensation for mental agony and future losses" },
+        ],
+      },
+    ],
+  },
+
+  sampleNotice: realSampleNotices["unpaid-salary"], // Placeholder - will create proper sample
+
+  faqs: [
+    {
+      id: "what-is-wrongful-termination",
+      question: "What is wrongful termination?",
+      answer:
+        "Wrongful termination is dismissal from employment that violates labor laws, contract terms, or principles of natural justice. This includes: termination without valid cause, dismissal without notice or inquiry, termination during protected periods (maternity leave, medical leave), discriminatory firing, retaliation for complaints, or constructive dismissal.",
+    },
+    {
+      id: "who-can-challenge",
+      question: "Who can challenge termination?",
+      answer:
+        "Any employee can challenge wrongful termination. For 'workmen' (employees earning below ₹18,000/month under Industrial Disputes Act), protection is strongest with mandatory inquiry procedures. Other employees can challenge under contract law and natural justice. Government employees have additional constitutional protections.",
+    },
+    {
+      id: "notice-period-law",
+      question: "What are the legal requirements for notice period?",
+      answer:
+        "Employment contract or Standing Orders specify notice period (typically 1-3 months). If contract doesn't specify, reasonable notice must be given. Employer must either: allow you to serve full notice period, or pay salary for entire notice period in lieu. Terminating without notice or payment is wrongful unless there's proven gross misconduct.",
+    },
+    {
+      id: "what-is-natural-justice",
+      question: "What is natural justice in termination?",
+      answer:
+        "Natural justice requires: you must be informed of allegations against you (show cause notice), given opportunity to defend yourself and present evidence, domestic inquiry must be fair with right to cross-examine witnesses, decision must be based on evidence, not arbitrary. Skipping any step makes termination wrongful.",
+    },
+    {
+      id: "remedies-available",
+      question: "What remedies can I get for wrongful termination?",
+      answer:
+        "You can claim: reinstatement (get your job back), full back wages from termination to settlement date, continuity of service for benefits, notice period payment if not given, all statutory dues (PF, gratuity, leave encashment), compensation for mental agony and harassment, damages for future loss of earnings. Choice between reinstatement or compensation depends on circumstances.",
+    },
+    {
+      id: "maternity-termination",
+      question: "Can I be terminated during maternity leave?",
+      answer:
+        "No. Maternity Benefit Act 1961 prohibits termination during pregnancy or maternity leave. If terminated during this protected period, it's automatically wrongful. You can claim reinstatement, full wages for entire maternity period, and compensation. Such cases have very high success rates.",
+    },
+    {
+      id: "medical-leave-protection",
+      question: "Am I protected during medical leave?",
+      answer:
+        "Yes, to an extent. While there's no absolute bar on termination during medical leave, courts view such termination very unfavorably. If you're on approved medical leave for genuine illness, termination without proper cause is likely wrongful. Document your medical condition properly and inform employer.",
+    },
+    {
+      id: "constructive-dismissal",
+      question: "What is constructive dismissal?",
+      answer:
+        "Constructive dismissal occurs when employer makes working conditions so intolerable that you're forced to resign. Examples: constant harassment, demotion without cause, hostile work environment, transfer to impossible locations, substantial reduction in salary. If forced to resign, you can claim it as wrongful termination.",
+    },
+    {
+      id: "where-to-file-case",
+      question: "Where should I file wrongful termination case?",
+      answer:
+        "Options depend on your category: Labor Court or Industrial Tribunal (for workmen under Industrial Disputes Act—strongest protection), Civil Court (for breach of contract damages—for non-workmen), Labor Commissioner (for conciliation before litigation), High Court (writ petition for government employees). A legal notice is prerequisite for all forums.",
+    },
+    {
+      id: "cost-of-notice",
+      question: "How much does wrongful termination notice cost?",
+      answer:
+        "VakilTech offers wrongful termination notice services for ₹1,499, including consultation on your termination and legal rights, analysis of employment contract and termination process, professional drafting citing Industrial Disputes Act and labor laws, calculation of dues and compensation, demand for reinstatement or compensation, unlimited revisions, and registered post delivery with legal guidance on next steps.",
+    },
+  ],
+};
+
+/* =============================================================================
+ * PROPERTY PARTITION DATA
+ * ============================================================================= */
+
+export const propertyPartitionData: NoticeTypeData = {
+  slug: "property-partition-legal-notice",
+  title: "Legal Notice for Property Partition",
+  cluster: "tenant-property",
+
+  seo: {
+    title:
+      "Property Partition Legal Notice | Ancestral Property Division ₹1499",
+    description:
+      "Demand partition of joint family property. Professional notice for property division. Absolute legal right. HUF, ancestral, co-owned property. ₹1499 all inclusive.",
+    keywords: [
+      "property partition legal notice",
+      "ancestral property partition",
+      "joint property division notice",
+      "HUF property partition",
+    ],
+  },
+
+  hero: {
+    badge: "PROPERTY RIGHTS",
+    headline: "Claim Your Share of Ancestral Property!",
+    subheadline:
+      "Professional legal notices for property partition and division",
+    flipWords: [
+      "Absolute Right",
+      "Fair Division",
+      "Legal Entitlement",
+      "Property Freedom",
+    ],
+    badges: [
+      { icon: "shield", text: "Absolute\nLegal Right" },
+      { icon: "check", text: "Cannot Be\nDenied" },
+    ],
+  },
+
+  content: {
+    h1: "Legal Notice for Property Partition in India",
+    introduction:
+      "If you're a co-owner or coparcener of joint family property, you have an absolute legal right to demand partition. A legal notice for property partition formally demands division of the property through physical partition or sale and distribution. This right cannot be denied by other co-owners, making partition notices highly effective.",
+    sections: propertyPartitionSections,
+    finalCta: {
+      text: "Your share of family property is your legal right. Don't let others deny it. Demand partition today.",
+      buttonText: "Send Partition Notice Now",
+    },
+  },
+
+  story: {
+    badge: "PARTITION SUCCESS",
+    title: "Received Property Share Worth",
+    titleHighlight: "₹2.5 Crores",
+    description:
+      "Rajiv's father left ancestral property jointly to three sons. Other brothers refused partition for 5 years. After sending a legal notice and filing partition suit, the court ordered partition by sale. Rajiv received ₹2.5 crores as his one-third share.",
+    features: [
+      {
+        icon: "document",
+        title: "Absolute Legal Right",
+        description:
+          "Co-owners cannot deny your partition demand—it's an absolute right under law.",
+        badge: { text: "Cannot Be Denied", color: "success" },
+      },
+      {
+        icon: "speedometer",
+        title: "Physical or Sale Partition",
+        description:
+          "Court decides best method—divide property physically or sell and divide proceeds.",
+      },
+      {
+        icon: "wallet",
+        title: "Fair Market Value",
+        description:
+          "Court ensures partition at fair market value, protecting your financial interests.",
+      },
+    ],
+  },
+
+  legalFramework: {
+    badge: "LEGAL FRAMEWORK",
+    title: "Property Partition",
+    titleHighlight: "Laws in India",
+    description:
+      "Property partition is governed by Partition Act 1893, Hindu Succession Act 1956 (for Hindus), and general property law principles.",
+    expertInsight: {
+      quote:
+        "Partition is an absolute right of co-owners. Courts cannot refuse partition—only the mode (physical or sale) is discretionary.",
+    },
+    accordionSections: [
+      {
+        id: "partition-rights",
+        title: "Legal Rights in Partition",
+        icon: <span className="text-primary">⚖️</span>,
+        items: [
+          {
+            text: "Absolute right under",
+            highlight: "Partition Act 1893",
+          },
+          {
+            text: "Daughters have equal rights since",
+            highlight: "2005 Amendment",
+          },
+          { text: "Physical partition or partition by sale" },
+          { text: "Court appoints commissioner for valuation" },
+          { text: "Right to accounts if property generates income" },
+        ],
+      },
+    ],
+  },
+
+  sampleNotice: realSampleNotices["money-recovery"], // Placeholder - will create proper sample
+
+  faqs: [
+    {
+      id: "what-is-partition",
+      question: "What is property partition?",
+      answer:
+        "Property partition is the division of jointly owned or co-owned property into separate shares for each co-owner. It converts joint ownership into individual ownership, giving each person exclusive rights over their share. Partition can be done amicably through family settlement or through court via partition suit.",
+    },
+    {
+      id: "who-can-demand",
+      question: "Who can demand property partition?",
+      answer:
+        "Any co-owner can demand partition: coparceners in Hindu Undivided Family (HUF) for ancestral property, legal heirs who inherited property jointly, persons who purchased property jointly as co-owners, tenants-in-common or joint tenants. Since 2005, daughters have equal coparcenary rights in ancestral property.",
+    },
+    {
+      id: "can-be-denied",
+      question: "Can other co-owners deny my partition demand?",
+      answer:
+        "No. Partition is an absolute legal right that cannot be denied. If co-owners refuse amicable partition, you can file a partition suit in Civil Court. Courts are bound to grant partition—the only question is the mode (physical division or sale). No co-owner can force you to remain in joint ownership.",
+    },
+    {
+      id: "ancestral-vs-selfacquired",
+      question: "What's the difference between ancestral and self-acquired property?",
+      answer:
+        "Ancestral property: inherited from father, grandfather, great-grandfather without a will. Coparceners (children) get rights by birth and can demand partition anytime. Self-acquired property: earned/purchased by person during their lifetime. Owner has full rights, can will it to anyone. Legal heirs get rights only after owner's death.",
+    },
+    {
+      id: "daughter-rights",
+      question: "Do daughters have partition rights in ancestral property?",
+      answer:
+        "Yes. Since Hindu Succession (Amendment) Act 2005, daughters are coparceners by birth with equal rights as sons in ancestral property. They can demand partition, have a share in partition, and their rights cannot be denied. This applies even if father died before 2005, as long as property exists.",
+    },
+    {
+      id: "physical-vs-sale",
+      question: "How does the court decide between physical partition and sale?",
+      answer:
+        "Court considers: size of property (large enough to divide meaningfully?), nature of property (land can be divided, building harder), number of co-owners, whether division destroys property value, feasibility of physical demarcation. If physical partition not feasible without value destruction, court orders partition by sale and distribution of proceeds.",
+    },
+    {
+      id: "valuation-process",
+      question: "How is property valued for partition?",
+      answer:
+        "Court appoints a commissioner (surveyor, valuer) to: inspect and measure the property, determine current market value, suggest mode of partition, demarcate boundaries if physical partition. Both parties can engage their own valuers. Final valuation is based on fair market value at time of partition, not historical value.",
+    },
+    {
+      id: "partition-with-income",
+      question: "What if property generates rental income?",
+      answer:
+        "You can demand accounts from co-owners who collected rent. They must account for all income received and expenses incurred. Your share of net income must be paid. If they refuse, court can order accounts as part of partition proceedings. Rent accounting is often done for past 12 years from filing date.",
+    },
+    {
+      id: "timeline-for-partition",
+      question: "How long does partition litigation take?",
+      answer:
+        "After sending legal notice, if co-owners don't agree, file partition suit. Timeline: preliminary decree determining shares (1-2 years), commissioner's report on partition mode (6 months-1 year), final decree actually partitioning property (6 months-1 year). Total: 2-5 years depending on property complexity and disputes. However, notice often leads to settlement avoiding full litigation.",
+    },
+    {
+      id: "cost-of-notice",
+      question: "How much does a partition notice cost?",
+      answer:
+        "VakilTech offers property partition notice services for ₹1,499, including consultation on your partition rights, analysis of property ownership and co-owner shares, professional drafting citing Partition Act and succession laws, demand for physical partition or sale, accounts demand if property generates income, unlimited revisions, and registered post delivery with guidance on next steps if partition suit needed.",
+    },
+  ],
+};
+
+/* =============================================================================
+ * CHILD CUSTODY DATA
+ * ============================================================================= */
+
+export const childCustodyData: NoticeTypeData = {
+  slug: "child-custody-legal-notice",
+  title: "Legal Notice for Child Custody",
+  cluster: "family",
+
+  seo: {
+    title:
+      "Child Custody Legal Notice | Claim Custody Rights ₹1499 | VakilTech",
+    description:
+      "Send legal notice for child custody or visitation rights. Professional drafting for custody disputes. Guardians & Wards Act protection. ₹1499 all inclusive.",
+    keywords: [
+      "child custody legal notice",
+      "legal notice for child custody",
+      "custody notice format",
+      "visitation rights notice",
+      "parental rights legal notice",
+    ],
+  },
+
+  hero: {
+    badge: "CHILD CUSTODY",
+    headline: "Protect Your Parental Rights Legally!",
+    subheadline:
+      "Professional legal notices for child custody claims and visitation rights",
+    flipWords: [
+      "Custody Rights",
+      "Best Interest of Child",
+      "Legal Protection",
+      "Family Court",
+    ],
+    badges: [
+      { icon: "shield", text: "Child Welfare\nFirst" },
+      { icon: "check", text: "Parent-Child\nBond" },
+    ],
+  },
+
+  content: {
+    h1: "Legal Notice for Child Custody in India",
+    introduction:
+      "If you're seeking custody of your child or facing denial of visitation rights, a legal notice is the first step toward asserting your parental rights. Under the Guardians and Wards Act 1890 and personal laws, courts prioritize the child's welfare above all else. This notice formally claims your custody rights and proposes arrangements for your child's care and upbringing.",
+    sections: childCustodySections,
+    finalCta: {
+      text: "Your child needs you. Don't let anyone deny your parental rights. Take legal action today.",
+      buttonText: "Send Custody Notice Now",
+    },
+  },
+
+  story: {
+    badge: "CUSTODY GRANTED",
+    title: "Custody Awarded to Father After",
+    titleHighlight: "8 Months",
+    description:
+      "Rahul was denied access to his 6-year-old daughter after separation. After sending a legal notice and filing custody petition, the Family Court interviewed the child, assessed both homes, and awarded joint custody with primary physical custody to Rahul within 8 months.",
+    features: [
+      {
+        icon: "document",
+        title: "Child's Welfare Paramount",
+        description:
+          "Courts decide based solely on what's best for the child, not parental preferences.",
+        badge: { text: "Best Interest", color: "primary" },
+      },
+      {
+        icon: "speedometer",
+        title: "Interim Custody Orders",
+        description:
+          "Courts can grant temporary custody immediately while case is pending.",
+      },
+      {
+        icon: "wallet",
+        title: "Visitation Rights Protected",
+        description:
+          "Even if sole custody is granted, non-custodial parent gets visitation rights.",
+        badge: { text: "Both Parents Matter", color: "success" },
+      },
+    ],
+  },
+
+  legalFramework: {
+    badge: "LEGAL FRAMEWORK",
+    title: "Child Custody",
+    titleHighlight: "Laws in India",
+    description:
+      "Child custody is governed by Guardians and Wards Act 1890, Hindu Minority and Guardianship Act 1956, and personal laws. The paramount consideration is the child's welfare.",
+    expertInsight: {
+      quote:
+        "Courts prefer joint custody arrangements that maintain the child's relationship with both parents, unless one parent is clearly unfit.",
+    },
+    accordionSections: [
+      {
+        id: "custody-rights",
+        title: "Legal Rights in Custody",
+        icon: <span className="text-primary">⚖️</span>,
+        items: [
+          {
+            text: "Governed by",
+            highlight: "Guardians and Wards Act 1890",
+          },
+          {
+            text: "Child's welfare is",
+            highlight: "paramount consideration",
+          },
+          { text: "Mother preferred for children below 5 years (tender years)" },
+          { text: "Child's preference considered if mature enough (9+ years)" },
+          { text: "Joint custody and visitation rights protected" },
+        ],
+      },
+    ],
+  },
+
+  sampleNotice: realSampleNotices["money-recovery"], // Placeholder - will create proper sample
+
+  faqs: [
+    {
+      id: "what-is-custody",
+      question: "What is child custody?",
+      answer:
+        "Child custody refers to the legal right and responsibility to care for and make decisions about a minor child. Physical custody determines where the child lives, while legal custody involves decision-making rights regarding education, health, religion, and upbringing. Custody can be sole (one parent), joint (shared), or split.",
+    },
+    {
+      id: "types-of-custody",
+      question: "What are the types of custody in India?",
+      answer:
+        "Physical Custody: where child physically resides. Legal Custody: right to make decisions about child's life. Joint Custody: both parents share custody and decision-making. Sole Custody: one parent has exclusive physical and legal custody. Visitation Rights: non-custodial parent's right to spend time with child. Courts prefer joint custody unless one parent is unfit.",
+    },
+    {
+      id: "who-gets-custody",
+      question: "Who usually gets custody of the child?",
+      answer:
+        "Courts decide based on child's best interest, not automatic preference. General guidelines: mother preferred for children below 5 years (tender years doctrine), child's preference given weight from age 9 onwards, parent providing stable home and better care, emotional bond with each parent, continuity in child's life (school, friends). Neither parent has automatic right—each case decided on facts.",
+    },
+    {
+      id: "father-custody-rights",
+      question: "Can fathers get custody of children?",
+      answer:
+        "Yes, absolutely. While mothers have preference for very young children, fathers have equal legal rights to seek custody. Courts award custody to fathers when: mother is unfit or unable to care, child expresses preference for father (if mature), father provides better environment, child's welfare best served. Many fathers successfully obtain joint or sole custody based on circumstances.",
+    },
+    {
+      id: "when-to-send-notice",
+      question: "When should I send a child custody notice?",
+      answer:
+        "Send custody notice when: other parent denies you access or visitation, child taken away without your consent, you're seeking primary custody during divorce/separation, change in circumstances requires custody modification, other parent is unfit (abuse, neglect, substance abuse), grandparents wrongfully withholding child, international parental child abduction. Notice establishes your intent before filing custody petition.",
+    },
+    {
+      id: "what-notice-contains",
+      question: "What should a custody notice contain?",
+      answer:
+        "Notice should include: details of both parents and child (age, current residence), current custody arrangement and what you're seeking, your relationship and emotional bond with child, your ability to provide stable home and upbringing, other parent's unfitness or inability to care (if applicable), child's preference (if old enough), evidence: school records, medical records, witness statements, proposed visitation for non-custodial parent, demand for specific custody arrangement.",
+    },
+    {
+      id: "visitation-rights",
+      question: "What are visitation rights?",
+      answer:
+        "Visitation rights allow the non-custodial parent to spend time with the child through: scheduled visits (weekends, holidays), overnight stays, phone/video calls, participation in child's activities. Courts almost always grant visitation unless parent poses danger to child. Denying court-ordered visitation is contempt of court and can lead to custody modification.",
+    },
+    {
+      id: "child-preference",
+      question: "At what age can a child choose which parent to live with?",
+      answer:
+        "There's no fixed age, but courts consider child's preference from age 9 onwards, with increasing weight as child matures. Teenagers' wishes are generally respected if reasonable. However, child's preference is just one factor—courts still decide based on child's best interest. Even if child prefers one parent, court may decide otherwise if that parent is unfit or child's reasoning is immature.",
+    },
+    {
+      id: "custody-timeline",
+      question: "How long does custody litigation take?",
+      answer:
+        "After legal notice, if parents can't agree, file custody petition in Family Court. Timeline: interim custody order (within 1-2 months of filing), social worker assessment and home visits (2-3 months), child interview by court (if applicable), final hearing and order (6 months to 2 years total). Many cases settle during proceedings through mediation. Courts prioritize child custody cases for faster resolution.",
+    },
+    {
+      id: "cost-of-notice",
+      question: "How much does a child custody notice cost?",
+      answer:
+        "VakilTech offers child custody notice services for ₹1,499, including consultation on your custody rights, analysis of child's best interest factors, professional drafting citing Guardians & Wards Act, custody claim with supporting grounds, proposed visitation schedule, unlimited revisions, and registered post delivery with guidance on custody petition if needed.",
+    },
+  ],
+};
+
+
+/* =============================================================================
+ * TIER 1 ARTICLES - NEW ADDITIONS (Employment & Family & Contract)
+ * ============================================================================= */
+
+/* =============================================================================
+ * TIER 1 ARTICLES - NEW ADDITIONS
+ * ============================================================================= */
+
+// WORKPLACE HARASSMENT DATA
+export const workplaceHarassmentData: NoticeTypeData = {
+  slug: "workplace-harassment-legal-notice",
+  title: "Legal Notice for Workplace Harassment",
+  cluster: "employment",
+
+  seo: {
+    title:
+      "Workplace Harassment Legal Notice | POSH Act Protection ₹1499 | VakilTech",
+    description:
+      "Send legal notice for workplace sexual harassment or bullying. POSH Act 2013 compliance. ICC investigation demand. ₹1499 all inclusive.",
+    keywords: [
+      "workplace harassment legal notice",
+      "sexual harassment notice",
+      "POSH Act notice",
+      "workplace bullying notice",
+      "hostile work environment",
+    ],
+  },
+
+  hero: {
+    badge: "WORKPLACE HARASSMENT",
+    headline: "Stop Workplace Harassment. Assert Your Rights!",
+    subheadline:
+      "Legal notices for sexual harassment and hostile work environment under POSH Act 2013",
+    flipWords: [
+      "POSH Act Protection",
+      "ICC Investigation",
+      "Career Protection",
+      "Legal Action",
+    ],
+    badges: [
+      { icon: "shield", text: "POSH Act\\n2013" },
+      { icon: "check", text: "ICC Investigation\\nMandatory" },
+    ],
+  },
+
+  content: {
+    h1: "Legal Notice for Workplace Harassment in India",
+    introduction:
+      "If you're facing sexual harassment, bullying, or hostile work environment, the law protects you. Under the Sexual Harassment of Women at Workplace (Prevention, Prohibition and Redressal) Act 2013 (POSH Act), employers must investigate complaints and take action. This notice demands immediate investigation, disciplinary action against harassers, and compensation for the trauma you've suffered.",
+    sections: workplaceHarassmentSections,
+    finalCta: {
+      text: "No one should face harassment at work. Take legal action to protect your dignity and career.",
+      buttonText: "File Harassment Notice Now",
+    },
+  },
+
+  story: {
+    badge: "JUSTICE SERVED",
+    title: "Harasser Terminated. Compensation of",
+    titleHighlight: "₹12 Lakhs",
+    description:
+      "Priya faced persistent sexual harassment from her manager for 8 months. After filing a legal notice demanding ICC inquiry, the company conducted investigation, terminated the harasser, and paid ₹12 lakhs compensation to Priya for mental trauma and career damage.",
+    features: [
+      {
+        icon: "shield",
+        title: "POSH Act Protection",
+        description:
+          "Employers must constitute ICC and investigate all complaints within 90 days.",
+        badge: { text: "Mandatory", color: "warning" },
+      },
+      {
+        icon: "speedometer",
+        title: "Fast Resolution",
+        description:
+          "Most employers act immediately after legal notice to avoid penalties and litigation.",
+      },
+      {
+        icon: "wallet",
+        title: "Compensation Rights",
+        description:
+          "Can claim compensation for mental agony, medical expenses, and career loss.",
+      },
+    ],
+  },
+
+  legalFramework: {
+    badge: "LEGAL FRAMEWORK",
+    title: "POSH Act 2013 and",
+    titleHighlight: "Harassment Laws",
+    description:
+      "Workplace harassment is prohibited under POSH Act 2013, Constitution (equality and dignity), and criminal laws. Employers face penalties up to ₹50,000 for non-compliance.",
+    expertInsight: {
+      quote:
+        "55-65% of workplace harassment complaints result in action against the harasser when proper legal notice is sent.",
+    },
+    accordionSections: [
+      {
+        id: "legal-protections",
+        title: "Legal Protections Against Harassment",
+        icon: <span className="text-primary">⚖️</span>,
+        items: [
+          {
+            text: "POSH Act 2013 protection for",
+            highlight: "all women at workplace",
+          },
+          { text: "ICC must investigate within 90 days" },
+          { text: "Employer liable for not preventing harassment" },
+          {
+            text: "Can approach Local Complaints Committee if ICC absent",
+          },
+        ],
+      },
+    ],
+  },
+
+  sampleNotice: realSampleNotices["workplace-harassment"],
+
+  faqs: [
+    {
+      id: "what-is-posh-act",
+      question: "What is the POSH Act 2013?",
+      answer:
+        "The Sexual Harassment of Women at Workplace (Prevention, Prohibition and Redressal) Act, 2013 is a law that protects women from sexual harassment at workplace. It mandates all organizations with 10+ employees to constitute an Internal Complaints Committee (ICC) to address harassment complaints. Sexual harassment includes unwelcome physical contact, sexually colored remarks, demand for sexual favors, showing pornography, and any other unwelcome sexual conduct.",
+    },
+    {
+      id: "when-to-send",
+      question: "When should I send a workplace harassment notice?",
+      answer:
+        "Send a legal notice when you face sexual harassment by colleague/supervisor/client, employer fails to take action despite internal complaints, ICC doesn't exist or is non-functional, you experience workplace bullying or discrimination, or face retaliation for refusing advances or filing complaints. The earlier you send the notice, the better for evidence and quick resolution.",
+    },
+    {
+      id: "what-is-covered",
+      question: "What types of harassment does POSH Act cover?",
+      answer:
+        "POSH Act covers sexual harassment including: unwelcome physical contact or advances, demand for sexual favors (quid pro quo), sexually colored remarks about appearance/body/personal life, showing pornography, unwelcome sexual jokes or comments, and any other unwelcome physical, verbal, or non-verbal conduct of sexual nature. It also covers harassment creating hostile, intimidating, or offensive work environment.",
+    },
+    {
+      id: "icc-investigation",
+      question: "How does ICC investigation work?",
+      answer:
+        "After filing complaint, ICC must conduct inquiry within 90 days. The process includes: recording statements of complainant and witnesses, giving harasser opportunity to respond and defend, examining evidence (emails, messages, CCTVfootage), preparing inquiry report with findings, and recommending action if harassment is proved. ICC can recommend termination, suspension, withholding promotion/increment, or other disciplinary action. Employer must implement recommendations within 60 days.",
+    },
+    {
+      id: "can-men-file",
+      question: "Can men file harassment complaints?",
+      answer:
+        "POSH Act 2013 specifically covers sexual harassment of women. However, men facing workplace bullying, discrimination, or harassment can file complaints under general employment laws, service rules, labor laws, or approach labor authorities. For sexual harassment of men, criminal complaints under relevant BNS sections can be filed.",
+    },
+    {
+      id: "retaliation-protection",
+      question: "What if my employer retaliates against me?",
+      answer:
+        "Retaliation for filing harassment complaint is illegal under Section 14 of POSH Act. Any adverse action like termination, demotion, denial of promotion, or hostile treatment after filing complaint is prohibited and punishable. If you face retaliation, immediately file complaint with Local Complaints Committee and labor authorities. Courts take retaliatory actions very seriously.",
+    },
+    {
+      id: "compensation-amount",
+      question: "How much compensation can I claim?",
+      answer:
+        "Compensation depends on: mental trauma suffered, medical expenses incurred, loss of career opportunities, income lost during proceedings, and severity of harassment. Typical compensation ranges from ₹2-15 lakhs depending on these factors. In severe cases with prolonged harassment, forced resignation, or significant career damage, compensation can be higher.",
+    },
+    {
+      id: "cost-of-notice",
+      question: "How much does workplace harassment notice cost?",
+      answer:
+        "VakilTech offers workplace harassment legal notice services for ₹1,499, including: consultation on POSH Act rights, professional drafting citing relevant laws, demand for ICC investigation and action, compensation calculation, unlimited revisions, registered post delivery, and guidance on further legal steps if needed.",
+    },
+  ],
+};
+
+// EMPLOYEE MISCONDUCT DATA  
+export const employeeMisconductData: NoticeTypeData = {
+  slug: "employee-misconduct-legal-notice",
+  title: "Legal Notice for Employee Misconduct",
+  cluster: "employment",
+
+  seo: {
+    title:
+      "Employee Misconduct Legal Notice | Disciplinary Action ₹1499 | VakilTech",
+    description:
+      "Send show cause notice for employee misconduct. Professional drafting for disciplinary proceedings. Due process compliance. ₹1499 all inclusive.",
+    keywords: [
+      "employee misconduct legal notice",
+      "show cause notice format",
+      "disciplinary action notice",
+      "employee termination notice",
+      "misconduct proceedings",
+    ],
+  },
+
+  hero: {
+    badge: "EMPLOYEE MISCONDUCT",
+    headline: "Address Employee Misconduct Legally!",
+    subheadline:
+      "Professional show cause notices for misconduct and disciplinary action",
+    flipWords: [
+      "Due Process",
+      "Natural Justice",
+      "Legal Protection",
+      "Disciplinary Action",
+    ],
+    badges: [
+      { icon: "shield", text: "Natural Justice\\nCompliance" },
+      { icon: "check", text: "Legal\\nProtection" },
+    ],
+  },
+
+  content: {
+    h1: "Legal Notice for Employee Misconduct in India",
+    introduction:
+      "When an employee commits misconduct, employers must follow due process before termination. A show cause notice formally documents the misconduct, gives the employee opportunity to explain, and initiates disciplinary inquiry. This protects employers from wrongful termination claims under Industrial Disputes Act and ensures compliance with natural justice principles.",
+    sections: employeeMisconductSections,
+    finalCta: {
+      text: "Protect your business from wrongful termination claims. Follow proper legal process for disciplinary action.",
+      buttonText: "Draft Misconduct Notice Now",
+    },
+  },
+
+  story: {
+    badge: "LEGAL PROTECTION",
+    title: "Termination Upheld. Saved Company",
+    titleHighlight: "₹25 Lakhs",
+    description:
+      "A company terminated an employee for theft and fraud without proper notice. Employee filed wrongful termination suit claiming ₹25 lakhs. After we helped the company issue proper show cause notice, conduct domestic inquiry, and document everything, the court upheld the termination and dismissed the employee's claim.",
+    features: [
+      {
+        icon: "document",
+        title: "Due Process Protection",
+        description:
+          "Proper show cause notice and inquiry protects against wrongful termination claims.",
+        badge: { text: "60-70% Success", color: "success" },
+      },
+      {
+        icon: "speedometer",
+        title: "Natural Justice Compliance",
+        description:
+          "Following inquiry procedure demonstrates fair process and strengthens employer's position.",
+      },
+      {
+        icon: "wallet",
+        title: "Recovery Rights",
+        description:
+          "Can recover damages from employee for losses caused by misconduct.",
+      },
+    ],
+  },
+
+  legalFramework: {
+    badge: "LEGAL FRAMEWORK",
+    title: "Industrial Disputes Act and",
+    titleHighlight: "Employment Laws",
+    description:
+      "Employee termination is governed by Industrial Disputes Act 1947, Standing Orders, employment contracts, and natural justice principles. Improper termination can result in reinstatement orders and back wage liabilities.",
+    expertInsight: {
+      quote:
+        "60-70% of wrongful termination cases succeed when employers fail to follow proper procedure. A well-documented misconduct notice is crucial.",
+    },
+    accordionSections: [
+      {
+        id: "legal-process",
+        title: "Legal Process for Disciplinary Action",
+        icon: <span className="text-primary">⚖️</span>,
+        items: [
+          {
+            text: "Issue show cause notice",
+            highlight: "detailing specific allegations",
+          },
+          { text: "Give 7 days for employee to respond" },
+          { text: "Conduct domestic inquiry if response unsatisfactory" },
+          { text: "Follow natural justice: opportunity to defend, examine witnesses" },
+          { text: "Issue termination only after following full process" },
+        ],
+      },
+    ],
+  },
+
+  sampleNotice: realSampleNotices["employee-misconduct"],
+
+  faqs: [
+    {
+      id: "what-is-misconduct",
+      question: "What constitutes employee misconduct?",
+      answer:
+        "Misconduct includes: gross misconduct (theft, fraud, violence, sexual harassment requiring immediate termination), serious misconduct (insubordination, negligence causing loss, breach of confidentiality), and minor misconduct (tardiness, dress code violations). Criminal misconduct includes embezzlement, forgery, and criminal breach of trust.",
+    },
+    {
+      id: "show-cause-mandatory",
+      question: "Is show cause notice mandatory before termination?",
+      answer:
+        "Yes, for most employees, especially 'workmen' under Industrial Disputes Act. Show cause notice is mandatory to comply with principles of natural justice. Terminating without notice makes it wrongful termination, allowing employee to file complaint before Labor Court seeking reinstatement with back wages.",
+    },
+    {
+      id: "inquiry-process",
+      question: "What is domestic inquiry and how to conduct it?",
+      answer:
+        "Domestic inquiry is internal investigation followed if employee's response to show cause notice is unsatisfactory. Process: appoint inquiry officer, issue charge sheet with specific allegations, allow employee to defend and cross-examine witnesses, examine evidence, prepare inquiry report, and give findings. Only after inquiry can termination order be issued.",
+    },
+    {
+      id: "recovery-from-employee",
+      question: "Can we recover damages from the employee?",
+      answer:
+        "Yes. If employee's misconduct caused financial loss, you can: deduct from final settlement (within Payment of Wages Act limits), file civil suit for damages, file criminal complaint for embezzlement/fraud/criminal breach of trust, and seek injunction if confidentiality breached. The legal notice should clearly quantify and demand recovery of losses.",
+    },
+    {
+      id: "suspension-during-inquiry",
+      question: "Can we suspend employee during inquiry?",
+      answer:
+        "Yes, pending inquiry, employee can be placed on suspension with subsistence allowance (typically 50% of wages) as per Standing Orders or employment contract. Suspension allows fair inquiry without employee's presence affecting witnesses or evidence. However, prolonged suspension without inquiry can be challenged.",
+    },
+    {
+      id: "what-if-employee-resigns",
+      question: "What if employee resigns after show cause notice?",
+      answer:
+        "Accepting resignation doesn't prevent you from pursuing recovery of losses or criminal action if misconduct involved theft/fraud. However, you lose ability to terminate for cause. It's advisable to complete inquiry before accepting resignation, so you can proceed with termination if proved and recover damages.",
+    },
+    {
+      id: "timeline-for-action",
+      question: "How long does the disciplinary process take?",
+      answer:
+        "Show cause notice: 7 days for response. Domestic inquiry: 30-60 days depending on complexity. Final decision: within 15 days of inquiry report. Total: 2-3 months typically. However, delay in taking action after discovering misconduct can weaken your case, so act promptly.",
+    },
+    {
+      id: "cost-of-notice",
+      question: "How much does employee misconduct notice cost?",
+      answer:
+        "VakilTech offers employee misconduct show cause notice services for ₹1,499, including: analysis of misconduct and evidence, professional drafting of show cause notice, specific allegations with dates and details, natural justice compliance, demand for recovery if applicable, and guidance on domestic inquiry process.",
+    },
+  ],
+};
+
+
+// DOMESTIC VIOLENCE DATA
+export const domesticViolenceData: NoticeTypeData = {
+  slug: "domestic-violence-legal-notice",
+  title: "Legal Notice for Domestic Violence",
+  cluster: "family",
+
+  seo: {
+    title:
+      "Domestic Violence Legal Notice | PWDVA Protection ₹1499 | VakilTech",
+    description:
+      "Send legal notice for domestic violence under PWDVA 2005. Protection orders, residence rights, maintenance claims. Fast legal action. ₹1499 all inclusive.",
+    keywords: [
+      "domestic violence legal notice",
+      "PWDVA legal notice",
+      "protection order notice",
+      "dowry harassment notice",
+      "domestic abuse legal action",
+    ],
+  },
+
+  hero: {
+    badge: "DOMESTIC VIOLENCE - PWDVA 2005",
+    headline: "Stop Domestic Violence. Protect Your Rights!",
+    subheadline:
+      "Legal notices for domestic violence, cruelty, and dowry harassment under PWDVA 2005",
+    flipWords: [
+      "Protection Orders",
+      "Residence Rights",
+      "Maintenance Claims",
+      "Legal Safety",
+    ],
+    badges: [
+      { icon: "shield", text: "PWDVA 2005\\nProtection" },
+      { icon: "check", text: "Fast Relief\\n3-7 Days" },
+    ],
+  },
+
+  content: {
+    h1: "Legal Notice for Domestic Violence Under PWDVA 2005",
+    introduction:
+      "If you're suffering physical, mental, sexual, or economic abuse from your husband or in-laws, the Protection of Women from Domestic Violence Act 2005 (PWDVA) provides comprehensive legal protection. This notice demands immediate cessation of violence, protection orders, residence rights, maintenance, and compensation. You can obtain protection orders within days from Magistrate Court.",
+    sections: domesticViolenceSections,
+    finalCta: {
+      text: "Your safety and dignity matter. Don't suffer in silence. Take legal action to protect yourself and your children.",
+      buttonText: "File Domestic Violence Notice",
+    },
+  },
+
+  story: {
+    badge: "PROTECTION GRANTED",
+    title: "Protection Order Obtained in",
+    titleHighlight: "5 Days",
+    description:
+      "Meera faced severe physical abuse and was thrown out of her matrimonial home. After sending legal notice and filing PWDVA complaint, she obtained protection order and residence order within 5 days, allowing her to return home safely. The court also ordered ₹40,000 monthly maintenance and ₹15 lakhs compensation.",
+    features: [
+      {
+        icon: "shield",
+        title: "Fast Protection Orders",
+        description:
+          "Can obtain protection and residence orders within 3-7 days as interim relief.",
+        badge: { text: "Immediate Relief", color: "warning" },
+      },
+      {
+        icon: "speedometer",
+        title: "Multiple Remedies",
+        description:
+          "PWDVA provides protection, residence, maintenance, custody, and compensation in one proceeding.",
+      },
+      {
+        icon: "wallet",
+        title: "Financial Support",
+        description:
+          "Can claim maintenance, medical expenses, compensation for injuries and trauma.",
+      },
+    ],
+  },
+
+  legalFramework: {
+    badge: "LEGAL FRAMEWORK",
+    title: "PWDVA 2005 and",
+    titleHighlight: "Criminal Laws",
+    description:
+      "Domestic violence is covered under PWDVA 2005 (civil remedy) and BNS 2023 (criminal action). Section 85 BNS criminalizes cruelty by husband and relatives.",
+    expertInsight: {
+      quote:
+        "70-80% of women filing PWDVA complaints obtain favorable interim orders within days. Immediate action is critical for safety.",
+    },
+    accordionSections: [
+      {
+        id: "legal-remedies",
+        title: "Legal Remedies Under PWDVA 2005",
+        icon: <span className="text-primary">⚖️</span>,
+        items: [
+          {
+            text: "Protection Order:",
+            highlight: "prohibits violence and harassment",
+          },
+          {
+            text: "Residence Order:",
+            highlight: "right to live in shared household",
+          },
+          {
+            text: "Monetary Relief:",
+            highlight: "maintenance and compensation",
+          },
+          { text: "Custody Order: temporary custody of children" },
+          { text: "Orders obtained within days as interim relief" },
+        ],
+      },
+    ],
+  },
+
+  sampleNotice: realSampleNotices["domestic-violence"],
+
+  faqs: [
+    {
+      id: "what-is-domestic-violence",
+      question: "What is domestic violence under PWDVA 2005?",
+      answer:
+        "PWDVA 2005 defines domestic violence broadly: physical abuse (hitting, slapping, burning), sexual abuse (forced sexual acts, marital rape), verbal and emotional abuse (insults, threats, intimidation), economic abuse (denying money, preventing employment), and dowry harassment. It includes any harm or injury causing danger to life, limb, health, or well-being.",
+    },
+    {
+      id: "who-is-protected",
+      question: "Who is protected under Domestic Violence Act?",
+      answer:
+        "PWDVA protects: wives (married or divorcing), live-in partners in relationships in the nature of marriage, sisters and mothers living in shared household, female children, and women in any domestic relationship. Protection is against violence by husband, male partners, or relatives of husband.",
+    },
+    {
+      id: "fast-relief",
+      question: "How quickly can I get protection orders?",
+      answer:
+        "Protection orders can be obtained within 3-7 days of filing complaint as interim relief. Magistrate can pass ex-parte protection and residence orders immediately if situation is urgent. This is much faster than other legal remedies. Final hearing typically takes 3-6 months, but interim orders provide immediate protection.",
+    },
+    {
+      id: "residence-rights",
+      question: "Can I stay in the matrimonial home?",
+      answer:
+        "Yes. Under PWDVA, you have absolute right to reside in the 'shared household' (matrimonial home) regardless of ownership. Husband cannot evict you. You can obtain residence order directing husband to allow you to stay or provide alternate accommodation. Violating residence order is punishable with imprisonment.",
+    },
+    {
+      id: "maintenance-amount",
+      question: "How much maintenance can I claim?",
+      answer:
+        "Maintenance amount depends on: husband's income and assets, your needs and standard of living during marriage, children's needs, and reasonable living expenses. Typically 25-30% of husband's income for wife plus 15-20% per child. Additionally, can claim medical expenses, compensation for injuries (₹5-20 lakhs), and cost of litigation.",
+    },
+    {
+      id: "criminal-or-civil",
+      question: "Should I file PWDVA complaint or criminal FIR?",
+      answer:
+        "Ideally both. PWDVA is civil remedy providing protection, residence, maintenance, custody, and compensation quickly. Criminal FIR under Section 85 BNS (cruelty) and Section 75-76 BNS (dowry) results in arrest and prosecution. PWDVA is faster for immediate relief, while criminal case adds pressure for settlement. Most lawyers recommend both simultaneously.",
+    },
+    {
+      id: "what-if-in-laws",
+      question: "Can I take action against in-laws?",
+      answer:
+        "Yes. PWDVA covers violence by husband's relatives. You can name mother-in-law, father-in-law, and other relatives as respondents. They can be subject to protection orders and compensation. Additionally, criminal action under Section 85 BNS specifically covers cruelty by 'husband or his relatives'.",
+    },
+    {
+      id: "cost-of-notice",
+      question: "How much does domestic violence notice cost?",
+      answer:
+        "VakilTech offers domestic violence legal notice services for ₹1,499, including: consultation on PWDVA rights, professional drafting with specific incidents documented, medical/evidence review, demands for protection/residence/maintenance/compensation, unlimited revisions, registered post delivery, and guidance on filing PWDVA complaint if needed.",
+    },
+  ],
+};
+
+// BREACH OF CONTRACT DATA
+export const breachOfContractData: NoticeTypeData = {
+  slug: "breach-of-contract-legal-notice",
+  title: "Legal Notice for Breach of Contract",
+  cluster: "contract",
+
+  seo: {
+    title:
+      "Breach of Contract Legal Notice | Contract Enforcement ₹1499 | VakilTech",
+    description:
+      "Send legal notice for breach of contract. Demand specific performance or damages. Business and service contracts. ₹1499 all inclusive.",
+    keywords: [
+      "breach of contract legal notice",
+      "contract violation notice",
+      "specific performance notice",
+      "contract enforcement",
+      "contract dispute",
+    ],
+  },
+
+  hero: {
+    badge: "BREACH OF CONTRACT",
+    headline: "Enforce Your Contracts. Protect Your Business!",
+    subheadline:
+      "Legal notices for breach of contract and demand for specific performance or damages",
+    flipWords: [
+      "Contract Enforcement",
+      "Specific Performance",
+      "Damages Recovery",
+      "Legal Protection",
+    ],
+    badges: [
+      { icon: "shield", text: "Contract Act\\n1872" },
+      { icon: "check", text: "Performance or\\nDamages" },
+    ],
+  },
+
+  content: {
+    h1: "Legal Notice for Breach of Contract in India",
+    introduction:
+      "When a party fails to fulfill contractual obligations, you have legal remedies under the Indian Contract Act 1872. A breach of contract notice formally demands performance or compensation and is prerequisite before filing suit for specific performance or damages. This notice applies to all contracts—business agreements, service contracts, sale agreements, employment contracts, and partnership agreements.",
+    sections: breachOfContractSections,
+    finalCta: {
+      text: "Don't let contract breaches harm your business. Take legal action to enforce your rights and recover losses.",
+      buttonText: "Send Breach of Contract Notice",
+    },
+  },
+
+  story: {
+    badge: "CONTRACT ENFORCED",
+    title: "Recovered Damages of",
+    titleHighlight: "₹45 Lakhs",
+    description:
+      "A vendor failed to deliver goods worth ₹18 lakhs despite receiving full payment, then abandoned the contract. After sending legal notice demanding refund plus damages, the vendor paid ₹18 lakhs (principal) plus ₹27 lakhs (damages for business losses and delay) within 45 days to avoid lengthy litigation.",
+    features: [
+      {
+        icon: "document",
+        title: "Strong Legal Basis",
+        description:
+          "Well-drafted notice establishes breach, your performance, and quantified damages.",
+        badge: { text: "60-70% Settle", color: "success" },
+      },
+      {
+        icon: "speedometer",
+        title: "Specific Performance",
+        description:
+          "Can demand court order forcing the party to perform the contract as agreed.",
+      },
+      {
+        icon: "wallet",
+        title: "Damages Recovery",
+        description:
+          "Can claim actual losses, consequential damages, interest, and legal costs.",
+      },
+    ],
+  },
+
+  legalFramework: {
+    badge: "LEGAL FRAMEWORK",
+    title: "Indian Contract Act 1872 and",
+    titleHighlight: "Specific Relief Act 1963",
+    description:
+      "Contract breaches are governed by Contract Act 1872 (damages) and Specific Relief Act 1963 (specific performance). Courts can order performance of contract or award monetary damages.",
+    expertInsight: {
+      quote:
+        "60-70% of contract disputes settle after legal notice as breaching party realizes litigation costs and time involved.",
+    },
+    accordionSections: [
+      {
+        id: "legal-remedies",
+        title: "Legal Remedies for Breach of Contract",
+        icon: <span className="text-primary">⚖️</span>,
+        items: [
+          {
+            text: "Specific Performance:",
+            highlight: "court orders party to perform",
+          },
+          {
+            text: "Damages:",
+            highlight: "compensatory and consequential losses",
+          },
+          { text: "Injunction: restraining order against breach" },
+          { text: "Rescission: contract cancelled, parties restored" },
+          { text: "Quantum Meruit: payment for work done before breach" },
+        ],
+      },
+    ],
+  },
+
+  sampleNotice: realSampleNotices["breach-of-contract"],
+
+  faqs: [
+    {
+      id: "what-is-breach",
+      question: "What constitutes breach of contract?",
+      answer:
+        "Breach of contract occurs when a party: fails to perform obligations on due date (actual breach), indicates in advance they won't perform (anticipatory breach), performs defectively not meeting contract standards (material breach), or partially performs some but not all obligations. The breach must be of a valid, enforceable contract.",
+    },
+    {
+      id: "specific-performance-vs-damages",
+      question: "What is difference between specific performance and damages?",
+      answer:
+        "Specific performance: court order forcing the breaching party to perform the contract as agreed. Granted for unique contracts (sale of specific property, rare goods). Damages: monetary compensation for losses suffered. Granted when specific performance not feasible or appropriate. You can demand specific performance as primary relief and damages as alternative.",
+    },
+    {
+      id: "what-damages",
+      question: "What damages can I claim?",
+      answer:
+        "You can claim: actual/compensatory damages (direct financial loss), consequential damages (indirect losses like lost profits, business disruption), liquidated damages (pre-agreed amount in contract), interest on amount due from breach date, and legal costs. Must prove damages are direct result of breach and reasonably foreseeable.",
+    },
+    {
+      id: "notice-mandatory",
+      question: "Is legal notice mandatory before filing suit?",
+      answer:
+        "While not always legally mandatory, sending legal notice is highly recommended and often required by courts. It demonstrates you attempted amicable resolution before litigation. Many contracts have clauses requiring notice before suit. Proper notice strengthens your case significantly and often leads to settlement without court.",
+    },
+    {
+      id: "contract-types",
+      question: "What types of contracts can be enforced?",
+      answer:
+        "All legally valid contracts: business agreements (supply, service, partnership), sale agreements (goods, property), employment contracts (non-compete, notice period), franchise agreements, construction/contractor agreements, loan agreements, and license agreements. Contract must have valid offer, acceptance, consideration, lawful object, and capacity to contract.",
+    },
+    {
+      id: "timeline",
+      question: "How long does breach of contract litigation take?",
+      answer:
+        "If notice doesn't resolve the matter, suit for specific performance or damages typically takes 2-4 years in civil court. However, 60-70% of cases settle during litigation through compromise. For commercial disputes over ₹3 lakhs, Commercial Courts Act provides for faster disposal (target 1 year). Arbitration, if contract has clause, can be faster (6-18 months).",
+    },
+    {
+      id: "force-majeure",
+      question: "What if they claim force majeure or impossibility?",
+      answer:
+        "Force majeure (act of God, pandemic, war) or impossibility of performance can be valid defenses to breach. However, burden of  proof is on the breaching party to show: event was unforeseeable, beyond their control, made performance impossible (not just difficult or expensive), and they took reasonable steps to mitigate. Most force majeure defenses fail as contracts only become difficult, not impossible.",
+    },
+    {
+      id: "cost-of-notice",
+      question: "How much does breach of contract notice cost?",
+      answer:
+        "VakilTech offers breach of contract legal notice services for ₹1,499, including: contract analysis and breach identification, professional drafting citing Contract Act provisions, documentation of your complete performance, quantification of damages and losses, demand for specific performance or compensation, unlimited revisions, and guidance on filing suit if needed.",
+    },
+  ],
+};
+
+
 export const noticeTypesData: Record<string, NoticeTypeData> = {
   "legal-notice-for-money-recovery": moneyRecoveryData,
   "cheque-bounce-legal-notice": chequeBounceData,
@@ -2318,6 +3699,14 @@ export const noticeTypesData: Record<string, NoticeTypeData> = {
   "legal-notice-to-builder": builderNoticeData,
   "legal-notice-for-property-possession": propertyPossessionNoticeData,
   "consumer-complaint-legal-notice": consumerComplaintNoticeData,
+  "criminal-defamation-legal-notice": criminalDefamationData,
+  "wrongful-termination-legal-notice": wrongfulTerminationData,
+  "property-partition-legal-notice": propertyPartitionData,
+  "child-custody-legal-notice": childCustodyData,
+  "workplace-harassment-legal-notice": workplaceHarassmentData,
+  "employee-misconduct-legal-notice": employeeMisconductData,
+  "domestic-violence-legal-notice": domesticViolenceData,
+  "breach-of-contract-legal-notice": breachOfContractData,
 };
 
 export function getNoticeData(slug: string): NoticeTypeData | null {

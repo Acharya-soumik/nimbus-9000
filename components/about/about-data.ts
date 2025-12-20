@@ -5,7 +5,7 @@
  * Centralized here for easy updates without touching components.
  */
 
-import type { Testimonial, Stat } from "@/components/legal-notice/testimonials-section";
+import type { Testimonial, Stat } from "@/components/send-legal-notice/testimonials-section";
 
 // =============================================================================
 // TYPE DEFINITIONS
@@ -427,7 +427,7 @@ export const servicesCTAContent = {
         "Get a custom-drafted legal notice from a Licensed Advocate. Perfect for money recovery, property disputes, or any situation requiring formal legal communication.",
       price: "₹1,499",
       features: ["24-hour draft", "Unlimited revisions", "Registered post delivery"],
-      href: "/legal-notice",
+      href: "/send-legal-notice",
       icon: "FileText",
       badge: "Most Popular",
     },
@@ -461,6 +461,7 @@ export const servicesCTAContent = {
       "https://wa.me/919876543210?text=Hi! I visited your About page and need some guidance.",
   },
 };
+
 
 
 

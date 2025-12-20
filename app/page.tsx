@@ -19,7 +19,7 @@ import {
   TestimonialsSection,
   ServingCitiesSection,
   DiscountOfferModal,
-} from "@/components/legal-notice";
+} from "@/components/send-legal-notice";
 
 // Shared UI Components
 import { FAQSection } from "@/components/ui/faq-section";

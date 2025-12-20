@@ -42,7 +42,7 @@ export const metadata: Metadata = {
     type: "website",
     images: [
       {
-        url: "/assets/legal-notice/hero.png",
+        url: "/assets/send-legal-notice/hero.png",
         width: 1200,
         height: 630,
         alt: "VakilTech Legal Consultation",
@@ -54,7 +54,7 @@ export const metadata: Metadata = {
     title: "Online Lawyer Consultation ₹299 | VakilTech",
     description:
       "Get instant legal consultation from Licensed Advocates. Starting ₹299. 24/7 support.",
-    images: ["/assets/legal-notice/hero.png"],
+    images: ["/assets/send-legal-notice/hero.png"],
   },
   robots: {
     index: true,

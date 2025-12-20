@@ -15,7 +15,7 @@ import {
 } from "@/components/about";
 
 // Reused Components
-import { TestimonialsSection } from "@/components/legal-notice/testimonials-section";
+import { TestimonialsSection } from "@/components/send-legal-notice/testimonials-section";
 import { WhatsAppFloater } from "@/components/ui/whatsapp-floater";
 
 /**
@@ -101,6 +101,7 @@ export default function AboutPage() {
     </main>
   );
 }
+
 
 
 

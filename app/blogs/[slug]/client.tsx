@@ -97,7 +97,7 @@ export function BlogPostClient({ post, relatedPosts }: BlogPostClientProps) {
               price={{ current: 1499, original: 3999 }}
               badge="POPULAR SERVICE"
               ctaText="Get Started"
-              ctaLink="/legal-notice"
+              ctaLink="/send-legal-notice"
               variant="inline"
               dataContext="legal-notice"
             />
@@ -238,3 +238,4 @@ export function BlogPostClient({ post, relatedPosts }: BlogPostClientProps) {
 }
 
 export default BlogPostClient;
+

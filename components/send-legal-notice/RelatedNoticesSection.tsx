@@ -33,7 +33,10 @@ export interface RelatedNoticesSectionProps {
     | "money-recovery"
     | "family"
     | "tenant-property"
-    | "builder-consumer";
+    | "builder-consumer"
+    | "criminal"
+    | "employment"
+    | "contract";
   label?: string;
   title?: string;
   titleHighlight?: string;
@@ -387,6 +390,62 @@ const ALL_NOTICES: RelatedNotice[] = [
     description: "File consumer complaint for defective products or services.",
     iconType: "consumer",
   },
+  {
+    id: "criminal-defamation",
+    slug: "criminal-defamation-legal-notice",
+    title: "Criminal Defamation",
+    description: "Legal action for defamatory statements.",
+    iconType: "contract",
+  },
+  {
+    id: "wrongful-termination",
+    slug: "wrongful-termination-legal-notice",
+    title: "Wrongful Termination",
+    description: "Challenge unfair dismissal from employment.",
+    iconType: "salary",
+  },
+  {
+    id: "property-partition",
+    slug: "property-partition-legal-notice",
+    title: "Property Partition",
+    description: "Legal division of jointly owned property.",
+    iconType: "tenant",
+  },
+  {
+    id: "child-custody",
+    slug: "child-custody-legal-notice",
+    title: "Child Custody",
+    description: "Legal notice for child custody matters.",
+    iconType: "divorce",
+  },
+  {
+    id: "workplace-harassment",
+    slug: "workplace-harassment-legal-notice",
+    title: "Workplace Harassment",
+    description: "Action against workplace harassment.",
+    iconType: "salary",
+  },
+  {
+    id: "employee-misconduct",
+    slug: "employee-misconduct-legal-notice",
+    title: "Employee Misconduct",
+    description: "Notice for employee misconduct issues.",
+    iconType: "contract",
+  },
+  {
+    id: "domestic-violence",
+    slug: "domestic-violence-legal-notice",
+    title: "Domestic Violence",
+    description: "Protection from domestic violence.",
+    iconType: "divorce",
+  },
+  {
+    id: "breach-of-contract",
+    slug: "breach-of-contract-legal-notice",
+    title: "Breach of Contract",
+    description: "Enforce contract terms and obligations.",
+    iconType: "contract",
+  },
 ];
 
 /* =============================================================================
@@ -419,10 +478,10 @@ export function RelatedNoticesSection({
           ].includes(notice.id);
         }
         if (cluster === "family") {
-          return ["divorce", "maintenance", "cruelty"].includes(notice.id);
+          return ["divorce", "maintenance", "cruelty", "child-custody", "domestic-violence"].includes(notice.id);
         }
         if (cluster === "tenant-property") {
-          return ["tenant", "rent-arrears", "eviction"].includes(notice.id);
+          return ["tenant", "rent-arrears", "eviction", "property-partition"].includes(notice.id);
         }
         if (cluster === "builder-consumer") {
           return [
@@ -430,6 +489,15 @@ export function RelatedNoticesSection({
             "property-possession",
             "consumer-complaint",
           ].includes(notice.id);
+        }
+        if (cluster === "criminal") {
+          return ["criminal-defamation"].includes(notice.id);
+        }
+        if (cluster === "employment") {
+          return ["wrongful-termination", "unpaid-salary", "workplace-harassment", "employee-misconduct"].includes(notice.id);
+        }
+        if (cluster === "contract") {
+          return ["breach-of-contract"].includes(notice.id);
         }
         return false;
       });
@@ -486,7 +554,7 @@ export function RelatedNoticesSection({
         {/* View All CTA */}
         <div className="mt-10 text-center lg:mt-12">
           <Link
-            href="/legal-notice"
+            href="/send-legal-notice"
             className="inline-flex items-center gap-2 rounded-xl border-2 border-primary bg-white px-6 py-3 text-base font-semibold text-primary transition-all hover:bg-primary hover:text-white lg:px-8 lg:py-4 lg:text-lg"
           >
             View All Legal Notices

@@ -25,33 +25,33 @@ export interface TestimonialsSectionProps {
 const defaultTestimonials: Testimonial[] = [
   {
     quote:
-      "The GST compliance advice was pretty clear and helped us avoid some penalties. Only minor issue was response time took a day longer than expected, but overall good experience.",
-    name: "Amit Singh",
-    title: "Manufacturing Business Owner, Pune",
+      "My landlord refused to return my ₹45,000 security deposit for months. After sending the legal notice through VakilTech, he returned the full amount within 10 days. The draft was very strong.",
+    name: "Rohan Malhotra",
+    title: "Software Engineer, Bangalore",
   },
   {
     quote:
-      "Sent a legal notice for property dispute. The draft was professional and the postal tracking was helpful. The lawyer explained all steps clearly.",
-    name: "Priya Sharma",
-    title: "Homemaker, Mumbai",
+      "A builder in Noida was delaying possession by 2 years. I sent a legal notice for refund with interest. They finally called me for a settlement meeting. Highly recommended for property issues.",
+    name: "Suresh Gupta",
+    title: "Government Employee, Delhi",
   },
   {
     quote:
-      "Used their service for contract review. Found a couple of risky clauses I would have missed. Good value for money and quick turnaround.",
-    name: "Rajesh Kumar",
-    title: "Startup Founder, Bangalore",
+      "I was not getting my salary dues from my previous employer. The legal notice drafted by VakilTech showed I was serious. They cleared my dues to avoid court trouble. Thank you!",
+    name: "Anjali Desai",
+    title: "Marketing Executive, Mumbai",
   },
   {
     quote:
-      "Needed a legal notice for money recovery. The team was responsive and the notice was sent on time. Got my money back within 2 weeks!",
-    name: "Anita Patel",
-    title: "E-commerce Business Owner, Delhi",
+      "Standard legal notice for cheque bounce. The process was simple, and the lawyer added all necessary sections under the NI Act. Very professional service.",
+    name: "Vikramjit Singh",
+    title: "Business Owner, Ludhiana",
   },
   {
     quote:
-      "Their trademark registration service was smooth. Kept me updated throughout the process and answered all my questions patiently.",
-    name: "Vikram Reddy",
-    title: "Restaurant Owner, Hyderabad",
+      "Bought a defective fridge and the company wasn't replacing it. Sent a consumer notice. They replaced it immediately after receiving the notice. Fast and effective.",
+    name: "Meera Nair",
+    title: "Homemaker, Kochi",
   },
 ];
 

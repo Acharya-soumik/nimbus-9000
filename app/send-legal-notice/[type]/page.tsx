@@ -1,5 +1,5 @@
 import { notFound } from "next/navigation";
-import { getNoticeData } from "@/lib/legal-notice/notice-types-data";
+import { getNoticeData } from "@/lib/send-legal-notice/notice-types-data";
 import { LegalNoticeTypePageClient } from "./page-client";
 
 /* =============================================================================

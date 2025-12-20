@@ -323,7 +323,7 @@ export function BundleSuccess() {
             <Button
               size="lg"
               className="bg-primary-foreground text-primary hover:bg-primary-foreground/90 px-8 py-6 text-xl font-bold shadow-xl"
-              onClick={() => (window.location.href = "/legal-notice")}
+              onClick={() => (window.location.href = "/send-legal-notice")}
             >
               Get Expert Legal Notice Drafted
               <ArrowRight className="w-6 h-6 ml-2" />

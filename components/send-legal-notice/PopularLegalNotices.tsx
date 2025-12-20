@@ -2,6 +2,7 @@
 
 import * as React from "react";
 import { cn } from "@/lib/utils";
+import { Input } from "@/components/ui/input";
 
 /* =============================================================================
  * TYPE DEFINITIONS
@@ -241,6 +242,18 @@ export function PopularLegalNotices({
   notices = defaultNotices,
   onNoticeClick,
 }: PopularLegalNoticesProps) {
+  const [searchQuery, setSearchQuery] = React.useState("");
+
+  const filteredNotices = React.useMemo(() => {
+    const query = searchQuery.toLowerCase().trim();
+    if (!query) return notices.slice(0, 6);
+    return notices.filter(
+      (notice) =>
+        notice.title.toLowerCase().includes(query) ||
+        notice.description.toLowerCase().includes(query)
+    );
+  }, [notices, searchQuery]);
+
   return (
     <section
       className={cn(
@@ -271,22 +284,54 @@ export function PopularLegalNotices({
           <p className="mt-3 text-base text-text-medium lg:text-lg">{subtitle}</p>
         </div>
 
-        {/* Notice Cards */}
-        <div className="space-y-4">
-          {notices.map((notice) => (
-            <NoticeCard
-              key={notice.id}
-              notice={notice}
-              onClick={() => onNoticeClick?.(notice.id)}
-            />
-          ))}
+        {/* Search Bar */}
+        <div className="mx-auto mb-10 max-w-md">
+          <Input
+            type="search"
+            placeholder="Search for a legal notice (e.g., Divorce, Cheque Bounce)..."
+            className="h-12 w-full rounded-xl border-gray-200 bg-white px-4 text-base shadow-sm ring-1 ring-gray-100 placeholder:text-gray-400 focus:border-primary focus:ring-primary/20 sm:text-base"
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+          />
         </div>
+
+        {/* Notice Cards */}
+        {filteredNotices.length > 0 ? (
+          <div className="space-y-4">
+            {filteredNotices.map((notice) => (
+              <NoticeCard
+                key={notice.id}
+                notice={notice}
+                onClick={() => onNoticeClick?.(notice.id)}
+              />
+            ))}
+          </div>
+        ) : (
+          <div className="py-12 text-center">
+            <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-gray-50 text-3xl">
+              🔍
+            </div>
+            <h3 className="text-lg font-medium text-text-heading">
+              No legal notices found
+            </h3>
+            <p className="mt-1 text-text-medium">
+              Try searching for something else or browse our full list.
+            </p>
+            <button
+              onClick={() => setSearchQuery("")}
+              className="mt-4 text-sm font-medium text-primary hover:underline"
+            >
+              Clear Search
+            </button>
+          </div>
+        )}
       </div>
     </section>
   );
 }
 
 export default PopularLegalNotices;
+
 
 
 

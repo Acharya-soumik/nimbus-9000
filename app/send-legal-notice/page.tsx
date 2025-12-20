@@ -19,12 +19,12 @@ import {
   WhySaferSection,
   type SampleNoticeContent,
   Breadcrumb,
-} from "@/components/legal-notice";
+} from "@/components/send-legal-notice";
 import { FAQSection } from "@/components/ui/faq-section";
 import type { FAQItem } from "@/components/ui/faq-section";
 import { WhatsAppFloater } from "@/components/ui/whatsapp-floater";
 import { StickyCTABar } from "@/components/legal-consultation/StickyCTABar";
-import { realSampleNotices } from "@/lib/legal-notice/real-sample-notices";
+import { realSampleNotices } from "@/lib/send-legal-notice/real-sample-notices";
 import { PageViewTracker } from "@/components/analytics/PageViewTracker";
 
 // Use the real money recovery notice
@@ -165,7 +165,7 @@ export default function LegalNoticePage() {
             name: "VakilTech - Legal Notice Services",
             description:
               "Professional legal notice drafting and sending services in India. Drafted by Licensed Advocates and sent via Speed Post.",
-            url: "https://vakiltech.in/legal-notice",
+            url: "https://vakiltech.in/send-legal-notice",
             priceRange: "₹1,499 - ₹3,999",
             areaServed: {
               "@type": "Country",
@@ -253,7 +253,7 @@ export default function LegalNoticePage() {
             dateModified: new Date().toISOString().split("T")[0],
             mainEntityOfPage: {
               "@type": "WebPage",
-              "@id": "https://vakiltech.in/legal-notice",
+              "@id": "https://vakiltech.in/send-legal-notice",
             },
           }),
         }}
@@ -277,7 +277,7 @@ export default function LegalNoticePage() {
                 "@type": "ListItem",
                 position: 2,
                 name: "Legal Notice",
-                item: "https://vakiltech.in/legal-notice",
+                item: "https://vakiltech.in/send-legal-notice",
               },
             ],
           }),
@@ -337,7 +337,7 @@ export default function LegalNoticePage() {
             name: "Send Legal Notice Online India | VakilTech",
             description:
               "Send legal notice online in India from ₹1,499. Drafted by Licensed Advocates, sent via Speed Post.",
-            url: "https://vakiltech.in/legal-notice",
+            url: "https://vakiltech.in/send-legal-notice",
             speakable: {
               "@type": "SpeakableSpecification",
               cssSelector: ["h1", "h2", ".prose"],
@@ -382,7 +382,7 @@ export default function LegalNoticePage() {
               onSubmit={handleFormSubmit}
               onStepChange={(step) => console.log("Step changed:", step)}
               serviceType="Legal Notice"
-              servicePrice={1499}
+              servicePrice={499}
             />
           </div>
         </section>{" "}
@@ -434,91 +434,147 @@ export default function LegalNoticePage() {
               title: "Money Recovery",
               description: "Recover pending dues, salary, or payments legally.",
               iconType: "rupee",
-              href: "/legal-notice/legal-notice-for-money-recovery",
+              href: "/send-legal-notice/legal-notice-for-money-recovery",
             },
             {
               id: "cheque-bounce",
               title: "Cheque Bounce",
               description: "Legal action under Section 138 of NI Act.",
               iconType: "cheque",
-              href: "/legal-notice/cheque-bounce-legal-notice",
+              href: "/send-legal-notice/cheque-bounce-legal-notice",
             },
             {
               id: "outstanding-payment",
               title: "Outstanding Payment",
               description: "Recover unpaid invoices and business dues.",
               iconType: "rupee",
-              href: "/legal-notice/legal-notice-for-outstanding-payment",
+              href: "/send-legal-notice/legal-notice-for-outstanding-payment",
             },
             {
               id: "unpaid-salary",
               title: "Unpaid Salary",
               description: "Recover unpaid wages and employment dues.",
               iconType: "rupee",
-              href: "/legal-notice/legal-notice-for-unpaid-salary",
+              href: "/send-legal-notice/legal-notice-for-unpaid-salary",
             },
             {
               id: "divorce",
               title: "Divorce Notice",
               description: "Legal notice for divorce proceedings.",
               iconType: "loan",
-              href: "/legal-notice/legal-notice-for-divorce",
+              href: "/send-legal-notice/legal-notice-for-divorce",
             },
             {
               id: "maintenance",
               title: "Maintenance",
               description: "Claim maintenance under Section 125 CrPC.",
               iconType: "rupee",
-              href: "/legal-notice/maintenance-legal-notice",
+              href: "/send-legal-notice/maintenance-legal-notice",
             },
             {
               id: "tenant-eviction",
               title: "Tenant Eviction",
               description: "Lawful eviction process for landlords.",
               iconType: "loan",
-              href: "/legal-notice/legal-notice-to-tenant",
+              href: "/send-legal-notice/legal-notice-to-tenant",
             },
             {
               id: "rent-arrears",
               title: "Rent Arrears",
               description: "Recover unpaid rent from tenants.",
               iconType: "rupee",
-              href: "/legal-notice/legal-notice-for-rent-arrears",
+              href: "/send-legal-notice/legal-notice-for-rent-arrears",
             },
             {
               id: "builder-delay",
               title: "Builder Delay",
               description: "Notice for delayed property possession.",
               iconType: "loan",
-              href: "/legal-notice/legal-notice-to-builder",
+              href: "/send-legal-notice/legal-notice-to-builder",
             },
             {
               id: "property-possession",
               title: "Property Possession",
               description: "Demand timely property handover.",
               iconType: "loan",
-              href: "/legal-notice/legal-notice-for-property-possession",
+              href: "/send-legal-notice/legal-notice-for-property-possession",
             },
             {
               id: "consumer-complaint",
               title: "Consumer Complaint",
               description: "Assert consumer rights for defects.",
               iconType: "cheque",
-              href: "/legal-notice/consumer-complaint-legal-notice",
+              href: "/send-legal-notice/consumer-complaint-legal-notice",
             },
             {
               id: "eviction",
               title: "Eviction Notice",
               description: "Legal eviction with proper procedure.",
               iconType: "loan",
-              href: "/legal-notice/eviction-legal-notice",
+              href: "/send-legal-notice/eviction-legal-notice",
             },
             {
               id: "cruelty-desertion",
               title: "Cruelty/Desertion",
               description: "Matrimonial cruelty and desertion cases.",
               iconType: "loan",
-              href: "/legal-notice/legal-notice-for-cruelty-or-desertion",
+              href: "/send-legal-notice/legal-notice-for-cruelty-or-desertion",
+            },
+            {
+              id: "criminal-defamation",
+              title: "Criminal Defamation",
+              description: "Legal action for defamatory statements.",
+              iconType: "cheque",
+              href: "/send-legal-notice/criminal-defamation-legal-notice",
+            },
+            {
+              id: "wrongful-termination",
+              title: "Wrongful Termination",
+              description: "Challenge unfair dismissal from employment.",
+              iconType: "loan",
+              href: "/send-legal-notice/wrongful-termination-legal-notice",
+            },
+            {
+              id: "property-partition",
+              title: "Property Partition",
+              description: "Legal division of jointly owned property.",
+              iconType: "loan",
+              href: "/send-legal-notice/property-partition-legal-notice",
+            },
+            {
+              id: "child-custody",
+              title: "Child Custody",
+              description: "Legal notice for child custody matters.",
+              iconType: "loan",
+              href: "/send-legal-notice/child-custody-legal-notice",
+            },
+            {
+              id: "workplace-harassment",
+              title: "Workplace Harassment",
+              description: "Action against workplace harassment.",
+              iconType: "cheque",
+              href: "/send-legal-notice/workplace-harassment-legal-notice",
+            },
+            {
+              id: "employee-misconduct",
+              title: "Employee Misconduct",
+              description: "Notice for employee misconduct issues.",
+              iconType: "cheque",
+              href: "/send-legal-notice/employee-misconduct-legal-notice",
+            },
+            {
+              id: "domestic-violence",
+              title: "Domestic Violence",
+              description: "Protection from domestic violence.",
+              iconType: "loan",
+              href: "/send-legal-notice/domestic-violence-legal-notice",
+            },
+            {
+              id: "breach-of-contract",
+              title: "Breach of Contract",
+              description: "Enforce contract terms and obligations.",
+              iconType: "cheque",
+              href: "/send-legal-notice/breach-of-contract-legal-notice",
             },
           ]}
         />

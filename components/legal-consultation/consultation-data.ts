@@ -6,8 +6,8 @@
  */
 
 import type { FAQItem } from "@/components/ui/faq-section";
-import type { TimelineStep } from "@/components/legal-notice/HowWeWorkTimeline";
-import type { SafetyFeature } from "@/components/legal-notice/WhySaferSection";
+import type { TimelineStep } from "@/components/send-legal-notice/HowWeWorkTimeline";
+import type { SafetyFeature } from "@/components/send-legal-notice/WhySaferSection";
 
 // =============================================================================
 // TYPE DEFINITIONS
@@ -122,50 +122,50 @@ export const consultationTestimonials: ConsultationTestimonial[] = [
   {
     // Addresses: "Is it worth the money?"
     quote:
-      "I was hesitant about paying ₹299 for advice. But the advocate saved me from signing a bad contract that could have cost me ₹5 lakhs. Best investment ever!",
-    name: "Rahul Mehta",
-    title: "Business Owner, Ahmedabad",
-    result: "Saved ₹5,00,000",
+      "I was worried about a family property dispute. The lawyer explained my exact share in the ancestral property legally. No false hopes, just clear facts. Worth much more than ₹299.",
+    name: "Manoj Tiwari",
+    title: "Shop Owner, Lucknow",
+    result: "Clear Property Rights",
   },
   {
-    // Addresses: "Will they respond quickly?"
+    // Addresses: "Privacy concern (Divorce/Family)"
     quote:
-      "I had an urgent property issue and needed advice before a meeting at 4 PM. Booked at 2 PM, got connected by 2:30 PM, and had my answers before my meeting. Incredibly fast!",
-    name: "Sneha Iyer",
-    title: "IT Professional, Bangalore",
-    result: "Connected in 30 min",
+      "It's hard to discuss divorce with strangers. The advocate was very patient and dignified. I got clarity on alimony and child custody without feeling judged.",
+    name: "Kiran R.",
+    title: "Teacher, Bangalore",
+    result: "Dignified Advice",
   },
   {
-    // Addresses: "Is it confidential?"
+    // Addresses: "Employment/Harassment"
     quote:
-      "My divorce situation was sensitive. I was worried about privacy. The advocate was professional, empathetic, and I felt completely safe sharing my situation. Thank you!",
-    name: "Ankit S.",
-    title: "Corporate Employee, Delhi",
-    result: "100% Confidential",
+      "My manager was harassing me to resign. I took a consultation to know if I can take legal action. The lawyer told me exactly what proofs to collect. I feel stronger now.",
+    name: "S. Chatterjee",
+    title: "IT Professional, Kolkata",
+    result: "Actionable Plan",
   },
   {
-    // Addresses: "Will they understand my language?"
+    // Addresses: "Language Barrier"
     quote:
-      "मुझे Hindi में समझाना था। Advocate ने पूरी बात Hindi में समझाई और मेरे सारे doubts clear किये। बहुत अच्छी service!",
-    name: "Kavita Reddy",
-    title: "Homemaker, Hyderabad",
+      "Mein English kam samajhta hu. Lawyer ne puri baat Hindi mein samjhayi aur bataya ki Police complaint kaise karni hai. Bahut madad mili.",
+    name: "Ramesh Yadav",
+    title: "Driver, Delhi",
     result: "Hindi Support",
   },
   {
-    // Addresses: "Will they actually help or just take money?"
+    // Addresses: "Cheque Bounce/Recovery"
     quote:
-      "I was skeptical of online lawyers. But the advocate gave me a clear action plan and even followed up the next day to check how things went. Genuine service.",
-    name: "Mohammed Faiz",
-    title: "Teacher, Mumbai",
-    result: "Free Follow-up",
+      "A client owed me 2 Lakhs. Manufacturer lawyer advised against court case immediately and suggested a specific legal notice format first. It worked!",
+    name: "Gaurav Sethi",
+    title: "Distributor, Ahmedabad",
+    result: "Money Recovered",
   },
   {
-    // Addresses: "Is it as good as in-person?"
+    // Addresses: "Speed"
     quote:
-      "Video call consultation was just like sitting in a lawyer's office, but from my living room. The advocate shared my screen, reviewed my documents, and explained everything clearly.",
-    name: "Priyanka Sharma",
-    title: "Startup Founder, Pune",
-    result: "HD Video Call",
+      "Had to reply to a builder's notice in 48 hours. Connected with a lawyer in 15 mins, understood the risks, and got the reply drafted the same day.",
+    name: "Dr. P. Hegde",
+    title: "Doctor, Mangalore",
+    result: "Instant Help",
   },
 ];
 

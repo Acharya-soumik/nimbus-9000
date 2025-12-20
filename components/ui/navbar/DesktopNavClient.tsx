@@ -11,7 +11,7 @@ interface NavItem {
 }
 
 const items: NavItem[] = [
-  { label: "Legal Notice", href: "/legal-notice" },
+  { label: "Legal Notice", href: "/send-legal-notice" },
   { label: "Consultation", href: "/legal-consultation" },
   { label: "About", href: "/about" },
   { label: "Blog", href: "/blogs" },

@@ -133,3 +133,4 @@ export function AboutHeroSection({ className }: AboutHeroSectionProps) {
 
 export default AboutHeroSection;
 
+

@@ -1,7 +1,7 @@
 "use client";
 
 import * as React from "react";
-import type { NoticeTypeData } from "@/lib/legal-notice/notice-types-data";
+import type { NoticeTypeData } from "@/lib/send-legal-notice/notice-types-data";
 import {
   Breadcrumb,
   HeroSection,
@@ -15,7 +15,7 @@ import {
   PricingCard,
   RelatedNoticesSection,
   TestimonialsSection,
-} from "@/components/legal-notice";
+} from "@/components/send-legal-notice";
 import { FAQSection } from "@/components/ui/faq-section";
 import { WhatsAppFloater } from "@/components/ui/whatsapp-floater";
 import { StickyCTABar } from "@/components/legal-consultation/StickyCTABar";
@@ -58,7 +58,7 @@ export function LegalNoticeTypePageClient({
             "@type": "LegalService",
             name: `VakilTech - ${data.title}`,
             description: data.seo.description,
-            url: `https://vakiltech.in/legal-notice/${data.slug}`,
+            url: `https://vakiltech.in/send-legal-notice/${data.slug}`,
             priceRange: "₹1,499 - ₹3,999",
             areaServed: {
               "@type": "Country",
@@ -117,7 +117,7 @@ export function LegalNoticeTypePageClient({
             dateModified: new Date().toISOString().split("T")[0],
             mainEntityOfPage: {
               "@type": "WebPage",
-              "@id": `https://vakiltech.in/legal-notice/${data.slug}`,
+              "@id": `https://vakiltech.in/send-legal-notice/${data.slug}`,
             },
             keywords: data.seo.keywords.join(", "),
           }),
@@ -142,13 +142,13 @@ export function LegalNoticeTypePageClient({
                 "@type": "ListItem",
                 position: 2,
                 name: "Legal Notice",
-                item: "https://vakiltech.in/legal-notice",
+                item: "https://vakiltech.in/send-legal-notice",
               },
               {
                 "@type": "ListItem",
                 position: 3,
                 name: data.title,
-                item: `https://vakiltech.in/legal-notice/${data.slug}`,
+                item: `https://vakiltech.in/send-legal-notice/${data.slug}`,
               },
             ],
           }),
@@ -206,7 +206,7 @@ export function LegalNoticeTypePageClient({
             "@type": "WebPage",
             name: data.seo.title,
             description: data.seo.description,
-            url: `https://vakiltech.in/legal-notice/${data.slug}`,
+            url: `https://vakiltech.in/send-legal-notice/${data.slug}`,
             speakable: {
               "@type": "SpeakableSpecification",
               cssSelector: ["h1", "h2", ".prose"],

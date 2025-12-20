@@ -6,7 +6,7 @@ import { motion, AnimatePresence } from "motion/react";
 import { Menu, X } from "lucide-react";
 
 const navItems = [
-  { label: "Legal Notice", href: "/legal-notice" },
+  { label: "Legal Notice", href: "/send-legal-notice" },
   { label: "Consultation", href: "/legal-consultation" },
   { label: "Agreement Drafting", href: "/agreement-drafting" },
   { label: "About", href: "/about" },
@@ -59,7 +59,7 @@ export default function MobileNavClient() {
             {/* CTA Buttons */}
             <div className="mt-8 space-y-3">
               <Link
-                href="/legal-notice"
+                href="/send-legal-notice"
                 onClick={() => setOpen(false)}
                 className="block w-full rounded-xl bg-primary py-3 text-center text-base font-semibold text-white shadow-md"
               >

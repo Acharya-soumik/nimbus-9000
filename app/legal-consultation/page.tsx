@@ -21,14 +21,14 @@ import {
   TestimonialsSection,
   WhySaferSection,
   Breadcrumb,
-} from "@/components/legal-notice";
+} from "@/components/send-legal-notice";
 import { FAQSection } from "@/components/ui/faq-section";
 import { WhatsAppFloater } from "@/components/ui/whatsapp-floater";
 
 // Dynamic imports for better performance (loaded on demand)
 const DiscountOfferModal = dynamic(
   () =>
-    import("@/components/legal-notice/DiscountOfferModal").then(
+    import("@/components/send-legal-notice/DiscountOfferModal").then(
       (mod) => mod.DiscountOfferModal
     ),
   { ssr: false }
@@ -36,7 +36,7 @@ const DiscountOfferModal = dynamic(
 
 const ExitIntentModal = dynamic(
   () =>
-    import("@/components/legal-notice/ExitIntentModal").then(
+    import("@/components/send-legal-notice/ExitIntentModal").then(
       (mod) => mod.ExitIntentModal
     ),
   { ssr: false }
@@ -184,7 +184,7 @@ function ConsultationHeroSection() {
             <div className="relative">
               <div className="relative aspect-16/10 w-full max-w-lg overflow-hidden rounded-2xl">
                 <Image
-                  src="/assets/legal-notice/hero.png"
+                  src="/assets/send-legal-notice/hero.png"
                   alt="Legal consultation illustration"
                   fill
                   className="object-cover"
@@ -263,7 +263,7 @@ function ConsultationHeroSection() {
           {/* Hero Image with Floating Badges */}
           <div className="relative aspect-4/3 w-full overflow-hidden rounded-2xl sm:aspect-16/10">
             <Image
-              src="/assets/legal-notice/hero.png"
+              src="/assets/send-legal-notice/hero.png"
               alt="Legal consultation illustration"
               fill
               className="object-cover"

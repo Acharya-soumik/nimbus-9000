@@ -33,7 +33,7 @@ const footerLinks: FooterSection[] = [
   {
     label: "Services",
     links: [
-      { title: "Legal Notice", href: "/legal-notice" },
+      { title: "Legal Notice", href: "/send-legal-notice" },
       { title: "Legal Consultation", href: "/legal-consultation" },
       { title: "Agreement Drafting", href: "/agreement-drafting" },
     ],
@@ -84,7 +84,7 @@ export function Footer() {
             alt="VakilTech"
             width={180}
             height={40}
-            className="h-10 w-auto bg-white rounded"
+            className="h-10 w-auto bg-white rounded p-1"
           />
           <p className="text-white/80 text-sm max-w-md">
             <b>vakiltech</b> connects legal professionals and clients, serving

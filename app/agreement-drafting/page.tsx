@@ -20,7 +20,7 @@ import {
   ServingCitiesSection,
   DiscountOfferModal,
   ExitIntentModal,
-} from "@/components/legal-notice";
+} from "@/components/send-legal-notice";
 import { FAQSection } from "@/components/ui/faq-section";
 import { WhatsAppFloater } from "@/components/ui/whatsapp-floater";
 import { PageViewTracker } from "@/components/analytics/PageViewTracker";

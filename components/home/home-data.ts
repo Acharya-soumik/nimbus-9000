@@ -5,8 +5,8 @@
  */
 
 import type { FAQItem } from "@/components/ui/faq-section";
-import type { TimelineStep } from "@/components/legal-notice/HowWeWorkTimeline";
-import type { SafetyFeature } from "@/components/legal-notice/WhySaferSection";
+import type { TimelineStep } from "@/components/send-legal-notice/HowWeWorkTimeline";
+import type { SafetyFeature } from "@/components/send-legal-notice/WhySaferSection";
 
 // =============================================================================
 // TYPE DEFINITIONS
@@ -78,7 +78,7 @@ export const services: Service[] = [
       "24/7 Support",
       "Delivery Tracking",
     ],
-    href: "/legal-notice",
+    href: "/send-legal-notice",
     ctaText: "Send Legal Notice",
     badge: "MOST POPULAR",
     iconType: "notice",
@@ -245,3 +245,4 @@ export const homeStats: HomeStat[] = [
   { value: "30", label: "Expert Advocates", suffix: "+" },
   { value: "4.9", label: "Average Rating", suffix: "/5" },
 ];
+

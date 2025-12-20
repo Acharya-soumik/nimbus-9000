@@ -197,7 +197,7 @@ export function HeroSection({
             <div className="relative">
               <div className="relative aspect-16/10 w-full max-w-lg overflow-hidden rounded-2xl">
                 <Image
-                  src="/assets/legal-notice/hero.png"
+                  src="/assets/send-legal-notice/hero.png"
                   alt="Legal consultation illustration"
                   fill
                   className="object-cover"
@@ -269,7 +269,7 @@ export function HeroSection({
             {/* Hero Image with Floating Badges */}
             <div className="relative aspect-4/3 w-full overflow-hidden rounded-2xl sm:aspect-16/10">
               <Image
-                src="/assets/legal-notice/hero.png"
+                src="/assets/send-legal-notice/hero.png"
                 alt="Legal consultation illustration"
                 fill
                 className="object-cover"
