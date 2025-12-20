@@ -132,7 +132,7 @@ export default function HomePage() {
 
       {/* Floating WhatsApp Button */}
       <WhatsAppFloater
-        phoneNumber="919876543210"
+        phoneNumber="9170476 83995"
         message="Hi! I'm interested in VakilTech's legal services."
       />
 

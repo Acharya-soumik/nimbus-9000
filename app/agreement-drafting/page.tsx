@@ -324,7 +324,7 @@ export default function AgreementDraftingPage() {
 
       {/* WhatsApp Floater */}
       <WhatsAppFloater
-        phoneNumber="919876543210"
+        phoneNumber="9170476 83995"
         message="Hi! I'm interested in getting an agreement drafted. Can you help me?"
       />
 
@@ -351,7 +351,7 @@ export default function AgreementDraftingPage() {
               logo: "https://vakiltech.in/logo.png",
               contactPoint: {
                 "@type": "ContactPoint",
-                telephone: "+91-9876543210",
+                telephone: "+91-70476 83995",
                 contactType: "Customer Service",
                 availableLanguage: ["English", "Hindi"],
               },

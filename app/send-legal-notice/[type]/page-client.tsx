@@ -71,7 +71,7 @@ export function LegalNoticeTypePageClient({
               logo: "https://vakiltech.in/logo.png",
               contactPoint: {
                 "@type": "ContactPoint",
-                telephone: "+91-9876543210",
+                telephone: "+91-70476 83995",
                 contactType: "Customer Service",
                 availableLanguage: ["English", "Hindi"],
               },
@@ -507,7 +507,7 @@ export function LegalNoticeTypePageClient({
 
         {/* WhatsApp Floater */}
         <WhatsAppFloater
-          phoneNumber="919876543210"
+          phoneNumber="9170476 83995"
           message={`Hi! I need help with ${data.title.toLowerCase()}. Can you assist me?`}
         />
       </main>

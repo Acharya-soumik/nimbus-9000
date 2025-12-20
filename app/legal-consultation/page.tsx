@@ -620,7 +620,7 @@ export default function LegalConsultationPage() {
 
       {/* WhatsApp Floater */}
       <WhatsAppFloater
-        phoneNumber="919876543210"
+        phoneNumber="9170476 83995"
         message="Hi! I'm interested in booking a legal consultation. Can you help me?"
       />
 

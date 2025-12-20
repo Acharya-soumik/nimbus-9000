@@ -231,7 +231,7 @@ export const ctaBannerContent = {
   },
   secondaryCta: {
     text: "Talk to Us on WhatsApp",
-    href: "https://wa.me/919876543210",
+    href: "https://wa.me/9170476 83995",
   },
 };
 

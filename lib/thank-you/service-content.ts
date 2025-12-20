@@ -127,5 +127,5 @@ export function formatWhatsAppMessage(
  * @returns WhatsApp number for support
  */
 export function getWhatsAppSupportNumber(): string {
-  return process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || "919876543210";
+  return process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || "9170476 83995";
 }

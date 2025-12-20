@@ -358,7 +358,7 @@ pushToDataLayer({
 ### User Data Handling:
 ```typescript
 // Raw data NEVER sent to tracking
-const rawPhone = "+919876543210"; // ❌ Never sent
+const rawPhone = "+9170476 83995"; // ❌ Never sent
 
 // Hashed data sent for matching
 const hashedPhone = "a3f5..."; // ✅ SHA-256 hash sent

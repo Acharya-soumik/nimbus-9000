@@ -178,7 +178,7 @@ export default function LegalNoticePage() {
               logo: "https://vakiltech.in/logo.png",
               contactPoint: {
                 "@type": "ContactPoint",
-                telephone: "+91-9876543210",
+                telephone: "+91-70476 83995",
                 contactType: "Customer Service",
                 availableLanguage: ["English", "Hindi"],
               },
@@ -659,7 +659,7 @@ export default function LegalNoticePage() {
         />
         {/* WhatsApp Floater */}
         <WhatsAppFloater
-          phoneNumber="919876543210"
+          phoneNumber="9170476 83995"
           message="Hi! I'm interested in getting a legal notice drafted. Can you help me?"
         />
         {/* Sticky CTA Bar (Mobile) */}
