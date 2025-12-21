@@ -94,9 +94,9 @@ export const moneyRecoveryData: NoticeTypeData = {
 
   seo: {
     title:
-      "Legal Notice for Recovery of Money | Online Drafting ₹1499 | VakilTech",
+      "Recover Your Money | Send Legal Notice | Start at ₹499",
     description:
-      "Send money recovery notice online. Professionally drafted by Licensed Advocates. Sent via Speed Post. 24-48 hour delivery. ₹1499 all inclusive.",
+      "Unpaid dues or salary? Get a lawyer-drafted recovery notice sent today. Pay ₹499 to start + 2-hr callback. Approve the draft before paying the ₹1000 balance.",
     keywords: [
       "legal notice for recovery of money",
       "money recovery legal notice",
@@ -317,9 +317,9 @@ export const chequeBounceData: NoticeTypeData = {
   cluster: "money-recovery",
 
   seo: {
-    title: "Cheque Bounce Legal Notice | Section 138 Notice ₹1499 | VakilTech",
+    title: "Cheque Bounced? | Send Section 138 Notice | Start at ₹499",
     description:
-      "Send cheque bounce notice under Section 138 of NI Act. Professionally drafted by experts. Mandatory 15-day notice period. ₹1499 all inclusive.",
+      "Dishonoured cheque? Get a legal notice sent within 15 days. Pay ₹499 to start + 2-hr callback. Approve the draft before paying the ₹1000 balance.",
     keywords: [
       "cheque bounce legal notice",
       "section 138 legal notice",
@@ -480,9 +480,9 @@ export const outstandingPaymentData: NoticeTypeData = {
   cluster: "money-recovery",
 
   seo: {
-    title: "Legal Notice for Outstanding Payment | B2B Recovery ₹1499",
+    title: "Outstanding Payment? | Recover Unpaid Invoices | ₹499",
     description:
-      "Recover outstanding business payments and unpaid invoices. Professional legal notice for MSMEs and service providers. ₹1499 all inclusive.",
+      "Unpaid invoices or business dues? Get a lawyer-drafted payment recovery notice sent today. Pay ₹499 to start + 2-hr callback. Then pay ₹1000 after approval.",
     keywords: [
       "legal notice for outstanding payment",
       "unpaid invoice legal notice",
@@ -642,9 +642,9 @@ export const unpaidSalaryData: NoticeTypeData = {
   cluster: "money-recovery",
 
   seo: {
-    title: "Legal Notice for Unpaid Salary | Employee Rights ₹1499",
+    title: "Unpaid Salary? | Recover Your Wages | Start at ₹499",
     description:
-      "Recover unpaid salary, wages, and employment dues. Legal notice for salary non-payment by employer. Fast and effective. ₹1499 all inclusive.",
+      "Employer withholding salary? Get a lawyer-drafted wage recovery notice sent today. Pay ₹499 to start + 2-hr callback. Approve before paying ₹1000 balance.",
     keywords: [
       "legal notice for unpaid salary",
       "salary recovery legal notice",
@@ -800,9 +800,9 @@ export const divorceNoticeData: NoticeTypeData = {
   cluster: "family",
 
   seo: {
-    title: "Legal Notice for Divorce | Mutual & Contested Divorce ₹1499",
+    title: "File for Divorce | Send Legal Notice | Start at ₹499",
     description:
-      "Send legal notice for divorce proceedings. Expert family law advocates for mutual consent and contested divorce. Confidential and professional. ₹1499.",
+      "Starting divorce proceedings? Get a confidential, lawyer-drafted divorce notice sent today. Pay ₹499 to start + 2-hr callback. Approve before paying ₹1000.",
     keywords: [
       "legal notice for divorce",
       "divorce legal notice online",
@@ -986,9 +986,9 @@ export const maintenanceNoticeData: NoticeTypeData = {
   cluster: "family",
 
   seo: {
-    title: "Maintenance Legal Notice | Wife/Child Maintenance ₹1499",
+    title: "Claim Maintenance | Legal Notice for Alimony | ₹499",
     description:
-      "Send legal notice for maintenance claim under Section 125 CrPC. Recover alimony and financial support for wife, children, or parents. ₹1499 all inclusive.",
+      "Need maintenance or alimony? Get a lawyer-drafted Section 125 CrPC notice sent today. Pay ₹499 to start + 2-hr callback. Approve before paying ₹1000.",
     keywords: [
       "maintenance legal notice",
       "wife maintenance legal notice",
@@ -1156,9 +1156,9 @@ export const crueltyDesertionNoticeData: NoticeTypeData = {
   cluster: "family",
 
   seo: {
-    title: "Legal Notice for Cruelty/Desertion | Matrimonial Cruelty ₹1499",
+    title: "Facing Cruelty? | Send Matrimonial Notice | Start ₹499",
     description:
-      "Send legal notice for matrimonial cruelty, harassment, or desertion. Protect your rights under family law. Expert advocates. ₹1499 all inclusive.",
+      "Matrimonial cruelty or desertion? Get a confidential, lawyer-drafted notice sent today. Pay ₹499 to start + 2-hr callback. Approve before paying ₹1000.",
     keywords: [
       "cruelty legal notice",
       "desertion legal notice",
@@ -1327,9 +1327,9 @@ export const tenantNoticeData: NoticeTypeData = {
   cluster: "tenant-property",
 
   seo: {
-    title: "Legal Notice to Tenant | Eviction Notice Format ₹1499",
+    title: "Evict Tenant Legally | Send Notice | Start at ₹499",
     description:
-      "Send legal notice to tenant for eviction, rent default, or property damage. Lawful tenant eviction process. Professional drafting. ₹1499 all inclusive.",
+      "Tenant issues or rent default? Get a lawful eviction notice sent today. Pay ₹499 to start + 2-hr callback. Approve the draft before paying ₹1000 balance.",
     keywords: [
       "legal notice to tenant",
       "tenant eviction notice",
@@ -1492,9 +1492,9 @@ export const rentArrearsNoticeData: NoticeTypeData = {
   cluster: "tenant-property",
 
   seo: {
-    title: "Legal Notice for Rent Arrears | Unpaid Rent Recovery ₹1499",
+    title: "Recover Unpaid Rent | Send Legal Notice | Start ₹499",
     description:
-      "Recover unpaid rent from tenant. Legal notice for rent arrears and payment default. Fast recovery or eviction. ₹1499 all inclusive.",
+      "Tenant not paying rent? Get a lawyer-drafted rent recovery notice sent today. Pay ₹499 to start + 2-hr callback. Approve before paying ₹1000 balance.",
     keywords: [
       "legal notice for rent arrears",
       "unpaid rent legal notice",
@@ -1656,9 +1656,9 @@ export const evictionNoticeData: NoticeTypeData = {
   cluster: "tenant-property",
 
   seo: {
-    title: "Eviction Legal Notice | Tenant Eviction Process ₹1499",
+    title: "Legal Eviction Process | Send Notice | Start at ₹499",
     description:
-      "Lawful tenant eviction process with proper legal notice. Grounds, notice period, and eviction procedure. Expert drafting. ₹1499 all inclusive.",
+      "Need to evict a tenant lawfully? Get a proper eviction notice sent today. Pay ₹499 to start + 2-hr callback. Approve the draft before paying ₹1000.",
     keywords: [
       "eviction legal notice",
       "tenant eviction notice format",
@@ -1821,9 +1821,9 @@ export const builderNoticeData: NoticeTypeData = {
   cluster: "builder-consumer",
 
   seo: {
-    title: "Legal Notice to Builder | Property Delay Notice ₹1499",
+    title: "Builder Delayed Possession? | Send RERA Notice | ₹499",
     description:
-      "Send legal notice to builder for possession delay, defects, or refund. RERA provisions for property buyers. Expert drafting. ₹1499 all inclusive.",
+      "Property delayed or defective? Get a RERA-compliant notice sent to your builder today. Pay ₹499 to start + 2-hr callback. Approve before paying ₹1000.",
     keywords: [
       "legal notice to builder",
       "builder delay legal notice",
@@ -1988,9 +1988,9 @@ export const propertyPossessionNoticeData: NoticeTypeData = {
   cluster: "builder-consumer",
 
   seo: {
-    title: "Legal Notice for Property Possession | Delayed Possession ₹1499",
+    title: "Demand Property Possession | Legal Notice | ₹499",
     description:
-      "Demand timely property possession from builder. Legal notice for possession delay. RERA compensation claims. ₹1499 all inclusive.",
+      "Awaiting property handover? Get a lawyer-drafted possession demand notice sent today. Pay ₹499 to start + 2-hr callback. Approve before paying ₹1000.",
     keywords: [
       "legal notice for property possession",
       "possession delay notice",
@@ -2155,9 +2155,9 @@ export const consumerComplaintNoticeData: NoticeTypeData = {
   cluster: "builder-consumer",
 
   seo: {
-    title: "Consumer Complaint Legal Notice | Defective Product Notice ₹1499",
+    title: "Consumer Complaint? | File Legal Notice | Start ₹499",
     description:
-      "Send legal notice for consumer complaint. Defective products, deficiency in service. Consumer Protection Act 2019. ₹1499 all inclusive.",
+      "Defective product or poor service? Get a consumer complaint notice sent today. Pay ₹499 to start + 2-hr callback. Approve the draft before paying ₹1000.",
     keywords: [
       "consumer complaint legal notice",
       "defective product legal notice",
@@ -2323,9 +2323,9 @@ export const criminalDefamationData: NoticeTypeData = {
 
   seo: {
     title:
-      "Criminal Defamation Legal Notice | Section 356 BNS ₹1499 | VakilTech",
+      "Defamation Case? | Send Section 356 Notice | Start ₹499",
     description:
-      "Send criminal defamation notice for false statements damaging reputation. Demands apology, retraction & compensation. Section 356 BNS 2023. ₹1499 all inclusive.",
+      "False statements harming your reputation? Get a Section 356 defamation notice sent today. Pay ₹499 to start + 2-hr callback. Approve before paying ₹1000.",
     keywords: [
       "criminal defamation legal notice",
       "defamation notice",
@@ -2502,9 +2502,9 @@ export const wrongfulTerminationData: NoticeTypeData = {
 
   seo: {
     title:
-      "Wrongful Termination Legal Notice | Employee Rights ₹1499 | VakilTech",
+      "Wrongfully Terminated? | Challenge Dismissal | Start ₹499",
     description:
-      "Challenge illegal termination. Demand reinstatement or compensation. Professional notice for unfair dismissal. Industrial Disputes Act protection. ₹1499 all inclusive.",
+      "Unfairly dismissed from work? Get a lawyer-drafted wrongful termination notice sent today. Pay ₹499 to start + 2-hr callback. Approve before paying ₹1000.",
     keywords: [
       "wrongful termination legal notice",
       "illegal termination notice",
@@ -2679,9 +2679,9 @@ export const propertyPartitionData: NoticeTypeData = {
 
   seo: {
     title:
-      "Property Partition Legal Notice | Ancestral Property Division ₹1499",
+      "Partition Ancestral Property | Legal Notice | Start ₹499",
     description:
-      "Demand partition of joint family property. Professional notice for property division. Absolute legal right. HUF, ancestral, co-owned property. ₹1499 all inclusive.",
+      "Need to divide joint family property? Get a lawyer-drafted partition notice sent today. Pay ₹499 to start + 2-hr callback. Approve the draft before paying ₹1000.",
     keywords: [
       "property partition legal notice",
       "ancestral property partition",
@@ -2856,9 +2856,9 @@ export const childCustodyData: NoticeTypeData = {
 
   seo: {
     title:
-      "Child Custody Legal Notice | Claim Custody Rights ₹1499 | VakilTech",
+      "Claim Child Custody | Send Legal Notice | Start at ₹499",
     description:
-      "Send legal notice for child custody or visitation rights. Professional drafting for custody disputes. Guardians & Wards Act protection. ₹1499 all inclusive.",
+      "Child custody dispute? Get a confidential, lawyer-drafted custody notice sent today. Pay ₹499 to start + 2-hr callback. Approve the draft before paying ₹1000.",
     keywords: [
       "child custody legal notice",
       "legal notice for child custody",
@@ -3041,9 +3041,9 @@ export const workplaceHarassmentData: NoticeTypeData = {
 
   seo: {
     title:
-      "Workplace Harassment Legal Notice | POSH Act Protection ₹1499 | VakilTech",
+      "Workplace Harassment? | Send POSH Notice | Start at ₹499",
     description:
-      "Send legal notice for workplace sexual harassment or bullying. POSH Act 2013 compliance. ICC investigation demand. ₹1499 all inclusive.",
+      "Facing workplace harassment? Get a confidential POSH Act notice sent today. Pay ₹499 to start + 2-hr callback. Approve the draft before paying ₹1000 balance.",
     keywords: [
       "workplace harassment legal notice",
       "sexual harassment notice",
@@ -3202,9 +3202,9 @@ export const employeeMisconductData: NoticeTypeData = {
 
   seo: {
     title:
-      "Employee Misconduct Legal Notice | Disciplinary Action ₹1499 | VakilTech",
+      "Employee Misconduct? | Disciplinary Notice | Start ₹499",
     description:
-      "Send show cause notice for employee misconduct. Professional drafting for disciplinary proceedings. Due process compliance. ₹1499 all inclusive.",
+      "Employee misconduct issue? Get a lawyer-drafted show cause notice sent today. Pay ₹499 to start + 2-hr callback. Approve the draft before paying ₹1000.",
     keywords: [
       "employee misconduct legal notice",
       "show cause notice format",
@@ -3363,9 +3363,9 @@ export const domesticViolenceData: NoticeTypeData = {
 
   seo: {
     title:
-      "Domestic Violence Legal Notice | PWDVA Protection ₹1499 | VakilTech",
+      "Domestic Violence? | Send PWDVA Notice | Start at ₹499",
     description:
-      "Send legal notice for domestic violence under PWDVA 2005. Protection orders, residence rights, maintenance claims. Fast legal action. ₹1499 all inclusive.",
+      "Facing domestic violence? Get a confidential PWDVA protection notice sent today. Pay ₹499 to start + 2-hr callback. Approve the draft before paying ₹1000.",
     keywords: [
       "domestic violence legal notice",
       "PWDVA legal notice",
@@ -3529,9 +3529,9 @@ export const breachOfContractData: NoticeTypeData = {
 
   seo: {
     title:
-      "Breach of Contract Legal Notice | Contract Enforcement ₹1499 | VakilTech",
+      "Breach of Contract? | Enforce Agreement | Start at ₹499",
     description:
-      "Send legal notice for breach of contract. Demand specific performance or damages. Business and service contracts. ₹1499 all inclusive.",
+      "Contract violated? Get a lawyer-drafted breach of contract notice sent today. Pay ₹499 to start + 2-hr callback. Approve the draft before paying ₹1000.",
     keywords: [
       "breach of contract legal notice",
       "contract violation notice",

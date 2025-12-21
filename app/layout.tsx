@@ -23,20 +23,20 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title:
-    "VakilTech - Online Legal Services India | Legal Notice, Consultation & Agreements",
+    "vakiltech - Online Legal Services India | Legal Notice, Consultation & Agreements",
   description:
     "India's leading online legal services platform. Send legal notices (₹1,499), get expert consultations (₹299), and draft agreements. Handled by Licensed Advocates. 100% online, 24/7 support.",
   keywords: [
-    "VakilTech",
+    "vakiltech",
     "online legal services India",
     "legal notice online",
     "legal consultation",
     "agreement drafting",
     "advocate services online",
   ],
-  authors: [{ name: "VakilTech" }],
-  creator: "VakilTech",
-  publisher: "VakilTech",
+  authors: [{ name: "vakiltech" }],
+  creator: "vakiltech",
+  publisher: "vakiltech",
   metadataBase: new URL("https://vakiltech.in"),
   alternates: {
     canonical: "/",
@@ -50,17 +50,17 @@ export const metadata: Metadata = {
     apple: [{ url: "/assets/apple-touch-icon.png", type: "image/png" }],
   },
   openGraph: {
-    title: "VakilTech - Online Legal Services India",
+    title: "vakiltech - Online Legal Services India",
     description:
       "India's leading online legal services platform. Legal notices, consultations & agreements by Licensed Advocates.",
     url: "https://vakiltech.in",
-    siteName: "VakilTech",
+    siteName: "vakiltech",
     locale: "en_IN",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "VakilTech - Online Legal Services India",
+    title: "vakiltech - Online Legal Services India",
     description:
       "Legal notices, consultations & agreements by Licensed Advocates. 100% online, affordable, professional.",
   },
@@ -127,8 +127,8 @@ export default function RootLayout({
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "Organization",
-              name: "VakilTech",
-              legalName: "VakilTech Legal Services",
+              name: "vakiltech",
+              legalName: "vakiltech Legal Services",
               url: "https://vakiltech.in",
               logo: "https://vakiltech.in/logo.png",
               foundingDate: "2023",
@@ -205,7 +205,7 @@ export default function RootLayout({
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "WebSite",
-              name: "VakilTech",
+              name: "vakiltech",
               url: "https://vakiltech.in",
               potentialAction: {
                 "@type": "SearchAction",

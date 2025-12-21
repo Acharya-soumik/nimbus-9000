@@ -6,7 +6,7 @@ import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title:
-    "Online Lawyer Consultation ₹299 | Talk to Expert Licensed Advocates | VakilTech",
+    "Online Lawyer Consultation ₹299 | Talk to Expert Licensed Advocates | vakiltech",
   description:
     "Get instant legal consultation online from experienced Licensed Advocates. Starting at just ₹299. 24/7 support, 100% confidential. Book your consultation now!",
   keywords: [
@@ -20,9 +20,9 @@ export const metadata: Metadata = {
     "expert legal advice",
     "online legal consultation India",
   ],
-  authors: [{ name: "VakilTech" }],
-  creator: "VakilTech",
-  publisher: "VakilTech",
+  authors: [{ name: "vakiltech" }],
+  creator: "vakiltech",
+  publisher: "vakiltech",
   formatDetection: {
     email: false,
     address: false,
@@ -33,11 +33,11 @@ export const metadata: Metadata = {
     canonical: "/legal-consultation",
   },
   openGraph: {
-    title: "Online Lawyer Consultation ₹299 | VakilTech",
+    title: "Online Lawyer Consultation ₹299 | vakiltech",
     description:
       "Get instant legal consultation from Licensed Advocates. Starting ₹299. 24/7 support, 100% confidential.",
     url: "/legal-consultation",
-    siteName: "VakilTech",
+    siteName: "vakiltech",
     locale: "en_IN",
     type: "website",
     images: [
@@ -45,13 +45,13 @@ export const metadata: Metadata = {
         url: "/assets/send-legal-notice/hero.png",
         width: 1200,
         height: 630,
-        alt: "VakilTech Legal Consultation",
+        alt: "vakiltech Legal Consultation",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Online Lawyer Consultation ₹299 | VakilTech",
+    title: "Online Lawyer Consultation ₹299 | vakiltech",
     description:
       "Get instant legal consultation from Licensed Advocates. Starting ₹299. 24/7 support.",
     images: ["/assets/send-legal-notice/hero.png"],
@@ -76,7 +76,7 @@ export const metadata: Metadata = {
     "answer-to": "How to get online legal consultation in India?",
     question: "Where can I consult a lawyer online?",
     solution:
-      "VakilTech provides expert online legal consultation starting at ₹299",
+      "vakiltech provides expert online legal consultation starting at ₹299",
   },
 };
 

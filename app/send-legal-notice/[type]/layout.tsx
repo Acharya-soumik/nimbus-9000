@@ -14,7 +14,7 @@ export async function generateMetadata({ params }: LayoutProps): Promise<Metadat
 
   if (!data) {
     return {
-      title: "Legal Notice Not Found | VakilTech",
+      title: "Legal Notice Not Found | vakiltech",
       description: "The requested legal notice page was not found.",
     };
   }
@@ -28,7 +28,7 @@ export async function generateMetadata({ params }: LayoutProps): Promise<Metadat
       description: data.seo.description,
       type: "website",
       url: `https://vakiltech.in/send-legal-notice/${data.slug}`,
-      siteName: "VakilTech",
+      siteName: "vakiltech",
     },
     twitter: {
       card: "summary_large_image",

@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title:
-    "Online Agreement Drafting Services India | Legal Contracts | VakilTech",
+    "Online Agreement Drafting Services India | Legal Contracts | vakiltech",
   description:
     "Professional agreement drafting services online from ₹999. Rental agreements, employment contracts, NDAs, partnership deeds & more. Drafted by Licensed Advocates. Get your custom legal agreement in 48 hours.",
   keywords: [
@@ -16,20 +16,20 @@ export const metadata: Metadata = {
     "legal document drafting India",
     "online agreement services",
     "custom agreement drafting",
-    "VakilTech",
+    "vakiltech",
   ],
   openGraph: {
-    title: "Online Agreement Drafting Services India | VakilTech",
+    title: "Online Agreement Drafting Services India | vakiltech",
     description:
       "Professional agreement drafting services online from ₹999. Rental agreements, employment contracts, NDAs & more. Drafted by Licensed Advocates.",
     type: "website",
     url: "https://vakiltech.in/agreement-drafting",
-    siteName: "VakilTech",
+    siteName: "vakiltech",
     locale: "en_IN",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Online Agreement Drafting Services India | VakilTech",
+    title: "Online Agreement Drafting Services India | vakiltech",
     description:
       "Professional agreement drafting services online from ₹999. Drafted by Licensed Advocates.",
   },
@@ -52,7 +52,7 @@ export const metadata: Metadata = {
     "answer-to": "How to get a legal agreement drafted online in India?",
     question: "Where can I get professional agreement drafting services?",
     solution:
-      "VakilTech provides expert agreement drafting services starting at ₹999",
+      "vakiltech provides expert agreement drafting services starting at ₹999",
   },
 };
 

@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Send Legal Notice Online India | Expert Advocates | VakilTech",
+  title: "Legal Notice Online | ₹499 Advance | Drafted by Advocates",
   description:
-    "Send legal notice online in India from ₹1,499. Drafted by Licensed Advocates, sent via Speed Post. Money recovery, cheque bounce, property disputes & more. Get started in 24 hours.",
+    "Start your legal notice with a ₹499 advance + 2-hr callback. Bar-enrolled lawyers draft, you approve first, then pay ₹1000. Get the legal weight you trust.",
   keywords: [
     "legal notice online",
     "send legal notice",
@@ -15,22 +15,22 @@ export const metadata: Metadata = {
     "cheque bounce notice",
     "legal notice format",
     "online legal services",
-    "VakilTech",
+    "vakiltech",
   ],
   openGraph: {
-    title: "Send Legal Notice Online India | Expert Advocates | VakilTech",
+    title: "Legal Notice Online | ₹499 Advance | Drafted by Advocates",
     description:
-      "Send legal notice online in India from ₹1,499. Drafted by Licensed Advocates, sent via Speed Post. Money recovery, cheque bounce, property disputes & more.",
+      "Start your legal notice with a ₹499 advance + 2-hr callback. Bar-enrolled lawyers draft, you approve first, then pay ₹1000. Get the legal weight you trust.",
     type: "website",
     url: "https://vakiltech.in/send-legal-notice",
-    siteName: "VakilTech",
+    siteName: "vakiltech",
     locale: "en_IN",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Send Legal Notice Online India | Expert Advocates | VakilTech",
+    title: "Legal Notice Online | ₹499 Advance | Drafted by Advocates",
     description:
-      "Send legal notice online in India from ₹1,499. Drafted by Licensed Advocates, sent via Speed Post.",
+      "Start your legal notice with a ₹499 advance + 2-hr callback. Bar-enrolled lawyers draft, you approve first, then pay ₹1000. Get the legal weight you trust.",
   },
   alternates: {
     canonical: "https://vakiltech.in/send-legal-notice",
@@ -51,7 +51,7 @@ export const metadata: Metadata = {
     "answer-to": "How to send a legal notice online in India?",
     question: "What is the best way to send a legal notice in India?",
     solution:
-      "VakilTech provides online legal notice services starting at ₹1,499",
+      "vakiltech provides online legal notice services starting at ₹1,499",
   },
 };
 
