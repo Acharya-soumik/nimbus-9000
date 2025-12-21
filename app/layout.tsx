@@ -42,7 +42,11 @@ export const metadata: Metadata = {
     canonical: "/",
   },
   icons: {
-    icon: [{ url: "/assets/favicon.png", type: "image/png" }],
+    icon: [
+      { url: "/assets/favicon-192.png", sizes: "192x192", type: "image/png" },
+      { url: "/assets/favicon-512.png", sizes: "512x512", type: "image/png" },
+      { url: "/assets/favicon.png", sizes: "32x32", type: "image/png" },
+    ],
     apple: [{ url: "/assets/apple-touch-icon.png", type: "image/png" }],
   },
   openGraph: {
@@ -86,7 +90,24 @@ export default function RootLayout({
     <html lang="en">
       <head>
         {/* Favicons and Icons */}
-        <link rel="icon" href="/assets/favicon.png" type="image/png" />
+        <link
+          rel="icon"
+          href="/assets/favicon-192.png"
+          type="image/png"
+          sizes="192x192"
+        />
+        <link
+          rel="icon"
+          href="/assets/favicon-512.png"
+          type="image/png"
+          sizes="512x512"
+        />
+        <link
+          rel="icon"
+          href="/assets/favicon.png"
+          type="image/png"
+          sizes="32x32"
+        />
         <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png" />
         <meta name="theme-color" content="#EF5A6F" />
 
