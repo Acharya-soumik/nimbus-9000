@@ -975,6 +975,13 @@ export function MultiStepForm({
     setCurrentStep(step);
     onStepChange?.(step);
 
+    // Track form step progression
+    if (step === 2) {
+      trackFormStep(serviceType, serviceText.formTitle, 2, "Notice Details");
+    } else if (step === 3) {
+      trackFormStep(serviceType, serviceText.formTitle, 3, "Payment Review");
+    }
+
     if (step > 1) {
       setIsModalOpen(true);
     } else {
@@ -985,6 +992,13 @@ export function MultiStepForm({
   const handleStep1Next = () => {
     const data = step1Form.getValues();
     setFormData((prev) => ({ ...prev, ...data }));
+
+    // Track form start with user data for Advanced Matching
+    trackFormStart(serviceType, serviceText.formTitle, {
+      phone: data.whatsappNumber,
+      name: data.fullName,
+    });
+
     handleStepChange(2);
   };
 
@@ -1029,6 +1043,19 @@ export function MultiStepForm({
 
       const data = await response.json();
       setLeadId(data.leadId);
+
+      // Track form submission (Lead event) with Advanced Matching data
+      trackFormSubmission(
+        serviceType,
+        serviceText.formTitle,
+        currentPrice,
+        {
+          phone: completeData.whatsappNumber,
+          name: completeData.fullName,
+          city: completeData.city,
+        }
+      );
+
       toast.success("Details saved! Now proceed to payment.");
       handleStepChange(3);
     } catch (error) {

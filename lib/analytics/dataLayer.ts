@@ -40,15 +40,52 @@ export const trackPageView = (pagePath: string, serviceType: string) => {
 /**
  * Track form start
  */
-export const trackFormStart = (serviceType: string, formName: string) => {
+export const trackFormStart = (
+  serviceType: string,
+  formName: string,
+  userData?: {
+    phone?: string;
+    name?: string;
+  }
+) => {
   pushToDataLayer({
     event: "form_start",
     service_type: serviceType,
     form_name: formName,
   });
 
-  // Meta Pixel
+  // Meta Pixel with Dynamic Advanced Matching
   if (typeof window !== "undefined" && window.fbq) {
+    const pixelId = process.env.NEXT_PUBLIC_META_PIXEL_ID;
+
+    // Build Advanced Matching data object
+    const advancedMatchingData: any = {};
+
+    if (userData?.phone) {
+      const cleanPhone = userData.phone.replace(/[\s\-\+]/g, "");
+      advancedMatchingData.ph = normalizeData(cleanPhone);
+    }
+
+    if (userData?.name) {
+      const nameParts = userData.name.trim().split(/\s+/);
+      const firstName = nameParts[0] || "";
+      const lastName = nameParts.slice(1).join(" ") || "";
+
+      if (firstName) {
+        advancedMatchingData.fn = normalizeData(firstName);
+      }
+      if (lastName) {
+        advancedMatchingData.ln = normalizeData(lastName);
+      }
+    }
+
+    // Update init with user data (Dynamic Advanced Matching)
+    // Meta will auto-hash with SHA-256
+    if (Object.keys(advancedMatchingData).length > 0 && pixelId) {
+      window.fbq("init", pixelId, advancedMatchingData);
+    }
+
+    // Track Lead event
     window.fbq("track", "Lead", {
       content_name: formName,
       content_category: serviceType,
@@ -91,6 +128,7 @@ export const trackFormSubmission = (
     phone?: string;
     email?: string;
     name?: string;
+    city?: string;
   }
 ) => {
   pushToDataLayer({
@@ -101,24 +139,52 @@ export const trackFormSubmission = (
     currency: "INR",
   });
 
-  // Meta Pixel Lead event with enhanced matching
+  // Meta Pixel Lead event with Dynamic Advanced Matching
   if (typeof window !== "undefined" && window.fbq) {
-    const eventData: any = {
+    const pixelId = process.env.NEXT_PUBLIC_META_PIXEL_ID;
+
+    // Build Advanced Matching data object
+    const advancedMatchingData: any = {};
+
+    if (userData?.phone) {
+      const cleanPhone = userData.phone.replace(/[\s\-\+]/g, "");
+      advancedMatchingData.ph = normalizeData(cleanPhone);
+    }
+
+    if (userData?.email) {
+      advancedMatchingData.em = normalizeData(userData.email);
+    }
+
+    if (userData?.name) {
+      const nameParts = userData.name.trim().split(/\s+/);
+      const firstName = nameParts[0] || "";
+      const lastName = nameParts.slice(1).join(" ") || "";
+
+      if (firstName) {
+        advancedMatchingData.fn = normalizeData(firstName);
+      }
+      if (lastName) {
+        advancedMatchingData.ln = normalizeData(lastName);
+      }
+    }
+
+    if (userData?.city) {
+      advancedMatchingData.ct = normalizeData(userData.city);
+    }
+
+    // Update init with user data (Dynamic Advanced Matching)
+    // Meta will automatically SHA-256 hash this data
+    if (Object.keys(advancedMatchingData).length > 0 && pixelId) {
+      window.fbq("init", pixelId, advancedMatchingData);
+    }
+
+    // Track Lead event with value
+    window.fbq("track", "Lead", {
       content_name: formName,
       content_category: serviceType,
       value: price || 0,
       currency: "INR",
-    };
-
-    // Add hashed user data for CAPI matching
-    if (userData?.phone) {
-      eventData.phone = hashData(userData.phone);
-    }
-    if (userData?.email) {
-      eventData.email = hashData(userData.email);
-    }
-
-    window.fbq("track", "Lead", eventData);
+    });
   }
 };
 
@@ -142,26 +208,31 @@ export const trackCTAClick = (
 };
 
 /**
- * Simple hash function for user data (for Meta CAPI)
- * Uses SHA-256 via Web Crypto API
+ * Normalize user data for Meta Advanced Matching
+ * Meta will automatically SHA-256 hash this data on their servers
+ * Following Meta's normalization rules: lowercase, trim whitespace, remove special chars
+ *
+ * @param data - User data to normalize
+ * @returns Normalized data that Meta will hash
  */
-async function hashData(data: string): Promise<string> {
+function normalizeData(data: string): string {
   if (!data) return "";
 
   try {
-    // Normalize data
-    const normalized = data.toLowerCase().trim();
+    // Normalize according to Meta's requirements:
+    // 1. Convert to lowercase
+    // 2. Remove leading/trailing whitespace
+    // 3. Remove special characters for phone numbers
+    let normalized = data.toLowerCase().trim();
 
-    // Use Web Crypto API for hashing
-    const encoder = new TextEncoder();
-    const dataBuffer = encoder.encode(normalized);
-    const hashBuffer = await crypto.subtle.digest("SHA-256", dataBuffer);
-    const hashArray = Array.from(new Uint8Array(hashBuffer));
-    const hashHex = hashArray.map(b => b.toString(16).padStart(2, "0")).join("");
+    // For phone numbers, remove all non-digit characters
+    if (/^\+?\d/.test(data)) {
+      normalized = normalized.replace(/\D/g, "");
+    }
 
-    return hashHex;
+    return normalized;
   } catch (error) {
-    console.error("Error hashing data:", error);
-    return "";
+    console.error("Error normalizing data:", error);
+    return data.toLowerCase().trim();
   }
 }
