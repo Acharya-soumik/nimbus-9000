@@ -42,55 +42,13 @@ export const trackPageView = (pagePath: string, serviceType: string) => {
  */
 export const trackFormStart = (
   serviceType: string,
-  formName: string,
-  userData?: {
-    phone?: string;
-    name?: string;
-  }
+  formName: string
 ) => {
   pushToDataLayer({
     event: "form_start",
     service_type: serviceType,
     form_name: formName,
   });
-
-  // Meta Pixel with Dynamic Advanced Matching
-  if (typeof window !== "undefined" && window.fbq) {
-    const pixelId = process.env.NEXT_PUBLIC_META_PIXEL_ID;
-
-    // Build Advanced Matching data object
-    const advancedMatchingData: any = {};
-
-    if (userData?.phone) {
-      const cleanPhone = userData.phone.replace(/[\s\-\+]/g, "");
-      advancedMatchingData.ph = normalizeData(cleanPhone);
-    }
-
-    if (userData?.name) {
-      const nameParts = userData.name.trim().split(/\s+/);
-      const firstName = nameParts[0] || "";
-      const lastName = nameParts.slice(1).join(" ") || "";
-
-      if (firstName) {
-        advancedMatchingData.fn = normalizeData(firstName);
-      }
-      if (lastName) {
-        advancedMatchingData.ln = normalizeData(lastName);
-      }
-    }
-
-    // Update init with user data (Dynamic Advanced Matching)
-    // Meta will auto-hash with SHA-256
-    if (Object.keys(advancedMatchingData).length > 0 && pixelId) {
-      window.fbq("init", pixelId, advancedMatchingData);
-    }
-
-    // Track Lead event
-    window.fbq("track", "Lead", {
-      content_name: formName,
-      content_category: serviceType,
-    });
-  }
 };
 
 /**
@@ -102,7 +60,11 @@ export const trackFormStep = (
   serviceType: string,
   formName: string,
   step: number,
-  stepName: string
+  stepName: string,
+  userData?: {
+    phone?: string;
+    name?: string;
+  }
 ) => {
   // Debounce to avoid rapid-fire events
   clearTimeout(stepTimeout);
@@ -114,6 +76,42 @@ export const trackFormStep = (
       step_number: step,
       step_name: stepName,
     });
+
+    // Meta Pixel with Dynamic Advanced Matching (Restored for Step 1)
+    // Only fire if userData is provided (typically Step 1 completion)
+    if (userData && typeof window !== "undefined" && window.fbq) {
+      const pixelId = process.env.NEXT_PUBLIC_META_PIXEL_ID;
+      const advancedMatchingData: any = {};
+
+      if (userData.phone) {
+        const cleanPhone = userData.phone.replace(/[\s\-\+]/g, "");
+        advancedMatchingData.ph = normalizeData(cleanPhone);
+      }
+
+      if (userData.name) {
+        const nameParts = userData.name.trim().split(/\s+/);
+        const firstName = nameParts[0] || "";
+        const lastName = nameParts.slice(1).join(" ") || "";
+
+        if (firstName) {
+          advancedMatchingData.fn = normalizeData(firstName);
+        }
+        if (lastName) {
+          advancedMatchingData.ln = normalizeData(lastName);
+        }
+      }
+
+      if (Object.keys(advancedMatchingData).length > 0 && pixelId) {
+        window.fbq("init", pixelId, advancedMatchingData);
+      }
+
+      window.fbq("track", "Contact", {
+        content_name: formName,
+        content_category: serviceType,
+        status: "step_completed",
+        step_name: stepName
+      });
+    }
   }, 300); // Wait 300ms before firing
 };
 

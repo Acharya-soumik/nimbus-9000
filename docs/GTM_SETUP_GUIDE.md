@@ -27,8 +27,8 @@ This project uses **Google Tag Manager (GTM)** and **Meta Pixel** for tracking k
 - **Parameters**:
   - `service_type`: Service category
   - `form_name`: Form identifier
-- **Triggers**: When user starts filling any form
-- **Meta Pixel**: Lead event with content metadata
+- **Triggers**: **On First Interaction** (focus/type) with the form.
+- **Purpose**: Tracks true "top of funnel" intent.
 
 #### **Form Step Events**
 - **Event Name**: `form_step`
@@ -37,7 +37,10 @@ This project uses **Google Tag Manager (GTM)** and **Meta Pixel** for tracking k
   - `form_name`: Form identifier
   - `step_number`: 1, 2, or 3
   - `step_name`: "Contact Info" | "Service Details" | "Payment"
-- **Triggers**: When user completes each step (debounced 300ms)
+- **Triggers**: When user **completes** each step.
+  - Step 1: After entering valid Name/Phone
+  - Step 2: After entering Service Details
+  - Step 3: (Payment Review view)
 - **Note**: Debounced to prevent excessive events
 
 #### **Form Submission Events (Lead)**
@@ -200,10 +203,10 @@ META_CAPI_ACCESS_TOKEN=YOUR_CAPI_ACCESS_TOKEN_HERE
 ### Recommended Funnel:
 
 1. **Step 1: Page View** → `page_view` event with `service_type`
-2. **Step 2: Form Start** → `form_start` event
-3. **Step 3: Contact Info** → `form_step` event where `step_number` = 1
-4. **Step 4: Service Details** → `form_step` event where `step_number` = 2
-5. **Step 5: Lead** → `form_submit` event
+2. **Step 2: Form Start** → `form_start` (User clicked input)
+3. **Step 3: Contact Info** → `form_step` (step_number = 1)
+4. **Step 4: Service Details** → `form_step` (step_number = 2)
+5. **Step 5: Lead** → `form_submit`
 
 ### GA4 Exploration Setup:
 
@@ -212,9 +215,9 @@ META_CAPI_ACCESS_TOKEN=YOUR_CAPI_ACCESS_TOKEN_HERE
 3. Add steps:
    - Step 1: `page_view` where `service_type` equals "Legal Notice"
    - Step 2: `form_start`
-   - Step 3: `form_step` where `step_number` equals "1"
-   - Step 4: `form_step` where `step_number` equals "2"
-   - Step 5: `generate_lead`
+   - Step 3: `form_step` where `step_number` equals "1" (Contact Info Captured)
+   - Step 4: `form_step` where `step_number` equals "2" (Details Filled)
+   - Step 5: `generate_lead` (Payment/Submit)
 
 4. **Segment by**:
    - `service_type` to compare services
@@ -282,6 +285,30 @@ Open console after form submission:
 // Phone number should be hashed
 console.log(window.dataLayer.filter(e => e.event === 'form_submit'));
 ```
+
+---
+
+## 🏛️ Architecture: GTM vs Meta Pixel
+
+To ensure maximum accuracy and ad performance, we use a hybrid approach. It is important not to confuse their distinct roles:
+
+### 1. Google Tag Manager (GTM)
+-   **Purpose**: General Analysis (GA4), Funnel Visualization, User Behavior.
+-   **Method**: Listens to the `dataLayer` (e.g., `form_start`, `form_step`).
+-   **Privacy**: Does **NOT** receive PII (Names/Phone Numbers) in plain text.
+
+### 2. Meta Pixel (Direct Code)
+-   **Purpose**: Ad Optimization, Retargeting, Advanced Matching.
+-   **Method**: Fires directly from code (`window.fbq`).
+-   **Privacy**: Hashes Name/Phone (SHA-256) securely in the browser before sending to Meta.
+-   **Why Direct?**: Sending PII to GTM DataLayer is a security risk. Direct coding ensures we can hash it immediately and send it to Meta without exposing it to other scripts.
+
+> [!NOTE]
+> **Ad Reporting Logic**:
+> 1.  **Step 1 Complete** = `Contact` Event (Captured Phone/Name). optimize for this if you want cheap volume.
+> 2.  **Final Submit** = `Lead` Event (Actual Conversion). Optimize for this for quality.
+>
+> This separation ensures you have **ZERO** duplicate leads in your main reporting column.
 
 ---
 

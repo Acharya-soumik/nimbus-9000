@@ -272,6 +272,7 @@ interface Step1Props {
   setPhoneValidationError: (value: string) => void;
   onNext: () => void;
   formTitle: string;
+  onFormStart: () => void;
 }
 
 function FormStep1({
@@ -284,6 +285,7 @@ function FormStep1({
   setPhoneValidationError,
   onNext,
   formTitle,
+  onFormStart,
 }: Step1Props) {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -404,6 +406,7 @@ function FormStep1({
                     ? "border-red-500"
                     : "border-gray-200"
                 )}
+                onFocus={onFormStart}
               />
               <div className="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2">
                 <UserIcon className="text-text-muted" />
@@ -442,6 +445,7 @@ function FormStep1({
                 placeholder="98765 43210"
                 value={phoneNumber}
                 onChange={(e) => handlePhoneChange(e.target.value)}
+                onFocus={onFormStart}
                 className="flex-1 bg-transparent px-4 py-3.5 text-base text-text-body placeholder:text-text-muted focus:outline-none"
               />
             </div>
@@ -914,6 +918,7 @@ export function MultiStepForm({
   const [isCreatingLead, setIsCreatingLead] = React.useState(false);
   const [isProcessingPayment, setIsProcessingPayment] = React.useState(false);
   const [isRazorpayLoaded, setIsRazorpayLoaded] = React.useState(false);
+  const [hasStarted, setHasStarted] = React.useState(false);
 
   // Exit intent state
   const [showExitIntent, setShowExitIntent] = React.useState(false);
@@ -971,6 +976,13 @@ export function MultiStepForm({
     };
   }, [currentStep, isRazorpayLoaded]);
 
+  const handleFormStart = () => {
+    if (!hasStarted) {
+      setHasStarted(true);
+      trackFormStart(serviceType, serviceText.formTitle);
+    }
+  };
+
   const handleStepChange = (step: number) => {
     setCurrentStep(step);
     onStepChange?.(step);
@@ -993,8 +1005,8 @@ export function MultiStepForm({
     const data = step1Form.getValues();
     setFormData((prev) => ({ ...prev, ...data }));
 
-    // Track form start with user data for Advanced Matching
-    trackFormStart(serviceType, serviceText.formTitle, {
+    // Track form step 1 completion
+    trackFormStep(serviceType, serviceText.formTitle, 1, "Contact Info", {
       phone: data.whatsappNumber,
       name: data.fullName,
     });
@@ -1255,6 +1267,7 @@ export function MultiStepForm({
           setPhoneValidationError={setPhoneValidationError}
           onNext={handleStep1Next}
           formTitle={serviceText.formTitle}
+          onFormStart={handleFormStart}
         />
       )}
 
