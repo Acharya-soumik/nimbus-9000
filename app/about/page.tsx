@@ -95,7 +95,7 @@ export default function AboutPage() {
 
       {/* Floating WhatsApp Button */}
       <WhatsAppFloater
-        phoneNumber="9170476 83995"
+        phoneNumber="917047683995"
         message="Hi! I visited your About page and would like to learn more about VakilTech."
       />
     </main>

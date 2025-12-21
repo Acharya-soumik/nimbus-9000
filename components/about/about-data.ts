@@ -458,7 +458,7 @@ export const servicesCTAContent = {
       "Our team can help you figure out the best path forward. No pressure, no sales pitch.",
     buttonText: "Talk to Us on WhatsApp",
     whatsappLink:
-      "https://wa.me/9170476 83995?text=Hi! I visited your About page and need some guidance.",
+      "https://wa.me/917047683995?text=Hi! I visited your About page and need some guidance.",
   },
 };
 

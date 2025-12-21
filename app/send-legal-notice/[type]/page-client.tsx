@@ -376,7 +376,11 @@ export function LegalNoticeTypePageClient({
                   price: "Free",
                   priceUnit: " Consultation",
                   onClick: () => {
-                    // Open WhatsApp or consultation booking
+                    const message = encodeURIComponent(
+                      `Hi! I need help with ${data.title.toLowerCase()}. Can I get a free consultation?`
+                    );
+                    const whatsappUrl = `https://wa.me/917047683995?text=${message}`;
+                    window.open(whatsappUrl, "_blank", "noopener,noreferrer");
                   },
                 },
               ]}
@@ -507,7 +511,7 @@ export function LegalNoticeTypePageClient({
 
         {/* WhatsApp Floater */}
         <WhatsAppFloater
-          phoneNumber="9170476 83995"
+          phoneNumber="917047683995"
           message={`Hi! I need help with ${data.title.toLowerCase()}. Can you assist me?`}
         />
       </main>

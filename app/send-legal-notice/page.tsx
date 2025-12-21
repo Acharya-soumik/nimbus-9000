@@ -601,13 +601,36 @@ export default function LegalNoticePage() {
         <section className="mx-auto max-w-7xl space-y-12 px-4 py-12 sm:px-6 lg:px-8">
           {/* Variant 1 - Side by side on desktop */}
           <div id="info-variant-1" className="mx-auto max-w-md lg:max-w-none">
-            <InfoSectionVariant1 />
+            <InfoSectionVariant1 onCtaClick={scrollToForm} />
           </div>
 
           {/* Grid of Variant 2 and 3 on desktop */}
           <div className="grid gap-8 lg:grid-cols-2">
             <div id="info-variant-2">
-              <InfoSectionVariant2 />
+              <InfoSectionVariant2
+                ctaCards={[
+                  {
+                    variant: "primary" as const,
+                    title: "Draft Notice Now",
+                    subtitle: "Verified by experts",
+                    price: "₹499",
+                    onClick: scrollToForm,
+                  },
+                  {
+                    variant: "secondary" as const,
+                    title: "Talk to a Lawyer",
+                    price: "₹299",
+                    priceUnit: "/call",
+                    onClick: () => {
+                      const message = encodeURIComponent(
+                        "Hi! I need help with a legal notice. Can I get a free consultation?"
+                      );
+                      const whatsappUrl = `https://wa.me/917047683995?text=${message}`;
+                      window.open(whatsappUrl, "_blank", "noopener,noreferrer");
+                    },
+                  },
+                ]}
+              />
             </div>
             <div id="info-variant-3">
               <InfoSectionVariant3 />
@@ -659,7 +682,7 @@ export default function LegalNoticePage() {
         />
         {/* WhatsApp Floater */}
         <WhatsAppFloater
-          phoneNumber="9170476 83995"
+          phoneNumber="917047683995"
           message="Hi! I'm interested in getting a legal notice drafted. Can you help me?"
         />
         {/* Sticky CTA Bar (Mobile) */}

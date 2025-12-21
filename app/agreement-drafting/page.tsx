@@ -324,7 +324,7 @@ export default function AgreementDraftingPage() {
 
       {/* WhatsApp Floater */}
       <WhatsAppFloater
-        phoneNumber="9170476 83995"
+        phoneNumber="917047683995"
         message="Hi! I'm interested in getting an agreement drafted. Can you help me?"
       />
 

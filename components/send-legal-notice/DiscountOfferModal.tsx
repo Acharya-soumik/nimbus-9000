@@ -246,7 +246,7 @@ export function DiscountOfferModal({
         showCloseButton={false}
         drawerProps={{
           className: cn(
-            "!max-h-dvh !mt-0 !rounded-t-3xl flex flex-col",
+            "!max-h-dvh !h-dvh !mt-0 !rounded-t-3xl flex flex-col",
             className
           ),
         }}
@@ -272,7 +272,7 @@ export function DiscountOfferModal({
         </div>
 
         {/* Scrollable Content */}
-        <div className="flex-1 overflow-y-auto p-6 pb-4">
+        <div className="flex-1 overflow-y-auto p-6 pb-4 min-h-0">
           {/* Headline */}
           <h2 className="mb-4 text-center text-2xl font-bold text-text-heading">
             {headline}
