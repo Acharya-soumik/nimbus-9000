@@ -352,7 +352,7 @@ export default function LegalNoticePage() {
       />
       <main>
         {/* Breadcrumb Navigation */}
-        <div className="mx-auto max-w-7xl px-4 pt-6 sm:px-6 lg:px-8">
+        <div className="mx-auto max-w-7xl px-8 pt-6 sm:px-6 lg:px-8">
           <Breadcrumb
             items={[
               { label: "Home", href: "/" },
@@ -584,9 +584,11 @@ export default function LegalNoticePage() {
         <ServingCitiesSection
           onCityClick={(cityId) => {
             console.log("City clicked:", cityId);
+            scrollToForm();
           }}
           onViewAllClick={() => {
             console.log("View all cities clicked");
+            scrollToForm();
           }}
         />
         {/* FAQ Section */}

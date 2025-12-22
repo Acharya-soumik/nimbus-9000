@@ -3,6 +3,7 @@
 import * as React from "react";
 import { cn } from "@/lib/utils";
 import { Input } from "@/components/ui/input";
+import { MovingBorderInputWrapper } from "@/components/ui/moving-border-input-wrapper";
 
 /* =============================================================================
  * TYPE DEFINITIONS
@@ -286,13 +287,15 @@ export function PopularLegalNotices({
 
         {/* Search Bar */}
         <div className="mx-auto mb-10 max-w-md">
-          <Input
-            type="search"
-            placeholder="Search for a legal notice (e.g., Divorce, Cheque Bounce)..."
-            className="h-12 w-full rounded-xl border-gray-200 bg-white px-4 text-base shadow-sm ring-1 ring-gray-100 placeholder:text-gray-400 focus:border-primary focus:ring-primary/20 sm:text-base"
-            value={searchQuery}
-            onChange={(e) => setSearchQuery(e.target.value)}
-          />
+          <MovingBorderInputWrapper borderRadius="0.75rem" className="bg-white">
+            <Input
+              type="search"
+              placeholder="Search for a legal notice (e.g., Divorce, Cheque Bounce)..."
+              className="h-12 w-full border-0 bg-transparent px-4 text-base shadow-none ring-0 placeholder:text-gray-400 focus-visible:ring-0 sm:text-base"
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+            />
+          </MovingBorderInputWrapper>
         </div>
 
         {/* Notice Cards */}

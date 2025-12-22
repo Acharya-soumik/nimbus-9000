@@ -459,9 +459,9 @@ function FormStep1({
           {/* Submit Button */}
           <button
             type="submit"
-            disabled={
-              !form.formState.isValid || !!phoneValidationError || !phoneNumber
-            }
+            // disabled={
+            //   !form.formState.isValid || !!phoneValidationError || !phoneNumber
+            // }
             className="flex w-full items-center justify-center gap-2 rounded-2xl py-4 text-base font-semibold text-white transition-all hover:scale-[1.02] hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-primary/30 active:scale-[0.98] disabled:opacity-50 disabled:cursor-not-allowed"
             style={{
               background:
@@ -572,7 +572,7 @@ function FormStep2({ form, onBack, onNext, isSubmitting, serviceType }: Step2Pro
   return (
     <>
       {/* Scrollable Content */}
-      <div className="flex-1 overflow-y-auto px-4 pb-4">
+      <div className="flex-1 overflow-y-auto px-4 pb-4 max-h-[60vh] sm:max-h-[calc(100vh-220px)] [&::-webkit-scrollbar]:w-1.5 [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-track]:bg-transparent [&::-webkit-scrollbar-thumb]:bg-primary">
         {/* Progress Section */}
         <div className="mb-6">
           <ProgressBar current={2} total={3} className="mb-2" />
@@ -757,7 +757,7 @@ function FormStep3({
   return (
     <>
       {/* Scrollable Content */}
-      <div className="flex-1 overflow-y-auto px-4 pb-4">
+      <div className="flex-1 overflow-y-auto px-4 pb-4 max-h-[60vh] sm:max-h-[calc(100vh-220px)] [&::-webkit-scrollbar]:w-1.5 [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-track]:bg-transparent [&::-webkit-scrollbar-thumb]:bg-primary">
         {/* Progress Section */}
         <div className="mb-6">
           <ProgressBar current={3} total={3} className="mb-2" />

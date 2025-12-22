@@ -349,7 +349,6 @@ function ConsultationHeroSection() {
 export default function LegalConsultationPage() {
   const [showDiscountModal, setShowDiscountModal] = useState(false);
   const [showExitModal, setShowExitModal] = useState(false);
-  const [hasExitModalShown, setHasExitModalShown] = useState(false);
 
   // Form submission handler
   const handleFormSubmit = (data: {
@@ -377,19 +376,6 @@ export default function LegalConsultationPage() {
     setShowExitModal(false);
   };
 
-  // Exit intent detection (desktop only)
-  useEffect(() => {
-    const handleMouseLeave = (e: MouseEvent) => {
-      if (e.clientY <= 0 && !hasExitModalShown && !showDiscountModal) {
-        setShowExitModal(true);
-        setHasExitModalShown(true);
-      }
-    };
-
-    document.addEventListener("mouseleave", handleMouseLeave);
-    return () => document.removeEventListener("mouseleave", handleMouseLeave);
-  }, [hasExitModalShown, showDiscountModal]);
-
   // Scroll to form handler
   const scrollToForm = () => {
     document
@@ -407,13 +393,14 @@ export default function LegalConsultationPage() {
     <main>
       {/* Page View Tracking */}
       <PageViewTracker serviceType="Legal Consultation" />
-
+      <div className="mx-auto max-w-7xl px-8 pt-6 sm:px-6 lg:px-8">  
       <Breadcrumb
         items={[
           { label: "Home", href: "/" },
           { label: "Legal Consultation", href: "/legal-consultation" },
         ]}
       />
+      </div>
       {/* Hero Section */}
       <ConsultationHeroSection />
 

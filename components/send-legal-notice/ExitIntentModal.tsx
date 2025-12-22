@@ -350,10 +350,8 @@ export function ExitIntentModal({
   };
 
   const handleModalClose = () => {
-    // Only allow closing from reason-capture view
-    if (currentView === "reason-capture") {
-      resetAndClose();
-    }
+    // Allow closing from any view - call onDismiss to handle cleanup
+    handleDismiss();
   };
 
   return (
@@ -363,7 +361,7 @@ export function ExitIntentModal({
           "flex h-full max-h-dvh flex-col border-0 p-0 sm:h-auto sm:max-h-[90vh] sm:max-w-md",
           className
         )}
-        showCloseButton={currentView === "reason-capture"}
+        showCloseButton={true}
         drawerProps={{
           className: cn(
             "!max-h-dvh !h-dvh !mt-0 !rounded-t-3xl flex flex-col",
@@ -435,9 +433,9 @@ export function ExitIntentModal({
               {/* Dismiss Link */}
               <button
                 onClick={handleDismiss}
-                className="w-full text-center text-sm text-text-muted hover:text-text-medium hover:underline"
+                className="w-full text-center text-sm font-medium text-text-body hover:text-text-heading hover:underline"
               >
-                {dismissText}
+                No thanks, close form
               </button>
             </div>
           </>
@@ -620,9 +618,9 @@ function DiscountOfferView({
 
         <button
           onClick={onDecline}
-          className="w-full text-center text-sm text-text-muted hover:text-text-medium hover:underline"
+          className="w-full rounded-xl border-2 border-gray-300 bg-white py-3 text-sm font-semibold text-text-body transition-all hover:border-gray-400 hover:bg-gray-50"
         >
-          No thanks, I&apos;ll close
+          No thanks, close form
         </button>
       </div>
     </div>
@@ -769,7 +767,7 @@ function ConsultationOfferView({
 
         <button
           onClick={onSkipToFullService}
-          className="w-full text-center text-sm text-text-muted hover:text-text-medium hover:underline"
+          className="w-full rounded-xl border-2 border-gray-300 bg-white py-3 text-sm font-semibold text-text-body transition-all hover:border-gray-400 hover:bg-gray-50"
         >
           Skip to full service - ₹{regularPrice}
         </button>

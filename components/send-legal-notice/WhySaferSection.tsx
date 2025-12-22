@@ -86,8 +86,8 @@ function FeatureCard({ image, title, description }: SafetyFeature) {
 export function WhySaferSection({
   className,
   title = "Why",
-  titleHighlight = "VakilTech",
-  titleSuffix = "is the Best ?",
+  titleHighlight = "VakilTech!",
+  titleSuffix = "",
   features = defaultFeatures,
 }: WhySaferSectionProps) {
   return (
