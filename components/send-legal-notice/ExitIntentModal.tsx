@@ -79,7 +79,10 @@ function useCountdown(initialSeconds: number) {
     seconds,
     timeLeft,
     isExpired,
-    formatted: `${String(minutes).padStart(2, "0")}:${String(seconds).padStart(2, "0")}`,
+    formatted: `${String(minutes).padStart(2, "0")}:${String(seconds).padStart(
+      2,
+      "0"
+    )}`,
   };
 }
 
@@ -227,12 +230,36 @@ function DocumentIcon({ className }: { className?: string }) {
  * ============================================================================= */
 
 const defaultExitReasons: ExitReason[] = [
-  { id: "price-high", icon: <span className="text-xl">💰</span>, text: "Price is too high" },
-  { id: "need-discussion", icon: <span className="text-xl">💬</span>, text: "Need to discuss first" },
-  { id: "not-sure", icon: <span className="text-xl">❓</span>, text: "Not sure if it works" },
-  { id: "think-about", icon: <span className="text-xl">⏳</span>, text: "Want to think about it" },
-  { id: "no-trust", icon: <span className="text-xl">🔒</span>, text: "Don't trust online services" },
-  { id: "comparing", icon: <span className="text-xl">🔍</span>, text: "Just comparing prices" },
+  {
+    id: "price-high",
+    icon: <span className="text-xl">💰</span>,
+    text: "Price is too high",
+  },
+  {
+    id: "need-discussion",
+    icon: <span className="text-xl">💬</span>,
+    text: "Need to discuss first",
+  },
+  {
+    id: "not-sure",
+    icon: <span className="text-xl">❓</span>,
+    text: "Not sure if it works",
+  },
+  {
+    id: "think-about",
+    icon: <span className="text-xl">⏳</span>,
+    text: "Want to think about it",
+  },
+  {
+    id: "no-trust",
+    icon: <span className="text-xl">🔒</span>,
+    text: "Don't trust online services",
+  },
+  {
+    id: "comparing",
+    icon: <span className="text-xl">🔍</span>,
+    text: "Just comparing prices",
+  },
 ];
 
 /* =============================================================================
@@ -256,7 +283,8 @@ export function ExitIntentModal({
   const [currentView, setCurrentView] = React.useState<
     "reason-capture" | "discount-offer" | "consultation-offer"
   >("reason-capture");
-  const [selectedReason, setSelectedReason] = React.useState<ExitReasonId>(null);
+  const [selectedReason, setSelectedReason] =
+    React.useState<ExitReasonId>(null);
 
   // Determine offer type based on reason
   const getOfferType = (reason: ExitReasonId): OfferType => {
@@ -386,7 +414,7 @@ export function ExitIntentModal({
                         : "border-gray-200 bg-white hover:border-gray-300 hover:bg-gray-50"
                     )}
                   >
-                    <span className="flex-shrink-0">{reason.icon}</span>
+                    <span className="shrink-0">{reason.icon}</span>
                     <span
                       className={cn(
                         "text-sm font-medium",
@@ -465,7 +493,8 @@ function DiscountOfferView({
       <div
         className="shrink-0 rounded-t-3xl px-6 py-4 text-center md:rounded-t-lg"
         style={{
-          background: "linear-gradient(90deg, #FB923C 0%, #F97316 50%, #EA580C 100%)",
+          background:
+            "linear-gradient(90deg, #FB923C 0%, #F97316 50%, #EA580C 100%)",
         }}
       >
         <div className="flex items-center justify-center gap-2">
@@ -504,7 +533,9 @@ function DiscountOfferView({
             <p className="mb-1 text-xs font-bold uppercase tracking-wider text-text-muted">
               YOUR PRICE TODAY
             </p>
-            <p className="text-4xl font-bold text-success">₹{discountedPrice}</p>
+            <p className="text-4xl font-bold text-success">
+              ₹{discountedPrice}
+            </p>
           </div>
 
           <div className="inline-flex items-center gap-1.5 rounded-full bg-success-light px-3 py-1.5">
@@ -518,29 +549,41 @@ function DiscountOfferView({
         <div className="mb-6 flex flex-wrap justify-center gap-2">
           <div className="inline-flex items-center gap-1.5 rounded-full border border-gray-200 bg-white px-3 py-1.5">
             <StarIcon className="h-4 w-4 text-warning-gold" />
-            <span className="text-xs font-medium text-text-medium">500+ notices</span>
+            <span className="text-xs font-medium text-text-medium">
+              500+ notices
+            </span>
           </div>
           <div className="inline-flex items-center gap-1.5 rounded-full border border-gray-200 bg-white px-3 py-1.5">
             <CurrencyIcon className="h-4 w-4 text-success" />
-            <span className="text-xs font-medium text-text-medium">15,000+ customers</span>
+            <span className="text-xs font-medium text-text-medium">
+              15,000+ customers
+            </span>
           </div>
           <div className="inline-flex items-center gap-1.5 rounded-full border border-gray-200 bg-white px-3 py-1.5">
             <BoltIcon className="h-4 w-4 text-warning-bright" />
-            <span className="text-xs font-medium text-text-medium">24hr service</span>
+            <span className="text-xs font-medium text-text-medium">
+              24hr service
+            </span>
           </div>
         </div>
 
         {/* Benefits */}
         <div className="mb-6">
-          <h3 className="mb-3 text-sm font-bold text-text-heading">Why act now:</h3>
+          <h3 className="mb-3 text-sm font-bold text-text-heading">
+            Why act now:
+          </h3>
           <div className="space-y-2">
             <div className="flex items-center gap-3">
               <BoltIcon className="h-4 w-4 text-warning-gold" />
-              <span className="text-sm text-text-medium">Lawyer assigned in 30 mins</span>
+              <span className="text-sm text-text-medium">
+                Lawyer assigned in 30 mins
+              </span>
             </div>
             <div className="flex items-center gap-3">
               <DocumentIcon className="h-4 w-4 text-info" />
-              <span className="text-sm text-text-medium">Notice ready in 24 hrs</span>
+              <span className="text-sm text-text-medium">
+                Notice ready in 24 hrs
+              </span>
             </div>
           </div>
         </div>
@@ -612,7 +655,8 @@ function ConsultationOfferView({
       <div
         className="shrink-0 rounded-t-3xl px-6 py-4 text-center md:rounded-t-lg"
         style={{
-          background: "linear-gradient(90deg, #FEF3C7 0%, #FDE68A 50%, #FCD34D 100%)",
+          background:
+            "linear-gradient(90deg, #FEF3C7 0%, #FDE68A 50%, #FCD34D 100%)",
         }}
       >
         <div className="flex items-center justify-center gap-2">
@@ -640,19 +684,27 @@ function ConsultationOfferView({
 
         {/* Benefits */}
         <div className="mb-6">
-          <h4 className="mb-3 text-sm font-bold text-text-heading">What you get:</h4>
+          <h4 className="mb-3 text-sm font-bold text-text-heading">
+            What you get:
+          </h4>
           <div className="space-y-2">
             <div className="flex items-start gap-3">
               <span className="text-lg">📞</span>
-              <span className="text-sm text-text-medium">Detailed call with expert lawyer</span>
+              <span className="text-sm text-text-medium">
+                Detailed call with expert lawyer
+              </span>
             </div>
             <div className="flex items-start gap-3">
               <span className="text-lg">💪</span>
-              <span className="text-sm text-text-medium">Understand your case strength</span>
+              <span className="text-sm text-text-medium">
+                Understand your case strength
+              </span>
             </div>
             <div className="flex items-start gap-3">
               <span className="text-lg">✅</span>
-              <span className="text-sm text-text-medium">Know if legal notice will help</span>
+              <span className="text-sm text-text-medium">
+                Know if legal notice will help
+              </span>
             </div>
           </div>
         </div>
@@ -663,7 +715,9 @@ function ConsultationOfferView({
             <p className="mb-1 text-xs font-bold uppercase tracking-wider text-text-muted">
               CONSULTATION PRICE
             </p>
-            <p className="text-4xl font-bold text-primary">₹{consultationPrice}</p>
+            <p className="text-4xl font-bold text-primary">
+              ₹{consultationPrice}
+            </p>
           </div>
 
           <div className="flex items-center justify-center gap-2 rounded-lg bg-green-50 px-3 py-2">
@@ -677,8 +731,9 @@ function ConsultationOfferView({
         {/* Trust Message */}
         <div className="mb-6 rounded-lg border border-gray-200 bg-gray-50 p-4 text-center">
           <p className="text-xs text-text-medium">
-            <span className="font-bold text-primary">Honesty Promise:</span> If notice won&apos;t
-            work, we&apos;ll tell you upfront. Full refund guaranteed.
+            <span className="font-bold text-primary">Honesty Promise:</span> If
+            notice won&apos;t work, we&apos;ll tell you upfront. Full refund
+            guaranteed.
           </p>
         </div>
 
@@ -724,4 +779,3 @@ function ConsultationOfferView({
 }
 
 export default ExitIntentModal;
-
