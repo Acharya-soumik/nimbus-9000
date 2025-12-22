@@ -58,7 +58,7 @@ This document tracks all legal notice topics available on the VakilTalk platform
 
 | # | Topic Name | Slug | Page URL | SEO Status |
 |---|------------|------|----------|------------|
-| 16 | Legal Notice for Criminal Defamation | `legal-notice-for-criminal-defamation` | https://vakiltalk.com/send-legal-notice/legal-notice-for-criminal-defamation | ⏳ Pending |
+| 16 | Legal Notice for Criminal Defamation | `legal-notice-for-criminal-defamation` | https://vakiltalk.com/send-legal-notice/legal-notice-for-criminal-defamation | ✅ Complete |
 | 17 | Legal Notice for Domestic Violence | `legal-notice-for-domestic-violence` | https://vakiltalk.com/send-legal-notice/legal-notice-for-domestic-violence | ⏳ Pending |
 
 ---

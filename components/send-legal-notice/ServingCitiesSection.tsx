@@ -131,7 +131,7 @@ function CityCard({ city, onClick }: CityCardProps) {
         <h3 className="font-sans text-base font-bold text-text-heading">
           {city.name}
         </h3>
-        <p className="mt-0.5 text-sm text-text-muted">{city.state}</p>
+        <p className="mt-0.5 text-sm text-text-muted group-hover:text-primary">{city.state}</p>
       </div>
     </>
   );
