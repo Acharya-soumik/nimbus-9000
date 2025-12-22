@@ -40,9 +40,20 @@ export function SimpleCombobox({
   // Filter options based on search
   const filteredOptions = React.useMemo(() => {
     if (!searchValue) return options
-    return options.filter(option =>
+    const filtered = options.filter(option =>
       option.label.toLowerCase().includes(searchValue.toLowerCase())
     )
+    
+    // If no results found and "Others" option exists in original options,
+    // show "Others" as a fallback option
+    if (filtered.length === 0 && searchValue) {
+      const othersOption = options.find(opt => opt.value === "Others")
+      if (othersOption) {
+        return [othersOption]
+      }
+    }
+    
+    return filtered
   }, [options, searchValue])
 
   // Update selected option when value prop changes

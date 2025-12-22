@@ -554,7 +554,20 @@ function FormStep2({ form, onBack, onNext, isSubmitting, serviceType }: Step2Pro
   const [selectedCity, setSelectedCity] = React.useState<string>(
     form.getValues("city") || ""
   );
+  const [customCity, setCustomCity] = React.useState<string>("");
   const cityOptions = React.useMemo(() => getCityOptions(), []);
+
+  // Check if "Others" is selected
+  const isOthersSelected = selectedCity === "Others";
+
+  // Update form value when custom city changes
+  React.useEffect(() => {
+    if (isOthersSelected && customCity) {
+      form.setValue("city", customCity, {
+        shouldValidate: true,
+      });
+    }
+  }, [isOthersSelected, customCity, form]);
 
   return (
     <>
@@ -625,22 +638,54 @@ function FormStep2({ form, onBack, onNext, isSubmitting, serviceType }: Step2Pro
               value={selectedCity}
               onValueChange={(value) => {
                 setSelectedCity(value);
-                form.setValue("city", value, {
-                  shouldValidate: true,
-                });
+                if (value !== "Others") {
+                  // If not "Others", set the city value directly
+                  setCustomCity("");
+                  form.setValue("city", value, {
+                    shouldValidate: true,
+                  });
+                } else {
+                  // If "Others", clear the form value until custom city is entered
+                  form.setValue("city", "", {
+                    shouldValidate: true,
+                  });
+                }
               }}
               placeholder="Search your city"
               searchPlaceholder="Search cities..."
               emptyMessage="No cities found"
               className={cn(
                 "h-12 text-base",
-                form.formState.errors.city ? "border-red-500" : ""
+                form.formState.errors.city && !isOthersSelected ? "border-red-500" : ""
               )}
             />
-            {form.formState.errors.city && (
+            {form.formState.errors.city && !isOthersSelected && (
               <p className="mt-1 text-sm text-red-500">
                 {form.formState.errors.city.message}
               </p>
+            )}
+            
+            {/* Custom City Input - shown when "Others" is selected */}
+            {isOthersSelected && (
+              <div className="mt-3">
+                <input
+                  type="text"
+                  value={customCity}
+                  onChange={(e) => setCustomCity(e.target.value)}
+                  placeholder="Enter your city name"
+                  className={cn(
+                    "w-full rounded-xl border bg-gray-50/50 px-4 py-3.5 text-base text-text-body placeholder:text-text-muted focus:border-primary focus:bg-white focus:outline-none focus:ring-2 focus:ring-primary/20 transition-all",
+                    form.formState.errors.city || (!customCity && isOthersSelected)
+                      ? "border-red-500"
+                      : "border-gray-200"
+                  )}
+                />
+                {!customCity && (
+                  <p className="mt-1 text-sm text-red-500">
+                    Please enter your city name
+                  </p>
+                )}
+              </div>
             )}
           </div>
         </div>
@@ -661,7 +706,7 @@ function FormStep2({ form, onBack, onNext, isSubmitting, serviceType }: Step2Pro
           <button
             type="button"
             onClick={onNext}
-            disabled={!form.formState.isValid || isSubmitting}
+            disabled={!form.formState.isValid || isSubmitting || (isOthersSelected && !customCity)}
             className="flex flex-1 items-center justify-center gap-2 rounded-xl py-3.5 text-base font-semibold text-white transition-all hover:scale-[1.02] disabled:opacity-50 disabled:cursor-not-allowed"
             style={{
               background:
