@@ -1,4 +1,5 @@
 # CORRECTED SEO STRATEGY FOR VAKILTECH
+
 ## Hybrid Approach: Service Pages + Informational Content
 
 **Date:** December 22, 2025
@@ -22,6 +23,7 @@ You already have an **excellent service page structure**:
 ```
 
 **These are PERFECT for:**
+
 - ✅ Transactional intent (people ready to buy)
 - ✅ Service-specific keywords ("send legal notice for X")
 - ✅ Direct conversions
@@ -34,11 +36,13 @@ You already have an **excellent service page structure**:
 ## THE PROBLEM (Why You're Not Getting Traffic)
 
 Your service pages target **buyer keywords** like:
+
 - "legal notice for money recovery" (service-focused)
 - "send legal notice online" (ready to buy)
 - "legal notice cost" (comparison shopping)
 
 But you're MISSING **researcher keywords** like:
+
 - "how to recover money from friend legally" (14,000/month)
 - "what to do when someone doesn't pay back loan" (8,500/month)
 - "cheque bounce case procedure step by step" (6,200/month)
@@ -94,6 +98,7 @@ BOTTOM OF FUNNEL (Conversion)
 **Location:** `/guides/[topic]`
 
 **Examples:**
+
 - `/guides/money-recovery-complete-guide-india`
 - `/guides/property-disputes-resolution-guide`
 - `/guides/divorce-process-india-guide`
@@ -101,6 +106,7 @@ BOTTOM OF FUNNEL (Conversion)
 - `/guides/employment-law-india-guide`
 
 **Characteristics:**
+
 - 4,000-6,000 words (comprehensive)
 - Educational tone
 - Covers entire topic broadly
@@ -117,6 +123,7 @@ BOTTOM OF FUNNEL (Conversion)
 **Purpose:** Main service overview and entry point
 
 **Characteristics:**
+
 - Overview of all legal notice types
 - Pricing information
 - How it works section
@@ -135,6 +142,7 @@ BOTTOM OF FUNNEL (Conversion)
 **Purpose:** Convert users for specific notice types
 
 **Characteristics:**
+
 - Service-specific content (2,000-3,000 words)
 - Sample notices
 - Pricing for that specific type
@@ -144,6 +152,7 @@ BOTTOM OF FUNNEL (Conversion)
 - Schema: LegalService, Offer, FAQ
 
 **What to enhance (not replace):**
+
 - Add more educational content (expand to 2,500-3,500 words)
 - Add "Related Articles" section linking to blogs
 - Add comparison sections
@@ -158,12 +167,14 @@ BOTTOM OF FUNNEL (Conversion)
 **Purpose:** Long-tail keyword capture, topical authority
 
 **Examples:**
+
 - `/blogs/how-to-recover-money-from-friend-legally-india`
 - `/blogs/cheque-bounce-case-filing-procedure-step-by-step`
 - `/blogs/property-boundary-dispute-with-neighbor-solution`
 - `/blogs/wrongful-termination-without-notice-period`
 
 **Characteristics:**
+
 - 1,500-2,500 words
 - Specific, actionable topics
 - Links to relevant guide page (Tier 1)
@@ -223,6 +234,7 @@ Service Page: /send-legal-notice/legal-notice-for-money-recovery
 Keep your 21 service pages but make them better:
 
 **Current Structure (Example: Money Recovery Page):**
+
 ```
 ✓ Hero Section
 ✓ How We Work
@@ -234,6 +246,7 @@ Keep your 21 service pages but make them better:
 ```
 
 **Enhanced Structure:**
+
 ```
 ✓ Hero Section
 ✓ Breadcrumbs
@@ -261,6 +274,7 @@ Keep your 21 service pages but make them better:
 ```
 
 **Benefits:**
+
 - More content = better SEO
 - More educational = builds trust
 - More links = better user journey
@@ -271,6 +285,7 @@ Keep your 21 service pages but make them better:
 ### Option 2: KEEP AS IS
 
 Your current pages are already good for conversions. Just add:
+
 1. Link to new guide pages from service pages
 2. Link from guide pages to service pages
 3. Link from blogs to both
@@ -286,18 +301,22 @@ Your current pages are already good for conversions. Just add:
 Create 5 comprehensive guide pages:
 
 1. **`/guides/money-recovery-guide-india`**
+
    - Target: "how to recover money legally in India"
    - Links to: 5-8 money recovery service pages + blogs
 
 2. **`/guides/property-law-guide-india`**
+
    - Target: "property disputes India"
    - Links to: property-related service pages + blogs
 
 3. **`/guides/family-law-guide-india`**
+
    - Target: "divorce process India", "family law India"
    - Links to: divorce, maintenance, child custody pages
 
 4. **`/guides/consumer-rights-guide-india`**
+
    - Target: "consumer complaint filing"
    - Links to: consumer complaint service page
 
@@ -306,6 +325,7 @@ Create 5 comprehensive guide pages:
    - Links to: employment-related service pages
 
 **Each guide:**
+
 - 4,000-6,000 words
 - 10-15 internal links to your service pages
 - 5-8 links to related blogs
@@ -319,23 +339,23 @@ Create 5 comprehensive guide pages:
 For each of your 21 service pages, add:
 
 1. **Educational Section** (500-800 words)
+
    ```tsx
    <section className="bg-background-gray py-12">
      <div className="max-w-4xl mx-auto px-4">
        <h2>Understanding Legal Notice for Money Recovery</h2>
-       <div className="prose">
-         {/* Educational content here */}
-       </div>
+       <div className="prose">{/* Educational content here */}</div>
      </div>
    </section>
    ```
 
 2. **Related Articles Widget**
+
    ```tsx
    <section className="py-12">
      <h2>Learn More About Money Recovery</h2>
      <div className="grid md:grid-cols-3 gap-6">
-       {relatedBlogs.map(blog => (
+       {relatedBlogs.map((blog) => (
          <BlogCard key={blog.id} {...blog} />
        ))}
      </div>
@@ -348,7 +368,8 @@ For each of your 21 service pages, add:
    ```tsx
    <div className="bg-blue-50 border-l-4 border-blue-500 p-4">
      <p className="font-semibold">Want to learn more?</p>
-     <p>Read our comprehensive
+     <p>
+       Read our comprehensive
        <Link href="/guides/money-recovery-guide-india">
          Money Recovery Guide for India
        </Link>
@@ -363,12 +384,14 @@ For each of your 21 service pages, add:
 Create blog articles that support both guides and services:
 
 **Month 1 (12 articles):**
+
 - 3 money recovery topics
 - 3 property law topics
 - 3 family law topics
 - 3 other topics
 
 **Each blog links to:**
+
 - 1 relevant guide page
 - 1-2 relevant service pages
 - 2-3 related blog posts
@@ -381,17 +404,18 @@ Create blog articles that support both guides and services:
 
 ### Guide Pages Target (Informational Intent)
 
-| Guide Page | Primary Keywords | Search Volume |
-|------------|-----------------|---------------|
-| Money Recovery Guide | "how to recover money legally India" | 12,000/mo |
-| | "debt recovery options India" | 6,200/mo |
-| | "money recovery legal process" | 8,500/mo |
-| Property Law Guide | "property disputes India" | 15,000/mo |
-| | "property legal issues" | 9,500/mo |
-| Family Law Guide | "divorce process India" | 22,000/mo |
-| | "family law India" | 11,500/mo |
+| Guide Page           | Primary Keywords                     | Search Volume |
+| -------------------- | ------------------------------------ | ------------- |
+| Money Recovery Guide | "how to recover money legally India" | 12,000/mo     |
+|                      | "debt recovery options India"        | 6,200/mo      |
+|                      | "money recovery legal process"       | 8,500/mo      |
+| Property Law Guide   | "property disputes India"            | 15,000/mo     |
+|                      | "property legal issues"              | 9,500/mo      |
+| Family Law Guide     | "divorce process India"              | 22,000/mo     |
+|                      | "family law India"                   | 11,500/mo     |
 
 **User Journey:**
+
 1. User searches "how to recover money from friend"
 2. Finds your guide page
 3. Reads comprehensive guide
@@ -403,16 +427,17 @@ Create blog articles that support both guides and services:
 
 ### Service Pages Target (Transactional Intent)
 
-| Service Page | Primary Keywords | Search Volume |
-|--------------|-----------------|---------------|
-| /send-legal-notice | "legal notice online" | 3,500/mo |
-| | "send legal notice India" | 2,800/mo |
-| /legal-notice-for-money-recovery | "legal notice for recovery of money" | 1,200/mo |
-| | "money recovery legal notice format" | 890/mo |
-| /cheque-bounce-legal-notice | "cheque bounce legal notice" | 1,800/mo |
-| | "section 138 ni act notice" | 760/mo |
+| Service Page                     | Primary Keywords                     | Search Volume |
+| -------------------------------- | ------------------------------------ | ------------- |
+| /send-legal-notice               | "legal notice online"                | 3,500/mo      |
+|                                  | "send legal notice India"            | 2,800/mo      |
+| /legal-notice-for-money-recovery | "legal notice for recovery of money" | 1,200/mo      |
+|                                  | "money recovery legal notice format" | 890/mo        |
+| /cheque-bounce-legal-notice      | "cheque bounce legal notice"         | 1,800/mo      |
+|                                  | "section 138 ni act notice"          | 760/mo        |
 
 **User Journey:**
+
 1. User already knows they need a legal notice
 2. Searches "legal notice for money recovery"
 3. Finds your service page directly
@@ -423,13 +448,14 @@ Create blog articles that support both guides and services:
 
 ### Blog Posts Target (Long-tail Keywords)
 
-| Blog Post | Primary Keywords | Search Volume |
-|-----------|-----------------|---------------|
-| How to Recover Money from Friend | "recover money from friend legally" | 14,000/mo |
-| Cheque Bounce Case Procedure | "cheque bounce case procedure" | 6,200/mo |
-| Property Boundary Dispute Solution | "boundary dispute with neighbor" | 8,700/mo |
+| Blog Post                          | Primary Keywords                    | Search Volume |
+| ---------------------------------- | ----------------------------------- | ------------- |
+| How to Recover Money from Friend   | "recover money from friend legally" | 14,000/mo     |
+| Cheque Bounce Case Procedure       | "cheque bounce case procedure"      | 6,200/mo      |
+| Property Boundary Dispute Solution | "boundary dispute with neighbor"    | 8,700/mo      |
 
 **User Journey:**
+
 1. User has specific question
 2. Finds your blog post via Google
 3. Reads detailed answer
@@ -441,12 +467,14 @@ Create blog articles that support both guides and services:
 ## PRACTICAL EXAMPLE: MONEY RECOVERY TOPIC
 
 ### Current Structure (What You Have):
+
 ```
 /send-legal-notice (main page) ✅
     └─→ /send-legal-notice/legal-notice-for-money-recovery ✅
 ```
 
 ### NEW Structure (What to Add):
+
 ```
 /guides/money-recovery-guide-india (NEW)
     ↓
@@ -464,6 +492,7 @@ Create blog articles that support both guides and services:
 ### How They Work Together:
 
 **User Path 1 (Informational → Conversion):**
+
 ```
 Google: "how to recover money from friend who refuses to pay"
     ↓
@@ -483,6 +512,7 @@ CONVERSION! 🎉
 ```
 
 **User Path 2 (Direct Service):**
+
 ```
 Google: "legal notice for money recovery"
     ↓
@@ -494,6 +524,7 @@ CONVERSION! 🎉
 ```
 
 **User Path 3 (Comparison Shopper):**
+
 ```
 Google: "legal notice cost India"
     ↓
@@ -514,11 +545,13 @@ CONVERSION! 🎉
 ### High Priority (Do First)
 
 1. **Create 5 Guide Pages** (Week 1-4)
+
    - These capture 100K+ monthly searches you're missing
    - Each guide = 10-20 new ranking opportunities
    - Links to your existing service pages
 
 2. **Launch Blog System** (Week 2-ongoing)
+
    - 3 articles per week
    - Immediate long-tail traffic
    - Builds topical authority
@@ -533,6 +566,7 @@ CONVERSION! 🎉
 ### Medium Priority (Do Next)
 
 4. **Enhance Service Page Content** (Month 2)
+
    - Add 500-800 word educational section
    - Expand FAQs from 10 to 20 questions
    - Add comparison tables
@@ -547,6 +581,7 @@ CONVERSION! 🎉
 ### Low Priority (Nice to Have)
 
 6. **Add Video Content** (Month 4-6)
+
    - Explainer videos for each service
    - Upload to YouTube
    - Embed on service pages
@@ -567,6 +602,7 @@ mkdir -p app/guides
 ```
 
 **File structure:**
+
 ```
 app/guides/
 ├── layout.tsx (shared layout for all guides)
@@ -594,7 +630,8 @@ import Link from "next/link";
 
 export const metadata: Metadata = {
   title: "Money Recovery in India: Complete Legal Guide [2025]",
-  description: "Comprehensive guide to recovering money legally in India. Learn about legal notices, summary suits, DRT, and success rates. Expert advice from Licensed Advocates.",
+  description:
+    "Comprehensive guide to recovering money legally in India. Learn about legal notices, summary suits, DRT, and success rates. Expert advice from Licensed Advocates.",
   keywords: [
     "how to recover money legally in India",
     "money recovery legal process",
@@ -602,7 +639,8 @@ export const metadata: Metadata = {
   ],
   openGraph: {
     title: "Money Recovery in India: Complete Legal Guide [2025]",
-    description: "Expert guide to recover dues legally. 65% success rate with legal notices.",
+    description:
+      "Expert guide to recover dues legally. 65% success rate with legal notices.",
     type: "article",
   },
   alternates: {
@@ -620,22 +658,23 @@ export default function MoneyRecoveryGuidePage() {
           __html: JSON.stringify({
             "@context": "https://schema.org",
             "@type": "Article",
-            "headline": "Money Recovery in India: Complete Legal Guide",
-            "description": "Comprehensive guide to recovering money legally in India",
-            "author": {
+            headline: "Money Recovery in India: Complete Legal Guide",
+            description:
+              "Comprehensive guide to recovering money legally in India",
+            author: {
               "@type": "Organization",
-              "name": "VakilTech Legal Team",
+              name: "VakilTech Legal Team",
             },
-            "publisher": {
+            publisher: {
               "@type": "Organization",
-              "name": "VakilTech",
-              "logo": {
+              name: "VakilTech",
+              logo: {
                 "@type": "ImageObject",
-                "url": "https://vakiltech.in/logo.png",
+                url: "https://vakiltech.in/logo.png",
               },
             },
-            "datePublished": "2025-01-01",
-            "dateModified": new Date().toISOString(),
+            datePublished: "2025-01-01",
+            dateModified: new Date().toISOString(),
           }),
         }}
       />
@@ -643,9 +682,13 @@ export default function MoneyRecoveryGuidePage() {
       <article className="max-w-4xl mx-auto px-4 py-12">
         {/* Breadcrumbs */}
         <nav className="mb-6 text-sm">
-          <Link href="/" className="text-primary hover:underline">Home</Link>
+          <Link href="/" className="text-primary hover:underline">
+            Home
+          </Link>
           {" > "}
-          <Link href="/guides" className="text-primary hover:underline">Guides</Link>
+          <Link href="/guides" className="text-primary hover:underline">
+            Guides
+          </Link>
           {" > "}
           <span className="text-text-medium">Money Recovery Guide</span>
         </nav>
@@ -666,9 +709,24 @@ export default function MoneyRecoveryGuidePage() {
         <div className="bg-background-gray border-l-4 border-primary p-6 mb-8">
           <h2 className="text-xl font-semibold mb-4">Table of Contents</h2>
           <ul className="space-y-2">
-            <li><a href="#introduction" className="text-primary hover:underline">1. Introduction</a></li>
-            <li><a href="#types" className="text-primary hover:underline">2. Types of Money Recovery Cases</a></li>
-            <li><a href="#legal-framework" className="text-primary hover:underline">3. Legal Framework</a></li>
+            <li>
+              <a href="#introduction" className="text-primary hover:underline">
+                1. Introduction
+              </a>
+            </li>
+            <li>
+              <a href="#types" className="text-primary hover:underline">
+                2. Types of Money Recovery Cases
+              </a>
+            </li>
+            <li>
+              <a
+                href="#legal-framework"
+                className="text-primary hover:underline"
+              >
+                3. Legal Framework
+              </a>
+            </li>
             {/* ... more sections */}
           </ul>
         </div>
@@ -690,9 +748,7 @@ export default function MoneyRecoveryGuidePage() {
             <h2>Types of Money Recovery Cases in India</h2>
 
             <h3>1. Personal Loans</h3>
-            <p>
-              Recovery of money lent to friends, family, or acquaintances.
-            </p>
+            <p>Recovery of money lent to friends, family, or acquaintances.</p>
             <div className="bg-blue-50 p-4 rounded border-l-4 border-blue-500">
               <p className="font-semibold">Need to recover a personal loan?</p>
               <Link
@@ -721,7 +777,6 @@ export default function MoneyRecoveryGuidePage() {
           </section>
 
           {/* ... 10-15 more comprehensive sections */}
-
         </div>
 
         {/* Related Blog Posts */}
@@ -807,11 +862,13 @@ Add "Related Articles" section to your existing service pages:
 ### ➕ ADD (New Content)
 
 1. **5 Guide Pages** at `/guides/[topic]`
+
    - 4,000-6,000 words each
    - Comprehensive, educational
    - Links to your service pages
 
 2. **Blog System** at `/blogs/[slug]`
+
    - 180 articles over 6 months
    - 1,500-2,500 words each
    - Links to guides + services
@@ -832,12 +889,14 @@ Add "Related Articles" section to your existing service pages:
 ## YOUR ARCHITECTURE IS ACTUALLY CORRECT!
 
 Your instinct was **RIGHT**:
+
 - Legal Notice = Main Service Pillar ✅
 - Category sub-pages = Service Variants ✅
 
 What you're missing is the **CONTENT layer** above it that drives traffic.
 
 **Think of it as:**
+
 ```
 CONTENT LAYER (Awareness)
   ├─→ Guides (broad topics)
@@ -857,6 +916,7 @@ CONVERSION LAYER (Decision)
 **Q1: "Are we linking blogs to this website or modify pages as well?"**
 
 **A:** BOTH!
+
 - Create NEW blog pages at `/blogs/*`
 - Blogs link TO your existing service pages
 - Service pages link TO blogs (add "Related Articles" section)
@@ -871,15 +931,18 @@ CONVERSION LAYER (Decision)
 But you need INFORMATIONAL pillars too:
 
 **Service Structure (What you have):**
+
 ```
 Legal Notice (Service Pillar)
 ├─→ Money Recovery Notice (Service Sub-page)
 ├─→ Family Law Notice (Service Sub-page)
 └─→ Property Notice (Service Sub-page)
 ```
+
 **Purpose:** Convert users who know they need a legal notice
 
 **Content Structure (What to add):**
+
 ```
 Money Recovery Guide (Informational Pillar)
 ├─→ Blog: How to recover personal loan
@@ -888,6 +951,7 @@ Money Recovery Guide (Informational Pillar)
          ↓
     [Links to Service pages]
 ```
+
 **Purpose:** Educate users who are researching options
 
 ---
@@ -895,18 +959,21 @@ Money Recovery Guide (Informational Pillar)
 ## QUICK START CHECKLIST
 
 ### This Week:
+
 - [ ] Create `/guides` directory
 - [ ] Write first guide page outline (Money Recovery)
 - [ ] Set up blog system (choose WordPress/MDX/Contentful)
 - [ ] Add "Related Articles" component to 1 service page (test)
 
 ### Next 2 Weeks:
+
 - [ ] Complete 2 guide pages (Money Recovery + Property Law)
 - [ ] Publish 6 blog articles (2 per week)
 - [ ] Add "Related Articles" to all 21 service pages
 - [ ] Submit new pages to Google Search Console
 
 ### Next Month:
+
 - [ ] Complete all 5 guide pages
 - [ ] Publish 12 more blog articles
 - [ ] Enhance service pages with educational sections

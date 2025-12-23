@@ -16,7 +16,7 @@ import {
 import { validatePhoneNumber } from "@/lib/validators/phone-validation";
 import { countryCodes, defaultCountryCode } from "@/lib/data/country-codes";
 import type { CountryCode } from "@/lib/validators/phone-validation";
-import { SimpleCombobox } from "@/components/ui/simple-combobox";
+import { CitySelect } from "@/components/ui/city-select";
 import { getCityOptions } from "@/lib/data/indian-cities";
 import {
   trackFormStart,
@@ -633,7 +633,7 @@ function FormStep2({ form, onBack, onNext, isSubmitting, serviceType }: Step2Pro
             <label className="mb-2 block text-xs font-bold uppercase tracking-wide text-text-heading">
               CITY
             </label>
-            <SimpleCombobox
+            <CitySelect
               options={cityOptions}
               value={selectedCity}
               onValueChange={(value) => {
@@ -654,17 +654,14 @@ function FormStep2({ form, onBack, onNext, isSubmitting, serviceType }: Step2Pro
               placeholder="Search your city"
               searchPlaceholder="Search cities..."
               emptyMessage="No cities found"
-              className={cn(
-                "h-12 text-base",
-                form.formState.errors.city && !isOthersSelected ? "border-red-500" : ""
-              )}
+              error={!!form.formState.errors.city && !isOthersSelected}
             />
             {form.formState.errors.city && !isOthersSelected && (
               <p className="mt-1 text-sm text-red-500">
                 {form.formState.errors.city.message}
               </p>
             )}
-            
+
             {/* Custom City Input - shown when "Others" is selected */}
             {isOthersSelected && (
               <div className="mt-3">

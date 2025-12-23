@@ -71,12 +71,24 @@ export function SimpleCombobox({
   const updatePosition = React.useCallback(() => {
     if (containerRef.current) {
         const rect = containerRef.current.getBoundingClientRect();
+        const viewportHeight = window.innerHeight;
+        const spaceBelow = viewportHeight - rect.bottom;
+        const spaceAbove = rect.top;
+        const dropdownHeight = 350; // max height of dropdown
+
+        // Determine if dropdown should open upward or downward
+        const openUpward = spaceBelow < dropdownHeight && spaceAbove > spaceBelow;
+
         setDropdownStyle({
             position: 'fixed',
-            top: `${rect.bottom + 4}px`,
+            ...(openUpward
+                ? { bottom: `${viewportHeight - rect.top + 4}px` }
+                : { top: `${rect.bottom + 4}px` }
+            ),
             left: `${rect.left}px`,
             width: `${rect.width}px`,
-            zIndex: 9999, // High z-index to ensure it's on top
+            zIndex: 999999, // Extremely high z-index
+            pointerEvents: 'auto',
         });
     }
   }, []);
@@ -98,13 +110,18 @@ export function SimpleCombobox({
     if (disabled) return
     const newState = !isOpen;
     setIsOpen(newState);
-    
+
     if (newState) {
       updatePosition();
-      // Focus search input when opening
-      setTimeout(() => {
-        searchInputRef.current?.focus()
-      }, 100)
+      // Focus search input when opening - use requestAnimationFrame for better timing
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+          if (searchInputRef.current) {
+            searchInputRef.current.focus();
+            searchInputRef.current.click(); // Ensure it's truly focused
+          }
+        });
+      });
     }
   }
 
@@ -126,13 +143,35 @@ export function SimpleCombobox({
   }, [isOpen, updatePosition]);
 
 
+  // Focus input when dropdown opens
+  React.useEffect(() => {
+    if (isOpen && searchInputRef.current) {
+      const focusInput = () => {
+        if (searchInputRef.current) {
+          searchInputRef.current.focus();
+        }
+      };
+
+      // Try multiple times to ensure focus
+      const timer1 = setTimeout(focusInput, 50);
+      const timer2 = setTimeout(focusInput, 100);
+      const timer3 = setTimeout(focusInput, 200);
+
+      return () => {
+        clearTimeout(timer1);
+        clearTimeout(timer2);
+        clearTimeout(timer3);
+      };
+    }
+  }, [isOpen]);
+
   // Close dropdown when clicking outside
   React.useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       const target = event.target as Node;
       // Check if click is inside container or inside dropdown portal
       if (
-        containerRef.current && 
+        containerRef.current &&
         !containerRef.current.contains(target) &&
         dropdownRef.current &&
         !dropdownRef.current.contains(target)
@@ -160,30 +199,59 @@ export function SimpleCombobox({
   }
 
   const dropdownContent = (
-    <div 
+    <div
         ref={dropdownRef}
-        style={dropdownStyle}
-        className="bg-popover border border-border rounded-md shadow-lg max-h-[300px] overflow-hidden bg-white"
+        style={{
+          ...dropdownStyle,
+          pointerEvents: 'auto', // Ensure clicks work
+        }}
+        className="bg-white border-2 border-gray-300 rounded-xl shadow-2xl overflow-hidden"
+        data-combobox-dropdown="true"
+        onClick={(e) => {
+          e.stopPropagation();
+          e.preventDefault();
+        }}
+        onMouseDown={(e) => {
+          e.stopPropagation();
+        }}
     >
       {/* Search Input */}
-      <div className="p-2 border-b border-border">
+      <div className="p-3 border-b border-gray-200 bg-gray-50">
         <div className="relative">
-          <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+          <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-gray-400 pointer-events-none z-10" />
           <Input
             ref={searchInputRef}
             type="text"
             placeholder={searchPlaceholder}
             value={searchValue}
-            onChange={(e) => setSearchValue(e.target.value)}
+            onChange={(e) => {
+              e.stopPropagation();
+              setSearchValue(e.target.value);
+            }}
+            onClick={(e) => {
+              e.stopPropagation();
+            }}
+            onMouseDown={(e) => {
+              e.stopPropagation();
+            }}
             onKeyDown={handleKeyDown}
-            className="pl-9 h-9 text-base border-0 focus-visible:ring-1 focus-visible:ring-ring"
+            autoComplete="off"
+            className="pl-9 h-10 text-base border-gray-300 focus:border-primary focus:ring-2 focus:ring-primary/20 w-full"
+            style={{ pointerEvents: 'auto' }}
           />
         </div>
       </div>
 
       {/* Options List */}
       <div
-        className="overflow-y-auto max-h-[250px] overscroll-contain"
+        className="overflow-y-auto max-h-[280px] overscroll-contain"
+        style={{
+          pointerEvents: 'auto',
+          WebkitOverflowScrolling: 'touch',
+        }}
+        onMouseDown={(e) => {
+          e.stopPropagation();
+        }}
       >
         {filteredOptions.length === 0 ? (
           <div className="p-4 text-center text-sm text-muted-foreground">
@@ -196,10 +264,23 @@ export function SimpleCombobox({
                 key={option.value}
                 type="button"
                 className={cn(
-                  "w-full text-left px-3 py-2 text-sm hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground focus:outline-none min-h-[44px] flex items-center transition-colors",
-                  selectedOption?.value === option.value ? "bg-accent text-accent-foreground" : "hover:bg-gray-100"
+                  "w-full text-left px-4 py-3 text-base hover:bg-primary/10 focus:bg-primary/10 focus:outline-none min-h-[48px] flex items-center transition-colors cursor-pointer",
+                  selectedOption?.value === option.value ? "bg-primary/20 font-semibold" : "hover:bg-gray-100"
                 )}
-                onClick={() => handleSelect(option)}
+                style={{ pointerEvents: 'auto' }}
+                onClick={(e) => {
+                  e.stopPropagation();
+                  e.preventDefault();
+                  handleSelect(option);
+                }}
+                onMouseDown={(e) => {
+                  e.stopPropagation();
+                }}
+                onTouchEnd={(e) => {
+                  e.stopPropagation();
+                  e.preventDefault();
+                  handleSelect(option);
+                }}
               >
                 <Check
                   className={cn(
@@ -217,13 +298,14 @@ export function SimpleCombobox({
   );
 
   return (
-    <div ref={containerRef} className="relative w-full">
+    <div ref={containerRef} className="relative w-full" data-combobox-container="true">
       {/* Trigger Button */}
       <Button
         type="button"
         variant="outline"
         onClick={handleToggle}
         disabled={disabled}
+        data-combobox-trigger="true"
         className={cn(
           "w-full justify-between h-10 px-3 py-2 text-left font-normal",
           !selectedOption && "text-muted-foreground",

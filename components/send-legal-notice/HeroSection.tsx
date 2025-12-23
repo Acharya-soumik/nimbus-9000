@@ -32,7 +32,7 @@ export interface HeroSectionProps {
  */
 export function HeroSection({
   className,
-  badge = "FAMILY LAW & CIVIL DISPUTES",
+  badge = "Serving NationWide 🇮🇳",
   headline = "We Don't Just Send Notices. We Solve Problems!",
   subheadline,
   flipWords = [

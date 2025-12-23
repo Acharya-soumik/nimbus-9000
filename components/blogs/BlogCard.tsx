@@ -31,6 +31,8 @@ export interface BlogCardProps {
   imageAspectRatio?: "16:9" | "4:3" | "1:1";
   /** Callback when category is clicked */
   onCategoryClick?: (categorySlug: string) => void;
+  /** Base path for links (e.g., "/blogs" or "/guides") */
+  basePath?: string;
   /** Additional CSS classes */
   className?: string;
 }
@@ -97,6 +99,7 @@ function DefaultCard({
   showAuthor = true,
   showReadTime = true,
   imageAspectRatio = "16:9",
+  basePath = "/blogs",
   onCategoryClick,
   className,
 }: BlogCardProps & { meta: ReturnType<typeof getPostMeta> }) {
@@ -110,7 +113,7 @@ function DefaultCard({
     >
       {/* Featured Image */}
       {meta.featuredImageUrl && (
-        <Link href={`/blogs/${post.slug}`} className="block overflow-hidden">
+        <Link href={`${basePath}/${post.slug}`} className="block overflow-hidden">
           <div className={cn(aspectRatioClasses[imageAspectRatio], "overflow-hidden")}>
             <img
               src={meta.featuredImageUrl}
@@ -139,7 +142,7 @@ function DefaultCard({
         {/* Title */}
         <h3 className="mt-3 text-lg font-bold text-text-heading lg:text-xl">
           <Link
-            href={`/blogs/${post.slug}`}
+            href={`${basePath}/${post.slug}`}
             className="line-clamp-2 transition-colors hover:text-primary"
           >
             {post.title.rendered}
@@ -191,6 +194,7 @@ function FeaturedCard({
   showCategory = true,
   showAuthor = true,
   showReadTime = true,
+  basePath = "/blogs",
   onCategoryClick,
   className,
 }: BlogCardProps & { meta: ReturnType<typeof getPostMeta> }) {
@@ -203,7 +207,7 @@ function FeaturedCard({
       )}
     >
       {/* Featured Image with Gradient Overlay */}
-      <Link href={`/blogs/${post.slug}`} className="block">
+      <Link href={`${basePath}/${post.slug}`} className="block">
         <div className="relative aspect-[16/10] overflow-hidden lg:aspect-video">
           {meta.featuredImageUrl && (
             <img
@@ -287,6 +291,7 @@ function HorizontalCard({
   showCategory = true,
   showAuthor = true,
   showReadTime = true,
+  basePath = "/blogs",
   onCategoryClick,
   className,
 }: BlogCardProps & { meta: ReturnType<typeof getPostMeta> }) {
@@ -301,7 +306,7 @@ function HorizontalCard({
       {/* Featured Image */}
       {meta.featuredImageUrl && (
         <Link
-          href={`/blogs/${post.slug}`}
+          href={`${basePath}/${post.slug}`}
           className="block w-full shrink-0 overflow-hidden sm:w-2/5"
         >
           <div className="aspect-video h-full overflow-hidden sm:aspect-auto sm:min-h-[180px]">
@@ -333,7 +338,7 @@ function HorizontalCard({
         {/* Title */}
         <h3 className="mt-2 text-base font-bold text-text-heading lg:text-lg">
           <Link
-            href={`/blogs/${post.slug}`}
+            href={`${basePath}/${post.slug}`}
             className="line-clamp-2 transition-colors hover:text-primary"
           >
             {post.title.rendered}
@@ -372,6 +377,7 @@ function CompactCard({
   post,
   meta,
   showReadTime = true,
+  basePath = "/blogs",
   className,
 }: BlogCardProps & { meta: ReturnType<typeof getPostMeta> }) {
   return (
@@ -384,7 +390,7 @@ function CompactCard({
       {/* Thumbnail */}
       {meta.featuredImageUrl && (
         <Link
-          href={`/blogs/${post.slug}`}
+          href={`${basePath}/${post.slug}`}
           className="block shrink-0 overflow-hidden rounded-lg"
         >
           <div className="h-16 w-20 overflow-hidden lg:h-20 lg:w-24">
@@ -405,7 +411,7 @@ function CompactCard({
       <div className="flex-1 min-w-0">
         <h4 className="text-sm font-semibold text-text-heading lg:text-base">
           <Link
-            href={`/blogs/${post.slug}`}
+            href={`${basePath}/${post.slug}`}
             className="line-clamp-2 transition-colors group-hover:text-primary"
           >
             {post.title.rendered}
@@ -439,6 +445,7 @@ export function BlogCard({
   showAuthor = true,
   showReadTime = true,
   imageAspectRatio = "16:9",
+  basePath = "/blogs",
   onCategoryClick,
   className,
 }: BlogCardProps) {
@@ -452,6 +459,7 @@ export function BlogCard({
     showAuthor,
     showReadTime,
     imageAspectRatio,
+    basePath,
     onCategoryClick,
     className,
   };

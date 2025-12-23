@@ -36,6 +36,8 @@ export interface BlogGridProps {
   cardVariant?: "default" | "featured" | "horizontal" | "compact";
   /** Callback when category is clicked */
   onCategoryClick?: (categorySlug: string) => void;
+  /** Base path for links (e.g., "/blogs" or "/guides") */
+  basePath?: string;
   /** Additional CSS classes */
   className?: string;
 }
@@ -275,6 +277,7 @@ export function BlogGrid({
   emptyStateMessage = "No articles match your current filter. Try selecting a different category.",
   cardVariant = "default",
   onCategoryClick,
+  basePath = "/blogs",
   className,
 }: BlogGridProps) {
   // Grid column classes based on variant and columns prop
@@ -315,6 +318,7 @@ export function BlogGrid({
               key={post.id}
               post={post}
               variant={effectiveCardVariant}
+              basePath={basePath}
               onCategoryClick={onCategoryClick}
               className={cn(
                 // Staggered animation
