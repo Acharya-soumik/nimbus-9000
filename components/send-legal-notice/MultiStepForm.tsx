@@ -572,7 +572,7 @@ function FormStep2({ form, onBack, onNext, isSubmitting, serviceType }: Step2Pro
   return (
     <>
       {/* Scrollable Content */}
-      <div className="flex-1 overflow-y-auto px-4 pb-4 max-h-[60vh] sm:max-h-[calc(100vh-220px)] [&::-webkit-scrollbar]:w-1.5 [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-track]:bg-transparent [&::-webkit-scrollbar-thumb]:bg-primary">
+      <div className="flex-1 overflow-y-auto px-4 pb-4 [&::-webkit-scrollbar]:w-1.5 [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-track]:bg-transparent [&::-webkit-scrollbar-thumb]:bg-primary">
         {/* Progress Section */}
         <div className="mb-6">
           <ProgressBar current={2} total={3} className="mb-2" />
@@ -689,7 +689,7 @@ function FormStep2({ form, onBack, onNext, isSubmitting, serviceType }: Step2Pro
       </div>
 
       {/* Sticky Footer - Navigation Buttons */}
-      <div className="shrink-0 border-t border-gray-100 bg-white px-4 py-4">
+      <div className="shrink-0 border-t border-gray-100 bg-white px-4 py-4 pb-[calc(1rem+env(safe-area-inset-bottom))]">
         <div className="flex gap-3">
           <button
             type="button"
@@ -754,7 +754,7 @@ function FormStep3({
   return (
     <>
       {/* Scrollable Content */}
-      <div className="flex-1 overflow-y-auto px-4 pb-4 max-h-[60vh] sm:max-h-[calc(100vh-220px)] [&::-webkit-scrollbar]:w-1.5 [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-track]:bg-transparent [&::-webkit-scrollbar-thumb]:bg-primary">
+      <div className="flex-1 overflow-y-auto px-4 pb-4 [&::-webkit-scrollbar]:w-1.5 [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-track]:bg-transparent [&::-webkit-scrollbar-thumb]:bg-primary">
         {/* Progress Section */}
         <div className="mb-6">
           <ProgressBar current={3} total={3} className="mb-2" />
@@ -868,7 +868,7 @@ function FormStep3({
       </div>
 
       {/* Sticky Footer - Navigation Buttons & Terms */}
-      <div className="shrink-0 border-t border-gray-100 bg-white px-4 py-4">
+      <div className="shrink-0 border-t border-gray-100 bg-white px-4 py-4 pb-[calc(1rem+env(safe-area-inset-bottom))]">
         <div className="flex gap-3">
           <button
             type="button"
@@ -1317,14 +1317,14 @@ export function MultiStepForm({
       <Modal open={isModalOpen} onOpenChange={handleModalClose}>
         <ModalContent
           className={cn(
-            "flex h-full max-h-dvh flex-col p-0 sm:h-auto sm:max-h-[90vh] sm:max-w-md",
+            "flex h-auto max-h-[85vh] flex-col p-0 sm:h-auto sm:max-h-[90vh] sm:max-w-md",
             isProcessingPayment && "pointer-events-none"
           )}
           overlayClassName={isProcessingPayment ? "pointer-events-none" : undefined}
           showCloseButton={true}
           drawerProps={{
             className: cn(
-              "!max-h-dvh !mt-0 !rounded-t-3xl flex flex-col",
+              "!max-h-[85vh] !mt-0 !rounded-t-3xl flex flex-col !fixed !bottom-0",
               isProcessingPayment && "pointer-events-none"
             ),
           }}

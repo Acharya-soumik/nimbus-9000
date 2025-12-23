@@ -668,6 +668,40 @@ html {
   box-sizing: border-box;
 }
 
+/* Mobile viewport height fix - prevents white space when keyboard opens */
+@media screen and (max-width: 768px) {
+  /* Use a stable viewport height that doesn't change when keyboard appears */
+  html {
+    height: 100%;
+  }
+  
+  /* Prevent body from expanding when keyboard opens */
+  body {
+    position: relative;
+    min-height: 100vh;
+    /* Fallback for browsers that don't support the next line */
+    min-height: -webkit-fill-available;
+  }
+  
+  /* Fix for vaul drawer to use fixed height */
+  [data-vaul-drawer][data-vaul-drawer-direction="bottom"] {
+    position: fixed !important;
+    bottom: 0 !important;
+    max-height: 85vh !important;
+  }
+  
+  /* Ensure drawer content doesn't resize when keyboard opens */
+  [data-vaul-drawer-wrapper] {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+  }
+  
+  [data-vaul-drawer-wrapper] > * {
+    pointer-events: auto;
+  }
+}
+
 @layer base {
   * {
     @apply border-border outline-ring/50;
