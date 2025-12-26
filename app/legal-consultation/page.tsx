@@ -389,6 +389,18 @@ export default function LegalConsultationPage() {
     scrollToForm();
   };
 
+  // Handle scroll on mount if hash is present
+  useEffect(() => {
+    if (window.location.hash) {
+      const element = document.querySelector(window.location.hash);
+      if (element) {
+        setTimeout(() => {
+          element.scrollIntoView({ behavior: "smooth" });
+        }, 500); // Small delay to ensure rendering
+      }
+    }
+  }, []);
+
   return (
     <main>
       {/* Page View Tracking */}

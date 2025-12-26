@@ -26,6 +26,7 @@ import { WhatsAppFloater } from "@/components/ui/whatsapp-floater";
 import { StickyCTABar } from "@/components/legal-consultation/StickyCTABar";
 import { realSampleNotices } from "@/lib/send-legal-notice/real-sample-notices";
 import { PageViewTracker } from "@/components/analytics/PageViewTracker";
+import { StrengthCalculatorPromo } from "@/components/send-legal-notice/StrengthCalculatorPromo";
 
 // Use the real money recovery notice
 const moneyRecoveryNotice: SampleNoticeContent =
@@ -149,6 +150,20 @@ export default function LegalNoticePage() {
       .querySelector("#multi-step-form")
       ?.scrollIntoView({ behavior: "smooth" });
   };
+
+  // Handle scroll on mount if hash is present
+  React.useEffect(() => {
+    // Small delay to ensure rendering and hash availability
+    const timer = setTimeout(() => {
+      if (window.location.hash) {
+        const element = document.querySelector(window.location.hash);
+        if (element) {
+          element.scrollIntoView({ behavior: "smooth" });
+        }
+      }
+    }, 500);
+    return () => clearTimeout(timer);
+  }, []);
 
   return (
     <>
@@ -362,6 +377,10 @@ export default function LegalNoticePage() {
         </div>
         <HeroSection />
         <HowWeWorkTimeline />
+        
+        {/* Strength Calculator Promo */}
+        <StrengthCalculatorPromo />
+
         {/* Why Safer Section */}
         <WhySaferSection />
         {/* Multi-Step Form Section */}

@@ -19,6 +19,7 @@ import {
 import { FAQSection } from "@/components/ui/faq-section";
 import { WhatsAppFloater } from "@/components/ui/whatsapp-floater";
 import { StickyCTABar } from "@/components/legal-consultation/StickyCTABar";
+import { StrengthCalculatorPromo } from "@/components/send-legal-notice/StrengthCalculatorPromo";
 
 interface LegalNoticeTypePageClientProps {
   data: NoticeTypeData;
@@ -244,6 +245,9 @@ export function LegalNoticeTypePageClient({
           flipWords={data.hero.flipWords}
           badges={data.hero.badges}
         />
+
+        {/* Strength Calculator Promo */}
+        <StrengthCalculatorPromo />
 
         {/* Content Section with H1 and Introduction */}
         <section className="bg-white/70 py-12 lg:py-16">
