@@ -6,6 +6,10 @@ import {
   NoticeTypeSelector,
   CalculatorForm,
   ResultModal,
+  StrengthIntro,
+  StrengthToolLogic,
+  StrengthOutcomes,
+  StrengthScenarios,
   type NoticeType,
   type CaseStrengthResult,
 } from "@/components/legal-notice-strength";
@@ -15,6 +19,8 @@ import { WhatsAppFloater } from "@/components/ui/whatsapp-floater";
 import { ServiceAdCard } from "@/components/blogs/ServiceAdCard";
 import { PageViewTracker } from "@/components/analytics/PageViewTracker";
 import { pushToDataLayer } from "@/lib/analytics/dataLayer";
+import { TestimonialsSection } from "@/components/send-legal-notice/testimonials-section";
+import { RelatedNoticesSection } from "@/components/send-legal-notice/RelatedNoticesSection";
 
 // FAQ data for Legal Notice Strength Calculator
 const calculatorFAQs: FAQItem[] = [
@@ -25,64 +31,64 @@ const calculatorFAQs: FAQItem[] = [
       "The Legal Notice Strength Calculator is a free tool that helps you assess the strength of your legal case before sending a legal notice. By answering a few questions about your situation, you'll receive a personalized score (0-100) and expert recommendations on the best next steps.",
   },
   {
-    id: "how-accurate",
-    question: "How accurate is the assessment?",
-    answer:
-      "Our calculator is designed with input from experienced legal professionals and has an accuracy rate of approximately 85%. However, this is a preliminary assessment based on the information you provide. For a definitive evaluation, we recommend consulting with one of our licensed advocates who can review all documents and circumstances.",
-  },
-  {
-    id: "is-it-free",
-    question: "Is the calculator really free?",
-    answer:
-      "Yes, the Legal Notice Strength Calculator is completely free to use with no hidden charges. There's no obligation to purchase any services. We provide this tool to help you make informed decisions about your legal matters.",
-  },
-  {
-    id: "what-happens-after",
-    question: "What happens after I get my score?",
+    id: "factors-make-notice-strong",
+    question: "What factors make a legal notice strong?",
     answer: (
       <div className="space-y-2">
-        <p>Based on your score, you'll receive specific recommendations:</p>
+        <p>A strong legal notice is built on clear evidence and procedure. Key factors include:</p>
         <ul className="list-disc pl-5 space-y-1">
-          <li>
-            <strong>Strong Cases (60-100%):</strong> We'll recommend proceeding
-            with sending a legal notice and offer our drafting services.
-          </li>
-          <li>
-            <strong>Moderate Cases (40-59%):</strong> We'll suggest consulting
-            with a lawyer first to strengthen your case before sending a notice.
-          </li>
-          <li>
-            <strong>Weak Cases (0-39%):</strong> We'll recommend a legal
-            consultation to explore alternative remedies or build a stronger
-            foundation.
-          </li>
+          <li><strong>Written Evidence:</strong> Contracts, invoices, emails, or chat history.</li>
+          <li><strong>Clear Demand:</strong> A specific amount or action required.</li>
+          <li><strong>Timeline:</strong> Acting within the limitation period (e.g., 30 days for cheque bounce).</li>
+          <li><strong>Previous Communication:</strong> Record of trying to resolve the issue amicably.</li>
         </ul>
       </div>
     ),
   },
   {
-    id: "is-data-secure",
-    question: "Is my information confidential?",
+    id: "without-lawyer",
+    question: "Can I send a legal notice without a lawyer?",
     answer:
-      "Absolutely. All information you provide is encrypted and stored securely. We take your privacy seriously and will never share your personal information with third parties without your consent. You can request deletion of your data at any time by contacting us.",
+      "Yes, you technically can send a notice yourself, but it is highly risky. A notice sent by a lawyer has more weight, legal validity, and ensures you don't accidentally admit to something that hurts your case later. Lawsuits are often won or lost based on the initial notice content.",
   },
   {
-    id: "how-long-takes",
-    question: "How long does the assessment take?",
-    answer:
-      "The assessment typically takes 3-4 minutes to complete. The number of questions varies by notice type, ranging from 9-11 questions. Each question is designed to gather the most relevant information about your case.",
+    id: "how-accurate",
+    question: "How do I interpret my strength score?",
+    answer: (
+      <div className="space-y-2">
+        <p>Your strength score is an indicator of case readiness:</p>
+        <ul className="list-disc pl-5 space-y-1">
+          <li><strong>80-100%:</strong> Very Strong. You have excellent proof and legitimate grounds.</li>
+          <li><strong>60-79%:</strong> Strong. Good case, but ensure you organize your documents well.</li>
+          <li><strong>40-59%:</strong> Moderate. You might be missing some evidence or the timeline is tricky. Consult a lawyer.</li>
+          <li><strong>Below 40%:</strong> Weak/Risky. You may need to gather more proof before taking action.</li>
+        </ul>
+      </div>
+    ),
   },
   {
-    id: "can-use-multiple-times",
-    question: "Can I use the calculator for multiple cases?",
+    id: "low-score",
+    question: "What if my strength score is low?",
     answer:
-      "Yes, you can use the calculator as many times as needed for different cases or situations. Each assessment is independent and confidential.",
+      "A low score doesn't always mean you have no case—it means you need to prepare better. It often highlights missing evidence (like a written contract) or procedural issues. We recommend booking a consultation with our experts to find alternative legal strategies.",
   },
   {
     id: "replace-lawyer",
-    question: "Does this replace consulting a lawyer?",
+    question: "Does this calculator replace a lawyer review?",
     answer:
-      "No. This calculator provides guidance only and does not constitute legal advice or create an attorney-client relationship. It's designed to help you understand your position and make informed decisions, but we always recommend consulting with a qualified lawyer for legal matters, especially before taking formal legal action.",
+      "No. This calculator provides a preliminary assessment based on general legal principles. It does not replace professional legal advice. Every case has unique nuances that only a human lawyer can evaluate fully.",
+  },
+  {
+    id: "is-it-free",
+    question: "Is the calculator really free?",
+    answer:
+      "Yes, the Legal Notice Strength Calculator is completely free to use with no hidden charges. There's no obligation to purchase any services.",
+  },
+  {
+    id: "is-data-secure",
+    question: "Is my information confidential?",
+    answer:
+      "Absolutely. All information you provide is encrypted and stored securely. We take your privacy seriously and will never share your personal information with third parties without your consent.",
   },
 ];
 
@@ -200,6 +206,9 @@ export default function LegalNoticeStrengthPage() {
         {/* Hero Section - Always Visible */}
         <HeroSection onGetStarted={handleGetStarted} />
 
+        {/* SEO Intro Section - NEW */}
+        <StrengthIntro />
+
         {/* Notice Type Selector */}
         {(step === "selector" ||
           step === "questionnaire" ||
@@ -275,18 +284,24 @@ export default function LegalNoticeStrengthPage() {
           </section>
         )}
 
-        {/* How It Works Section */}
-        <section className="py-12 lg:py-16">
+        {/* Tool Logic / How it Works - IMPROVED */}
+        <StrengthToolLogic />
+
+        {/* What Happens Next / Outcomes - NEW */}
+        <StrengthOutcomes />
+
+        {/* User Scenarios - NEW */}
+        <StrengthScenarios />
+
+        {/* How It Works Section - Visual Steps (Retained as visual guide) */}
+        <section className="py-12 lg:py-16 bg-white">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <div className="mb-10 text-center">
               <h2 className="text-2xl font-bold text-text-heading sm:text-3xl lg:text-4xl">
-                How It Works
+                Simple 3-Step Process
               </h2>
-              <p className="mt-3 text-base text-text-medium lg:text-lg">
-                Get your case assessment in 3 simple steps
-              </p>
             </div>
-
+            {/* ... Existing 3 step visual content ... */}
             <div className="grid gap-8 sm:grid-cols-3">
               {[
                 {
@@ -366,10 +381,10 @@ export default function LegalNoticeStrengthPage() {
 
         {/* Expert Service Promotion */}
         <section className="py-8">
-          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
              <ServiceAdCard
               serviceName="Send Legal Notice through Expert Advocates"
-              serviceDescription="Don't want to rely on AI? Get your legal notice drafted by valid & verified expert advocates and delivered via Registered Speed Post with tracking."
+              serviceDescription="Don't want to rely on AI? Get your legal notice drafted by verified expert advocates."
               price={{ current: 1499, original: 3999 }}
               badge="Expert Service"
               ctaText="Start Now"
@@ -379,13 +394,27 @@ export default function LegalNoticeStrengthPage() {
           </div>
         </section>
 
+        {/* Testimonials - TRUST SIGNALS */}
+        <TestimonialsSection
+          title="Clients Who Trusted Our Analysis"
+          subtitle="See how knowing their case strength helped these clients win."
+        />
+
         {/* FAQ Section */}
         <FAQSection
           faqs={calculatorFAQs}
           title="Frequently Asked Questions"
-          subtitle="Everything you need to know about the calculator"
+          subtitle="Expert answers to common questions about legal notice strength"
           showDove={true}
           enableSchema={true}
+        />
+
+        {/* Related Notices - INTERNAL LINKS */}
+        <RelatedNoticesSection
+           label="EXPLORE SERVICES"
+           title="Related"
+           titleHighlight="Legal Services"
+           subtitle="Found your strength score? Here are the notices specific to your needs."
         />
 
         {/* Important Legal Disclaimer */}
