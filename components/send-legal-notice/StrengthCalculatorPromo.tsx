@@ -45,7 +45,7 @@ export function StrengthCalculatorPromo() {
             </motion.div>
             
             <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl leading-tight">
-              Before You Spend ₹1,000 on a Legal Notice — <span className="text-primary block mt-2">Check If Your Case Is Strong</span>
+              Before You Spend ₹1,499 on a Legal Notice — <span className="text-primary block mt-2">Check If Your Case Is Strong</span>
             </h2>
             
             <motion.div 

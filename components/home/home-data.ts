@@ -91,7 +91,7 @@ export const services: Service[] = [
     price: "₹299",
     originalPrice: "₹999",
     features: [
-      "15-45 Min Video/Phone Call",
+      "15-45 min detailed call",
       "Licensed Advocate",
       "Follow-up Support Included",
       "100% Confidential",

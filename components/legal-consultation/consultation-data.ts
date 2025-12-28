@@ -390,7 +390,7 @@ export const heroContent = {
     currentPrice: 299,
     unit: "/ consultation",
     features: [
-      "15 Min Video/Phone Call",
+      "15-45 Min detailed Call",
       "Licensed Advocate",
       "Free Follow-up Included",
       "Money-Back Guarantee",
