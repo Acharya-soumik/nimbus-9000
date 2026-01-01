@@ -10,6 +10,7 @@ import {
 } from "@/components/analytics/GoogleTagManager";
 import { MetaPixel } from "@/components/analytics/MetaPixel";
 import { MicrosoftClarity } from "@/components/analytics/MicrosoftClarity";
+import { Analytics } from "@vercel/analytics/next";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -240,6 +241,7 @@ export default function RootLayout({
           {children}
         </div>
         <Footer />
+        <Analytics />
       </body>
     </html>
   );

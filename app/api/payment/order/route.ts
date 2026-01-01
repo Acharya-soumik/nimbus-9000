@@ -1,7 +1,8 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { createOrder } from '@/lib/razorpay-client';
+import { withRateLimit } from '@/lib/rate-limiter';
 
-export async function POST(request: NextRequest) {
+async function handlePOST(request: NextRequest) {
   try {
     const body = await request.json();
     const { amount, currency, receipt, notes } = body || {};
@@ -33,6 +34,12 @@ export async function POST(request: NextRequest) {
     );
   }
 }
+
+// Apply rate limiting: 10 requests per 15 minutes
+export const POST = withRateLimit(handlePOST, {
+  maxRequests: 10,
+  windowMs: 15 * 60 * 1000, // 15 minutes
+});
 
 export async function GET() {
   return NextResponse.json({ error: 'Method not allowed' }, { status: 405 });

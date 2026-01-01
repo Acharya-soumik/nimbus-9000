@@ -56,7 +56,7 @@ const step1Schema = z.object({
 // Step 2 validation schema
 const step2Schema = z.object({
   noticeType: z.string().min(1, "Please select an option"),
-  description: z.string().optional().or(z.literal("")),
+  description: z.string().max(1000, "Description must be less than 1000 characters").optional().or(z.literal("")),
   city: z.string().min(1, "Please enter your city"),
 });
 
@@ -557,6 +557,12 @@ function FormStep2({ form, onBack, onNext, isSubmitting, serviceType }: Step2Pro
   const [customCity, setCustomCity] = React.useState<string>("");
   const cityOptions = React.useMemo(() => getCityOptions(), []);
 
+  // Character counter state
+  const MAX_DESCRIPTION_LENGTH = 1000;
+  const [descriptionLength, setDescriptionLength] = React.useState<number>(
+    form.getValues("description")?.length || 0
+  );
+
   // Check if "Others" is selected
   const isOthersSelected = selectedCity === "Others";
 
@@ -624,8 +630,37 @@ function FormStep2({ form, onBack, onNext, isSubmitting, serviceType }: Step2Pro
               {...form.register("description")}
               placeholder="Briefly describe your situation..."
               rows={4}
-              className="w-full rounded-xl border border-gray-200 bg-gray-50/50 px-4 py-3.5 text-base text-text-body placeholder:text-text-muted focus:border-primary focus:bg-white focus:outline-none focus:ring-2 focus:ring-primary/20 transition-all resize-none"
+              maxLength={MAX_DESCRIPTION_LENGTH}
+              onChange={(e) => {
+                form.register("description").onChange(e);
+                setDescriptionLength(e.target.value.length);
+              }}
+              className={cn(
+                "w-full rounded-xl border bg-gray-50/50 px-4 py-3.5 text-base text-text-body placeholder:text-text-muted focus:border-primary focus:bg-white focus:outline-none focus:ring-2 focus:ring-primary/20 transition-all resize-none",
+                form.formState.errors.description
+                  ? "border-red-500"
+                  : "border-gray-200"
+              )}
             />
+            <div className="mt-1 flex items-center justify-between">
+              <div>
+                {form.formState.errors.description && (
+                  <p className="text-sm text-red-500">
+                    {form.formState.errors.description.message}
+                  </p>
+                )}
+              </div>
+              <p
+                className={cn(
+                  "text-xs",
+                  descriptionLength > MAX_DESCRIPTION_LENGTH * 0.9
+                    ? "text-warning-gold font-semibold"
+                    : "text-text-muted"
+                )}
+              >
+                {descriptionLength}/{MAX_DESCRIPTION_LENGTH}
+              </p>
+            </div>
           </div>
 
           {/* City */}
