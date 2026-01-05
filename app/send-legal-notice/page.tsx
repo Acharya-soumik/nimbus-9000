@@ -20,6 +20,8 @@ import {
   type SampleNoticeContent,
   Breadcrumb,
 } from "@/components/send-legal-notice";
+import { PostNoticeClarity } from "@/components/send-legal-notice/PostNoticeClarity";
+import { PricingPlans } from "@/components/send-legal-notice/PricingPlans";
 import { FAQSection } from "@/components/ui/faq-section";
 import type { FAQItem } from "@/components/ui/faq-section";
 import { WhatsAppFloater } from "@/components/ui/whatsapp-floater";
@@ -115,6 +117,14 @@ export default function LegalNoticePage() {
   const [showExitModal, setShowExitModal] = React.useState(false);
   const [showSampleNoticeModal, setShowSampleNoticeModal] =
     React.useState(false);
+
+  const [selectedPlan, setSelectedPlan] = React.useState({
+    id: "smart" as "basic" | "smart",
+    name: "Guided Dispute Resolution",
+    price: 4499,
+    originalPrice: 7999,
+    advanceAmount: 799
+  });
 
   const handleFormSubmit = (data: {
     fullName: string;
@@ -334,7 +344,7 @@ export default function LegalNoticePage() {
                 "@type": "HowToStep",
                 position: 3,
                 name: "Notice Sent via Speed Post",
-                text: "Once you approve the final draft, we send your legal notice via Speed Post with Acknowledgement Due (RPAD) for complete legal validity and proof of delivery.",
+                text: "Once you approve the final draft, we send your legal notice via Speed Post with Acknowledgement Due  for complete legal validity and proof of delivery.",
                 image: "https://vakiltech.in/assets/common/registered-post.png",
               },
             ],
@@ -376,13 +386,29 @@ export default function LegalNoticePage() {
           />
         </div>
         <HeroSection />
-        <HowWeWorkTimeline />
         
-        {/* Strength Calculator Promo */}
+        {/* Strength Calculator Promo (Moved Up) */}
         <StrengthCalculatorPromo />
 
+        {/* How We Work Section */}
+        <HowWeWorkTimeline />
+        
+        {/* Post Notice Clarity (What Happens After) */}
+        <PostNoticeClarity />
+        
         {/* Why Safer Section */}
         <WhySaferSection />
+
+        {/* Pricing Section */}
+        <PricingPlans 
+          onPlanSelect={(plan) => {
+             setSelectedPlan(plan);
+             // Scroll to form only if needed, or maybe just update state
+             document.querySelector('#multi-step-form')?.scrollIntoView({ behavior: 'smooth' });
+          }}
+          selectedPlanId={selectedPlan.id}
+        />
+
         {/* Multi-Step Form Section */}
         <section
           id="multi-step-form"
@@ -391,7 +417,7 @@ export default function LegalNoticePage() {
           <div className="mx-auto max-w-md">
             <div className="mb-8 text-center">
               <h2 className="text-2xl font-bold text-text-heading sm:text-3xl">
-                Get Your Legal Notice Drafted
+                Get Your {selectedPlan.name}
               </h2>
               <p className="mt-2 text-text-medium">
                 Fill out the form below to get started
@@ -401,47 +427,21 @@ export default function LegalNoticePage() {
               onSubmit={handleFormSubmit}
               onStepChange={(step) => console.log("Step changed:", step)}
               serviceType="Legal Notice"
-              servicePrice={499}
+              servicePrice={selectedPlan.originalPrice} // Should this be original or current? Let's pass the plan details
+              planDetails={{
+                id: selectedPlan.id,
+                name: selectedPlan.name,
+                price: selectedPlan.price,
+                advanceAmount: selectedPlan.advanceAmount
+              }}
             />
-          </div>
-        </section>{" "}
-        {/* Pricing Section */}
-        <section className="bg-background-gray py-12 lg:py-16">
-          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-            <div className="mb-10 text-center">
-              <h2 className="text-2xl font-bold text-text-heading sm:text-3xl lg:text-4xl">
-                Simple, Transparent Pricing
-              </h2>
-              <p className="mt-2 text-text-medium">
-                No hidden charges, pay only for what you need
-              </p>
-            </div>
-            <div className="mx-auto max-w-md">
-              <PricingCard
-                badge="BEST VALUE PACK"
-                originalPrice={3999}
-                currentPrice={1499}
-                unit="/ notice"
-                features={[
-                  "Drafted by Licensed Advocate",
-                  "Sent via Speed Post",
-                  "Unlimited Revisions",
-                  "24/7 Support",
-                  "Legal Consultation",
-                ]}
-                totalLabel="TOTAL PAYABLE"
-                showPaymentBreakdown={true}
-                advancePayment={499}
-                finalPayment={1000}
-              />
-            </div>
           </div>
         </section>
         {/* Sample Notice Preview Section */}
         <SampleNoticeSection
           noticeCategory="Money Recovery"
           title="See a Real Legal Notice Format"
-          subtitle="Preview a professionally drafted legal notice."
+          subtitle="Preview a real advocate-drafted legal notice used in actual cases."
           buttonText="View Sample Notice"
           onButtonClick={() => setShowSampleNoticeModal(true)}
         />
@@ -618,8 +618,11 @@ export default function LegalNoticePage() {
           showDove={true}
           enableSchema={true}
         />
-        {/* Info Section Variants for Testing */}
+        {/* Info Section Variants (Educational Content) */}
         <section className="mx-auto max-w-7xl space-y-12 px-4 py-12 sm:px-6 lg:px-8">
+            <div className="text-center mb-8">
+                <h2 className="text-3xl font-bold text-text-heading">Legal Notice – Complete Guide</h2>
+            </div>
           {/* Variant 1 - Side by side on desktop */}
           <div id="info-variant-1" className="mx-auto max-w-md lg:max-w-none">
             <InfoSectionVariant1 onCtaClick={scrollToForm} />
@@ -632,9 +635,9 @@ export default function LegalNoticePage() {
                 ctaCards={[
                   {
                     variant: "primary" as const,
-                    title: "Draft Notice Now",
-                    subtitle: "Verified by experts",
-                    price: "₹499",
+                    title: "Start Lawyer Review",
+                    subtitle: "₹499 advance · Lawyer verified",
+                    price: "₹1,499",
                     onClick: scrollToForm,
                   },
                   {
@@ -692,7 +695,7 @@ export default function LegalNoticePage() {
           noticeContent={moneyRecoveryNotice}
           ctaLabel="Need a notice like this?"
           ctaSubtitle="Our lawyers draft & send it for you."
-          ctaButtonText="Generate Your Own Notice"
+          ctaButtonText="Start Lawyer Review"
           onCtaClick={() => {
             setShowSampleNoticeModal(false);
             // Scroll to form section
@@ -708,8 +711,8 @@ export default function LegalNoticePage() {
         />
         {/* Sticky CTA Bar (Mobile) */}
         <StickyCTABar
-          price="From ₹1,499"
-          ctaText="Get Started"
+          price="₹499 advance · Lawyer verified"
+          ctaText="Start Lawyer Review"
           onCtaClick={scrollToForm}
           formSectionId="multi-step-form"
         />

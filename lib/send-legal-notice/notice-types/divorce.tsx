@@ -80,7 +80,7 @@ export const divorceNoticeData: NoticeTypeData = {
           "1. Consultation: Discuss your case details and grounds for divorce with our family law advocate.",
           "2. Drafting: Our lawyer drafts a comprehensive notice citing relevant sections of the law.",
           "3. Review & Approval: You review the draft to ensure all facts are accurate. Unlimited revisions provided.",
-          "4. Dispatch: The notice is sent via Registered Post Acknowledgment Due (RPAD) for legal proof.",
+          "4. Dispatch: The notice is sent via Registered Post Acknowledgment Due  for legal proof.",
         ],
       },
     ],

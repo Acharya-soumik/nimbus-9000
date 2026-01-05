@@ -45,7 +45,7 @@ export function StrengthCalculatorPromo() {
             </motion.div>
             
             <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl leading-tight">
-              Before You Spend ₹1,499 on a Legal Notice — <span className="text-primary block mt-2">Check If Your Case Is Strong</span>
+              Before You Spend ₹1,499 — <span className="text-primary block mt-2">Check If Your Case Is Worth It</span>
             </h2>
             
             <motion.div 
@@ -57,8 +57,8 @@ export function StrengthCalculatorPromo() {
                 <div className="flex gap-3">
                     <span className="text-xl">⚠️</span>
                     <p className="text-base text-gray-700 font-medium">
-                        Many legal notices fail due to weak facts or missing proof. 
-                        Avoid sending a notice that won't work.
+                        Many legal notices fail due to weak facts or missing proof.
+                        Our lawyer-logic tool helps you avoid wasting money.
                     </p>
                 </div>
             </motion.div>

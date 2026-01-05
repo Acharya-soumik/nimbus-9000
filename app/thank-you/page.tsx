@@ -7,6 +7,8 @@ import {
   PaymentSummary,
   NextStepsSection,
   ActionButtons,
+  PostPaymentQuestion,
+  UpsellModal,
 } from '@/components/thank-you';
 import {
   getServiceContent,
@@ -156,11 +158,19 @@ export default async function ThankYouPage({
           {/* Next Steps Timeline */}
           <NextStepsSection steps={serviceContent.nextSteps} />
 
+          {/* Post Payment Question - Validation Experiment */}
+          <PostPaymentQuestion />
+
           {/* Action Buttons */}
           <ActionButtons
             whatsappNumber={whatsappNumber}
             whatsappMessage={whatsappMessage}
             paymentId={paymentId}
+          />
+
+          {/* Upsell for Basic Plan Users - Validation Experiment */}
+          <UpsellModal 
+            planId={paymentData.notes?.planId || 'basic'} // Default to basic if no planId found to test
           />
 
           {/* Additional Info Card */}

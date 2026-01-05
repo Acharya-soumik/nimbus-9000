@@ -33,8 +33,8 @@ export interface HeroSectionProps {
 export function HeroSection({
   className,
   badge = "Serving NationWide 🇮🇳",
-  headline = "We Don't Just Send Notices. We Solve Problems!",
-  subheadline,
+  headline = "We Don’t Just Send Legal Notices. We Help You Resolve Disputes.",
+  subheadline = "Lawyer-drafted legal notices with clear guidance on what to do next — without court visits.",
   flipWords = [
     "Expert Lawyers",
     "Understanding You",
@@ -42,8 +42,9 @@ export function HeroSection({
     "48-Hour Delivery",
   ],
   badges = [
-    { icon: "clock" as const, text: "Honest advice\nbefore action" },
-    { icon: "shield" as const, text: "Drafted by\nfamily lawyers" },
+    { icon: "shield" as const, text: "Verified Bar Council Lawyers" },
+    { icon: "check" as const, text: "Nationwide Service 🇮🇳" },
+    { icon: "clock" as const, text: "Speed Post + Delivery Proof" },
   ],
 }: HeroSectionProps) {
   const [dimensions, setDimensions] = useState({ width: 1920, height: 1080 });
@@ -240,7 +241,7 @@ export function HeroSection({
               badge="BEST VALUE PACK"
               features={[
                 "Drafted by Licensed Advocate",
-                "Sent via Speed Post (RPAD)",
+                "Sent via Speed Post ",
                 "Unlimited Revisions Included",
               ]}
             />
@@ -313,7 +314,7 @@ export function HeroSection({
             badge="BEST VALUE PACK"
             features={[
               "Drafted by Licensed Advocate",
-              "Sent via Speed Post (RPAD)",
+              "Sent via Speed Post ",
               "Unlimited Revisions Included",
             ]}
           /> */}

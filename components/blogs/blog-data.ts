@@ -278,7 +278,7 @@ const sampleContent1 = `
 </blockquote>
 
 <h2>How to Send a Legal Notice?</h2>
-<p>Legal notices should be sent through registered post with acknowledgment due (RPAD) or through a reliable courier service. This ensures you have proof of delivery, which is crucial for court proceedings.</p>
+<p>Legal notices should be sent through registered post with acknowledgment due  or through a reliable courier service. This ensures you have proof of delivery, which is crucial for court proceedings.</p>
 
 <h3>Steps to Send a Legal Notice:</h3>
 <ol>

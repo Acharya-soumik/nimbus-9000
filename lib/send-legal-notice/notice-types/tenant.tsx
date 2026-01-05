@@ -70,7 +70,7 @@ export const tenantNoticeData: NoticeTypeData = {
         content: `The legal process for eviction safeguards both landlord and tenant rights:
         
         1.  **Draft the Notice:** A lawyer drafts the notice citing relevant laws (Rent Control Act or TPA).
-        2.  **Send via Registered Post:** It must be sent via Registered Post AD (RPAD) to prove delivery.
+        2.  **Send via Registered Post:** It must be sent via Registered Post AD  to prove delivery.
         3.  **Wait for Response:** The tenant is given time (e.g., 15-30 days) to reply or vacate.
         4.  **File an Eviction Suit:** If they refuse to leave, you file an eviction petition in the Rent Control Court or Civil Court.
         5.  **Court Order:** The court hears both sides and issues an eviction order if your grounds are valid.

@@ -15,3 +15,6 @@ export type { NextStepsSectionProps } from './NextStepsSection';
 
 export { ActionButtons } from './ActionButtons';
 export type { ActionButtonsProps } from './ActionButtons';
+
+export { PostPaymentQuestion } from './PostPaymentQuestion';
+export { UpsellModal } from './UpsellModal';

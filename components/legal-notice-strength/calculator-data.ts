@@ -111,7 +111,7 @@ export const SCORE_BUCKETS: ScoreBucket[] = [
     label: "Strong Case",
     color: "green",
     recommendation: "You have a solid foundation for sending a legal notice",
-    primary_cta: "Generate Legal Notice",
+    primary_cta: "Draft Legal Notice",
     secondary_cta: "Get Lawyer Review",
   },
   {
@@ -121,7 +121,7 @@ export const SCORE_BUCKETS: ScoreBucket[] = [
     label: "Very Strong Case",
     color: "green",
     recommendation: "Your legal notice has high probability of success",
-    primary_cta: "Generate Legal Notice",
+    primary_cta: "Draft Legal Notice",
     secondary_cta: "Talk to Lawyer (Optional)",
   },
 ];

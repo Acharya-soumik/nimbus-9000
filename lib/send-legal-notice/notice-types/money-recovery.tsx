@@ -234,7 +234,7 @@ export const moneyRecoveryData: NoticeTypeData = {
       id: "how-long-takes",
       question: "How long does the drafting and sending process take?",
       answer:
-        "With VakilTech, our advocates draft your legal notice within 24-48 hours after you provide all necessary details. Once you review and approve the draft, we send it via Speed Post (RPAD), which typically takes 5-7 business days for delivery. You'll receive tracking updates throughout the process.",
+        "With VakilTech, our advocates draft your legal notice within 24-48 hours after you provide all necessary details. Once you review and approve the draft, we send it via Speed Post , which typically takes 5-7 business days for delivery. You'll receive tracking updates throughout the process.",
     },
   ],
 };

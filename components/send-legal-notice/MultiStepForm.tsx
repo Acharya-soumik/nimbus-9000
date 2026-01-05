@@ -79,6 +79,12 @@ export interface MultiStepFormProps {
   initialData?: Partial<FormStepData>;
   serviceType?: string;
   servicePrice?: number;
+  planDetails?: {
+    id: string;
+    name: string;
+    price: number;
+    advanceAmount: number;
+  };
 }
 
 /* =============================================================================
@@ -771,6 +777,12 @@ interface Step3Props {
   advanceLabel: string;
   originalPrice: number;
   serviceType: string;
+  planDetails?: {
+    id: string;
+    name: string;
+    price: number;
+    advanceAmount: number;
+  };
 }
 
 function FormStep3({
@@ -784,6 +796,7 @@ function FormStep3({
   advanceLabel,
   originalPrice,
   serviceType,
+  planDetails,
 }: Step3Props) {
   const fieldConfig = getFieldConfig(serviceType);
   return (
@@ -827,9 +840,16 @@ function FormStep3({
               </span>
             </div>
           </div>
-          <p className="mt-2 text-sm text-text-medium">
-            + ₹1,000 after drafting approval
-          </p>
+          {planDetails && planDetails.advanceAmount < planDetails.price && (
+             <p className="mt-2 text-sm text-text-medium">
+               + ₹{(planDetails.price - planDetails.advanceAmount).toLocaleString('en-IN')} after drafting approval
+             </p>
+          )}
+          {!planDetails && (
+            <p className="mt-2 text-sm text-text-medium">
+             + ₹1,000 after drafting approval
+            </p>
+          )}
           {isDiscounted && (
             <div className="mt-3 flex items-center gap-2">
               <span className="text-sm text-text-muted line-through">
@@ -954,6 +974,7 @@ export function MultiStepForm({
   initialData = {},
   serviceType = "Legal Notice",
   servicePrice = 499,
+  planDetails,
 }: MultiStepFormProps) {
   // Helper function to generate dynamic text based on service type
   const getServiceText = (type: string) => {
@@ -966,10 +987,10 @@ export function MultiStepForm({
       paymentDescription: string;
     }> = {
       "legal notice": {
-        formTitle: "Start Your Legal Notice",
-        advanceLabel: "LEGAL NOTICE ADVANCE",
+        formTitle: "Start Your " + (planDetails?.name || "Legal Notice"),
+        advanceLabel: planDetails ? "INITIAL PAYMENT" : "LEGAL NOTICE ADVANCE",
         apiService: "legal-notice",
-        paymentDescription: "Legal Notice",
+        paymentDescription: planDetails?.name || "Legal Notice",
       },
       "legal consultation": {
         formTitle: "Book Your Consultation",
@@ -1000,7 +1021,21 @@ export function MultiStepForm({
   // Exit intent state
   const [showExitIntent, setShowExitIntent] = React.useState(false);
   const [exitOfferShown, setExitOfferShown] = React.useState(false);
-  const [currentPrice, setCurrentPrice] = React.useState(servicePrice);
+  
+  // Initialize price based on planDetails if available, otherwise use servicePrice
+  const [currentPrice, setCurrentPrice] = React.useState(
+    planDetails ? planDetails.advanceAmount : servicePrice
+  );
+  
+  // Update price when planDetails changes
+  React.useEffect(() => {
+    if (planDetails) {
+      setCurrentPrice(planDetails.advanceAmount);
+    } else {
+      setCurrentPrice(servicePrice);
+    }
+  }, [planDetails, servicePrice]);
+
   const [isDiscounted, setIsDiscounted] = React.useState(false);
 
   // Phone validation state
@@ -1193,6 +1228,8 @@ export function MultiStepForm({
             leadId: leadId || "",
             service: serviceText.apiService,
             discounted: isDiscounted,
+            planId: planDetails?.id,
+            planName: planDetails?.name,
           },
         }),
       });
@@ -1403,6 +1440,7 @@ export function MultiStepForm({
               advanceLabel={serviceText.advanceLabel}
               originalPrice={servicePrice}
               serviceType={serviceType}
+              planDetails={planDetails}
             />
           )}
         </ModalContent>

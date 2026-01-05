@@ -76,7 +76,7 @@ const defaultStats: Stat[] = [
 
 export function TestimonialsSection({
   className,
-  title = "What our clients say about us",
+  title = "Real People. Real Results.",
   subtitle = "Join hundreds of Indians who trust Vakil Tech for all their legal needs.",
   testimonials = defaultTestimonials,
   stats = defaultStats,
@@ -121,7 +121,6 @@ export function TestimonialsSection({
         </div>
 
         {/* Testimonials Carousel */}
-        <div className="relative space-y-6">
           <InfiniteMovingCards
             items={testimonials}
             direction="left"
@@ -129,14 +128,6 @@ export function TestimonialsSection({
             pauseOnHover={true}
             className="py-0"
           />
-          <InfiniteMovingCards
-            items={testimonials}
-            direction="right"
-            speed="normal"
-            pauseOnHover={true}
-            className="py-0"
-          />
-        </div>
       </div>
     </section>
   );

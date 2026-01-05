@@ -190,7 +190,7 @@ export function LegalNoticeTypePageClient({
                 "@type": "HowToStep",
                 position: 3,
                 name: "Notice Sent via Speed Post",
-                text: "Once approved, we send your legal notice via Speed Post with Acknowledgement Due (RPAD) for legal validity.",
+                text: "Once approved, we send your legal notice via Speed Post with Acknowledgement Due  for legal validity.",
                 image: "https://vakiltech.in/assets/common/registered-post.png",
               },
             ],

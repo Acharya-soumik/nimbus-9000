@@ -69,10 +69,23 @@ export default function AgreementDraftingPage() {
 
   // Handle form submission (from hero)
   const handleFormSubmit = () => {
-    console.log("Form submitted");
-    setShowDiscountModal(true);
-  };
+    // Try to find the visible form
+    const desktopForm = document.querySelector("#agreement-form-desktop");
+    const mobileForm = document.querySelector("#agreement-form-mobile");
 
+    // Check if desktop form is visible (display: none check not needed if we rely on media queries, but safe to check offsetParent)
+    // Actually, just scroll to whichever is available/visible
+    if (desktopForm && getComputedStyle(desktopForm).display !== "none") {
+      desktopForm.scrollIntoView({ behavior: "smooth" });
+    } else if (mobileForm) {
+      mobileForm.scrollIntoView({ behavior: "smooth" });
+    } else {
+      // Fallback
+      document
+        .querySelector("#agreement-form")
+        ?.scrollIntoView({ behavior: "smooth" });
+    }
+  };
   // Handle offer claim
   const handleClaimOffer = (discountedPrice?: number) => {
     console.log("Offer claimed!", discountedPrice);

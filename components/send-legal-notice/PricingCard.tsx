@@ -29,7 +29,7 @@ export function PricingCard({
   unit = "/ notice",
   features = [
     "Drafted by Licensed Advocate",
-    "Sent via Speed Post (RPAD)",
+    "Sent via Speed Post ",
     "Unlimited Revisions Included",
   ],
   totalLabel = "TOTAL PAYABLE",

@@ -269,7 +269,7 @@ export default function LegalNoticeStrengthPage() {
                     className="rounded-xl bg-orange-500 px-6 py-3 text-white font-semibold hover:bg-orange-600 transition-colors"
                   >
                     {result.score >= 60
-                      ? "Generate Legal Notice"
+                      ? "Draft Legal Notice"
                       : "Consult Lawyer"}
                   </button>
                   <button

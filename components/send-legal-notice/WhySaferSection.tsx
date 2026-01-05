@@ -28,25 +28,25 @@ export interface WhySaferSectionProps {
 
 const defaultFeatures: SafetyFeature[] = [
   {
-    image: "/assets/common/sit-and-relax.png",
-    title: "No Court Visits",
-    description: "Resolve disputes from the comfort of your home.",
-  },
-  {
     image: "/assets/common/consut-lawyer.png",
-    title: "Custom Drafted",
+    title: "Custom Drafted by Lawyers",
     description:
       "Detailed understanding of your case and custom drafted for you.",
   },
   {
-    image: "/assets/common/save-money.png",
-    title: "Cost-Efficient",
-    description: "Save 80% compared to local lawyers.",
+    image: "/assets/common/sit-and-relax.png",
+    title: "No Court Visits Required",
+    description: "Resolve disputes from the comfort of your home.",
   },
   {
     image: "/assets/common/postal-delivery.png",
-    title: "Rapid Delivery",
+    title: "Rapid Drafting (24 hrs)",
     description: "Drafts ready for review in 24 hours.",
+  },
+  {
+    image: "/assets/common/save-money.png",
+    title: "Cost-Efficient vs Local Lawyers",
+    description: "Save 80% compared to local lawyers.",
   },
 ];
 

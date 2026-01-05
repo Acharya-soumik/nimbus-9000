@@ -69,11 +69,11 @@ export const services: Service[] = [
     title: "Legal Notice",
     description:
       "Get professionally drafted legal notices sent via Speed Post. Perfect for money recovery, property disputes, cheque bounce, and more.",
-    price: "₹499",
-    originalPrice: "₹1,499",
+    price: "₹1,499",
+    originalPrice: "₹3,999",
     features: [
       "Drafted by Licensed Advocate",
-      "Sent via Speed Post (RPAD)",
+      "Sent via Speed Post ",
       "Unlimited Revisions",
       "24/7 Support",
       "Delivery Tracking",
