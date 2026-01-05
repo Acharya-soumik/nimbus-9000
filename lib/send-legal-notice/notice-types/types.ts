@@ -60,6 +60,17 @@ export interface NoticeTypeData {
     accordionSections: AccordionSection[];
   };
 
+  postNoticeRoadmap?: {
+    title: string;
+    scenarios: Array<{
+      situation: string;
+      actions: Array<{
+        title: string;
+        description: string;
+      }>;
+    }>;
+  };
+
   sampleNotice: SampleNoticeContent;
   faqs: FAQItem[];
 }

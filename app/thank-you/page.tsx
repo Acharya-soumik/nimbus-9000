@@ -9,6 +9,7 @@ import {
   ActionButtons,
   PostPaymentQuestion,
   UpsellModal,
+  PaymentSuccessTracker,
 } from '@/components/thank-you';
 import {
   getServiceContent,
@@ -142,6 +143,15 @@ export default async function ThankYouPage({
       <SuccessHero
         title={serviceContent.title}
         description={serviceContent.description}
+      />
+      
+      <PaymentSuccessTracker 
+        paymentId={paymentData.id}
+        amount={typeof paymentData.amount === 'string' ? parseInt(paymentData.amount) : paymentData.amount}
+        serviceType={serviceType}
+        planId={paymentData.notes?.planId}
+        email={paymentData.email}
+        phone={paymentData.contact ? String(paymentData.contact) : undefined}
       />
 
       {/* Main Content Section */}

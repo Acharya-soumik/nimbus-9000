@@ -212,6 +212,42 @@ export const criminalDefamationData: NoticeTypeData = {
       },
     ],
   },
+  
+  postNoticeRoadmap: {
+    title: "Roadmap: What Happens After Sending the Notice?",
+    scenarios: [
+      {
+        situation: "If Reply Received",
+        actions: [
+          {
+            title: "Mediation",
+            description: "Demand a Public Apology and removal of content in exchange for dropping legal action.",
+          },
+          {
+            title: "Closure",
+            description: "Ensure the apology is published on the same platform where defamation occurred.",
+          },
+        ],
+      },
+      {
+        situation: "If NO Reply / Refusal",
+        actions: [
+          {
+            title: "File Case (Criminal)",
+            description: "File a private complaint under Section 499/500 IPC before the Magistrate (Goal: Get them summoned/punished).",
+          },
+          {
+            title: "File Case (Civil)",
+            description: "File a Suit for Damages seeking monetary compensation for loss of reputation.",
+          },
+          {
+            title: "Authority",
+            description: "File a complaint with the Cyber Crime Cell if the defamation was online/via email.",
+          },
+        ],
+      },
+    ],
+  },
 
   sampleNotice: realSampleNotices["money-recovery"], // Placeholder - will create proper sample
 

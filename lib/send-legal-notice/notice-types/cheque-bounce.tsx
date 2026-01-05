@@ -109,6 +109,51 @@ export const chequeBounceData: NoticeTypeData = {
     ],
   },
 
+  postNoticeRoadmap: {
+    title: "Roadmap: What Happens After Sending the Notice?",
+    scenarios: [
+      {
+        situation: "If Reply Received / Payment Offered",
+        actions: [
+          {
+            title: "Mediation/Settlement",
+            description: "If they offer partial payment or ask for time, draft a Settlement Agreement binding them to a payment schedule.",
+          },
+          {
+            title: "Closure",
+            description: "If full payment is made, issue a receipt and close the matter.",
+          },
+        ],
+      },
+      {
+        situation: "If Reply Received (Denial)",
+        actions: [
+          {
+            title: "Review",
+            description: "Analyze their defense (e.g., 'security cheque', 'lost cheque').",
+          },
+          {
+            title: "File Case",
+            description: "If the defense is weak, file a Criminal Complaint u/s 138 before the Judicial Magistrate within 30 days of the expiry of the 15-day notice period.",
+          },
+        ],
+      },
+      {
+        situation: "If NO Reply & NO Payment",
+        actions: [
+          {
+            title: "File Case",
+            description: "Immediate filing of Criminal Complaint u/s 138.",
+          },
+          {
+            title: "Authority Complaint",
+            description: "Optionally, file a cheating complaint (Section 420 IPC) at the local police station if fraudulent intent is clear from the start.",
+          },
+        ],
+      },
+    ],
+  },
+
   sampleNotice: realSampleNotices["cheque-bounce"],
 
   faqs: [

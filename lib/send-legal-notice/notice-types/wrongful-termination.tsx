@@ -108,6 +108,38 @@ export const wrongfulTerminationData: NoticeTypeData = {
       },
     ],
   },
+  
+  postNoticeRoadmap: {
+    title: "Roadmap: What Happens After Sending the Notice?",
+    scenarios: [
+      {
+        situation: "If Reply Received",
+        actions: [
+          {
+            title: "Mediation",
+            description: "Negotiate a severance package or clearance of dues. Employers often settle to avoid bad PR.",
+          },
+          {
+            title: "Closure",
+            description: "If settled, sign a 'Full and Final Settlement' deed.",
+          },
+        ],
+      },
+      {
+        situation: "If NO Reply / Refusal",
+        actions: [
+          {
+            title: "Authority Complaint",
+            description: "File a formal complaint with the Labour Commissioner of the area. They will summon the employer for conciliation.",
+          },
+          {
+            title: "File Case",
+            description: "1. Labour Court: If the employee is a 'workman'. 2. Civil Court: If the employee is a 'Manager/Executive' (Labour laws may not apply).",
+          },
+        ],
+      },
+    ],
+  },
 
   sampleNotice: realSampleNotices["unpaid-salary"], // Placeholder - will create proper sample
 

@@ -130,6 +130,38 @@ export const maintenanceNoticeData: NoticeTypeData = {
       },
     ],
   },
+  
+  postNoticeRoadmap: {
+    title: "Roadmap: What Happens After Sending the Notice?",
+    scenarios: [
+      {
+        situation: "If Reply Received",
+        actions: [
+          {
+            title: "Settlement",
+            description: "If they agree to pay, sign a formal Maintenance Agreement to avoid court.",
+          },
+          {
+            title: "One-Time Settlement",
+            description: "Sometimes a lump-sum amount (Permanent Alimony) is better than monthly payments.",
+          },
+        ],
+      },
+      {
+        situation: "If NO Reply / Refusal",
+        actions: [
+          {
+            title: "File Case",
+            description: "File a Maintenance Petition under Section 125 CrPC (fastest remedy).",
+          },
+          {
+            title: "Interim Relief",
+            description: "Ask the court for 'Interim Maintenance' to get financial support immediately while the case runs.",
+          },
+        ],
+      },
+    ],
+  },
 
   sampleNotice: realSampleNotices["maintenance"],
 

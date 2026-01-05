@@ -127,6 +127,38 @@ export const childCustodyData: NoticeTypeData = {
       },
     ],
   },
+  
+  postNoticeRoadmap: {
+    title: "Roadmap: What Happens After Sending the Notice?",
+    scenarios: [
+      {
+        situation: "If Reply Received",
+        actions: [
+          {
+            title: "Parenting Plan",
+            description: "If they agree, draft a 'Joint Parenting Plan' detailing custody and visitation schedules.",
+          },
+          {
+            title: "Mediation",
+            description: "Go to a counselor to formalize visitation without fighting in court.",
+          },
+        ],
+      },
+      {
+        situation: "If NO Reply / Denial",
+        actions: [
+          {
+            title: "File Case",
+            description: "File a Child Custody Petition (GWC Petition) in the Family Court.",
+          },
+          {
+            title: "Interim Relief",
+            description: "File an Interim Application for immediate visitation rights while the case is pending.",
+          },
+        ],
+      },
+    ],
+  },
 
   sampleNotice: realSampleNotices["child-custody"] || realSampleNotices["divorce"], // Fallback if specific sample missing
 

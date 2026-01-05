@@ -18,3 +18,4 @@ export type { ActionButtonsProps } from './ActionButtons';
 
 export { PostPaymentQuestion } from './PostPaymentQuestion';
 export { UpsellModal } from './UpsellModal';
+export { PaymentSuccessTracker } from './PaymentSuccessTracker';

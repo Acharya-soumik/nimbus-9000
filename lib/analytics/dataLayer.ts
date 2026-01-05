@@ -3,6 +3,8 @@
  * Optimized for performance with minimal overhead
  */
 
+import { trackEvent, trackPageView as mixpanelTrackPageView, identifyUser } from "@/lib/mixpanel";
+
 // Extend Window interface for dataLayer
 declare global {
   interface Window {
@@ -31,6 +33,12 @@ export const trackPageView = (pagePath: string, serviceType: string) => {
     service_type: serviceType,
   });
 
+  // Mixpanel Page View
+  mixpanelTrackPageView(serviceType, {
+    path: pagePath,
+    service_type: serviceType
+  });
+
   // Also push to Meta Pixel
   if (typeof window !== "undefined" && window.fbq) {
     window.fbq("track", "PageView");
@@ -48,6 +56,12 @@ export const trackFormStart = (
     event: "form_start",
     service_type: serviceType,
     form_name: formName,
+  });
+
+  // Mixpanel
+  trackEvent("Form Started", {
+    form_name: formName,
+    service_type: serviceType
   });
 };
 
@@ -75,6 +89,14 @@ export const trackFormStep = (
       form_name: formName,
       step_number: step,
       step_name: stepName,
+    });
+
+    // Mixpanel
+    trackEvent("Form Step Completed", {
+      form_name: formName,
+      service_type: serviceType,
+      step_number: step,
+      step_name: stepName
     });
 
     // Meta Pixel with Dynamic Advanced Matching (Restored for Step 1)
@@ -136,6 +158,23 @@ export const trackFormSubmission = (
     value: price || 0,
     currency: "INR",
   });
+
+  // Mixpanel
+  trackEvent("Form Submitted", {
+      form_name: formName,
+      service_type: serviceType,
+      value: price || 0,
+      currency: "INR"
+  });
+  
+  // Identify user if possible
+  if (userData?.name || userData?.email || userData?.phone) {
+      // Use phone or email as distinct_id if available, otherwise just set people properties causes alias/identity issues if not careful.
+      // We will just set people properties for now without aliasing identity unless we have a persistent ID.
+      // Usually identify is done on Login. Here it's a lead form. 
+      // We can use alias, but let's stick to safe "people.set" or just track events with properties.
+  }
+
 
   // Meta Pixel Lead event with Dynamic Advanced Matching
   if (typeof window !== "undefined" && window.fbq) {
@@ -203,6 +242,14 @@ export const trackCTAClick = (
     value: price || 0,
     currency: "INR",
   });
+
+  // Mixpanel
+  trackEvent("CTA Clicked", {
+      cta_text: ctaText,
+      service_type: serviceType,
+      location: location,
+      value: price
+  });
 };
 
 /**
@@ -234,3 +281,4 @@ function normalizeData(data: string): string {
     return data.toLowerCase().trim();
   }
 }
+

@@ -143,7 +143,63 @@ export const divorceNoticeData: NoticeTypeData = {
       },
     ],
   },
-
+  
+  postNoticeRoadmap: {
+    title: "Roadmap: What Happens After Sending the Notice?",
+    scenarios: [
+      {
+        situation: "If Reply Received (Positive)",
+        actions: [
+          {
+            title: "Mediation",
+            description:
+              "Arrange a joint meeting to discuss terms (alimony, child custody).",
+          },
+          {
+            title: "File Case",
+            description:
+              "File a Mutual Consent Divorce (Section 13B HMA). This is faster (6-18 months).",
+          },
+        ],
+      },
+      {
+        situation: "If Reply Received (Hostile)",
+        actions: [
+          {
+            title: "Mediation",
+            description:
+              "Attempt pre-litigation mediation center counseling (optional but recommended).",
+          },
+          {
+            title: "File Case",
+            description:
+              "File a Contested Divorce petition (Cruelty, Desertion, etc.).",
+          },
+          {
+            title: "Maintenance",
+            description:
+              "Simultaneously file Section 125 CrPC / Section 144 BNSS for interim maintenance.",
+          },
+        ],
+      },
+      {
+        situation: "If NO Reply",
+        actions: [
+          {
+            title: "File Case",
+            description:
+              "File for Restitution of Conjugal Rights (Section 9) if you want them back, OR file for Contested Divorce.",
+          },
+          {
+            title: "Authority Complaint",
+            description:
+              "If violence was involved, file a complaint with the Women’s Cell or Protection Officer (DV Act).",
+          },
+        ],
+      },
+    ],
+  },
+  
   sampleNotice: realSampleNotices["divorce"],
 
   faqs: [

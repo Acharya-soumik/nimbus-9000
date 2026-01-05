@@ -139,6 +139,38 @@ export const evictionNoticeData: NoticeTypeData = {
       },
     ],
   },
+  
+  postNoticeRoadmap: {
+    title: "Roadmap: What Happens After Sending the Notice?",
+    scenarios: [
+      {
+        situation: "If Reply Received",
+        actions: [
+          {
+            title: "Vacation",
+            description: "The tenant agrees to vacate. Ensure you check utility bills and condition before taking keys.",
+          },
+          {
+            title: "Time Extension",
+            description: "They might ask for 1-2 months more. If agreed, sign a 'Vacation Undertaking' to ensure they leave.",
+          },
+        ],
+      },
+      {
+        situation: "If NO Reply / Refusal",
+        actions: [
+          {
+            title: "File Case",
+            description: "File an Eviction Suit in the Rent Control Court / Civil Court.",
+          },
+          {
+            title: "Tip",
+            description: "Do not cut electricity or water. It's illegal and weakens your case.",
+          },
+        ],
+      },
+    ],
+  },
 
   sampleNotice: realSampleNotices["tenant-eviction"],
 

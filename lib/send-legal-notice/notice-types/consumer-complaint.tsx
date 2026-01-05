@@ -102,6 +102,38 @@ export const consumerComplaintNoticeData: NoticeTypeData = {
       },
     ],
   },
+  
+  postNoticeRoadmap: {
+    title: "Roadmap: What Happens After Sending the Notice?",
+    scenarios: [
+      {
+        situation: "If Reply Received",
+        actions: [
+          {
+            title: "Mediation",
+            description: "Brands often offer replacement or refund to avoid litigation costs. Accept if reasonable.",
+          },
+          {
+            title: "Authority",
+            description: "Use the National Consumer Helpline (NCH) app to pressure them before court.",
+          },
+        ],
+      },
+      {
+        situation: "If NO Reply / Denial",
+        actions: [
+          {
+            title: "File Case",
+            description: "File a formal complaint in the District Consumer Disputes Redressal Commission (Consumer Court).",
+          },
+          {
+            title: "Note",
+            description: "You can ask for compensation + litigation costs + mental harassment.",
+          },
+        ],
+      },
+    ],
+  },
 
   sampleNotice: realSampleNotices["consumer-complaint"],
 

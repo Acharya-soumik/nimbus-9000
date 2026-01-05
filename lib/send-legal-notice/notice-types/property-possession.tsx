@@ -101,6 +101,38 @@ export const propertyPossessionNoticeData: NoticeTypeData = {
       },
     ],
   },
+  
+  postNoticeRoadmap: {
+    title: "Roadmap: What Happens After Sending the Notice?",
+    scenarios: [
+      {
+        situation: "If Reply Received",
+        actions: [
+          {
+            title: "Handover",
+            description: "Builder agrees to handover timeline. Ensure you check Occupancy Certificate (OC) first.",
+          },
+          {
+            title: "Compensation",
+            description: "They might offer waiver of maintenance charges as compensation for delay. Negotiate hard.",
+          },
+        ],
+      },
+      {
+        situation: "If NO Reply",
+        actions: [
+          {
+            title: "File RERA Case",
+            description: "File a complaint for 'Possession plus Interest' (Form M/N). Fastest remedy.",
+          },
+          {
+            title: "Consumer Court",
+            description: "Alternative: File in Consumer Commission for 'Deficiency in Service' (compensation is often higher here).",
+          },
+        ],
+      },
+    ],
+  },
 
   sampleNotice: realSampleNotices["builder-delay"],
 

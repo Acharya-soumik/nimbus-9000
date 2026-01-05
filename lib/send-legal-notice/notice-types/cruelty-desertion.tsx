@@ -128,6 +128,38 @@ export const crueltyDesertionNoticeData: NoticeTypeData = {
       },
     ],
   },
+  
+  postNoticeRoadmap: {
+    title: "Roadmap: What Happens After Sending the Notice?",
+    scenarios: [
+      {
+        situation: "If Reply Received",
+        actions: [
+          {
+            title: "Reconciliation",
+            description: "They might ask to reconcile. If you agree, sign a clear 'terms of return' agreement.",
+          },
+          {
+            title: "Mutual Divorce",
+            description: "If the marriage is broken beyond repair, agree to file for Mutual Consent Divorce (Fastest).",
+          },
+        ],
+      },
+      {
+        situation: "If NO Reply / Refusal",
+        actions: [
+          {
+            title: "File Contested Divorce",
+            description: "File for divorce on ground of Cruelty (immediate) or Desertion (after 2 years).",
+          },
+          {
+            title: "Criminal Complaint",
+            description: "If cruelty was severe, file complaint under Section 498A IPC/BNS.",
+          },
+        ],
+      },
+    ],
+  },
 
   sampleNotice: realSampleNotices["cruelty"],
 

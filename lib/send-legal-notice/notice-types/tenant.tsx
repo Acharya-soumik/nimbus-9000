@@ -145,6 +145,38 @@ export const tenantNoticeData: NoticeTypeData = {
     ],
   },
 
+  postNoticeRoadmap: {
+    title: "Roadmap: What Happens After Sending the Notice?",
+    scenarios: [
+      {
+        situation: "If Reply Received",
+        actions: [
+          {
+            title: "Mediation",
+            description: "Most property disputes are best settled out of court to save decades of time. Draft a Family Settlement Deed or Vacation Agreement.",
+          },
+          {
+            title: "Authority",
+            description: "If it's a builder issue, file a complaint with RERA (Real Estate Regulatory Authority).",
+          },
+        ],
+      },
+      {
+        situation: "If NO Reply",
+        actions: [
+          {
+            title: "File Case",
+            description: "1. Eviction Suit: Under Rent Control Act (for tenants). 2. Suit for Partition: For family property. 3. Suit for Declaration & Possession: If someone has illegally encroached.",
+          },
+          {
+            title: "Authority",
+            description: "File a written complaint to the Municipal Corporation if there is illegal construction.",
+          },
+        ],
+      },
+    ],
+  },
+
   sampleNotice: realSampleNotices["tenant-eviction"],
 
   faqs: [

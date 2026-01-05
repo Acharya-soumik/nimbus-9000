@@ -112,6 +112,38 @@ export const domesticViolenceData: NoticeTypeData = {
       },
     ],
   },
+  
+  postNoticeRoadmap: {
+    title: "Roadmap: What Happens After Sending the Notice?",
+    scenarios: [
+      {
+        situation: "If Reply Received",
+        actions: [
+          {
+            title: "Assurance",
+            description: "They may offer written assurance to stop violence. Accept ONLY if you feel safe.",
+          },
+          {
+            title: "Safe Exit",
+            description: "If needed, negotiate a safe retrieval of your belongings (Stridhan) and documents.",
+          },
+        ],
+      },
+      {
+        situation: "If NO Reply / Threat",
+        actions: [
+          {
+            title: "File DV Complaint",
+            description: "File a complaint under PWDVA 2005 before the Magistrate for Protection & Residence.",
+          },
+          {
+            title: "Police Complaint",
+            description: "File an FIR under Section 85 BNS (Cruelty) at the nearest police station.",
+          },
+        ],
+      },
+    ],
+  },
 
   sampleNotice: realSampleNotices["domestic-violence"],
 

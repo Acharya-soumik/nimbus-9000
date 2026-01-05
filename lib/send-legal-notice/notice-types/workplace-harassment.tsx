@@ -107,6 +107,38 @@ export const workplaceHarassmentData: NoticeTypeData = {
       },
     ],
   },
+  
+  postNoticeRoadmap: {
+    title: "Roadmap: What Happens After Sending the Notice?",
+    scenarios: [
+      {
+        situation: "If Reply Received",
+        actions: [
+          {
+            title: "ICC Inquiry",
+            description: "The company must constitute an ICC (Internal Complaints Committee) to investigate within 90 days.",
+          },
+          {
+            title: "Resolution",
+            description: "If proven, the harasser can be terminated, suspended, or asked to apologize.",
+          },
+        ],
+      },
+      {
+        situation: "If NO Reply / Retaliation",
+        actions: [
+          {
+            title: "File Complaint",
+            description: "Complain to the District Officer (LCC) or Ministry of Women & Child Development (She-Box).",
+          },
+          {
+            title: "Labor Court",
+            description: "Approach the Labor Court for wrongful treatment or failure to implement POSH Act.",
+          },
+        ],
+      },
+    ],
+  },
 
   sampleNotice: realSampleNotices["workplace-harassment"],
 

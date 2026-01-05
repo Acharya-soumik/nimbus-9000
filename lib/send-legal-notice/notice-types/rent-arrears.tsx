@@ -134,6 +134,38 @@ export const rentArrearsNoticeData: NoticeTypeData = {
       },
     ],
   },
+  
+  postNoticeRoadmap: {
+    title: "Roadmap: What Happens After Sending the Notice?",
+    scenarios: [
+      {
+        situation: "If Reply Received",
+        actions: [
+          {
+            title: "Payment",
+            description: "Tenant pays the arrears. You can then choose to continue or terminate the lease.",
+          },
+          {
+            title: "Partial Payment",
+            description: "If they pay partially, issue a receipt 'Without Prejudice' to your right to evict.",
+          },
+        ],
+      },
+      {
+        situation: "If NO Reply / Default",
+        actions: [
+          {
+            title: "File Case (Money)",
+            description: "File a Summary Suit (Order 37 CPC) just to recover the money quickly.",
+          },
+          {
+            title: "File Case (Eviction)",
+            description: "File an Eviction Suit on ground of 'Non-Payment of Rent'.",
+          },
+        ],
+      },
+    ],
+  },
 
   sampleNotice: realSampleNotices["rent-arrears"],
 

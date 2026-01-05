@@ -10,6 +10,7 @@ import {
 } from "@/components/analytics/GoogleTagManager";
 import { MetaPixel } from "@/components/analytics/MetaPixel";
 import { MicrosoftClarity } from "@/components/analytics/MicrosoftClarity";
+import MixpanelManager from "@/components/analytics/MixpanelManager";
 import { Analytics } from "@vercel/analytics/next";
 
 const geistSans = Geist({
@@ -128,6 +129,9 @@ export default function RootLayout({
 
         {/* Microsoft Clarity */}
         {clarityId && <MicrosoftClarity projectId={clarityId} />}
+
+        {/* Mixpanel Analytics */}
+        <MixpanelManager />
 
         {/* Organization Schema - Global for the entire website */}
         <script

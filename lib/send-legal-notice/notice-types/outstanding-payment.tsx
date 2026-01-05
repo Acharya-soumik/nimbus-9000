@@ -107,6 +107,42 @@ export const outstandingPaymentData: NoticeTypeData = {
       },
     ],
   },
+  
+  postNoticeRoadmap: {
+    title: "Roadmap: What Happens After Sending the Notice?",
+    scenarios: [
+      {
+        situation: "If Reply Received",
+        actions: [
+          {
+            title: "Payment",
+            description: "They might offer to pay in installments. Accept only if they sign a Payment Agreement.",
+          },
+          {
+            title: "Reconciliation",
+            description: "If they dispute the invoice amount, reconcile accounts immediately to avoid delay.",
+          },
+        ],
+      },
+      {
+        situation: "If NO Reply",
+        actions: [
+          {
+            title: "MSME Samadhaan",
+            description: "If you are MSME registered, file a case with MSE Facilitation Council (Fast & Powerful).",
+          },
+          {
+            title: "File Case",
+            description: "File Summary Suit (Order 37 CPC) or Commercial Suit for recovery.",
+          },
+          {
+            title: "Insolvency",
+            description: "If the debt is >₹1 Cr, you can drag the company to NCLT for insolvency.",
+          },
+        ],
+      },
+    ],
+  },
 
   sampleNotice: realSampleNotices["outstanding-payment"],
 

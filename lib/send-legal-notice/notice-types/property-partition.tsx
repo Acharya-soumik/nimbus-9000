@@ -131,6 +131,34 @@ export const propertyPartitionData: NoticeTypeData = {
       },
     ],
   },
+  
+  postNoticeRoadmap: {
+    title: "Roadmap: What Happens After Sending the Notice?",
+    scenarios: [
+      {
+        situation: "If Reply Received",
+        actions: [
+          {
+            title: "Mediation",
+            description: "Most property disputes are best settled out of court to save decades of time. Draft a Family Settlement Deed or Vacation Agreement.",
+          },
+        ],
+      },
+      {
+        situation: "If NO Reply",
+        actions: [
+          {
+            title: "File Case",
+            description: "Suit for Partition: To legally divide the family property by metes and bounds or by sale.",
+          },
+          {
+            title: "File Case",
+            description: "Suit for Declaration & Possession: If your title or possession is being denied.",
+          },
+        ],
+      },
+    ],
+  },
 
   sampleNotice: realSampleNotices["property-partition"] || realSampleNotices["money-recovery"], // Fallback if specific sample missing
 

@@ -29,6 +29,7 @@ import { StickyCTABar } from "@/components/legal-consultation/StickyCTABar";
 import { realSampleNotices } from "@/lib/send-legal-notice/real-sample-notices";
 import { PageViewTracker } from "@/components/analytics/PageViewTracker";
 import { StrengthCalculatorPromo } from "@/components/send-legal-notice/StrengthCalculatorPromo";
+import { trackEvent } from "@/lib/mixpanel";
 
 // Use the real money recovery notice
 const moneyRecoveryNotice: SampleNoticeContent =
@@ -120,8 +121,8 @@ export default function LegalNoticePage() {
 
   const [selectedPlan, setSelectedPlan] = React.useState({
     id: "smart" as "basic" | "smart",
-    name: "Guided Dispute Resolution",
-    price: 4499,
+    name: "Complete Dispute Resolution",
+    price: 4999,
     originalPrice: 7999,
     advanceAmount: 799
   });
@@ -162,6 +163,10 @@ export default function LegalNoticePage() {
 
   // Scroll to form handler
   const scrollToForm = () => {
+    trackEvent("CTA Clicked", {
+        section: "Sticky Bar/Hero",
+        action: "Scroll to Form"
+    });
     document
       .querySelector("#multi-step-form")
       ?.scrollIntoView({ behavior: "smooth" });

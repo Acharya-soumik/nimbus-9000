@@ -108,6 +108,47 @@ export const moneyRecoveryData: NoticeTypeData = {
     ],
   },
 
+  postNoticeRoadmap: {
+    title: "Roadmap: What Happens After Sending the Notice?",
+    scenarios: [
+      {
+        situation: "If Reply Received (Admit Debt)",
+        actions: [
+          {
+            title: "Mediation",
+            description: "Draft a formal acknowledgment of debt or repayment plan.",
+          },
+          {
+            title: "Authority",
+            description: "If they are an MSME, file a complaint on the MSME Samadhaan Portal (faster than court).",
+          },
+        ],
+      },
+      {
+        situation: "If Reply Received (Denial)",
+        actions: [
+          {
+            title: "File Case",
+            description: "1. Summary Suit (Order 37 CPC): If you have strong written proof (invoices/contract), this is a 'fast-track' civil case. 2. Regular Civil Suit: If facts are disputed and require evidence/witnesses.",
+          },
+        ],
+      },
+      {
+        situation: "If NO Reply",
+        actions: [
+          {
+            title: "File Case",
+            description: "Proceed with a Civil Suit for Recovery. Since they ignored the notice, the court may view this adversely against them.",
+          },
+          {
+            title: "Insolvency",
+            description: "If the debtor is a company and debt > ₹1 Crore, approach NCLT (National Company Law Tribunal).",
+          },
+        ],
+      },
+    ],
+  },
+
   sampleNotice: realSampleNotices["money-recovery"],
 
   faqs: [

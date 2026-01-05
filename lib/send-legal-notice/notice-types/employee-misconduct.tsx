@@ -106,6 +106,38 @@ export const employeeMisconductData: NoticeTypeData = {
       },
     ],
   },
+  
+  postNoticeRoadmap: {
+    title: "Roadmap: What Happens After Sending the Notice?",
+    scenarios: [
+      {
+        situation: "If Employee Responds",
+        actions: [
+          {
+            title: "Review Explanation",
+            description: "Check if the explanation is valid. If acceptable, issue a warning letter and close the matter.",
+          },
+          {
+            title: "Domestic Inquiry",
+            description: "If response is unsatisfactory, appoint an Inquiry Officer to conduct a fair internal trial.",
+          },
+        ],
+      },
+      {
+        situation: "If NO Reply",
+        actions: [
+          {
+            title: "Ex-Parte Inquiry",
+            description: "Proceed with the inquiry in their absence (after giving enough chances).",
+          },
+          {
+            title: "Termination",
+            description: "Based on the inquiry report proving misconduct, issue a Termination Order.",
+          },
+        ],
+      },
+    ],
+  },
 
   sampleNotice: realSampleNotices["employee-misconduct"],
 

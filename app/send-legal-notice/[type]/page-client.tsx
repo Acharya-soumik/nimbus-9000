@@ -15,6 +15,7 @@ import {
   PricingCard,
   RelatedNoticesSection,
   TestimonialsSection,
+  PostNoticeRoadmap,
 } from "@/components/send-legal-notice";
 import { FAQSection } from "@/components/ui/faq-section";
 import { WhatsAppFloater } from "@/components/ui/whatsapp-floater";
@@ -355,6 +356,9 @@ export function LegalNoticeTypePageClient({
 
         {/* How We Work Timeline */}
         <HowWeWorkTimeline />
+
+        {/* Post Notice Roadmap */}
+        <PostNoticeRoadmap data={data.postNoticeRoadmap} />
 
         {/* Legal Framework Section */}
         <section className="bg-white py-12 lg:py-16">

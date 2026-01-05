@@ -109,6 +109,42 @@ export const breachOfContractData: NoticeTypeData = {
       },
     ],
   },
+  
+  postNoticeRoadmap: {
+    title: "Roadmap: What Happens After Sending the Notice?",
+    scenarios: [
+      {
+        situation: "If Reply Received",
+        actions: [
+          {
+            title: "Negotiation",
+            description: "If they admit the breach, negotiate for damage compensation or a new timeline to perform.",
+          },
+          {
+            title: "Rescission",
+            description: "Mutually agree to cancel the contract and refund any advances paid.",
+          },
+        ],
+      },
+      {
+        situation: "If NO Reply",
+        actions: [
+          {
+            title: "File Case",
+            description: "Suit for Specific Performance: Ask the court to force them to complete the contract.",
+          },
+          {
+            title: "File Case",
+            description: "Suit for Damages: Ask the court to make them pay for financial losses caused by the breach.",
+          },
+          {
+            title: "Arbitration",
+            description: "If an arbitration clause exists, appoint an arbitrator to resolve the dispute.",
+          },
+        ],
+      },
+    ],
+  },
 
   sampleNotice: realSampleNotices["breach-of-contract"],
 
