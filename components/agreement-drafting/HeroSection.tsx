@@ -217,10 +217,10 @@ export function AgreementHeroSection({ className }: AgreementHeroSectionProps) {
               onSubmit={() => {}}
               onStepChange={() => {}}
               serviceType="Agreement Drafting"
-              servicePrice={999}
+              servicePrice={3999}
             />
             <PricingCard
-              currentPrice={999}
+              currentPrice={3999}
               features={[
                 "Drafted by Licensed Advocate",
                 "24-Hour Delivery Guaranteed",
@@ -326,10 +326,10 @@ export function AgreementHeroSection({ className }: AgreementHeroSectionProps) {
               onSubmit={() => {}}
               onStepChange={() => {}}
               serviceType="Agreement Drafting"
-              servicePrice={999}
+              servicePrice={3999}
             />
             <PricingCard
-              currentPrice={999}
+              currentPrice={3999}
               features={[
                 "Drafted by Licensed Advocate",
                 "24-Hour Delivery Guaranteed",

@@ -232,7 +232,7 @@ export default function AgreementDraftingPage() {
       </section>
 
       {/* Pricing Tiers */}
-      <PricingTiers onTierClick={handleTierClick} />
+      {/* <PricingTiers onTierClick={handleTierClick} /> */}
 
       {/* Sample Agreement Section */}
       <SampleAgreementSection onViewSample={handleViewSample} />

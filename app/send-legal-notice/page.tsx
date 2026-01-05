@@ -120,11 +120,11 @@ export default function LegalNoticePage() {
     React.useState(false);
 
   const [selectedPlan, setSelectedPlan] = React.useState({
-    id: "smart" as "basic" | "smart",
-    name: "Complete Dispute Resolution",
-    price: 4999,
-    originalPrice: 7999,
-    advanceAmount: 799
+    id: "basic" as "basic" | "smart",
+    name: "Legal Notice Only",
+    price: 1499,
+    originalPrice: 1499,
+    advanceAmount: 499
   });
 
   const handleFormSubmit = (data: {
