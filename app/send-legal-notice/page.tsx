@@ -134,8 +134,12 @@ export default function LegalNoticePage() {
     city: string;
   }) => {
     console.log("Form submitted:", data);
-    // After form submission, show discount offer
-    setShowDiscountModal(true);
+    
+    // Only show discount offer for Basic plan (Legal Notice Only)
+    // For Guided Dispute Resolution (Smart plan), we don't show the offer
+    if (selectedPlan.id !== "smart") {
+      setShowDiscountModal(true);
+    }
   };
 
   const handleClaimOffer = (discountedPrice?: number) => {
@@ -150,8 +154,10 @@ export default function LegalNoticePage() {
   };
 
   const handleExitIntent = () => {
-    // This would be triggered by exit intent detection
-    setShowExitModal(true);
+    // Only show exit intent for Basic plan
+    if (selectedPlan.id !== "smart") {
+      setShowExitModal(true);
+    }
   };
 
   // Scroll to form handler
