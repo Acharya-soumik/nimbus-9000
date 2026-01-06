@@ -16,26 +16,31 @@ export const heroFeatureBadges = [
 
 export const itrFAQs = [
   {
+    id:"1",
     question: "Is it mandatory to file ITR?",
     answer:
       "Yes, if your gross total income is above the basic exemption limit (₹2.5 Lakh for individuals under 60). It's also mandatory for claiming refunds, carrying forward losses, or applying for loans.",
   },
   {
+    id:"2", 
     question: "What documents are required for ITR filing?",
     answer:
       "You generally need your PAN, Aadhaar, Form 16 (from employer), Form 26AS, bank statements, and investment proofs (LIC, PPF, etc.).",
   },
   {
+    id:"3",
     question: "Can I file ITR myself?",
     answer:
       "Yes, but the process can be complex. Errors may lead to Defective Return notices. A CA-assisted filing ensures accuracy, maximum refunds, and compliance.",
   },
   {
+    id:"4",
     question: "What is the penalty for late filing?",
     answer:
       "Late filing attracts a penalty of up to ₹5,000 u/s 234F. You might also lose interest on refunds and the ability to carry forward losses.",
   },
   {
+    id:"5",
     question: "How long does it take to get the refund?",
     answer:
       "After we file and you e-verify, refunds are usually processed by the IT Department within 20-45 days, depending on their workload.",
@@ -44,18 +49,22 @@ export const itrFAQs = [
 
 export const itrTimelineSteps = [
   {
+    id:"1",
     title: "Upload Documents",
     description: "Submit Form 16, bank statements, and investment details secureley.",
   },
   {
+    id:"2",
     title: "CA Review",
     description: "Our CA analyzes your income to maximize deductions.",
   },
   {
+    id:"3",
     title: "Draft Approval",
     description: "We prepare the computation and get your approval.",
   },
   {
+    id:"4",
     title: "File & E-Verify",
     description: "We file the return and guide you to e-verify via OTP.",
   },

@@ -9,7 +9,7 @@ import type { SampleNoticeContent } from "@/components/send-legal-notice/SampleN
 export const realSampleNotices: Record<string, SampleNoticeContent> = {
   "money-recovery": {
     date: "16th December, 2025",
-    title: "LEGAL NOTICE FOR RECOVERY OF LOAN AMOUNT OF ₹25,000/-",
+    title: "LEGAL NOTICE FOR RECOVERY OF LOAN AMOUNT OF ₹1,25,000/-",
     bodyParagraphs: [
       "WITHOUT PREJUDICE",
       "",
@@ -18,7 +18,7 @@ export const realSampleNotices: Record<string, SampleNoticeContent> = {
       "████████████████",
       "████████, ██████ - ██████",
       "",
-      "Sub: Legal Notice for Recovery of Loan Amount of ₹25,000/-",
+      "Sub: Legal Notice for Recovery of Loan Amount of ₹1,25,000/-",
       "",
       "Sir/Madam,",
       "",

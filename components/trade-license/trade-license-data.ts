@@ -16,26 +16,31 @@ export const heroFeatureBadges = [
 
 export const tradeLicenseFAQs = [
   {
+    id: "1",
     question: "Who needs a Trade License in India?",
     answer:
       "Every individual or business entity wishing to start a trade or business within a municipal limit must obtain a Trade License. This applies to shops, restaurants, factories, etc.",
   },
   {
+    id: "2",
     question: "What happens if I operate without a Trade License?",
     answer:
       "Operating without a valid Trade License is illegal and can attract heavy fines and penalties. In some cases, the municipal corporation may even seal the business premises.",
   },
   {
+    id: "3",
     question: "How long is the Trade License valid for?",
     answer:
       "Generally, a Trade License is valid for one year (financial year) and needs to be renewed annually between January 1st and March 31st.",
   },
   {
+    id: "4",
     question: "Can I apply for a Trade License online?",
     answer:
       "Yes, most municipal corporations in India now offer online portals for Trade License application and renewal. VakilTech handles this entire online process for you.",
   },
   {
+    id: "5",
     question: "Is property tax receipt mandatory for Trade License?",
     answer:
       "Yes, proof of business premises is crucial. If owned, the latest property tax receipt is required. If rented, a rent agreement and NOC from the owner are typically needed.",

@@ -16,26 +16,31 @@ export const heroFeatureBadges = [
 
 export const gstFAQs = [
   {
+    id:'1',
     question: "Who needs to register for GST in India?",
     answer:
       "Any business with an annual turnover exceeding ₹40 lakhs (₹20 lakhs for services and ₹10 lakhs for special states) must register. It's also mandatory for e-commerce sellers and inter-state suppliers.",
   },
   {
+     id:'2',
     question: "What documents are required for GST Registration?",
     answer:
       "You typically need PAN, Aadhaar, business address proof (rent agreement/electricity bill), bank account details (cancelled cheque), and photographs.",
   },
   {
+     id:'3',
     question: "How long does it take to get the GST Certificate?",
     answer:
       "Once the application is submitted without errors, the GST registration certificate (GST REG-06) is usually issued within 3-7 working days.",
   },
   {
+     id:'4',
     question: "Is physical verification of business premises mandatory?",
     answer:
       "In most cases, physical verification is not required if Aadhaar authentication is successful. However, the officer may order it in specific risk-based cases.",
   },
   {
+     id:'5',
     question: "Can I file GST returns myself after registration?",
     answer:
       "Yes, you can. However, many businesses prefer using professional services or software to avoid errors, penalties, and ensure correct Input Tax Credit claims.",
@@ -44,18 +49,22 @@ export const gstFAQs = [
 
 export const gstTimelineSteps = [
   {
+    id:"1",
     title: "Application Filing",
     description: "Submit business details and secure document upload.",
   },
   {
+    id:"2",
     title: "ARN Generation",
     description: "Receive Application Reference Number (ARN) instantly.",
   },
   {
+    id:"3",
     title: "Department Approval",
     description: "Officer reviews and approves the application.",
   },
   {
+      id:"4",
     title: "Certificate Issued",
     description: "Receive your 15-digit GSTIN and Registration Certificate.",
   },

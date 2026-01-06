@@ -16,26 +16,31 @@ export const heroFeatureBadges = [
 
 export const fssaiFAQs = [
   {
+    id: "1",
     question: "Is FSSAI registration mandatory for small food businesses?",
     answer:
       "Yes, FSSAI registration is mandatory for all Food Business Operators (FBOs) in India, including small businesses, hawkers, and home-based food setups.",
   },
   {
+    id: "2",
     question: "What is the validity of an FSSAI license?",
     answer:
       "An FSSAI license is issued for a validity period of 1 to 5 years, as chosen by the Food Business Operator. It must be renewed before expiry to avoid penalties.",
   },
   {
+    id: "3",
     question: "Do I need a separate FSSAI license for different locations?",
     answer:
       "Yes, if you operate food businesses from multiple locations, you generally need a separate license/registration for each location. However, a central license may cover multiple units in some cases.",
   },
   {
+    id: "4",
     question: "Is GST required for FSSAI registration?",
     answer:
       "No, GST registration is not strictly mandatory for obtaining a Basic FSSAI Registration, but it is recommended for business compliance.",
   },
   {
+    id: "5",
     question: "How long does it take to get the FSSAI certificate?",
     answer:
       "Basic registration is often processed within 7-10 working days, subject to government verification. State and Central licenses may take longer (30-60 days).",
