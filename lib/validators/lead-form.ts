@@ -4,6 +4,7 @@ import { z } from 'zod';
 export const leadFormSchema = z.object({
   name: z.string().min(2, 'Name must be at least 2 characters'),
   whatsappNumber: z.string().min(1, 'Phone number is required'),
+  email: z.string().email('Please enter a valid email address').optional().or(z.literal('')),
   location: z.string().min(1, 'City is required'),
   service: z.enum([
     'legal-notice', 

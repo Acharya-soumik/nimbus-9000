@@ -4,6 +4,7 @@ import { leadFormSchema } from '@/lib/validators/lead-form';
 import { validatePhoneNumber } from '@/lib/validators/phone-validation';
 import { countryCodes } from '@/lib/data/country-codes';
 import { z } from 'zod';
+import { sendNewLeadAlert } from '@/lib/email';
 
 // API Response interface
 interface LeadSubmissionResponse {
@@ -25,6 +26,7 @@ function generateCustomId(name: string, phoneNumber: string): string {
 // Database insertion schema
 const leadInsertSchema = z.object({
   name: z.string().min(2).max(255),
+  email: z.string().email().optional().nullable(),
   location: z.string().min(3).max(255),
   whatsapp_number: z.string().refine((phoneNumber) => {
     if (!phoneNumber.startsWith('+')) {
@@ -126,6 +128,7 @@ export async function POST(request: NextRequest): Promise<NextResponse<LeadSubmi
 
       const leadData = {
         name: validatedData.name,
+        email: validatedData.email,
         location: validatedData.location,
         whatsapp_number: validatedData.whatsappNumber,
         service: validatedData.service,
@@ -157,6 +160,19 @@ export async function POST(request: NextRequest): Promise<NextResponse<LeadSubmi
         );
       }
 
+
+      
+      // Send Alert Email (Fire and forget)
+      // Even if email is missing (which comes from user), we send alert to support with available info
+      sendNewLeadAlert({
+        name: validatedData.name,
+        email: validatedData.email || 'Not Provided',
+        phone: validatedData.whatsappNumber,
+        service: validatedData.service,
+        customId: data.custom_id,
+        paymentStatus: 'pending',
+      }).catch(err => console.error('Failed to send lead alert email:', err));
+
       return NextResponse.json(
         {
           success: true,
@@ -171,6 +187,7 @@ export async function POST(request: NextRequest): Promise<NextResponse<LeadSubmi
     // No existing leads found
     const leadData = {
       name: validatedData.name,
+      email: validatedData.email,
       location: validatedData.location,
       whatsapp_number: validatedData.whatsappNumber,
       service: validatedData.service,
@@ -202,15 +219,27 @@ export async function POST(request: NextRequest): Promise<NextResponse<LeadSubmi
       );
     }
 
-    return NextResponse.json(
-      {
-        success: true,
-        leadId: data.id,
+
+      
+      // Send Alert Email (Fire and forget)
+      sendNewLeadAlert({
+        name: validatedData.name,
+        email: validatedData.email || 'Not Provided',
+        phone: validatedData.whatsappNumber,
+        service: validatedData.service,
         customId: data.custom_id,
-        message: 'Lead submitted successfully!'
-      },
-      { status: 201 }
-    );
+        paymentStatus: 'pending',
+      }).catch(err => console.error('Failed to send lead alert email:', err));
+
+      return NextResponse.json(
+        {
+          success: true,
+          leadId: data.id,
+          customId: data.custom_id,
+          message: 'Lead submitted successfully!'
+        },
+        { status: 201 }
+      );
 
   } catch (error) {
     console.error('API route error:', error);

@@ -72,7 +72,13 @@ const footerLinks: FooterSection[] = [
   },
 ];
 
+import { usePathname } from "next/navigation";
+
 export function Footer() {
+  const pathname = usePathname();
+  
+  if (pathname === "/start-legal-notice") return null;
+
   return (
     <footer className="md:rounded-t-6xl relative -top-6 w-full  mx-auto flex flex-col items-center justify-center rounded-t-4xl border-t bg-[radial-gradient(35%_128px_at_50%_0%,theme(backgroundColor.white/8%),transparent)] p-12 lg:py-16 bg-red-400">
       <div className="bg-foreground/20 absolute top-0 right-1/2 left-1/2 h-px w-1/3 -translate-x-1/2 -translate-y-1/2 rounded-full blur" />

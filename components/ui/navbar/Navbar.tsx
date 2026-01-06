@@ -7,8 +7,13 @@ import DesktopNav from "./DesktopNav";
 import MobileNavClient from "./MobileNavClient";
 import Link from "next/link";
 
+import { usePathname } from "next/navigation";
+
 export default function Navbar() {
+  const pathname = usePathname();
   const [visible, setVisible] = useState(true);
+
+  if (pathname === "/start-legal-notice") return null;
   const [isAtTop, setIsAtTop] = useState(true);
   const scrollTimeoutRef = useRef<NodeJS.Timeout | null>(null);
   const lastScrollY = useRef(0);

@@ -15,6 +15,7 @@ module.exports = {
     '/legal-notice-for-money-recovery', // Redirect page
     '/thank-you',
     '/legal-drafts-bundle-success',
+    '/start-legal-notice',
   ],
 
   // Additional paths to include

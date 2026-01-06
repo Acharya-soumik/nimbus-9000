@@ -5,6 +5,7 @@ import {
   capturePayment,
 } from '@/lib/razorpay-client';
 import { getSupabaseServer } from '@/lib/supabase-server';
+import { sendPaymentConfirmation } from '@/lib/email';
 
 interface PaymentVerificationResponse {
   success: boolean;
@@ -96,7 +97,7 @@ export async function POST(
 
     // If leadId exists in notes, update the lead in database
     if (leadId) {
-      const { error: updateError } = await getSupabaseServer()
+      const { data: updatedLead, error: updateError } = await getSupabaseServer()
         .from('leads')
         .update({
           payment_status: 'advance_paid',
@@ -106,7 +107,9 @@ export async function POST(
           advance_amount: paymentDetails.amount,
           status: 'paid_customer',
         })
-        .eq('id', leadId);
+        .eq('id', leadId)
+        .select()
+        .single();
 
       if (updateError) {
         console.error('Error updating lead payment status:', updateError);
@@ -118,6 +121,37 @@ export async function POST(
           },
           { status: 500 }
         );
+      }
+      
+      // Send Payment Confirmation
+      // Send Payment Confirmation
+      if (updatedLead) {
+        // Try to get email from payment details if not in lead
+        const userEmail = updatedLead.email || (paymentDetails as any).email;
+
+        // If we found an email and it wasn't in the lead, update it
+        if (!updatedLead.email && userEmail) {
+            getSupabaseServer()
+            .from('leads')
+            .update({ email: userEmail })
+            .eq('id', leadId)
+            .then(({ error }) => {
+                if(error) console.error("Failed to update lead email from payment", error);
+            });
+        }
+
+        sendPaymentConfirmation(
+          {
+            name: updatedLead.name,
+            email: userEmail,
+            phone: updatedLead.whatsapp_number,
+            service: updatedLead.service,
+            customId: updatedLead.custom_id,
+            paymentStatus: 'paid',
+          },
+          Number(paymentDetails.amount),
+          paymentId
+        ).catch((err) => console.error('Failed to send payment confirmation email:', err));
       }
     }
 
