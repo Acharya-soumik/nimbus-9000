@@ -21,7 +21,27 @@ export function WhatsAppFloater({
   };
 
   return (
-    <div className={cn("fixed bottom-28 right-6 z-50", className)}>
+    <div className={cn("fixed bottom-28 right-6 z-50 flex items-center justify-center", className)}>
+      {/* Spinning Text Ring */}
+      <div className="absolute inset-0 -m-6 flex items-center justify-center">
+        <svg
+          className="h-28 w-28 animate-[spin_10s_linear_infinite]"
+          viewBox="0 0 100 100"
+        >
+          <circle cx="50" cy="50" r="42" className="fill-white/80 dark:fill-slate-900/80" />
+          <path
+            id="circlePath"
+            d="M 50, 50 m -37, 0 a 37,37 0 1,1 74,0 a 37,37 0 1,1 -74,0"
+            fill="none"
+          />
+          <text className="fill-slate-900 text-[11px] font-bold uppercase tracking-widest dark:fill-white">
+            <textPath href="#circlePath" startOffset="50%" textAnchor="middle">
+              Get Instant Help • over whatsapp •
+            </textPath>
+          </text>
+        </svg>
+      </div>
+
       <button
         onClick={handleClick}
         className="group relative flex h-14 w-14 items-center justify-center rounded-full bg-[#25D366] shadow-lg transition-all duration-300 hover:scale-110 hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-[#25D366] focus:ring-offset-2"
