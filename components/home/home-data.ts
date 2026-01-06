@@ -69,7 +69,7 @@ export const services: Service[] = [
     id: "legal-notice",
     title: "Legal Notice",
     description: "Sent via Speed Post",
-    price: "Delivered",
+    price: "Custom Drafted",
     originalPrice: "₹3,999",
     features: [
       "Drafted by Licensed Advocate",
@@ -88,7 +88,7 @@ export const services: Service[] = [
     id: "legal-consultation",
     title: "Legal Consultation",
     description: "Talk to Expert Lawyers",
-    price: "Starts @ ₹299",
+    price: "no time constraints",
     originalPrice: "₹999",
     features: [
       "15-45 min detailed call",
@@ -107,7 +107,7 @@ export const services: Service[] = [
     id: "agreement-drafting",
     title: "Agreement Drafting",
     description: "Custom Legal Contracts",
-    price: "Starts @ ₹999",
+    price: "detailed consultation",
     features: [
       "Drafted by Licensed Advocate",
       "Unlimited Revisions",
@@ -160,7 +160,7 @@ export const services: Service[] = [
     id: "itr-filing",
     title: "ITR Filing",
     description: "File Tax Returns",
-    price: "Pay 10% as Fee",
+    price: "@599",
     originalPrice: "₹1,999",
     features: [
       "CA Review & Filing",
@@ -178,7 +178,7 @@ export const services: Service[] = [
     id: "gst-registration",
     title: "GST Registration",
     description: "Get GST Number",
-    price: "Free Consultation",
+    price: "@698",
     originalPrice: "₹1,499",
     features: [
       "GST Certificate (REG-06)",

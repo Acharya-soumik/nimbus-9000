@@ -221,6 +221,7 @@ export function AgreementHeroSection({ className }: AgreementHeroSectionProps) {
             />
             <PricingCard
               currentPrice={3999}
+              unit="/agreement"
               features={[
                 "Drafted by Licensed Advocate",
                 "24-Hour Delivery Guaranteed",

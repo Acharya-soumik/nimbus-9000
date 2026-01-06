@@ -130,6 +130,7 @@ export function FSSAIHeroSection({ className }: FSSAIHeroSectionProps) {
                 "Start Selling Online (Zomato/Swiggy)",
                 "Avoid Heavy Penalties",
               ]}
+              unit="/registration"
             />
           </div>
         </div>

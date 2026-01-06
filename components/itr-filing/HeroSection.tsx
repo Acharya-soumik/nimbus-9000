@@ -143,6 +143,7 @@ export function ITRHeroSection({ className }: ITRHeroSectionProps) {
             />
             <PricingCard
               currentPrice={599}
+              unit="/registration"
               features={[
                 "Review by Chartered Accountant",
                 "Maximum Refund Calculation",

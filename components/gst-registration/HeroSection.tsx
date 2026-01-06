@@ -150,6 +150,7 @@ export function GSTHeroSection({ className }: GSTHeroSectionProps) {
                 "Start Selling on Amazon/Flipkart",
                 "Complete Online Process",
               ]}
+              unit="/registration"
             />
           </div>
         </div>

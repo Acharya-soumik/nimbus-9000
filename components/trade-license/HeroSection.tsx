@@ -185,6 +185,7 @@ export function TradeLicenseHeroSection({
                 "Avoid Municipal Sealing",
                 "Compliance handling included",
               ]}
+              unit="/registration"
             />
           </div>
         </div>

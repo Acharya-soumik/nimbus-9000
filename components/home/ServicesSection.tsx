@@ -42,11 +42,11 @@ function ServiceCard({ service }: { service: Service }) {
       <div className="absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-black/90 via-black/50 to-transparent pointer-events-none" />
 
       {/* Content Overlay */}
-      <div className="absolute left-0 bottom-0 w-full p-6 text-center z-10">
-        <h3 className="mb-1 text-2xl font-bold text-white drop-shadow-md tracking-tight">
+      <div className="absolute left-0 bottom-0 w-full p-3 text-center z-10 sm:p-6">
+        <h3 className="mb-0.5 text-base font-bold text-white drop-shadow-md tracking-tight sm:mb-1 sm:text-2xl">
           {service.title}
         </h3>
-        <p className="text-base font-medium text-gray-200 drop-shadow-sm opacity-90">
+        <p className="text-xs font-medium text-gray-200 drop-shadow-sm opacity-90 sm:text-base">
           {service.price}
         </p>
       </div>
@@ -91,7 +91,7 @@ export function ServicesSection({ className }: ServicesSectionProps) {
         </div>
 
         {/* Services Grid */}
-        <div className="mx-auto grid max-w-7xl gap-6 sm:gap-8 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+        <div className="mx-auto grid max-w-7xl grid-cols-2 gap-3 sm:gap-8 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
           {services.map((service) => (
             <ServiceCard key={service.id} service={service} />
           ))}
