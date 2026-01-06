@@ -107,7 +107,7 @@ export function FSSAIHeroSection({ className }: FSSAIHeroSectionProps) {
             <div className="relative">
               <div className="relative aspect-[16/10] w-full max-w-lg overflow-hidden rounded-2xl bg-teal-light shadow-lg">
                 <Image
-                  src="/images/fssai-hero.png"
+                  src="/assets/our-services/fssai-registration.png"
                   alt="FSSAI Registration Certificate"
                   fill
                   className="object-cover"

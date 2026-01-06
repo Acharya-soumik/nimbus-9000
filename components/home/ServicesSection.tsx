@@ -13,142 +13,51 @@ export interface ServicesSectionProps {
 }
 
 /**
- * Service Card Icons
- */
-function NoticeIcon({ className }: { className?: string }) {
-  return (
-    <svg
-      className={className}
-      fill="none"
-      viewBox="0 0 24 24"
-      stroke="currentColor"
-      strokeWidth="1.5"
-    >
-      <path d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-    </svg>
-  );
-}
-
-function ConsultationIcon({ className }: { className?: string }) {
-  return (
-    <svg
-      className={className}
-      fill="none"
-      viewBox="0 0 24 24"
-      stroke="currentColor"
-      strokeWidth="1.5"
-    >
-      <path d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />
-    </svg>
-  );
-}
-
-/**
  * Service Card Component
+ * Redesigned to be sleek image-based cards
  */
 function ServiceCard({ service }: { service: Service }) {
-  const Icon = service.iconType === "notice" ? NoticeIcon : ConsultationIcon;
-
   return (
-    <div className="group relative overflow-hidden rounded-2xl bg-white shadow-lg transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
-      {/* Badge */}
-      {service.badge && (
-        <div className="absolute right-4 top-4 z-10">
-          <span className="inline-block rounded-full bg-primary px-3 py-1 text-xs font-bold uppercase tracking-wide text-white">
-            {service.badge}
-          </span>
+    <Link
+      href={service.href}
+      className="group relative block aspect-[4/5] w-full overflow-hidden rounded-2xl bg-primary/10 transition-all duration-300 hover:shadow-2xl hover:scale-[1.02]"
+    >
+      {/* Background Image */}
+      {service.image ? (
+        <Image
+          src={service.image}
+          alt={service.title}
+          fill
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+          className="object-cover transition-transform duration-700 group-hover:scale-110"
+          priority={service.id === "legal-notice"}
+        />
+      ) : (
+        <div className="flex h-full w-full items-center justify-center bg-gray-800">
+          <span className="text-gray-500">No Image</span>
         </div>
       )}
 
-      {/* Header with Icon */}
-      {/* Header with Icon or Image */}
-      <div className="relative bg-gradient-to-br from-background-pink-light/50 to-background-pink-light p-6 pb-8">
-        {service.image ? (
-          <div className="mb-6 relative aspect-[16/9] w-full overflow-hidden rounded-xl shadow-sm">
-            <Image
-              src={service.image}
-              alt={service.title}
-              fill
-              className="object-cover transition-transform duration-500 group-hover:scale-105"
-            />
-          </div>
-        ) : (
-          <div className="mb-4 inline-flex h-14 w-14 items-center justify-center rounded-xl bg-white shadow-sm">
-            <Icon className="h-7 w-7 text-primary" />
-          </div>
-        )}
-        <h3 className="mb-2 text-2xl font-bold text-text-heading">
+      {/* Dark Overlay Gradient (Bottom) for Text Legibility */}
+      <div className="absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-black/90 via-black/50 to-transparent pointer-events-none" />
+
+      {/* Content Overlay */}
+      <div className="absolute left-0 bottom-0 w-full p-6 text-center z-10">
+        <h3 className="mb-1 text-2xl font-bold text-white drop-shadow-md tracking-tight">
           {service.title}
         </h3>
-        <p className="text-sm text-text-medium leading-relaxed">
-          {service.description}
+        <p className="text-base font-medium text-gray-200 drop-shadow-sm opacity-90">
+          {service.price}
         </p>
       </div>
 
-      {/* Pricing */}
-      <div className="border-b border-gray-100 px-6 py-4">
-        <div className="flex items-baseline gap-2">
-          <span className="text-3xl font-bold text-text-heading">
-            {service.price}
-          </span>
-          {service.originalPrice && (
-            <span className="text-lg text-text-muted line-through">
-              {service.originalPrice}
-            </span>
-          )}
+      {/* Badge (Top Right or Corner) - Optional style tweak */}
+      {service.badge && (
+        <div className="absolute -right-12 top-8 rotate-45 transform bg-red-600 px-12 py-1 text-center text-xs font-bold uppercase text-white shadow-lg z-20">
+          {service.badge}
         </div>
-        <p className="mt-1 text-xs text-green-600 font-medium">
-          Save {Math.round(
-            ((parseInt(service.originalPrice?.replace(/[^\d]/g, "") || "0") -
-              parseInt(service.price.replace(/[^\d]/g, ""))) /
-              parseInt(service.originalPrice?.replace(/[^\d]/g, "") || "1")) *
-              100
-          )}
-          % Today
-        </p>
-      </div>
-
-      {/* Features */}
-      <div className="px-6 py-4">
-        <ul className="space-y-3">
-          {service.features.map((feature, index) => (
-            <li key={index} className="flex items-start gap-3">
-              <svg
-                className="mt-0.5 h-5 w-5 flex-shrink-0 text-green-500"
-                fill="currentColor"
-                viewBox="0 0 20 20"
-              >
-                <path
-                  fillRule="evenodd"
-                  d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                  clipRule="evenodd"
-                />
-              </svg>
-              <span className="text-sm text-text-body">{feature}</span>
-            </li>
-          ))}
-        </ul>
-      </div>
-
-      {/* CTA Button */}
-      <div className="px-6 pb-6">
-        <Link
-          href={service.href}
-          className="block w-full rounded-xl bg-primary py-3.5 text-center text-base font-semibold text-white shadow-md transition-all hover:bg-primary-dark hover:shadow-lg"
-        >
-          {service.ctaText}
-          <svg
-            className="ml-2 inline-block h-4 w-4 transition-transform group-hover:translate-x-1"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-            strokeWidth="2"
-          >
-            <path d="M17 8l4 4m0 0l-4 4m4-4H3" />
-          </svg>
-        </Link>
-      </div>
-    </div>
+      )}
+    </Link>
   );
 }
 
@@ -156,7 +65,6 @@ function ServiceCard({ service }: { service: Service }) {
  * Services Section Component
  *
  * Displays service cards in a responsive grid.
- * Currently shows Legal Notice and Legal Consultation.
  */
 export function ServicesSection({ className }: ServicesSectionProps) {
   return (
@@ -183,7 +91,7 @@ export function ServicesSection({ className }: ServicesSectionProps) {
         </div>
 
         {/* Services Grid */}
-        <div className="mx-auto grid max-w-7xl gap-8 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="mx-auto grid max-w-7xl gap-6 sm:gap-8 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
           {services.map((service) => (
             <ServiceCard key={service.id} service={service} />
           ))}
@@ -212,14 +120,3 @@ export function ServicesSection({ className }: ServicesSectionProps) {
 }
 
 export default ServicesSection;
-
-
-
-
-
-
-
-
-
-
-

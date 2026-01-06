@@ -125,7 +125,7 @@ export function ITRHeroSection({ className }: ITRHeroSectionProps) {
             <div className="relative">
               <div className="relative aspect-[16/10] w-full max-w-lg overflow-hidden rounded-2xl bg-teal-light shadow-lg">
                 <Image
-                  src="/images/itr-filing-hero.png"
+                  src="/assets/our-services/itr-filing.png"
                   alt="ITR Filing Documents"
                   fill
                   className="object-cover"

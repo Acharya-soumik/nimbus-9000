@@ -127,7 +127,7 @@ export function GSTHeroSection({ className }: GSTHeroSectionProps) {
             <div className="relative">
               <div className="relative aspect-[16/10] w-full max-w-lg overflow-hidden rounded-2xl bg-teal-light shadow-lg">
                 <Image
-                  src="/images/gst-registration-hero.png"
+                  src="/assets/our-services/gst-registration.png"
                   alt="GST Registration Certificate"
                   fill
                   className="object-cover"

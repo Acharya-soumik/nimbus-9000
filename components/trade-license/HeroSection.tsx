@@ -114,7 +114,7 @@ export function TradeLicenseHeroSection({
             <div className="relative">
               <div className="relative aspect-[16/10] w-full max-w-lg overflow-hidden rounded-2xl bg-teal-light shadow-lg">
                 <Image
-                  src="/images/trade-license-hero.png"
+                  src="/assets/our-services/trade-license.png"
                   alt="Trade License Certificate"
                   fill
                   className="object-cover"

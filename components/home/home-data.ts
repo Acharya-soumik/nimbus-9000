@@ -68,9 +68,8 @@ export const services: Service[] = [
   {
     id: "legal-notice",
     title: "Legal Notice",
-    description:
-      "Get professionally drafted legal notices sent via Speed Post. Perfect for money recovery, property disputes, cheque bounce, and more.",
-    price: "₹1,499",
+    description: "Sent via Speed Post",
+    price: "Delivered",
     originalPrice: "₹3,999",
     features: [
       "Drafted by Licensed Advocate",
@@ -83,13 +82,13 @@ export const services: Service[] = [
     ctaText: "Send Legal Notice",
     badge: "MOST POPULAR",
     iconType: "notice",
+    image: "/assets/our-services/legal-notice.png",
   },
   {
     id: "legal-consultation",
     title: "Legal Consultation",
-    description:
-      "Talk to expert Licensed Advocates via video/phone call. Get clear advice on property, family, business, employment, and other legal matters.",
-    price: "₹299",
+    description: "Talk to Expert Lawyers",
+    price: "Starts @ ₹299",
     originalPrice: "₹999",
     features: [
       "15-45 min detailed call",
@@ -102,13 +101,13 @@ export const services: Service[] = [
     ctaText: "Book Consultation",
     badge: "STARTING AT ₹299",
     iconType: "consultation",
+    image: "/assets/our-services/consultation.png",
   },
   {
     id: "agreement-drafting",
     title: "Agreement Drafting",
-    description:
-      "Get a professionally drafted agreement for your business or personal needs. Perfect for rental agreements, employment contracts, partnership agreements, and more.",
-    price: "Varies by Document Type",
+    description: "Custom Legal Contracts",
+    price: "Starts @ ₹999",
     features: [
       "Drafted by Licensed Advocate",
       "Unlimited Revisions",
@@ -119,13 +118,13 @@ export const services: Service[] = [
     ctaText: "Draft Agreement",
     badge: "Custom Drafted",
     iconType: "notice",
+    image: "/assets/our-services/agreement-drafting.png",
   },
   {
     id: "fssai-registration",
-    title: "FSSAI Registration",
-    description:
-      "Get your 14-digit FSSAI license guaranteed. Mandatory for all food businesses.",
-    price: "₹429",
+    title: "FSSAI License",
+    description: "Got Food Business?",
+    price: "Get License",
     originalPrice: "₹999",
     features: [
       "14-Digit License Number",
@@ -137,14 +136,13 @@ export const services: Service[] = [
     ctaText: "Get FSSAI License",
     badge: "FOOD BIZ ESSENTIAL",
     iconType: "notice",
-    image: "/images/fssai-hero.png",
+    image: "/assets/our-services/fssai-registration.png",
   },
   {
     id: "trade-license",
     title: "Trade License",
-    description:
-      "Obtain your municipal trade license online. Mandatory for shops and establishments.",
-    price: "₹399",
+    description: "For Shops & Offices",
+    price: "Apply Now",
     originalPrice: "₹1,499",
     features: [
       "Municipal Compliance",
@@ -156,14 +154,13 @@ export const services: Service[] = [
     ctaText: "Apply Now",
     badge: "MUNICIPAL PERMIT",
     iconType: "notice",
-    image: "/images/trade-license-hero.png",
+    image: "/assets/our-services/trade-license.png",
   },
   {
     id: "itr-filing",
     title: "ITR Filing",
-    description:
-      "Expert assisted Income Tax Return filing. Maximize your refunds and stay compliant.",
-    price: "₹599",
+    description: "File Tax Returns",
+    price: "Pay 10% as Fee",
     originalPrice: "₹1,999",
     features: [
       "CA Review & Filing",
@@ -175,14 +172,13 @@ export const services: Service[] = [
     ctaText: "File ITR",
     badge: "TAX SEASON",
     iconType: "notice",
-    image: "/images/itr-filing-hero.png",
+    image: "/assets/our-services/itr-filing.png",
   },
   {
     id: "gst-registration",
     title: "GST Registration",
-    description:
-      "Get your 15-digit GSTIN in 7 days. Start selling online or expand your business.",
-    price: "₹698",
+    description: "Get GST Number",
+    price: "Free Consultation",
     originalPrice: "₹1,499",
     features: [
       "GST Certificate (REG-06)",
@@ -194,7 +190,7 @@ export const services: Service[] = [
     ctaText: "Register GST",
     badge: "BUSINESS GROWTH",
     iconType: "notice",
-    image: "/images/gst-registration-hero.png",
+    image: "/assets/our-services/gst-registration.png",
   },
 ];
 
