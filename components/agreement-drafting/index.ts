@@ -31,6 +31,8 @@ export {
   whyChooseUsPoints,
   heroFlipWords,
   heroFeatureBadges,
+  agreementDeliverables,
+  agreementProcessDetails,
 } from "./agreement-data";
 
 // =============================================================================

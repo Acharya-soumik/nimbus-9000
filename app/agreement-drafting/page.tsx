@@ -13,6 +13,8 @@ import {
   agreementTimelineSteps,
   whyChooseUsPoints,
   sampleAgreements,
+  agreementDeliverables,
+  agreementProcessDetails,
 } from "@/components/agreement-drafting";
 import {
   HowWeWorkTimeline,
@@ -112,6 +114,66 @@ export default function AgreementDraftingPage() {
         onAgreementClick={handleAgreementClick}
         onCategoryClick={(categoryId) => console.log("Category:", categoryId)}
       />
+
+      {/* Deliverables and Process */}
+      <section className="bg-white py-12 lg:py-16">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="grid gap-12 lg:grid-cols-2">
+            {/* Deliverables */}
+            <div>
+              <div className="mb-6">
+                 <span className="mb-2 inline-block text-xs font-bold uppercase tracking-widest text-teal">
+                  INCLUDED
+                </span>
+                <h3 className="mb-4 text-2xl font-bold text-text-heading">
+                  What You Get
+                </h3>
+                <p className="text-text-medium">
+                  Comprehensive legal protection in every draft.
+                </p>
+              </div>
+              <ul className="space-y-4">
+                {agreementDeliverables.map((item, idx) => (
+                  <li key={idx} className="flex items-start gap-3 rounded-lg border border-gray-100 bg-gray-50/50 p-3">
+                    <svg className="mt-0.5 h-5 w-5 flex-shrink-0 text-teal" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                      <polyline points="20 6 9 17 4 12" />
+                    </svg>
+                    <span className="text-sm font-medium text-text-body">{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Process Details */}
+            <div>
+              <div className="mb-6">
+                <span className="mb-2 inline-block text-xs font-bold uppercase tracking-widest text-teal">
+                  OUR PROCESS
+                </span>
+                <h3 className="mb-4 text-2xl font-bold text-text-heading">
+                  Detailed Workflow
+                </h3>
+                <p className="text-text-medium">
+                  How we ensure your agreement is perfect.
+                </p>
+              </div>
+              <div className="space-y-4">
+                {agreementProcessDetails.map((item, idx) => (
+                  <div key={idx} className="flex gap-4 rounded-xl border border-gray-100 bg-white p-4 shadow-sm transition-all hover:border-teal/30 hover:shadow-md">
+                    <div className="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full bg-teal text-sm font-bold text-white">
+                      {idx + 1}
+                    </div>
+                    <div>
+                      <h4 className="mb-1 font-bold text-text-heading">{item.title}</h4>
+                      <p className="text-sm text-text-muted">{item.description}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
 
       {/* How We Work Timeline */}
       <HowWeWorkTimeline

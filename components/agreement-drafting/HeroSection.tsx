@@ -2,12 +2,13 @@
 
 import { useEffect, useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { cn } from "@/lib/utils";
 import { PricingCard } from "@/components/send-legal-notice/PricingCard";
 import { MeshGradient } from "@paper-design/shaders-react";
 import { FlipWords } from "@/components/aceternity/flip-words";
 import { heroFlipWords, heroFeatureBadges } from "./agreement-data";
-import { MultiStepForm } from "@/components/send-legal-notice/MultiStepForm";
+import { SimpleLeadForm } from "@/components/common/SimpleLeadForm";
 
 /**
  * Agreement Hero Section Props
@@ -71,19 +72,19 @@ export function AgreementHeroSection({ className }: AgreementHeroSectionProps) {
       <div className="relative z-10 mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8 lg:py-12">
         {/* Breadcrumb */}
         <nav className="mb-4 flex items-center gap-2 text-sm text-text-muted lg:mb-6">
-          <span className="flex items-center gap-1">
-            <svg
-              className="h-4 w-4"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-            >
-              <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
-              <polyline points="9 22 9 12 15 12 15 22" />
-            </svg>
-            Home
-          </span>
+            <Link href="/" className="flex items-center gap-1 hover:text-teal">
+              <svg
+                className="h-4 w-4"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+              >
+                <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
+                <polyline points="9 22 9 12 15 12 15 22" />
+              </svg>
+              Home
+            </Link>
           <span className="text-text-muted">{">"}</span>
           <span className="font-medium text-text-body">Agreement Drafting</span>
         </nav>
@@ -213,11 +214,10 @@ export function AgreementHeroSection({ className }: AgreementHeroSectionProps) {
 
           {/* Right Column - Form + Pricing Card */}
           <div className="space-y-6 lg:pl-4" id="agreement-form-desktop">
-            <MultiStepForm
-              onSubmit={() => {}}
-              onStepChange={() => {}}
-              serviceType="Agreement Drafting"
+            <SimpleLeadForm
+              serviceName="Agreement Drafting"
               servicePrice={3999}
+              formTitle="Start Agreement Drafting"
             />
             <PricingCard
               currentPrice={3999}
@@ -322,11 +322,10 @@ export function AgreementHeroSection({ className }: AgreementHeroSectionProps) {
 
           {/* Form Section - Below image on mobile */}
           <div className="mt-8 space-y-6" id="agreement-form-mobile">
-            <MultiStepForm
-              onSubmit={() => {}}
-              onStepChange={() => {}}
-              serviceType="Agreement Drafting"
+            <SimpleLeadForm
+              serviceName="Agreement Drafting"
               servicePrice={3999}
+              formTitle="Start Agreement Drafting"
             />
             <PricingCard
               currentPrice={3999}

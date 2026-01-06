@@ -775,3 +775,31 @@ export const heroFeatureBadges = [
 
 
 
+ 
+export const agreementDeliverables = [
+  "Professionally Drafted Agreement in Word & PDF Format",
+  "Customized Clauses tailored to your specific situation",
+  "Legal review by experienced High Court Advocates",
+  "Unlimited Revisions until you are satisfied",
+  "Guidance on Stamp Duty and Notarization",
+  "Post-delivery support for any clarifications",
+];
+
+export const agreementProcessDetails = [
+  {
+    title: "Requirement Gathering",
+    description: "We collect all necessary details via a simple form or call.",
+  },
+  {
+    title: "Legal Research & Drafting",
+    description: "Our advocates research case laws and draft a strong agreement.",
+  },
+  {
+    title: "Internal Quality Check",
+    description: "Senior lawyers review the draft to ensure zero errors.",
+  },
+  {
+    title: "Client Review & Finalization",
+    description: "You review the draft, suggest changes, and we finalize it.",
+  },
+];

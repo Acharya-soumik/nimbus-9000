@@ -43,8 +43,8 @@ export function PricingPlans({ onPlanSelect, selectedPlanId = "smart" }: Pricing
       id: "smart",
       name: "Complete Dispute Resolution",
       bestFor: "Best for: Serious disputes where you want to recover money.",
-      price: 4999,
-      originalPrice: 7999,
+      price: 2999,
+      originalPrice: 4999,
       advanceAmount: 799,
       bannerText: "RECOMMENDED FOR RECOVERY",
       features: [

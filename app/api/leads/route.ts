@@ -48,7 +48,17 @@ const leadInsertSchema = z.object({
   }, {
     message: 'Please enter a valid international phone number'
   }),
-  service: z.enum(['legal-notice', 'legal-consultation', 'legal-drafts-bundle', 'agreement-drafting', 'legal-notice-for-money-recovery']),
+  service: z.enum([
+    'legal-notice', 
+    'legal-consultation', 
+    'legal-drafts-bundle', 
+    'agreement-drafting', 
+    'legal-notice-for-money-recovery',
+    'fssai-registration',
+    'trade-license',
+    'gst-registration',
+    'itr-filing'
+  ]),
   description: z.string().max(1000).optional().nullable(),
   legal_notice_type: z.string().max(255).optional().nullable(),
   payment_status: z.literal('pending'),

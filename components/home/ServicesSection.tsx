@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { cn } from "@/lib/utils";
 import { services, type Service } from "./home-data";
 
@@ -60,10 +61,22 @@ function ServiceCard({ service }: { service: Service }) {
       )}
 
       {/* Header with Icon */}
+      {/* Header with Icon or Image */}
       <div className="relative bg-gradient-to-br from-background-pink-light/50 to-background-pink-light p-6 pb-8">
-        <div className="mb-4 inline-flex h-14 w-14 items-center justify-center rounded-xl bg-white shadow-sm">
-          <Icon className="h-7 w-7 text-primary" />
-        </div>
+        {service.image ? (
+          <div className="mb-6 relative aspect-[16/9] w-full overflow-hidden rounded-xl shadow-sm">
+            <Image
+              src={service.image}
+              alt={service.title}
+              fill
+              className="object-cover transition-transform duration-500 group-hover:scale-105"
+            />
+          </div>
+        ) : (
+          <div className="mb-4 inline-flex h-14 w-14 items-center justify-center rounded-xl bg-white shadow-sm">
+            <Icon className="h-7 w-7 text-primary" />
+          </div>
+        )}
         <h3 className="mb-2 text-2xl font-bold text-text-heading">
           {service.title}
         </h3>
@@ -170,7 +183,7 @@ export function ServicesSection({ className }: ServicesSectionProps) {
         </div>
 
         {/* Services Grid */}
-        <div className="mx-auto grid max-w-5xl gap-8 sm:grid-cols-2">
+        <div className="mx-auto grid max-w-7xl gap-8 sm:grid-cols-2 lg:grid-cols-3">
           {services.map((service) => (
             <ServiceCard key={service.id} service={service} />
           ))}

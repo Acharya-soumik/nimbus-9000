@@ -23,6 +23,7 @@ export interface Service {
   ctaText: string;
   badge?: string;
   iconType: "notice" | "consultation";
+  image?: string;
 }
 
 export interface HomeStat {
@@ -118,6 +119,82 @@ export const services: Service[] = [
     ctaText: "Draft Agreement",
     badge: "Custom Drafted",
     iconType: "notice",
+  },
+  {
+    id: "fssai-registration",
+    title: "FSSAI Registration",
+    description:
+      "Get your 14-digit FSSAI license guaranteed. Mandatory for all food businesses.",
+    price: "₹429",
+    originalPrice: "₹999",
+    features: [
+      "14-Digit License Number",
+      "100% Online Process",
+      "Avoid Penalties",
+      "Fast Delivery",
+    ],
+    href: "/fssai-registration",
+    ctaText: "Get FSSAI License",
+    badge: "FOOD BIZ ESSENTIAL",
+    iconType: "notice",
+    image: "/images/fssai-hero.png",
+  },
+  {
+    id: "trade-license",
+    title: "Trade License",
+    description:
+      "Obtain your municipal trade license online. Mandatory for shops and establishments.",
+    price: "₹399",
+    originalPrice: "₹1,499",
+    features: [
+      "Municipal Compliance",
+      "Prevent Shop Sealing",
+      "Hassle-free Processing",
+      "Valid for 1 Year",
+    ],
+    href: "/trade-license",
+    ctaText: "Apply Now",
+    badge: "MUNICIPAL PERMIT",
+    iconType: "notice",
+    image: "/images/trade-license-hero.png",
+  },
+  {
+    id: "itr-filing",
+    title: "ITR Filing",
+    description:
+      "Expert assisted Income Tax Return filing. Maximize your refunds and stay compliant.",
+    price: "₹599",
+    originalPrice: "₹1,999",
+    features: [
+      "CA Review & Filing",
+      "Maximum Refund",
+      "Notice Support",
+      "Plans for all incomes",
+    ],
+    href: "/itr-filing",
+    ctaText: "File ITR",
+    badge: "TAX SEASON",
+    iconType: "notice",
+    image: "/images/itr-filing-hero.png",
+  },
+  {
+    id: "gst-registration",
+    title: "GST Registration",
+    description:
+      "Get your 15-digit GSTIN in 7 days. Start selling online or expand your business.",
+    price: "₹698",
+    originalPrice: "₹1,499",
+    features: [
+      "GST Certificate (REG-06)",
+      "3-7 Days Delivery",
+      "100% Online",
+      "Lowest Price",
+    ],
+    href: "/gst-registration",
+    ctaText: "Register GST",
+    badge: "BUSINESS GROWTH",
+    iconType: "notice",
+    image: "/images/gst-registration-hero.png",
   },
 ];
 
