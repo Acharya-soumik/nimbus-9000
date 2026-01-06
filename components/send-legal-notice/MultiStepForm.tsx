@@ -86,6 +86,8 @@ export interface MultiStepFormProps {
     price: number;
     advanceAmount: number;
   };
+  onPaymentStart?: () => void;
+  onPaymentEnd?: () => void;
 }
 
 /* =============================================================================
@@ -993,6 +995,8 @@ export function MultiStepForm({
   serviceType = "Legal Notice",
   servicePrice = 499,
   planDetails,
+  onPaymentStart,
+  onPaymentEnd,
 }: MultiStepFormProps) {
   // Helper function to generate dynamic text based on service type
   const getServiceText = (type: string) => {
@@ -1231,6 +1235,7 @@ export function MultiStepForm({
     }
 
     setIsProcessingPayment(true);
+    onPaymentStart?.();
 
     trackEvent("Payment Initiated", {
         service_type: serviceType,
@@ -1279,6 +1284,7 @@ export function MultiStepForm({
           ondismiss: () => {
             toast.error("Payment cancelled.");
             setIsProcessingPayment(false);
+            onPaymentEnd?.();
             setIsModalOpen(true); // Reopen modal when payment is cancelled
           },
         },
@@ -1314,6 +1320,7 @@ export function MultiStepForm({
       });
       toast.error("Payment failed. Please try again.");
       setIsProcessingPayment(false);
+      onPaymentEnd?.();
     }
   };
 
@@ -1357,6 +1364,7 @@ export function MultiStepForm({
       toast.error("Payment verification failed. Contact support.");
     } finally {
       setIsProcessingPayment(false);
+      onPaymentEnd?.();
     }
   };
 

@@ -66,6 +66,7 @@ const StarRating = () => (
  * ============================================================================= */
 export default function LandingPage() {
   const [isFormOpen, setIsFormOpen] = useState(false);
+  const [isPaymentProcessing, setIsPaymentProcessing] = useState(false);
 
   const openForm = () => {
     setIsFormOpen(true);
@@ -394,7 +395,10 @@ export default function LandingPage() {
 
        {/* HIDDEN FORM MODAL */}
        <Modal open={isFormOpen} onOpenChange={setIsFormOpen}>
-        <ModalContent className="max-w-md h-[85vh] p-0 overflow-hidden">
+        <ModalContent 
+          className={cn("max-w-md h-[85vh] p-0 overflow-hidden", isPaymentProcessing && "invisible pointer-events-none")}
+          overlayClassName={isPaymentProcessing ? "invisible pointer-events-none" : undefined}
+        >
           <ModalHeader className="sr-only">
             <ModalTitle>Start Legal Notice</ModalTitle>
           </ModalHeader>
@@ -414,6 +418,8 @@ export default function LandingPage() {
                             price: 1499,
                             advanceAmount: 499
                         }}
+                        onPaymentStart={() => setIsPaymentProcessing(true)}
+                        onPaymentEnd={() => setIsPaymentProcessing(false)}
                     />
                </div>
              </div>
