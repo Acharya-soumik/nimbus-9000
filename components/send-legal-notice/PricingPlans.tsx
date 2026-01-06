@@ -58,10 +58,10 @@ export function PricingPlans({ onPlanSelect, selectedPlanId = "smart" }: Pricing
   ];
 
   return (
-    <section id="pricing-plans" className="py-16 lg:py-24 bg-gradient-to-b from-slate-50 to-white">
+    <section id="pricing-plans" className="py-8 lg:py-24 bg-gradient-to-b from-slate-50 to-white">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="mb-12 text-center max-w-3xl mx-auto">
-          <h2 className="text-3xl font-bold text-slate-900 sm:text-4xl mb-4 font-display">
+          <h2 className="text-2xl font-bold text-slate-900 sm:text-4xl mb-4 font-display">
             Transparent, Pay-As-You-Go Pricing
           </h2>
           <p className="text-lg text-slate-600">
@@ -69,7 +69,7 @@ export function PricingPlans({ onPlanSelect, selectedPlanId = "smart" }: Pricing
           </p>
         </div>
 
-        <div className="grid gap-8 lg:grid-cols-2 lg:gap-12 max-w-5xl mx-auto mb-16">
+        <div className="grid gap-6 lg:grid-cols-2 lg:gap-12 max-w-5xl mx-auto mb-16">
           {plans.map((plan) => {
             const isSelected = selectedPlanId === plan.id;
             const isRecommended = !!plan.bannerText;
@@ -104,18 +104,18 @@ export function PricingPlans({ onPlanSelect, selectedPlanId = "smart" }: Pricing
                   </div>
                 )}
 
-                <div className="p-6 lg:p-8 flex flex-col h-full">
-                  <div className="mb-6">
-                    <h3 className="text-xl font-bold text-slate-900 mb-2">{plan.name}</h3>
+                <div className="p-4 lg:p-8 flex flex-col h-full">
+                  <div className="mb-4">
+                    <h3 className="text-lg lg:text-xl font-bold text-slate-900 mb-2">{plan.name}</h3>
                     <div className="inline-block bg-slate-100 text-slate-700 text-xs font-medium px-2.5 py-1 rounded-md">
                       {plan.bestFor}
                     </div>
                   </div>
 
-                  <div className="mb-8 p-4 bg-slate-50 rounded-xl border border-slate-100">
-                    <div className="flex items-center justify-between mb-3 border-b border-slate-200 pb-3">
-                      <span className="text-slate-600 font-medium">To Start Work</span>
-                      <span className="text-xl font-bold text-primary">₹{plan.advanceAmount}</span>
+                  <div className="mb-4 p-3 lg:mb-8 lg:p-4 bg-slate-50 rounded-xl border border-slate-100">
+                    <div className="flex items-center justify-between mb-2 pb-2 lg:mb-3 lg:pb-3 border-b border-slate-200">
+                      <span className="text-slate-600 font-medium text-sm lg:text-base">To Start Work</span>
+                      <span className="text-lg lg:text-xl font-bold text-primary">₹{plan.advanceAmount}</span>
                     </div>
                     <div className="flex items-center justify-between mb-1">
                       <span className="text-slate-500 text-sm">Due after approval</span>
@@ -130,7 +130,7 @@ export function PricingPlans({ onPlanSelect, selectedPlanId = "smart" }: Pricing
                     </div>
                   </div>
 
-                  <ul className="space-y-4 mb-8 flex-1">
+                  <ul className="space-y-2 lg:space-y-4 mb-4 lg:mb-8 flex-1">
                     {plan.features.map((feature, idx) => (
                       <li key={idx} className="flex items-start gap-3">
                         <div className={cn(
@@ -146,7 +146,7 @@ export function PricingPlans({ onPlanSelect, selectedPlanId = "smart" }: Pricing
 
                   <button
                     className={cn(
-                      "w-full rounded-xl py-4 text-base font-bold transition-all flex items-center justify-center gap-2",
+                      "w-full rounded-xl py-3 lg:py-4 text-sm lg:text-base font-bold transition-all flex items-center justify-center gap-2",
                       isSelected || isRecommended
                         ? "bg-primary text-white shadow-lg shadow-primary/20 hover:bg-primary-dark hover:shadow-xl hover:translate-y-[-1px]"
                         : "bg-slate-900 text-white hover:bg-slate-800"

@@ -1,11 +1,12 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Legal Notice Online | ₹499 Advance | Drafted by Advocates",
+  title: "Send Legal Notice Online | Drafted by Advocates | Start ₹499",
   description:
-    "Start your legal notice with a ₹499 advance + 2-hr callback. Bar-enrolled lawyers draft, you approve first, then pay ₹1000. Get the legal weight you trust.",
+    "Get a strong legal notice drafted by experienced advocates. We handle drafting, sending & tracking to help you get results. Valid in court. Start with ₹499.",
   keywords: [
     "legal notice online",
+    "lawyer notice",
     "send legal notice",
     "legal notice India",
     "how to send legal notice online",
@@ -18,9 +19,9 @@ export const metadata: Metadata = {
     "vakiltech",
   ],
   openGraph: {
-    title: "Legal Notice Online | ₹499 Advance | Drafted by Advocates",
+    title: "Send Legal Notice Online | Drafted by Advocates | Start ₹499",
     description:
-      "Start your legal notice with a ₹499 advance + 2-hr callback. Bar-enrolled lawyers draft, you approve first, then pay ₹1000. Get the legal weight you trust.",
+      "Get a strong legal notice drafted by experienced advocates. We handle drafting, sending & tracking to help you get results. Valid in court. Start with ₹499.",
     type: "website",
     url: "https://vakiltech.in/send-legal-notice",
     siteName: "vakiltech",
@@ -28,9 +29,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Legal Notice Online | ₹499 Advance | Drafted by Advocates",
+    title: "Send Legal Notice Online | Drafted by Advocates | Start ₹499",
     description:
-      "Start your legal notice with a ₹499 advance + 2-hr callback. Bar-enrolled lawyers draft, you approve first, then pay ₹1000. Get the legal weight you trust.",
+      "Get a strong legal notice drafted by experienced advocates. We handle drafting, sending & tracking to help you get results. Valid in court. Start with ₹499.",
   },
   alternates: {
     canonical: "https://vakiltech.in/send-legal-notice",
