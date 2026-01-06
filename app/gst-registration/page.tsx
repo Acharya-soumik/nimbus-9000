@@ -1,5 +1,6 @@
-"use client";
 
+
+import type { Metadata } from "next";
 import * as React from "react";
 import { GSTHeroSection } from "@/components/gst-registration/HeroSection";
 import {
@@ -18,6 +19,25 @@ import { FAQSection } from "@/components/ui/faq-section";
 import { WhatsAppFloater } from "@/components/ui/whatsapp-floater";
 import { PageViewTracker } from "@/components/analytics/PageViewTracker";
 
+export const metadata: Metadata = {
+  title: "GST Registration Online | New GSTIN Apply @ ₹698 | VakilTech",
+  description:
+    "Apply for GST Registration Online in India starting @ ₹698. Get your 15-digit GSTIN number quickly. 100% Online process, Expert CA Assistance.",
+  keywords: [
+    "gst registration",
+    "gst registration online",
+    "apply for gst",
+    "new gst registration",
+    "gstin registration",
+  ],
+  openGraph: {
+    title: "GST Registration Online | New GSTIN Apply @ ₹698",
+    description: "Get your GST Registration online with VakilTech. Expert CA assistance.",
+    url: "https://vakiltech.in/gst-registration",
+    type: "website",
+  },
+};
+
 /**
  * GST Registration Service Page
  */
@@ -28,6 +48,31 @@ export default function GSTRegistrationPage() {
 
       {/* Hero Section */}
       <GSTHeroSection />
+
+      {/* Breadcrumb Schema */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            itemListElement: [
+              {
+                "@type": "ListItem",
+                position: 1,
+                name: "Home",
+                item: "https://vakiltech.in",
+              },
+              {
+                "@type": "ListItem",
+                position: 2,
+                name: "GST Registration",
+                item: "https://vakiltech.in/gst-registration",
+              },
+            ],
+          }),
+        }}
+      />
 
       {/* Why Choose Us */}
       <section className="bg-background-gray py-12 lg:py-16">

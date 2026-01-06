@@ -1,5 +1,6 @@
-"use client";
 
+
+import type { Metadata } from 'next';
 import * as React from "react";
 import { TradeLicenseHeroSection } from "@/components/trade-license/HeroSection";
 import {
@@ -18,6 +19,25 @@ import { FAQSection } from "@/components/ui/faq-section";
 import { WhatsAppFloater } from "@/components/ui/whatsapp-floater";
 import { PageViewTracker } from "@/components/analytics/PageViewTracker";
 
+export const metadata: Metadata = {
+  title: "Trade License Registration Online | Apply Municipal License @ ₹399",
+  description:
+    "Apply for Municipal Trade License Online in India starting @ ₹399. Mandatory for businesses within municipal limits. Easy online process with VakilTech.",
+  keywords: [
+    "trade license",
+    "online trade license",
+    "municipal trade license",
+    "shop license registration",
+    "business license india",
+  ],
+  openGraph: {
+    title: "Trade License Registration Online | Apply Municipal License @ ₹399",
+    description: "Get your Municipal Trade License online with VakilTech. Expert assistance.",
+    url: "https://vakiltech.in/trade-license",
+    type: "website",
+  },
+};
+
 /**
  * Trade License Service Page
  */
@@ -28,6 +48,31 @@ export default function TradeLicensePage() {
 
       {/* Hero Section */}
       <TradeLicenseHeroSection />
+
+      {/* Breadcrumb Schema */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            itemListElement: [
+              {
+                "@type": "ListItem",
+                position: 1,
+                name: "Home",
+                item: "https://vakiltech.in",
+              },
+              {
+                "@type": "ListItem",
+                position: 2,
+                name: "Trade License",
+                item: "https://vakiltech.in/trade-license",
+              },
+            ],
+          }),
+        }}
+      />
 
       {/* Why Choose Us */}
       <section className="bg-background-gray py-12 lg:py-16">

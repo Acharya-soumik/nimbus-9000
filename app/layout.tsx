@@ -32,17 +32,19 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
-  title:
-    "vakiltech - Online Legal Services India | Legal Notice, Consultation & Agreements",
+  title: "VakilTech: Your Online Vakil | Expert Legal Advice & Lawyers",
   description:
-    "India's leading online legal services platform. Send legal notices (₹1,499), get expert consultations (₹299), and draft agreements. Handled by Licensed Advocates. 100% online, 24/7 support.",
+    "Looking for a Vakil? VakilTech connects you with expert lawyers for legal notices, consultations & agreements. India's trusted online legal platform starting @ ₹299.",
   keywords: [
+    "vakil",
     "vakiltech",
-    "online legal services India",
-    "legal notice online",
-    "legal consultation",
-    "agreement drafting",
-    "advocate services online",
+    "online vakil",
+    "legal advice",
+    "talk to lawyer",
+    "lawyer contact number",
+    "send legal notice",
+    "online legal services india",
+    "advocate services",
   ],
   authors: [{ name: "vakiltech" }],
   creator: "vakiltech",
@@ -60,9 +62,9 @@ export const metadata: Metadata = {
     apple: [{ url: "/assets/apple-touch-icon.png", type: "image/png" }],
   },
   openGraph: {
-    title: "vakiltech - Online Legal Services India",
+    title: "VakilTech: Your Online Vakil | Expert Legal Advice & Lawyers",
     description:
-      "India's leading online legal services platform. Legal notices, consultations & agreements by Licensed Advocates.",
+      "Need a Vakil? Get expert legal advice, send legal notices & talk to licensed advocates online. Fast, affordable & secure.",
     url: "https://vakiltech.in",
     siteName: "vakiltech",
     locale: "en_IN",
@@ -70,9 +72,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "vakiltech - Online Legal Services India",
+    title: "VakilTech: Your Online Vakil | Expert Legal Advice & Lawyers",
     description:
-      "Legal notices, consultations & agreements by Licensed Advocates. 100% online, affordable, professional.",
+      "Need a Vakil? Get expert legal advice, send legal notices & talk to licensed advocates online. Fast, affordable & secure.",
   },
   robots: {
     index: true,

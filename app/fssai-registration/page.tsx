@@ -1,4 +1,6 @@
-"use client";
+
+
+import type { Metadata } from 'next';
 
 import * as React from "react";
 import { FSSAIHeroSection } from "@/components/fssai-registration/HeroSection";
@@ -20,6 +22,34 @@ import { FAQSection } from "@/components/ui/faq-section";
 import { WhatsAppFloater } from "@/components/ui/whatsapp-floater";
 import { PageViewTracker } from "@/components/analytics/PageViewTracker";
 
+export const metadata: Metadata = {
+  title: "FSSAI Registration Online | Food License Apply @ ₹429 | VakilTech",
+  description:
+    "Apply for FSSAI Registration Online in India starting @ ₹429. Get your Food License (FosCos) quickly via VakilTech. 100% Online, Expert Support, Avoid Penalties.",
+  keywords: [
+    "fssai registration online",
+    "food license apply",
+    "fssai license registration",
+    "foscos registration",
+    "food safety license",
+    "fssai registration fees",
+  ],
+  openGraph: {
+    title: "FSSAI Registration Online | Food License Apply @ ₹429",
+    description: "Get your FSSAI Food License online with VakilTech. Expert assistance, transparent pricing.",
+    url: "https://vakiltech.in/fssai-registration",
+    type: "website",
+    images: [
+      {
+        url: "/assets/services/fssai-registration.png", // Assuming this exists or generic
+        width: 1200,
+        height: 630,
+        alt: "FSSAI Registration Service",
+      },
+    ],
+  },
+};
+
 /**
  * FSSAI Registration Service Page
  */
@@ -30,6 +60,31 @@ export default function FSSAIRegistrationPage() {
 
       {/* Hero Section */}
       <FSSAIHeroSection />
+
+      {/* Breadcrumb Schema */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            itemListElement: [
+              {
+                "@type": "ListItem",
+                position: 1,
+                name: "Home",
+                item: "https://vakiltech.in",
+              },
+              {
+                "@type": "ListItem",
+                position: 2,
+                name: "FSSAI Registration",
+                item: "https://vakiltech.in/fssai-registration",
+              },
+            ],
+          }),
+        }}
+      />
 
       {/* Why Choose Us */}
       <section className="bg-background-gray py-12 lg:py-16">

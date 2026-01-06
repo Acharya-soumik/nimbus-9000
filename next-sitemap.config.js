@@ -24,6 +24,10 @@ module.exports = {
     await config.transform(config, '/legal-consultation'),
     await config.transform(config, '/agreement-drafting'),
     await config.transform(config, '/legal-drafts-bundle'),
+    await config.transform(config, '/fssai-registration'),
+    await config.transform(config, '/gst-registration'),
+    await config.transform(config, '/trade-license'),
+    await config.transform(config, '/itr-filing'),
     await config.transform(config, '/about'),
     await config.transform(config, '/blogs'),
   ],
@@ -37,6 +41,10 @@ module.exports = {
       '/legal-consultation': 0.9,
       '/agreement-drafting': 0.9,
       '/legal-drafts-bundle': 0.9,
+      '/fssai-registration': 0.9,
+      '/gst-registration': 0.9,
+      '/trade-license': 0.9,
+      '/itr-filing': 0.9,
       '/about': 0.8,
       '/blogs': 0.8,
     };
@@ -49,6 +57,10 @@ module.exports = {
       '/legal-consultation': 'weekly',
       '/agreement-drafting': 'weekly',
       '/legal-drafts-bundle': 'weekly',
+      '/fssai-registration': 'weekly',
+      '/gst-registration': 'weekly',
+      '/trade-license': 'weekly',
+      '/itr-filing': 'weekly',
     };
 
     return {

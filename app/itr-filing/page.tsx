@@ -1,5 +1,6 @@
-"use client";
 
+
+import type { Metadata } from 'next';
 import * as React from "react";
 import { ITRHeroSection } from "@/components/itr-filing/HeroSection";
 import {
@@ -18,6 +19,25 @@ import { FAQSection } from "@/components/ui/faq-section";
 import { WhatsAppFloater } from "@/components/ui/whatsapp-floater";
 import { PageViewTracker } from "@/components/analytics/PageViewTracker";
 
+export const metadata: Metadata = {
+  title: "ITR Filing Online CA Assisted | Income Tax Return @ ₹599 | VakilTech",
+  description:
+    "File your ITR Online with Expert CA assistance starting @ ₹599. Get maximum refund. Secure & Confidential. Income Tax Return Filing Service India.",
+  keywords: [
+    "itr filing online",
+    "income tax return filing",
+    "ca assisted itr filing",
+    "file itr online",
+    "income tax refund",
+  ],
+  openGraph: {
+    title: "ITR Filing Online CA Assisted | Income Tax Return @ ₹599",
+    description: "File your ITR Online with Licensed CAs. Maximize your refund.",
+    url: "https://vakiltech.in/itr-filing",
+    type: "website",
+  },
+};
+
 /**
  * ITR Filing Service Page
  */
@@ -28,6 +48,31 @@ export default function ITRFilingPage() {
 
       {/* Hero Section */}
       <ITRHeroSection />
+
+      {/* Breadcrumb Schema */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            itemListElement: [
+              {
+                "@type": "ListItem",
+                position: 1,
+                name: "Home",
+                item: "https://vakiltech.in",
+              },
+              {
+                "@type": "ListItem",
+                position: 2,
+                name: "ITR Filing",
+                item: "https://vakiltech.in/itr-filing",
+              },
+            ],
+          }),
+        }}
+      />
 
       {/* Why Choose Us */}
       <section className="bg-background-gray py-12 lg:py-16">
