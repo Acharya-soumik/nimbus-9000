@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { 
   ShieldCheck, 
   Users, 
@@ -363,6 +364,20 @@ export default function LandingPage() {
            </div>
         </section>
 
+
+       {/* LEGAL LINKS SECTION */}
+       <section className="px-4 py-12 mt-8 border-t border-gray-200/60">
+          <div className="max-w-4xl mx-auto text-center space-y-6">
+              <div className="flex flex-wrap justify-center gap-x-8 gap-y-3 text-xs md:text-sm font-medium text-gray-500">
+                  <Link href="/privacy-policy" className="hover:text-gray-900 transition-colors">Privacy Policy</Link>
+                  <Link href="/terms-and-conditions" className="hover:text-gray-900 transition-colors">Terms & Conditions</Link>
+                  <Link href="/terms-of-use" className="hover:text-gray-900 transition-colors">Terms of Use</Link>
+              </div>
+              <p className="text-[10px] text-gray-400">
+                  &copy; {new Date().getFullYear()} VakilTech. All rights reserved.
+              </p>
+          </div>
+       </section>
 
       </main>
 
