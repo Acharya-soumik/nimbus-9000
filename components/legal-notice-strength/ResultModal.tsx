@@ -13,6 +13,7 @@ import { Button } from "@/components/ui/button";
 import { CircularStrengthGauge } from "./CircularStrengthGauge";
 import { getScoreBucket, type ScoreBucket } from "./calculator-data";
 import { cn } from "@/lib/utils";
+import { trackEvent } from "@/lib/mixpanel";
 
 export interface CaseStrengthResult {
   score: number;
@@ -48,6 +49,17 @@ export function ResultModal({
   onSecondaryCTA,
 }: ResultModalProps) {
   const bucket = getScoreBucket(result.score);
+
+  React.useEffect(() => {
+    if (open) {
+      trackEvent("Strength Checker Result Viewed", {
+        score: result.score,
+        confidence: result.confidence,
+        bucket: getScoreBucket(result.score).label,
+        notice_type: result.notice_type,
+      });
+    }
+  }, [open, result]);
 
   const getStatusLabel = (bucket: ScoreBucket): string => {
     return bucket.label;

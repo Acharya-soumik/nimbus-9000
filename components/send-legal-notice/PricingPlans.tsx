@@ -57,6 +57,28 @@ export function PricingPlans({ onPlanSelect, selectedPlanId = "smart" }: Pricing
     }
   ];
 
+  React.useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            trackEvent("Pricing Section Viewed", {
+                service_type: "Legal Notice", // or dynamic if prop passed
+                section: "pricing_plans"
+            });
+            observer.disconnect();
+          }
+        });
+      },
+      { threshold: 0.5 }
+    );
+
+    const section = document.getElementById("pricing-plans");
+    if (section) observer.observe(section);
+
+    return () => observer.disconnect();
+  }, []);
+
   return (
     <section id="pricing-plans" className="py-8 lg:py-24 bg-gradient-to-b from-slate-50 to-white">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -79,11 +101,12 @@ export function PricingPlans({ onPlanSelect, selectedPlanId = "smart" }: Pricing
               <div
                 key={plan.id}
                 onClick={() => {
-                  trackEvent("Payment Started", {
-                    plan_id: plan.id,
+                  trackEvent("Checkout Started", {
+                    service_type: "Legal Notice",
                     plan_name: plan.name,
                     amount: plan.price,
-                    plan_type: plan.id
+                    notice_type: "Generic", // Can be refined if we know context
+                    price_shown: plan.price
                   });
                   onPlanSelect(plan);
                 }}

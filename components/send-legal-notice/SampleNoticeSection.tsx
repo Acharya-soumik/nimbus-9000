@@ -2,6 +2,7 @@
 
 import * as React from "react";
 import { cn } from "@/lib/utils";
+import { trackEvent } from "@/lib/mixpanel";
 
 /* =============================================================================
  * TYPE DEFINITIONS
@@ -178,7 +179,13 @@ export function SampleNoticeSection({
 
             {/* Download/View Button */}
             <button
-              onClick={onButtonClick}
+              onClick={() => {
+                trackEvent("Sample Notice Viewed", {
+                    category: noticeCategory,
+                    view_mode: "preview_card"
+                });
+                onButtonClick?.();
+              }}
               className="w-full rounded-xl border-2 border-primary/30 bg-primary/5 px-6 py-3.5 text-base font-bold text-primary transition-all hover:border-primary/50 hover:bg-primary/10 active:scale-[0.98] sm:py-4"
             >
               {buttonText}

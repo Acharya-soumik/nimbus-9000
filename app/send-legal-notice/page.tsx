@@ -29,7 +29,7 @@ import { StickyCTABar } from "@/components/legal-consultation/StickyCTABar";
 import { realSampleNotices } from "@/lib/send-legal-notice/real-sample-notices";
 import { PageViewTracker } from "@/components/analytics/PageViewTracker";
 import { StrengthCalculatorPromo } from "@/components/send-legal-notice/StrengthCalculatorPromo";
-import { trackEvent } from "@/lib/mixpanel";
+import { trackEvent, trackLandingPageView } from "@/lib/mixpanel";
 
 // Use the real money recovery notice
 const moneyRecoveryNotice: SampleNoticeContent =
@@ -174,6 +174,9 @@ export default function LegalNoticePage() {
 
   // Handle scroll on mount if hash is present
   React.useEffect(() => {
+    // Track Landing Page View
+    trackLandingPageView("Legal Notice");
+
     // Small delay to ensure rendering and hash availability
     const timer = setTimeout(() => {
       if (window.location.hash) {

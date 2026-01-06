@@ -26,6 +26,7 @@ import {
 import { FAQSection } from "@/components/ui/faq-section";
 import { WhatsAppFloater } from "@/components/ui/whatsapp-floater";
 import { PageViewTracker } from "@/components/analytics/PageViewTracker";
+import { trackLandingPageView } from "@/lib/mixpanel";
 
 /**
  * Agreement Drafting Service Page
@@ -39,6 +40,10 @@ export default function AgreementDraftingPage() {
   const [selectedSampleId, setSelectedSampleId] = React.useState<string>();
   const [showDiscountModal, setShowDiscountModal] = React.useState(false);
   const [showExitModal, setShowExitModal] = React.useState(false);
+
+  React.useEffect(() => {
+    trackLandingPageView("Agreement Drafting");
+  }, []);
 
   // Handle agreement selection from grid
   const handleAgreementClick = (agreementId: string) => {

@@ -7,6 +7,7 @@ import dynamic from "next/dynamic";
 import { useEffect, useState } from "react";
 import { cn } from "@/lib/utils";
 import { PageViewTracker } from "@/components/analytics/PageViewTracker";
+import { trackLandingPageView } from "@/lib/mixpanel";
 
 // Design System
 import { MeshGradient } from "@paper-design/shaders-react";
@@ -391,6 +392,7 @@ export default function LegalConsultationPage() {
 
   // Handle scroll on mount if hash is present
   useEffect(() => {
+    trackLandingPageView("Legal Consultation");
     if (window.location.hash) {
       const element = document.querySelector(window.location.hash);
       if (element) {

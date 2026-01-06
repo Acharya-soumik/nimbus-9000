@@ -23,6 +23,7 @@ import {
   trackFormStep,
   trackFormSubmission,
 } from "@/lib/analytics/dataLayer";
+import { trackEvent } from "@/lib/mixpanel";
 
 /* =============================================================================
  * LAZY-LOADED COMPONENTS
@@ -1231,6 +1232,13 @@ export function MultiStepForm({
 
     setIsProcessingPayment(true);
 
+    trackEvent("Payment Initiated", {
+        service_type: serviceType,
+        amount: currentPrice,
+        currency: "INR",
+        provider: "razorpay"
+    });
+
     try {
       const amountInPaise = currentPrice * 100;
 
@@ -1298,6 +1306,12 @@ export function MultiStepForm({
       razorpay.open();
     } catch (error) {
       console.error("Payment initiation failed:", error);
+      trackEvent("Payment Failed", {
+        service_type: serviceType,
+        amount: currentPrice,
+        error_type: "initiation_failed",
+        error_message: error instanceof Error ? error.message : "Unknown error"
+      });
       toast.error("Payment failed. Please try again.");
       setIsProcessingPayment(false);
     }
@@ -1335,6 +1349,11 @@ export function MultiStepForm({
       }
     } catch (error) {
       console.error("Payment processing error:", error);
+      trackEvent("Payment Failed", {
+        service_type: serviceType,
+        error_type: "verification_failed",
+        error_message: error instanceof Error ? error.message : "Unknown error"
+      });
       toast.error("Payment verification failed. Contact support.");
     } finally {
       setIsProcessingPayment(false);

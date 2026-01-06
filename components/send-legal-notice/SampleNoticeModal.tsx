@@ -2,6 +2,7 @@
 
 import * as React from "react";
 import { cn } from "@/lib/utils";
+import { trackEvent } from "@/lib/mixpanel";
 import { useIsMobile } from "@/hooks/use-media-query";
 import {
   Dialog,
@@ -231,6 +232,15 @@ export function SampleNoticeModal({
   onCtaClick,
 }: SampleNoticeModalProps) {
   const isMobile = useIsMobile();
+
+  React.useEffect(() => {
+    if (open) {
+        trackEvent("Sample Notice Viewed", {
+            category: noticeCategory,
+            view_mode: "modal"
+        });
+    }
+  }, [open, noticeCategory]);
 
   // Mobile: Full-height bottom sheet
   if (isMobile) {

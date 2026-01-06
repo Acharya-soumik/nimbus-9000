@@ -22,6 +22,7 @@ import {
   ModalHeader,
   ModalTitle,
 } from "@/components/ui/modal";
+import { trackLandingPageView } from "@/lib/mixpanel";
 
 /* =============================================================================
  * ANIMATION VARIANTS
@@ -68,6 +69,12 @@ export default function LandingPage() {
   const openForm = () => {
     setIsFormOpen(true);
   };
+
+  React.useEffect(() => {
+    trackLandingPageView("Legal Notice (Ads)", undefined, { 
+        source: 'google_ads_landing_page' 
+    });
+  }, []);
 
   return (
     <div className="min-h-screen bg-[#FFF5F2]/40 font-sans text-gray-900 selection:bg-[#EF5A6F]/20 selection:text-[#EF5A6F]">

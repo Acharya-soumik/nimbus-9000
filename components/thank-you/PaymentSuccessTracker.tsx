@@ -26,8 +26,8 @@ export function PaymentSuccessTracker({
     if (trackedRef.current) return;
     trackedRef.current = true;
 
-    // Track Payment Completed
-    trackEvent("Payment Completed", {
+    // Track Payment Success
+    trackEvent("Payment Success", {
       payment_id: paymentId,
       amount: amount,
       service_type: serviceType,

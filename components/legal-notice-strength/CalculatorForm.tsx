@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { cn } from "@/lib/utils";
+import { trackEvent } from "@/lib/mixpanel";
 import type { Question, NoticeType, Option } from "./calculator-data";
 import { getNoticeTypeConfig } from "./calculator-data";
 import type { AnswerValue, CaseSession } from "./scoring-utils";
@@ -32,6 +33,12 @@ export function CalculatorForm({
   const [currentStep, setCurrentStep] = React.useState(0);
   const [answers, setAnswers] = React.useState<Record<string, AnswerValue>>({});
 
+  React.useEffect(() => {
+    trackEvent("Strength Checker Started", {
+      notice_type: noticeType,
+    });
+  }, [noticeType]);
+
   if (!config) {
     return <div>Invalid notice type selected</div>;
   }
@@ -57,6 +64,13 @@ export function CalculatorForm({
         answers,
       };
       const result = calculateCaseStrength(session);
+
+      trackEvent("Strength Checker Completed", {
+        notice_type: noticeType,
+        score: result.score,
+        confidence: result.confidence,
+      });
+
       onComplete(result);
     }
   };
