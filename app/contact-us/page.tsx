@@ -54,7 +54,7 @@ export default function ContactUsPage() {
                 Speak with our team
               </p>
               <p className="text-foreground font-medium">
-                [Phone number to be added]
+               +91 7047683995
               </p>
             </div>
 
@@ -70,7 +70,7 @@ export default function ContactUsPage() {
                 Get instant help
               </p>
               <p className="text-foreground font-medium">
-                [WhatsApp number to be added]
+                +91 7047683995
               </p>
             </div>
 
@@ -83,9 +83,9 @@ export default function ContactUsPage() {
                 <h3 className="text-xl font-semibold">Business Hours</h3>
               </div>
               <div className="text-muted-foreground space-y-1">
-                <p>[Monday - Friday: Hours to be added]</p>
-                <p>[Saturday: Hours to be added]</p>
-                <p>[Sunday: Hours to be added]</p>
+                <p>Monday - Friday: 10:00 AM - 10:00 PM</p>
+                <p>Saturday: 10:00 AM - 10:00 PM</p>
+                <p>Sunday: 10:00 AM - 10:00 PM</p>
               </div>
             </div>
 
