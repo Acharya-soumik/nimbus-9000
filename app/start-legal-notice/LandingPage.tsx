@@ -14,16 +14,26 @@ import {
   ArrowRight,
   Sparkles
 } from "lucide-react";
-import MultiStepForm from "@/components/send-legal-notice/MultiStepForm";
 import { cn } from "@/lib/utils";
 import { motion, Variants } from "motion/react";
-import {
-  Modal,
-  ModalContent,
-  ModalHeader,
-  ModalTitle,
-} from "@/components/ui/modal";
-import { trackLandingPageView } from "@/lib/mixpanel";
+import { trackLandingPageView, trackEvent } from "@/lib/mixpanel";
+
+// Reusable Components
+import MultiStepForm from "@/components/send-legal-notice/MultiStepForm";
+import { AdvocateShowcase } from "@/components/start-legal-notice/AdvocateShowcase";
+import { 
+  PopularLegalNotices, 
+  SampleNoticeSection, 
+  SampleNoticeModal,
+  HowWeWorkTimeline,
+  TestimonialsSection, 
+  type SampleNoticeContent
+} from "@/components/send-legal-notice";
+import { PostNoticeClarity } from "@/components/send-legal-notice/PostNoticeClarity";
+import { WhatsAppFloater } from "@/components/ui/whatsapp-floater";
+import { realSampleNotices } from "@/lib/send-legal-notice/real-sample-notices";
+
+const moneyRecoveryNotice: SampleNoticeContent = realSampleNotices["money-recovery"];
 
 /* =============================================================================
  * ANIMATION VARIANTS
@@ -62,14 +72,44 @@ const StarRating = () => (
 );
 
 /* =============================================================================
+ * CUSTOM TESTIMONIALS (Selected Strongest)
+ * ============================================================================= */
+const landingPageTestimonials = [
+  {
+    quote: "I was not getting my salary dues from my previous employer. The legal notice drafted by VakilTech showed I was serious. They cleared my dues to avoid court trouble. Thank you!",
+    name: "Anjali Desai",
+    title: "Marketing Executive, Mumbai",
+  },
+  {
+    quote: "My landlord refused to return my ₹45,000 security deposit for months. After sending the legal notice through VakilTech, he returned the full amount within 10 days.",
+    name: "Rohan Malhotra",
+    title: "Software Engineer, Bangalore",
+  },
+  {
+    quote: "A builder in Noida was delaying possession by 2 years. I sent a legal notice for refund with interest. They finally called me for a settlement meeting.",
+    name: "Suresh Gupta",
+    title: "Government Employee, Delhi",
+  },
+  {
+    quote: "Standard legal notice for cheque bounce. The process was simple, and the lawyer added all necessary sections under the NI Act. Very professional service.",
+    name: "Vikramjit Singh",
+    title: "Business Owner, Ludhiana",
+  },
+];
+
+/* =============================================================================
  * MAIN COMPONENT
  * ============================================================================= */
 export default function LandingPage() {
-  const [isFormOpen, setIsFormOpen] = useState(false);
+  const [showSampleNoticeModal, setShowSampleNoticeModal] = useState(false);
   const [isPaymentProcessing, setIsPaymentProcessing] = useState(false);
 
-  const openForm = () => {
-    setIsFormOpen(true);
+  const scrollToForm = () => {
+    trackEvent("CTA Clicked", {
+        section: "Hero/Sticky",
+        action: "Scroll to Form"
+    });
+    document.getElementById("start-notice-form")?.scrollIntoView({ behavior: "smooth" });
   };
 
   React.useEffect(() => {
@@ -129,9 +169,14 @@ export default function LandingPage() {
               Send a Lawyer-Drafted <br className="hidden md:block"/>
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#EF5A6F] to-[#E8505B]">Legal Notice</span>
             </motion.h1>
+
+             {/* Sub-headline (Above Fold Optimisation) */}
+             <motion.p variants={itemVariants} className="text-lg md:text-xl font-medium text-gray-800 max-w-2xl mx-auto border-b-2 border-[#EF5A6F]/20 pb-4">
+                Every legal notice is personally drafted by a licensed advocate — <span className="font-bold text-[#EF5A6F] italic">not templates or AI.</span>
+             </motion.p>
             
-            {/* Subheadline & USP */}
-            <motion.div variants={itemVariants} className="space-y-4">
+            {/* USP Price */}
+            <motion.div variants={itemVariants} className="space-y-4 pt-2">
               <p className="text-xl md:text-2xl font-medium text-gray-700">
                 Start with just <span className="inline-block bg-[#FEF3C7] px-2 rounded-md transform -rotate-1 border border-[#FBBF24]">₹499</span>
               </p>
@@ -152,7 +197,7 @@ export default function LandingPage() {
             {/* CTA */}
             <motion.div variants={itemVariants} className="pt-6">
               <button 
-                onClick={openForm}
+                onClick={scrollToForm}
                 className="group relative inline-flex items-center justify-center gap-3 px-8 py-4 text-lg font-bold text-white transition-all duration-300 bg-gradient-to-br from-[#EF5A6F] to-[#DC2626] rounded-2xl shadow-[0_10px_20px_-10px_rgba(239,90,111,0.5)] hover:shadow-[0_20px_30px_-10px_rgba(239,90,111,0.6)] hover:scale-[1.02] active:scale-[0.98] w-full md:w-auto"
               >
                 <Lock className="w-5 h-5" />
@@ -165,12 +210,12 @@ export default function LandingPage() {
                 </div>
               </button>
               
-              <div className="mt-3 space-y-2">
-                  <p className="text-sm font-semibold text-[#EF5A6F] animate-pulse">
-                      Delaying legal action weakens your case.
+              <div className="mt-4 space-y-1">
+                  <p className="text-sm font-bold text-[#E8505B] animate-pulse">
+                      Every delay reduces your legal leverage.
                   </p>
                   <p className="text-xs text-gray-500 font-medium">
-                     Secure payment · Razorpay protected · 100% refund if lawyer declines
+                     Most disputes resolve only after a legal notice is sent.
                   </p>
               </div>
             </motion.div>
@@ -203,149 +248,108 @@ export default function LandingPage() {
           </div>
         </section>
 
-        {/* WHY ₹499? (FEAR REMOVAL) */}
-        <section className="px-4 py-16 max-w-4xl mx-auto">
-          <div className="relative overflow-hidden bg-gradient-to-br from-blue-50 to-indigo-50/50 rounded-3xl p-8 md:p-12 border border-blue-100/50 shadow-lg">
-             <div className="absolute top-0 right-0 w-64 h-64 bg-blue-100/40 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2" />
-             
-            <div className="relative z-10">
-                <div className="flex flex-col md:flex-row gap-8 items-center">
-                    <div className="flex-1">
-                        <h3 className="text-2xl md:text-3xl font-bold text-gray-900 mb-6">
-                           Why pay <span className="text-blue-600">₹499</span> to start?
-                        </h3>
-                        <ul className="space-y-5">
-                            <li className="flex gap-4">
-                                <div className="mt-1 flex-shrink-0 w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center text-blue-600">
-                                <CheckCircle2 className="w-5 h-5" />
-                                </div>
-                                <div>
-                                <h4 className="font-bold text-gray-900 text-lg">Risk-Free Start</h4>
-                                <p className="text-gray-600 leading-relaxed">Lawyer reviews your case first. If they decline, you get a <span className="font-semibold text-gray-900">100% refund</span> instantly.</p>
-                                </div>
-                            </li>
-                            <li className="flex gap-4">
-                                <div className="mt-1 flex-shrink-0 w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center text-blue-600">
-                                <FileText className="w-5 h-5" />
-                                </div>
-                                <div>
-                                <h4 className="font-bold text-gray-900 text-lg">Review Before Paying Full</h4>
-                                <p className="text-gray-600 leading-relaxed">We share the draft with you first. You pay the remaining balance <span className="font-semibold text-gray-900">ONLY if you approve</span> the draft.</p>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-                
-                    {/* Visual Card */}
-                    <div className="w-full max-w-xs bg-white p-6 rounded-2xl shadow-xl border border-gray-100 rotate-2 hover:rotate-0 transition-transform duration-300">
-                        <div className="flex items-center gap-3 mb-4 pb-4 border-b border-gray-100">
-                            <div className="w-10 h-10 rounded-full bg-green-100 flex items-center justify-center text-green-600">
-                                <ShieldCheck className="w-6 h-6" />
-                            </div>
-                            <div>
-                                <div className="text-xs text-gray-500 font-semibold uppercase">Guarantee</div>
-                                <div className="font-bold text-gray-900">Total Safety</div>
-                            </div>
-                        </div>
-                        <p className="text-lg font-medium text-gray-800 text-center italic">
-                            &quot;Nothing is sent without your specific confirmation.&quot;
-                        </p>
-                    </div>
-                </div>
-            </div>
-          </div>
-        </section>
+        {/* NEW ADVOCATE SHOWCASE */}
+        <AdvocateShowcase />
 
-        {/* HOW IT WORKS - Step Cards */}
-        <section className="px-4 py-16">
-           <div className="max-w-5xl mx-auto">
-            <h2 className="text-3xl md:text-4xl font-bold text-center text-gray-900 mb-12">How It Works</h2>
-            
-            <div className="grid md:grid-cols-3 gap-8">
-                {/* Step 1 */}
-                <div className="group relative bg-white rounded-3xl p-8 shadow-sm border border-gray-100 hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
-                    <div className="absolute top-6 right-6 text-6xl font-black text-gray-50 opacity-50 group-hover:text-[#EF5A6F]/10 transition-colors">1</div>
-                    <div className="w-14 h-14 bg-[#FFF5F2] rounded-2xl flex items-center justify-center text-[#EF5A6F] mb-6 group-hover:scale-110 transition-transform">
-                        <Lock className="w-7 h-7" />
-                    </div>
-                    <h3 className="text-xl font-bold text-gray-900 mb-3">Pay ₹499 Advance</h3>
-                    <p className="text-gray-600 leading-relaxed">Fill the form and pay the advance. A verified lawyer is assigned to your case instantly.</p>
-                </div>
+        {/* HOW IT WORKS (Reusable Component) */}
+        <HowWeWorkTimeline />
+        
+        {/* SAMPLE NOTICE (Reusable Component) - MOVED UP HERE */}
+        <SampleNoticeSection
+          noticeCategory="Money Recovery"
+          title="See a Real Legal Notice Format"
+          subtitle="Preview a real advocate-drafted legal notice used in actual cases."
+          buttonText="View Sample Notice"
+          onButtonClick={() => setShowSampleNoticeModal(true)}
+        />
 
-                {/* Step 2 */}
-                <div className="group relative bg-white rounded-3xl p-8 shadow-sm border border-gray-100 hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
-                    <div className="absolute top-6 right-6 text-6xl font-black text-gray-50 opacity-50 group-hover:text-[#EF5A6F]/10 transition-colors">2</div>
-                    <div className="w-14 h-14 bg-[#FFF5F2] rounded-2xl flex items-center justify-center text-[#EF5A6F] mb-6 group-hover:scale-110 transition-transform">
-                        <FileText className="w-7 h-7" />
-                    </div>
-                    <h3 className="text-xl font-bold text-gray-900 mb-3">Get Draft in 24h</h3>
-                    <p className="text-gray-600 leading-relaxed">Lawyer drafts your notice and shares it on WhatsApp. You get <span className="font-semibold text-gray-900">unlimited revisions</span>.</p>
-                </div>
+        {/* WHAT HAPPENS AFTER (Reusable Component) */}
+        <PostNoticeClarity />
 
-                {/* Step 3 */}
-                <div className="group relative bg-white rounded-3xl p-8 shadow-sm border border-gray-100 hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
-                    <div className="absolute top-6 right-6 text-6xl font-black text-gray-50 opacity-50 group-hover:text-[#EF5A6F]/10 transition-colors">3</div>
-                    <div className="w-14 h-14 bg-[#FFF5F2] rounded-2xl flex items-center justify-center text-[#EF5A6F] mb-6 group-hover:scale-110 transition-transform">
-                        <CheckCircle2 className="w-7 h-7" />
-                    </div>
-                    <h3 className="text-xl font-bold text-gray-900 mb-3">Approve & Send</h3>
-                    <p className="text-gray-600 leading-relaxed">Pay the balance only when you are 100% happy. We dispatch via Speed Post.</p>
-                </div>
-            </div>
-           </div>
-        </section>
+        {/* TYPES OF NOTICES (Reusable Component) */}
+        <PopularLegalNotices
+          notices={[
+            {
+              id: "recovery-of-money",
+              title: "Money Recovery",
+              description: "Recover pending dues, salary, or payments legally.",
+              iconType: "rupee",
+              href: "#start-notice-form",
+            },
+            {
+              id: "cheque-bounce",
+              title: "Cheque Bounce",
+              description: "Legal action under Section 138 of NI Act.",
+              iconType: "cheque",
+              href: "#start-notice-form",
+            },
+            {
+              id: "property-dispute",
+              title: "Property & Tenant",
+              description: "Disputes regarding possession, rent, or eviction.",
+              iconType: "loan",
+              href: "#start-notice-form",
+            },
+            {
+              id: "consumer-complaint",
+              title: "Consumer & Defect",
+              description: "For defective goods or deficient services.",
+              iconType: "cheque",
+              href: "#start-notice-form",
+            },
+            {
+              id: "matrimonial",
+              title: "Divorce & Matrimonial",
+              description: "Divorce, restitution, or custody notices.",
+              iconType: "loan",
+              href: "#start-notice-form",
+            },
+            {
+              id: "employment",
+              title: "Employment Issues",
+              description: "Unpaid salary, wrongful termination, or harassment.",
+              iconType: "cheque",
+              href: "#start-notice-form",
+            },
+          ]}
+        />
 
-        {/* PRICING CARD */}
-        <section className="px-4 py-8">
-          <div className="max-w-[400px] mx-auto">
-             <div className="bg-white rounded-3xl shadow-2xl border border-gray-100 overflow-hidden relative">
-                {/* Banner */}
-                <div className="bg-gradient-to-r from-[#EF5A6F] to-[#DC2626] text-white p-4 text-center">
-                    <span className="text-sm font-bold tracking-widest uppercase">Simple Transparent Pricing</span>
-                </div>
-                
-                <div className="p-8">
-                    <div className="flex justify-center items-end mb-2">
-                        <span className="text-5xl font-bold text-gray-900 tracking-tight">₹499</span>
-                        <span className="text-gray-500 font-medium mb-1.5 ml-2">to start</span>
-                    </div>
-                    <p className="text-sm text-center text-gray-500 mb-8 bg-gray-50 py-2 rounded-lg">Balance ₹1000 payable <strong>after approval</strong></p>
-                    
-                    <div className="space-y-4 mb-8">
-                       {[
-                           "Drafted by Bar Council Advocate",
-                           "Unlimited Revisions included",
-                           "Sent via Govt Speed Post",
-                           "Valid in all Indian Courts",
-                           "Fully Refundable Assurance"
-                       ].map((item, i) => (
-                           <div key={i} className="flex gap-3 text-sm font-medium text-gray-700">
-                                <div className="flex-shrink-0 w-5 h-5 rounded-full bg-green-100 text-green-600 flex items-center justify-center mt-0.5">
-                                    <CheckCircle2 className="w-3.5 h-3.5" />
-                                </div>
-                                {item}
-                           </div>
-                       ))}
-                    </div>
+        {/* TESTIMONIALS (Reusable Component) - USING CUSTOM TESTIMONIALS */}
+        <TestimonialsSection 
+            className="bg-background-gray"
+            testimonials={landingPageTestimonials} 
+        />
 
-                    <button 
-                        onClick={openForm}
-                        className="w-full bg-[#1A1A1A] hover:bg-black text-white font-bold py-4 rounded-xl shadow-lg transition-all transform active:scale-95 flex items-center justify-center gap-2"
-                    >
-                        <Lock className="w-5 h-5" />
-                        🔒 Start Legal Notice — Pay ₹499
-                        <ArrowRight className="w-4 h-4" />
-                    </button>
-                    
-                    <p className="text-xs text-center text-gray-400 mt-4 flex items-center justify-center gap-1">
-                        <Lock className="w-3 h-3" /> Secure Payment via Razorpay
-                    </p>
-                </div>
+        {/* EMBEDDED FORM SECTION */}
+        <section id="start-notice-form" className="px-4 py-12 md:py-16 max-w-xl mx-auto relative z-10">
+             <div className="text-center mb-8">
+                 <h2 className="text-3xl font-bold text-gray-900 mb-2">Start Your Legal Notice</h2>
+                 <p className="text-gray-600">Fill the details below to assign a lawyer to your case.</p>
              </div>
-          </div>
+             
+             <div className={cn("bg-white rounded-2xl shadow-xl border border-gray-100 overflow-hidden", isPaymentProcessing && "pointer-events-none opacity-80")}>
+                 <div className="bg-[#EF5A6F] p-4 text-center text-white">
+                     <h3 className="font-bold text-lg">Pay ₹499 Advance to Start</h3>
+                     <p className="text-xs opacity-90">Secure Payment • Fully Refundable</p>
+                 </div>
+                 <div className="p-4 md:p-6">
+                    <MultiStepForm 
+                         serviceType="Legal Notice"
+                         servicePrice={1499} 
+                         planDetails={{
+                             id: "legal-notice-start",
+                             name: "Legal Notice Service",
+                             price: 1499,
+                             advanceAmount: 499
+                         }}
+                         onPaymentStart={() => setIsPaymentProcessing(true)}
+                         onPaymentEnd={() => setIsPaymentProcessing(false)}
+                     />
+                 </div>
+             </div>
         </section>
 
-        {/* FAQ - Accordion Style */}
+        {/* FAQ - Accordion Style (Keeping existing simple FAQ for focused landing page) */}
         <section className="px-4 py-16 max-w-2xl mx-auto">
            <h2 className="text-2xl font-bold text-center text-gray-900 mb-8">Common Questions</h2>
            <div className="space-y-4">
@@ -366,9 +370,23 @@ export default function LandingPage() {
         </section>
 
 
-       {/* LEGAL LINKS SECTION */}
+       {/* LEGAL LINKS SECTION WITH WHATSAPP LINK */}
        <section className="px-4 py-12 mt-8 border-t border-gray-200/60">
           <div className="max-w-4xl mx-auto text-center space-y-6">
+              
+              {/* WhatsApp Text Link as requested */}
+              <div className="pb-4">
+                  <a 
+                    href="https://wa.me/917047683995?text=Hi! I have a question about sending a legal notice."
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 text-[#EF5A6F] font-semibold hover:underline"
+                  >
+                     <span className="bg-[#EF5A6F]/10 p-1 rounded-full"><img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WA" className="w-4 h-4"/></span>
+                     Need help? Chat with us on WhatsApp
+                  </a>
+              </div>
+
               <div className="flex flex-wrap justify-center gap-x-8 gap-y-3 text-xs md:text-sm font-medium text-gray-500">
                   <Link href="/privacy-policy" className="hover:text-gray-900 transition-colors">Privacy Policy</Link>
                   <Link href="/terms-and-conditions" className="hover:text-gray-900 transition-colors">Terms & Conditions</Link>
@@ -385,7 +403,7 @@ export default function LandingPage() {
       {/* STICKY CTA MOBILE */}
       <div className="md:hidden fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 p-4 z-40 shadow-[0_-5px_20px_rgba(0,0,0,0.1)] pb-[env(safe-area-inset-bottom)]">
          <button 
-            onClick={openForm}
+            onClick={scrollToForm}
             className="w-full bg-[#EF5A6F] text-white font-bold py-3.5 rounded-xl shadow-lg flex items-center justify-center gap-2 text-lg active:scale-[0.98] transition-transform"
         >
             <Lock className="w-4 h-4" />
@@ -393,39 +411,21 @@ export default function LandingPage() {
         </button>
       </div>
 
-       {/* HIDDEN FORM MODAL */}
-       <Modal open={isFormOpen} onOpenChange={setIsFormOpen}>
-        <ModalContent 
-          className={cn("max-w-md h-[85vh] p-0 overflow-hidden", isPaymentProcessing && "invisible pointer-events-none")}
-          overlayClassName={isPaymentProcessing ? "invisible pointer-events-none" : undefined}
-        >
-          <ModalHeader className="sr-only">
-            <ModalTitle>Start Legal Notice</ModalTitle>
-          </ModalHeader>
-          <div className="h-full overflow-y-auto bg-gray-50">
-             <div className="bg-[#EF5A6F] p-4 text-center text-white">
-                <h3 className="font-bold text-lg">Just one step away!</h3>
-                 <p className="text-xs opacity-90">Fill details to start your legal notice</p>
-             </div>
-             <div className="p-4">
-               <div className="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
-                   <MultiStepForm 
-                        serviceType="Legal Notice"
-                        servicePrice={1499} 
-                        planDetails={{
-                            id: "legal-notice-start",
-                            name: "Legal Notice Service",
-                            price: 1499,
-                            advanceAmount: 499
-                        }}
-                        onPaymentStart={() => setIsPaymentProcessing(true)}
-                        onPaymentEnd={() => setIsPaymentProcessing(false)}
-                    />
-               </div>
-             </div>
-          </div>
-        </ModalContent>
-      </Modal>
+       {/* SAMPLE NOTICE MODAL */}
+       <SampleNoticeModal
+          open={showSampleNoticeModal}
+          onOpenChange={setShowSampleNoticeModal}
+          noticeCategory="Money Recovery"
+          noticeContent={moneyRecoveryNotice}
+          ctaLabel="Need a notice like this?"
+          ctaSubtitle="Our lawyers draft & send it for you."
+          ctaButtonText="Start Lawyer Review"
+          onCtaClick={() => {
+            setShowSampleNoticeModal(false);
+            scrollToForm();
+          }}
+        />
+
     </div>
   );
 }
