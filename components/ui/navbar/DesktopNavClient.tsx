@@ -16,6 +16,7 @@ const items: NavItem[] = [
   { label: "About", href: "/about" },
   { label: "Blog", href: "/blogs" },
   { label: "Agreement Drafting", href: "/agreement-drafting" },
+  { label: "Contact Us", href: "/contact-us" },
 ];
 
 export default function DesktopNavClient() {

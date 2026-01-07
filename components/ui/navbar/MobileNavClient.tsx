@@ -11,6 +11,7 @@ const navItems = [
   { label: "Agreement Drafting", href: "/agreement-drafting" },
   { label: "About", href: "/about" },
   { label: "Blog", href: "/blogs" },
+  { label: "Contact Us", href: "/contact-us" },
 ];
 
 export default function MobileNavClient() {
