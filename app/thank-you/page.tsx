@@ -58,9 +58,11 @@ export default async function ThankYouPage({
   const { payment_id: paymentId } = await searchParams;
 
   // Redirect if no payment_id provided
+  /*
   if (!paymentId) {
     redirect('/?error=missing_payment_id');
   }
+  */
 
   let paymentData: Awaited<ReturnType<typeof getPaymentDetails>> | null = null;
   let serviceType: string = 'unknown';
@@ -68,14 +70,16 @@ export default async function ThankYouPage({
 
   try {
     // Fetch payment details from Razorpay
-    paymentData = await getPaymentDetails(paymentId);
+    if (paymentId) {
+      paymentData = await getPaymentDetails(paymentId);
+    }
 
     if (!paymentData) {
       throw new Error('Payment not found');
     }
 
     // Extract service type from payment notes
-    serviceType = paymentData.notes?.service || 'unknown';
+    serviceType = paymentData?.notes?.service || 'unknown';
   } catch (error) {
     console.error('Error fetching payment details:', error);
     errorOccurred = true;
@@ -87,7 +91,7 @@ export default async function ThankYouPage({
   // Format WhatsApp message with payment ID
   const whatsappMessage = formatWhatsAppMessage(
     serviceContent.whatsappMessage,
-    paymentId
+    paymentId || "Generic Order"
   );
 
   // Get WhatsApp support number
@@ -115,7 +119,7 @@ export default async function ThankYouPage({
                 <p className="text-sm text-text-medium">
                   Payment ID:{' '}
                   <span className="font-mono font-semibold text-text-body">
-                    {paymentId}
+                    {paymentId || "N/A"}
                   </span>
                 </p>
                 <p className="mt-2 text-sm text-text-muted">
@@ -125,11 +129,11 @@ export default async function ThankYouPage({
             </div>
 
             {/* Action Buttons */}
-            <ActionButtons
-              whatsappNumber={whatsappNumber}
-              whatsappMessage={`Hi! I just completed a payment (Payment ID: ${paymentId}). I would like to know the next steps.`}
-              paymentId={paymentId}
-            />
+              <ActionButtons
+                whatsappNumber={whatsappNumber}
+                whatsappMessage={paymentId ? `Hi! I just completed a payment (Payment ID: ${paymentId}). I would like to know the next steps.` : `Hi! I just completed a payment. I would like to know the next steps.`}
+                paymentId={paymentId || ""}
+              />
           </div>
         </section>
       </main>
@@ -175,7 +179,7 @@ export default async function ThankYouPage({
           <ActionButtons
             whatsappNumber={whatsappNumber}
             whatsappMessage={whatsappMessage}
-            paymentId={paymentId}
+            paymentId={paymentId || ""}
           />
 
           {/* Upsell for Basic Plan Users - Validation Experiment */}

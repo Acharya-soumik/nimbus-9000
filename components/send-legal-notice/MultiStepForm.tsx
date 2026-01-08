@@ -788,6 +788,37 @@ interface Step3Props {
   };
 }
 
+function RazorpayEmbedButton() {
+  React.useEffect(() => {
+    const script = document.createElement("script");
+    script.src = "https://cdn.razorpay.com/static/embed_btn/bundle.js";
+    script.defer = true;
+    script.id = "razorpay-embed-btn-js";
+    document.body.appendChild(script);
+
+    return () => {
+      const existingScript = document.getElementById("razorpay-embed-btn-js");
+      if (
+        existingScript &&
+        existingScript.parentNode &&
+        existingScript.parentNode === document.body
+      ) {
+        document.body.removeChild(existingScript);
+      }
+    };
+  }, []);
+
+  return (
+    <div
+      className="razorpay-embed-btn"
+      data-url="https://pages.razorpay.com/pl_S1NONleX2sVIiZ/view"
+      data-text="Pay Now"
+      data-color="#EF5A6F"
+      data-size="large"
+    />
+  );
+}
+
 function FormStep3({
   data,
   currentPrice,
@@ -945,6 +976,7 @@ function FormStep3({
       {/* Sticky Footer - Navigation Buttons & Terms */}
       <div className="shrink-0 border-t border-gray-100 bg-white px-4 py-4 pb-[calc(1rem+env(safe-area-inset-bottom))]">
         <div className="flex gap-3">
+
           <button
             type="button"
             onClick={onBack}
@@ -954,6 +986,13 @@ function FormStep3({
             <ArrowLeftIcon className="h-4 w-4" />
             Back
           </button>
+          
+          {/* Temporary Replacement: Razorpay Embed Button */}
+          <div className="flex-2 w-full">
+            <RazorpayEmbedButton />
+          </div>
+
+          {/* Commented out original payment button for rollback
           <button
             type="button"
             onClick={onSubmit}
@@ -969,6 +1008,7 @@ function FormStep3({
             {isProcessing ? "Processing..." : `Pay ₹${currentPrice} Securely`}
             {!isProcessing && <LockIcon className="h-4 w-4" />}
           </button>
+          */}
         </div>
 
         {/* Terms */}
