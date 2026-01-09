@@ -121,8 +121,62 @@ export default async function ThankYouPage({
   // Get WhatsApp support number
   const whatsappNumber = getWhatsAppSupportNumber();
 
-  // If error occurred or payment data is missing, show generic success
+  // If error occurred or payment data is missing
   if (errorOccurred || !paymentData) {
+    // If we have an orderId but failed to get payment data, it implies verification failed (e.g. cancelled)
+    const isFailure = !!orderId;
+
+    if (isFailure) {
+      return (
+        <main className="min-h-screen bg-white">
+          <section className="relative w-full overflow-hidden bg-gradient-to-b from-red-50 to-white py-12">
+            <div className="mx-auto max-w-4xl px-4 text-center sm:px-6 lg:px-8">
+              <div className="mb-6 flex justify-center">
+                <div className="rounded-full bg-red-100 p-4">
+                  <svg
+                    className="h-16 w-16 text-red-600"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                  >
+                    <circle cx="12" cy="12" r="10" />
+                    <line x1="15" y1="9" x2="9" y2="15" />
+                    <line x1="9" y1="9" x2="15" y2="15" />
+                  </svg>
+                </div>
+              </div>
+              <h1 className="mb-3 text-3xl font-bold text-text-heading sm:text-4xl lg:text-5xl">
+                Payment Failed or Cancelled
+              </h1>
+              <p className="mx-auto max-w-2xl text-base text-text-medium sm:text-lg">
+                We couldn't verify your payment. If you cancelled the transaction, you can try again. If money was deducted, it will be automatically refunded within 5-7 business days.
+              </p>
+            </div>
+          </section>
+
+          <section className="mx-auto max-w-4xl px-4 py-8 sm:px-6 lg:px-8">
+            <div className="flex justify-center gap-4">
+              <a
+                href="/send-legal-notice"
+                className="rounded-xl bg-primary px-8 py-3 font-semibold text-white shadow-lg transition-transform hover:scale-105"
+              >
+                Try Again
+              </a>
+              <a
+                href={whatsappMessage}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="rounded-xl border border-gray-200 bg-white px-8 py-3 font-semibold text-text-heading hover:bg-gray-50"
+              >
+                Contact Support
+              </a>
+            </div>
+          </section>
+        </main>
+      );
+    }
+
     return (
       <main className="min-h-screen bg-white">
         <SuccessHero
