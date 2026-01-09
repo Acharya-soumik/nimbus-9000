@@ -25,6 +25,8 @@ import {
 } from "@/lib/analytics/dataLayer";
 import { trackEvent } from "@/lib/mixpanel";
 import { load } from "@cashfreepayments/cashfree-js";
+// @ts-ignore
+import icons from "payments-icons-library";
 
 /* =============================================================================
  * LAZY-LOADED COMPONENTS
@@ -791,6 +793,54 @@ interface Step3Props {
 
 
 
+interface IconData {
+  icon_name: string;
+  icon_url: string;
+  icon_version: string;
+}
+
+function PaymentIconsDisplay() {
+  const [iconUrls, setIconUrls] = React.useState<IconData[]>([]);
+
+  React.useEffect(() => {
+    // Safe check for client side
+    if (typeof window !== "undefined") {
+      try {
+        const fetchedIcons = icons.getIcons(
+          ["upi", "gpay", "phonepe", "paytm", "visa", "mastercard"],
+          "sm"
+        ) as IconData[];
+        setIconUrls(fetchedIcons || []);
+      } catch (e) {
+        console.error("Failed to load payment icons", e);
+      }
+    }
+  }, []);
+
+  if (iconUrls.length === 0) {
+     return <span className="text-xs text-text-muted">Loading options...</span>;
+  }
+
+  return (
+    <div className="flex -space-x-2 overflow-hidden py-1">
+      {iconUrls.map((icon) => (
+        <img
+          key={icon.icon_name}
+          src={icon.icon_url}
+          alt={icon.icon_name}
+          title={icon.icon_name}
+          className="inline-block h-6 w-6 rounded-full ring-2 ring-white object-contain bg-white"
+        />
+      ))}
+       <span className="flex h-6 w-6 items-center justify-center rounded-full bg-gray-50 ring-2 ring-white text-[10px] font-medium text-gray-500">
+        +
+      </span>
+    </div>
+  );
+}
+
+
+
 function FormStep3({
   data,
   currentPrice,
@@ -885,14 +935,10 @@ function FormStep3({
           )}
 
           {/* Payment Logos */}
-          <div className="mt-4 flex items-center gap-3 border-t border-gray-200 pt-4">
-            <span className="text-xs text-text-muted">Pay with:</span>
+          <div className="mt-4 flex items-center justify-between border-t border-gray-200 pt-4">
+            <span className="text-xs text-text-muted">Pay securely with:</span>
             <div className="flex items-center gap-2">
-              <span className="rounded bg-blue-600 px-2 py-1 text-xs font-bold text-white">
-                Razorpay
-              </span>
-              <span className="text-lg">💳</span>
-              <span className="text-lg">📱</span>
+              <PaymentIconsDisplay />
             </div>
           </div>
 
