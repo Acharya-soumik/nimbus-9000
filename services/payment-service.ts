@@ -39,7 +39,7 @@ export class PaymentService {
         order_meta: {
           return_url:
             request.returnUrl ||
-            `${process.env.NEXT_PUBLIC_APP_URL || fallbackDomain}/thank-you?order_id={order_id}`,
+            `${process.env.NEXT_PUBLIC_APP_URL || "https://vakiltech.in"}/thank-you?order_id={order_id}`,
         },
         order_note: request.notes ? JSON.stringify(request.notes) : undefined,
       };
