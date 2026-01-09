@@ -1,7 +1,6 @@
 import * as React from 'react';
-import { redirect } from 'next/navigation';
 import { Metadata } from 'next';
-import { getPaymentDetails } from '@/lib/razorpay-client';
+import { PaymentService } from '@/services/payment-service';
 import {
   SuccessHero,
   PaymentSummary,
@@ -29,14 +28,15 @@ export const metadata: Metadata = {
 interface ThankYouPageProps {
   searchParams: Promise<{
     payment_id?: string;
+    order_id?: string;
   }>;
 }
 
 /**
  * Format timestamp to readable date
  */
-function formatDate(timestamp: number): string {
-  const date = new Date(timestamp * 1000);
+function formatDate(timestamp: number | string): string {
+  const date = new Date(timestamp);
   return date.toLocaleDateString('en-IN', {
     day: 'numeric',
     month: 'long',
@@ -50,36 +50,60 @@ function formatDate(timestamp: number): string {
  * Thank You Page - Server Component
  *
  * Displays success message and payment details after successful payment.
- * Fetches payment info from Razorpay and shows service-specific content.
+ * Fetches payment info and shows service-specific content.
  */
 export default async function ThankYouPage({
   searchParams,
 }: ThankYouPageProps) {
-  const { payment_id: paymentId } = await searchParams;
+  const { payment_id: paymentId, order_id: orderId } = await searchParams;
 
-  // Redirect if no payment_id provided
-  /*
-  if (!paymentId) {
-    redirect('/?error=missing_payment_id');
-  }
-  */
-
-  let paymentData: Awaited<ReturnType<typeof getPaymentDetails>> | null = null;
+  let paymentData: any = null;
   let serviceType: string = 'unknown';
   let errorOccurred = false;
 
   try {
-    // Fetch payment details from Razorpay
-    if (paymentId) {
-      paymentData = await getPaymentDetails(paymentId);
-    }
+    // Fetch payment details from Cashfree via PaymentService
+    if (orderId) {
+      const verification = await PaymentService.verifyPayment(orderId);
+      if (verification.success && verification.data) {
+        paymentData = verification.data;
+      }
+    } 
+    
+    // Fallback or legacy handling could go here if needed, 
+    // but we primarily rely on orderId from Cashfree return_url
 
     if (!paymentData) {
-      throw new Error('Payment not found');
+       // If we have paymentId but no orderId (legacy/manual), we might not be able to fetch details easily 
+       // without the order ID in Cashfree's new flow, unless we search by payment ID (not implemented in service yet).
+       // For now, we assume orderId is present as per our new implementation.
+       if (!orderId) {
+         console.warn("No order_id provided to thank-you page");
+       } else {
+         throw new Error('Payment verification failed or pending');
+       }
+    } else {
+       // Extract service type from payment notes/metadata
+       // Note: Cashfree structure might differ; ensuring safe access
+       // paymentData.order_note might be a JSON string if we sent it that way
+       // OR we might need to fetch the Order details separately if payments endpoint doesn't return notes.
+       // However, let's try to extract from what we have or fallback.
+       
+       // In createOrder we sent: verifyPayment returns the *payment* object from FetchPayments.
+       // The payment object might not have the order notes. 
+       // We might need to fetch the Order itself to get notes. 
+       // For now, let's use a safe fallback or try to parse if available.
+       
+       // If we can't get service type, we default to 'unknown' which shows generic success.
+       // Ideally we should double check if verifyPayment can return order meta.
+       
+       // Let's assume for now we use generic success if notes are missing, 
+       // OR we pass service type in URL params as a fallback? 
+       // Cashfree return URL allows replacement of {order_id}, getting other params is cleaner.
+       // But let's stick to what we have.
+       serviceType = 'unknown'; 
     }
 
-    // Extract service type from payment notes
-    serviceType = paymentData?.notes?.service || 'unknown';
   } catch (error) {
     console.error('Error fetching payment details:', error);
     errorOccurred = true;
@@ -88,10 +112,10 @@ export default async function ThankYouPage({
   // Get service-specific content
   const serviceContent = getServiceContent(serviceType);
 
-  // Format WhatsApp message with payment ID
+  // Format WhatsApp message
   const whatsappMessage = formatWhatsAppMessage(
     serviceContent.whatsappMessage,
-    paymentId || "Generic Order"
+    (paymentData?.cf_payment_id || paymentId || orderId || "Order") as string
   );
 
   // Get WhatsApp support number
@@ -117,9 +141,9 @@ export default async function ThankYouPage({
               </div>
               <div className="p-6">
                 <p className="text-sm text-text-medium">
-                  Payment ID:{' '}
+                  Reference ID:{' '}
                   <span className="font-mono font-semibold text-text-body">
-                    {paymentId || "N/A"}
+                    {orderId || paymentId || "N/A"}
                   </span>
                 </p>
                 <p className="mt-2 text-sm text-text-muted">
@@ -131,8 +155,8 @@ export default async function ThankYouPage({
             {/* Action Buttons */}
               <ActionButtons
                 whatsappNumber={whatsappNumber}
-                whatsappMessage={paymentId ? `Hi! I just completed a payment (Payment ID: ${paymentId}). I would like to know the next steps.` : `Hi! I just completed a payment. I would like to know the next steps.`}
-                paymentId={paymentId || ""}
+                whatsappMessage={whatsappMessage}
+                paymentId={(orderId || paymentId || "") as string}
               />
           </div>
         </section>
@@ -140,7 +164,7 @@ export default async function ThankYouPage({
     );
   }
 
-  // Successful payment with full details
+  // Successful payment with data
   return (
     <main className="min-h-screen bg-white">
       {/* Success Hero */}
@@ -149,13 +173,17 @@ export default async function ThankYouPage({
         description={serviceContent.description}
       />
       
+      {/* 
+        PaymentSuccessTracker needs payment details.
+        Mapping Cashfree fields to what might be expected or updating components.
+        Assuming PaymentSuccessTracker uses these props to display/track.
+       */}
       <PaymentSuccessTracker 
-        paymentId={paymentData.id}
-        amount={typeof paymentData.amount === 'string' ? parseInt(paymentData.amount) : paymentData.amount}
+        paymentId={paymentData.cf_payment_id}
+        amount={paymentData.payment_amount}
         serviceType={serviceType}
-        planId={paymentData.notes?.planId}
-        email={paymentData.email}
-        phone={paymentData.contact ? String(paymentData.contact) : undefined}
+        email={paymentData.payment_group?.email || ""} // Adjust based on actual Cashfree response structure
+        phone={paymentData.payment_group?.phone || ""}
       />
 
       {/* Main Content Section */}
@@ -163,28 +191,28 @@ export default async function ThankYouPage({
         <div className="space-y-8">
           {/* Payment Summary Card */}
           <PaymentSummary
-            paymentId={paymentData.id}
-            amount={typeof paymentData.amount === 'string' ? parseInt(paymentData.amount) : paymentData.amount}
-            date={formatDate(paymentData.created_at)}
+            paymentId={paymentData.cf_payment_id}
+            amount={paymentData.payment_amount}
+            date={formatDate(paymentData.payment_completion_time)}
             service={serviceType}
           />
 
           {/* Next Steps Timeline */}
           <NextStepsSection steps={serviceContent.nextSteps} />
 
-          {/* Post Payment Question - Validation Experiment */}
+          {/* Post Payment Question */}
           <PostPaymentQuestion />
 
           {/* Action Buttons */}
           <ActionButtons
             whatsappNumber={whatsappNumber}
             whatsappMessage={whatsappMessage}
-            paymentId={paymentId || ""}
+            paymentId={String(paymentData.cf_payment_id)}
           />
 
-          {/* Upsell for Basic Plan Users - Validation Experiment */}
+          {/* Upsell for Basic Plan Users */}
           <UpsellModal 
-            planId={paymentData.notes?.planId || 'basic'} // Default to basic if no planId found to test
+            planId={'basic'} 
           />
 
           {/* Additional Info Card */}

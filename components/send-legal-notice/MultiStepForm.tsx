@@ -24,6 +24,7 @@ import {
   trackFormSubmission,
 } from "@/lib/analytics/dataLayer";
 import { trackEvent } from "@/lib/mixpanel";
+import { load } from "@cashfreepayments/cashfree-js";
 
 /* =============================================================================
  * LAZY-LOADED COMPONENTS
@@ -788,36 +789,7 @@ interface Step3Props {
   };
 }
 
-function RazorpayEmbedButton() {
-  React.useEffect(() => {
-    const script = document.createElement("script");
-    script.src = "https://cdn.razorpay.com/static/embed_btn/bundle.js";
-    script.defer = true;
-    script.id = "razorpay-embed-btn-js";
-    document.body.appendChild(script);
 
-    return () => {
-      const existingScript = document.getElementById("razorpay-embed-btn-js");
-      if (
-        existingScript &&
-        existingScript.parentNode &&
-        existingScript.parentNode === document.body
-      ) {
-        document.body.removeChild(existingScript);
-      }
-    };
-  }, []);
-
-  return (
-    <div
-      className="razorpay-embed-btn"
-      data-url="https://pages.razorpay.com/pl_S1NONleX2sVIiZ/view"
-      data-text="Pay Now"
-      data-color="#EF5A6F"
-      data-size="large"
-    />
-  );
-}
 
 function FormStep3({
   data,
@@ -987,17 +959,11 @@ function FormStep3({
             Back
           </button>
           
-          {/* Temporary Replacement: Razorpay Embed Button */}
-          <div className="flex-2 w-full">
-            <RazorpayEmbedButton />
-          </div>
-
-          {/* Commented out original payment button for rollback
           <button
             type="button"
             onClick={onSubmit}
             disabled={isProcessing}
-            className="flex flex-2 items-center justify-center gap-2 rounded-xl py-3.5 text-base font-semibold text-white transition-all hover:scale-[1.02] disabled:opacity-50 disabled:cursor-not-allowed"
+            className="flex flex-2 w-full items-center justify-center gap-2 rounded-xl py-3.5 text-base font-semibold text-white transition-all hover:scale-[1.02] disabled:opacity-50 disabled:cursor-not-allowed"
             style={{
               background:
                 "linear-gradient(135deg, #EF5A6F 0%, #E8505B 50%, #DC2626 100%)",
@@ -1008,7 +974,6 @@ function FormStep3({
             {isProcessing ? "Processing..." : `Pay ₹${currentPrice} Securely`}
             {!isProcessing && <LockIcon className="h-4 w-4" />}
           </button>
-          */}
         </div>
 
         {/* Terms */}
@@ -1131,24 +1096,7 @@ export function MultiStepForm({
   const [formData, setFormData] = React.useState<Partial<AllFormValues>>({});
 
   // Load Razorpay script when reaching Step 3
-  React.useEffect(() => {
-    if (currentStep !== 3 || isRazorpayLoaded) return;
 
-    const script = document.createElement("script");
-    script.src = "https://checkout.razorpay.com/v1/checkout.js";
-    script.async = true;
-    script.onload = () => setIsRazorpayLoaded(true);
-    script.onerror = () => {
-      toast.error("Payment system failed to load. Please refresh the page.");
-    };
-    document.body.appendChild(script);
-
-    return () => {
-      if (document.body.contains(script)) {
-        document.body.removeChild(script);
-      }
-    };
-  }, [currentStep, isRazorpayLoaded]);
 
   const handleFormStart = () => {
     if (!hasStarted) {
@@ -1263,17 +1211,6 @@ export function MultiStepForm({
       return;
     }
 
-    if (
-      !isRazorpayLoaded ||
-      typeof window === "undefined" ||
-      !(window as Window & typeof globalThis & { Razorpay?: unknown }).Razorpay
-    ) {
-      toast.error(
-        "Payment system is still loading. Please wait and try again."
-      );
-      return;
-    }
-
     setIsProcessingPayment(true);
     onPaymentStart?.();
 
@@ -1281,25 +1218,24 @@ export function MultiStepForm({
         service_type: serviceType,
         amount: currentPrice,
         currency: "INR",
-        provider: "razorpay"
+        provider: "cashfree"
     });
 
     try {
-      const amountInPaise = currentPrice * 100;
-
-      const orderResponse = await fetch("/api/payment/order", {
+      const orderResponse = await fetch("/api/payment/create-order", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          amount: amountInPaise,
-          currency: "INR",
-          receipt: `${serviceText.apiService}_${Date.now()}`,
+          amount: currentPrice,
+          customerName: formData.fullName || "Guest Customer",
+          customerPhone: formData.whatsappNumber || "9999999999",
+          customerId: leadId,
           notes: {
             leadId: leadId || "",
             service: serviceText.apiService,
-            discounted: isDiscounted,
-            planId: planDetails?.id,
-            planName: planDetails?.name,
+            discounted: isDiscounted ? "true" : "false",
+            planId: planDetails?.id || "",
+            planName: planDetails?.name || "",
           },
         }),
       });
@@ -1308,48 +1244,20 @@ export function MultiStepForm({
         throw new Error("Failed to create order");
       }
 
-      const orderData = await orderResponse.json();
-      const orderId = orderData.id;
-      const amount = orderData.amount;
+      const { paymentSessionId, environment } = await orderResponse.json();
 
-      const options = {
-        key: process.env.NEXT_PUBLIC_RAZORPAY_KEY_ID,
-        amount: amount,
-        currency: "INR",
-        name: "Vakil Tech",
-        description: `${serviceText.paymentDescription} - ${formData.noticeType}`,
-        order_id: orderId,
-        modal: {
-          escape: false,
-          ondismiss: () => {
-            toast.error("Payment cancelled.");
-            setIsProcessingPayment(false);
-            onPaymentEnd?.();
-            setIsModalOpen(true); // Reopen modal when payment is cancelled
-          },
-        },
-        handler: async (response: {
-          razorpay_order_id: string;
-          razorpay_payment_id: string;
-          razorpay_signature: string;
-        }) => {
-          await handlePaymentSuccess(response);
-        },
-        prefill: {
-          name: formData.fullName,
-          contact: formData.whatsappNumber,
-        },
-        theme: {
-          color: "#EF5A6F",
-        },
-      };
+      // Initialize Cashfree SDK with the correct environment from backend
+      const cashfree = await load({
+        mode: environment,
+      });
 
-      // Close our modal before opening Razorpay
-      setIsModalOpen(false);
-
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      const razorpay = new (window as any).Razorpay(options);
-      razorpay.open();
+      // Open Cashfree Checkout
+      cashfree.checkout({
+        paymentSessionId,
+        redirectTarget: "_self", // Redirect within the same tab
+      });
+      
+      // Note: Verification usually happens on the return URL page (thank-you page)
     } catch (error) {
       console.error("Payment initiation failed:", error);
       trackEvent("Payment Failed", {
@@ -1359,50 +1267,6 @@ export function MultiStepForm({
         error_message: error instanceof Error ? error.message : "Unknown error"
       });
       toast.error("Payment failed. Please try again.");
-      setIsProcessingPayment(false);
-      onPaymentEnd?.();
-    }
-  };
-
-  const handlePaymentSuccess = async (response: {
-    razorpay_order_id: string;
-    razorpay_payment_id: string;
-    razorpay_signature: string;
-  }) => {
-    try {
-      const verifyResponse = await fetch("/api/payment/verify", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          orderId: response.razorpay_order_id,
-          paymentId: response.razorpay_payment_id,
-          signature: response.razorpay_signature,
-        }),
-      });
-
-      const verifyData = await verifyResponse.json();
-
-      if (verifyData.verified) {
-        toast.success(
-          "Payment successful! Our lawyer will contact you within 3 hours."
-        );
-        onSubmit?.(formData as FormStepData);
-
-        setTimeout(() => {
-          window.location.href = `/thank-you?payment_id=${response.razorpay_payment_id}`;
-        }, 2000);
-      } else {
-        throw new Error("Payment verification failed");
-      }
-    } catch (error) {
-      console.error("Payment processing error:", error);
-      trackEvent("Payment Failed", {
-        service_type: serviceType,
-        error_type: "verification_failed",
-        error_message: error instanceof Error ? error.message : "Unknown error"
-      });
-      toast.error("Payment verification failed. Contact support.");
-    } finally {
       setIsProcessingPayment(false);
       onPaymentEnd?.();
     }

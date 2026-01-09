@@ -10,6 +10,7 @@ import { validatePhoneNumber } from "@/lib/validators/phone-validation";
 import { countryCodes, defaultCountryCode } from "@/lib/data/country-codes";
 import type { CountryCode } from "@/lib/validators/phone-validation";
 import { trackFormSubmission, trackFormStart } from "@/lib/analytics/dataLayer";
+import { load } from "@cashfreepayments/cashfree-js";
 
 // Icons
 function ShieldCheckIcon({ className }: { className?: string }) {
@@ -97,20 +98,7 @@ export function SimpleLeadForm({
   });
 
   // Load Razorpay
-  React.useEffect(() => {
-    const script = document.createElement("script");
-    script.src = "https://checkout.razorpay.com/v1/checkout.js";
-    script.async = true;
-    script.onload = () => setIsRazorpayLoaded(true);
-    script.onerror = () => toast.error("Payment system failed to load.");
-    document.body.appendChild(script);
 
-    return () => {
-      if (document.body.contains(script)) {
-        document.body.removeChild(script);
-      }
-    };
-  }, []);
 
   const handlePhoneChange = (value: string) => {
     let cleanedValue = value;
@@ -141,73 +129,36 @@ export function SimpleLeadForm({
   };
 
   const handlePayment = async (leadId: string, data: FormValues) => {
-    if (!isRazorpayLoaded || typeof window === "undefined" || !(window as any).Razorpay) {
-      toast.error("Payment system is loading...");
-      return;
-    }
-
     try {
-      const amountInPaise = servicePrice * 100;
-
-      // Create Order
-      const orderResponse = await fetch("/api/payment/order", {
+      const orderResponse = await fetch("/api/payment/create-order", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          amount: amountInPaise,
-          currency: "INR",
-          receipt: `${serviceName.toLowerCase().replace(/\s/g, "-")}_${Date.now()}`,
+          amount: servicePrice,
+          customerName: data.fullName,
+          customerPhone: data.whatsappNumber,
+          customerId: leadId,
           notes: {
-            leadId: leadId,
-            service: serviceName,
-          },
+             leadId: leadId,
+             service: serviceName
+          }
         }),
       });
 
       if (!orderResponse.ok) throw new Error("Failed to create order");
-      const orderData = await orderResponse.json();
+      
+      const { paymentSessionId, environment } = await orderResponse.json();
 
-      const options = {
-        key: process.env.NEXT_PUBLIC_RAZORPAY_KEY_ID,
-        amount: orderData.amount,
-        currency: "INR",
-        name: "Vakil Tech",
-        description: `Payment for ${serviceName}`,
-        order_id: orderData.id,
-        prefill: {
-          name: data.fullName,
-          contact: data.whatsappNumber,
-        },
-        theme: { color: "#EF5A6F" },
-        handler: async (response: any) => {
-          // Verify Payment
-          try {
-            const verifyResponse = await fetch("/api/payment/verify", {
-              method: "POST",
-              headers: { "Content-Type": "application/json" },
-              body: JSON.stringify({
-                orderId: response.razorpay_order_id,
-                paymentId: response.razorpay_payment_id,
-                signature: response.razorpay_signature,
-              }),
-            });
-            const verifyData = await verifyResponse.json();
+      // Initialize Cashfree with correct environment
+      const cashfree = await load({
+        mode: environment,
+      });
 
-            if (verifyData.verified) {
-              toast.success("Payment successful!");
-              onSuccess?.();
-              window.location.href = `/thank-you?payment_id=${response.razorpay_payment_id}`;
-            } else {
-              throw new Error("Verification failed");
-            }
-          } catch (err) {
-            toast.error("Payment verification failed.");
-          }
-        },
-      };
-
-      const razorpay = new (window as any).Razorpay(options);
-      razorpay.open();
+      cashfree.checkout({
+        paymentSessionId,
+        redirectTarget: "_self",
+      });
+      
     } catch (error) {
       console.error("Payment error:", error);
       toast.error("Payment failed. Please try again.");

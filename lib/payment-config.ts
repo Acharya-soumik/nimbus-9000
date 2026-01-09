@@ -14,7 +14,7 @@ export interface PaymentConfig {
   bundleType?: "hindi-english" | "marathi-only" | "hindi-english-marathi";
 }
 
-export interface RazorpayPaymentRequest {
+export interface ServicePaymentRequest {
   amount: number;
   currency: string;
   receipt: string;
@@ -33,67 +33,67 @@ export interface PaymentVerificationResponse {
   message?: string;
 }
 
-// Payment configuration for each service
+// Payment configuration for each service (Amounts in Rupees)
 export const PAYMENT_CONFIG: Record<string, PaymentConfig> = {
   "legal-notice": {
     service: "legal-notice",
-    amount: 49900, // ₹499 in paise (Razorpay expects amount in paise)
+    amount: 499,
     currency: "INR",
     description: "Legal Notice Service - Advance Payment",
   },
   "legal-consultation": {
     service: "legal-consultation",
-    amount: 29900, // ₹299 in paise
+    amount: 299,
     currency: "INR",
     description: "Legal Consultation Service - Advance Payment",
   },
   "agreement-drafting": {
     service: "agreement-drafting",
-    amount: 29900, // ₹299 in paise
+    amount: 299,
     currency: "INR",
     description: "Agreement Drafting Service - Advance Payment",
   },
   "legal-notice-for-money-recovery": {
     service: "legal-notice-for-money-recovery",
-    amount: 49900, // ₹499 in paise
+    amount: 499,
     currency: "INR",
     description: "Legal Notice for Money Recovery - Advance Payment",
   },
   consultation: {
     service: "consultation",
-    amount: 29900, // ₹299 in paise
+    amount: 299,
     currency: "INR",
     description: "Legal Consultation Service - Advance Payment",
   },
   "document-drafting": {
     service: "document-drafting",
-    amount: 29900, // ₹299 in paise
+    amount: 299,
     currency: "INR",
     description: "Document Drafting Service - Advance Payment",
   },
   "corporate-retainer": {
     service: "corporate-retainer",
-    amount: 0, // ₹0 in paise
+    amount: 0,
     currency: "INR",
     description: "Corporate Retainer Service - Advance Payment",
   },
   "legal-drafts-bundle-hindi-english": {
     service: "legal-drafts-bundle",
-    amount: 35700, // ₹357 in paise
+    amount: 357,
     currency: "INR",
     description: "3500+ Legal Drafts Bundle - Hindi + English",
     bundleType: "hindi-english",
   },
   "legal-drafts-bundle-marathi-only": {
     service: "legal-drafts-bundle",
-    amount: 31500, // ₹315 in paise
+    amount: 315,
     currency: "INR",
     description: "3500+ Legal Drafts Bundle - Marathi Only",
     bundleType: "marathi-only",
   },
   "legal-drafts-bundle-hindi-english-marathi": {
     service: "legal-drafts-bundle",
-    amount: 49900, // ₹499 in paise
+    amount: 499,
     currency: "INR",
     description: "3500+ Legal Drafts Bundle - Hindi + English + Marathi",
     bundleType: "hindi-english-marathi",
@@ -112,10 +112,9 @@ export function getPaymentConfig(
   return PAYMENT_CONFIG[service] || null;
 }
 
-// Helper function to format amount for display (paise to rupees)
-export function formatAmount(amountInPaise: number): string {
-  const amountInRupees = amountInPaise / 100;
-  return `₹${amountInRupees.toLocaleString("en-IN")}`;
+// Helper function to format amount for display
+export function formatAmount(amount: number): string {
+  return `₹${amount.toLocaleString("en-IN")}`;
 }
 
 // Helper function to generate unique receipt ID
@@ -125,13 +124,13 @@ export function generateReceiptId(): string {
   return `receipt_${timestamp}_${random}`;
 }
 
-// Helper function to create Razorpay payment request
+// Helper function to create payment request
 export function createPaymentRequest(
   service: string,
   leadId: string,
   customerName: string,
   bundleType?: string
-): RazorpayPaymentRequest | null {
+): ServicePaymentRequest | null {
   const config = getPaymentConfig(service, bundleType);
   if (!config) return null;
 

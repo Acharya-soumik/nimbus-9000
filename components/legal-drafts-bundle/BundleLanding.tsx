@@ -12,8 +12,7 @@ import {
   whyChooseUs,
   bundleFAQs,
 } from "@/lib/legal-drafts-bundle/bundle-data";
-import { PaymentService } from "@/services/payment-service";
-import { createPaymentRequest } from "@/lib/payment-config";
+import { load } from "@cashfreepayments/cashfree-js";
 import {
   Check,
   Download,
@@ -46,55 +45,40 @@ export function BundleLanding() {
     try {
       // Generate a proper UUID for the lead ID
       const tempLeadId = crypto.randomUUID();
+      const bundleData = bundleOptions.find(b => b.id === selectedBundle);
+      const price = bundleData ? bundleData.price : 499;
+      
+      const orderResponse = await fetch("/api/payment/create-order", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          amount: price,
+          customerName: "Bundle Customer",
+          customerPhone: "9999999999",
+          customerId: tempLeadId,
+          notes: {
+             bundleId: selectedBundle,
+             type: "legal-drafts-bundle"
+          }
+        }),
+      });
 
-      const paymentRequest = createPaymentRequest(
-        "legal-drafts-bundle",
-        tempLeadId,
-        "Customer",
-        selectedBundle
-      );
-
-      if (!paymentRequest) {
-        throw new Error("Failed to create payment request");
+      if (!orderResponse.ok) {
+        throw new Error("Failed to create order");
       }
 
-      await PaymentService.initializePayment(
-        paymentRequest,
-        "Customer",
-        "0000000000",
-        async (response) => {
-          console.log("Payment successful:", response);
-          setIsProcessingPayment(false);
+      const { paymentSessionId, environment } = await orderResponse.json();
 
-          // Show verification loader
-          setIsVerifyingPayment(true);
+      // Initialize Cashfree
+      const cashfree = await load({
+        mode: environment,
+      });
 
-          // Redirect to success page with payment details
-          const successUrl = new URL(
-            "/legal-drafts-bundle-success",
-            window.location.origin
-          );
-          successUrl.searchParams.set("bundle", selectedBundle);
-          successUrl.searchParams.set(
-            "transaction_id",
-            response.razorpay_payment_id || ""
-          );
-          successUrl.searchParams.set(
-            "amount",
-            selectedBundleData?.price.toString() || "499"
-          );
+      cashfree.checkout({
+        paymentSessionId,
+        redirectTarget: "_self",
+      });
 
-          window.location.href = successUrl.toString();
-        },
-        (error) => {
-          console.error("Payment failed:", error);
-          setIsProcessingPayment(false);
-          alert("Payment failed. Please try again.");
-        },
-        () => {
-          setIsProcessingPayment(false);
-        }
-      );
     } catch (error) {
       console.error("Payment initialization error:", error);
       setIsProcessingPayment(false);

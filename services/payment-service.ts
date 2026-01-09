@@ -1,399 +1,102 @@
-import {
-  RazorpayPaymentRequest,
-  PaymentVerificationResponse,
-} from "@/lib/payment-config";
+import Cashfree from "@/lib/cashfree-client";
+import { CFEnvironment } from "cashfree-pg";
 
-declare global {
-  interface Window {
-    Razorpay: {
-      new (options: PaymentOptions): {
-        open(): void;
-      };
-    };
-  }
-}
-
-export interface PaymentOptions {
-  key: string;
+export interface CreateOrderRequest {
   amount: number;
   currency: string;
-  order_id?: string;
-  name: string;
-  description: string;
-  receipt: string;
-  notes: Record<string, string>;
-  handler: (response: {
-    razorpay_payment_id: string;
-    razorpay_order_id: string;
-    razorpay_signature: string;
-  }) => void;
-  prefill: {
-    name: string;
-    contact: string;
-  };
-  theme: {
-    color: string;
-  };
-  modal: {
-    ondismiss: () => void;
-  };
+  customerName: string;
+  customerPhone: string;
+  customerId: string; // Cashfree requires a customer ID
+  returnUrl?: string;
+  notes?: Record<string, string>;
+}
+
+export interface VerificationResult {
+  success: boolean;
+  message?: string;
+  data?: any;
 }
 
 export class PaymentService {
-  private static readonly PAYMENT_VERIFY_URL = "/api/payment/verify";
-
   /**
-   * Check if debug mode is enabled
+   * Create a payment order with Cashfree
    */
-  private static isDebugMode(): boolean {
-    if (typeof window === "undefined") return false;
-    const urlParams = new URLSearchParams(window.location.search);
-    return urlParams.get('debug') === 'vt-new';
-  }
-
-  /**
-   * Mock payment initialization for debug mode
-   */
-  private static async mockInitializePayment(
-    paymentRequest: RazorpayPaymentRequest,
-    customerName: string,
-    customerPhone: string,
-    onSuccess: (response: {
-      razorpay_payment_id: string;
-      razorpay_order_id: string;
-      razorpay_signature: string;
-    }) => void
-  ): Promise<void> {
-    console.log("🚧 DEBUG MODE: Mocking payment initialization", {
-      paymentRequest,
-      customerName,
-      customerPhone
-    });
-
-    // Simulate a brief delay
-    await new Promise(resolve => setTimeout(resolve, 1000));
-
-    // Mock successful payment response
-    const mockResponse = {
-      razorpay_payment_id: `debug_pay_${Date.now()}`,
-      razorpay_order_id: `debug_order_${Date.now()}`,
-      razorpay_signature: `debug_signature_${Date.now()}`
-    };
-
-    console.log("🚧 DEBUG MODE: Simulating successful payment", mockResponse);
-    onSuccess(mockResponse);
-  }
-
-  /**
-   * Mock payment verification for debug mode
-   */
-  private static async mockVerifyPayment(paymentResponse: {
-    razorpay_payment_id: string;
-    razorpay_order_id: string;
-    razorpay_signature: string;
-  }): Promise<PaymentVerificationResponse> {
-    console.log("🚧 DEBUG MODE: Mocking payment verification", paymentResponse);
-
-    // Simulate network delay
-    await new Promise(resolve => setTimeout(resolve, 500));
-
-    return {
-      success: true,
-      message: "Payment verified successfully (DEBUG MODE)"
-    };
-  }
-
-  /**
-   * Load Razorpay script dynamically
-   */
-  static loadRazorpayScript(): Promise<void> {
-    return new Promise((resolve, reject) => {
-      if (typeof window === "undefined") {
-        reject(new Error("Window is not defined - running on server side"));
-        return;
-      }
-
-      if (window.Razorpay) {
-        resolve();
-        return;
-      }
-
-      const script = document.createElement("script");
-      script.src = "https://checkout.razorpay.com/v1/checkout.js";
-      script.onload = () => resolve();
-      script.onerror = () =>
-        reject(new Error("Failed to load Razorpay script"));
-      document.head.appendChild(script);
-    });
-  }
-
-  /**
-   * Initialize Razorpay payment
-   */
-  static async initializePayment(
-    paymentRequest: RazorpayPaymentRequest,
-    customerName: string,
-    customerPhone: string,
-    onSuccess: (response: {
-      razorpay_payment_id: string;
-      razorpay_order_id: string;
-      razorpay_signature: string;
-    }) => void,
-    onError: (error: string) => void,
-    onDismiss?: () => void
-  ): Promise<void> {
-    // Check for debug mode
-    if (PaymentService.isDebugMode()) {
-      return PaymentService.mockInitializePayment(
-        paymentRequest,
-        customerName,
-        customerPhone,
-        onSuccess
-      );
-    }
-
+  static async createOrder(
+    request: CreateOrderRequest
+  ): Promise<{ paymentSessionId: string; orderId: string; environment: "production" | "sandbox" }> {
     try {
-      // Load Razorpay script
-      await PaymentService.loadRazorpayScript();
-
-      const keyId = process.env.NEXT_PUBLIC_RAZORPAY_KEY_ID;
-      if (!keyId) {
-        throw new Error("Razorpay key not configured");
-      }
-
-      // Add CSS class to our form modal to lower its z-index
-      const formModal = document.querySelector('[role="dialog"]');
-      if (formModal) {
-        formModal.classList.add("form-modal-during-payment");
-      }
-
-      // Create an order on the server to ensure signature verification stability
-      let orderId: string | undefined;
-      try {
-        const orderResponse = await fetch("/api/payment/order", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            amount: paymentRequest.amount,
-            currency: paymentRequest.currency,
-            receipt: paymentRequest.receipt,
-            notes: paymentRequest.notes,
-          }),
-        });
-        if (orderResponse.ok) {
-          const order = await orderResponse.json();
-          orderId = order?.id;
-        } else {
-          // If order creation fails, proceed without explicit order (Razorpay can still generate one)
-          console.warn(
-            "Razorpay order creation failed; proceeding without order_id"
-          );
-        }
-      } catch (e) {
-        console.warn(
-          "Razorpay order creation error; proceeding without order_id",
-          e
-        );
-      }
-
-      const options: PaymentOptions = {
-        key: keyId,
-        amount: paymentRequest.amount,
-        currency: paymentRequest.currency,
-        order_id: orderId,
-        name: "Vakil Tech",
-        description: "Legal Services Payment",
-        receipt: paymentRequest.receipt,
-        notes: paymentRequest.notes,
-        handler: async (response: {
-          razorpay_payment_id: string;
-          razorpay_order_id: string;
-          razorpay_signature: string;
-        }) => {
-          try {
-            // Remove CSS class from our form modal
-            if (formModal) {
-              formModal.classList.remove("form-modal-during-payment");
-              formModal.classList.add("form-modal-after-payment");
-            }
-            // no-op
-
-            // Verify payment on server with retry (handles capture propagation delays)
-            const verificationResult =
-              await PaymentService.verifyPaymentWithRetry(response, 4);
-            if (verificationResult.success) {
-              onSuccess(response);
-            } else {
-              onError(
-                verificationResult.error || "Payment verification failed"
-              );
-            }
-          } catch {
-            // Remove CSS class from our form modal on error too
-            if (formModal) {
-              formModal.classList.remove("form-modal-during-payment");
-              formModal.classList.add("form-modal-after-payment");
-            }
-            // no-op
-            onError("Payment verification failed");
-          }
+      const isSandbox = Cashfree.XEnvironment === CFEnvironment.SANDBOX;
+      const fallbackDomain = isSandbox ? "http://localhost:3000" : "https://localhost:3000";
+      
+      const orderRequest = {
+        order_amount: request.amount,
+        order_currency: request.currency,
+        customer_details: {
+          customer_id: request.customerId,
+          customer_name: request.customerName,
+          customer_phone: request.customerPhone,
         },
-        prefill: {
-          name: customerName,
-          contact: customerPhone,
+        order_meta: {
+          return_url:
+            request.returnUrl ||
+            `${process.env.NEXT_PUBLIC_APP_URL || fallbackDomain}/thank-you?order_id={order_id}`,
         },
-        theme: {
-          color: "#EF5A6F", // Coral red matching the app theme
-        },
-        modal: {
-          ondismiss: () => {
-            // Remove CSS class from our form modal when payment modal is dismissed
-            if (formModal) {
-              formModal.classList.remove("form-modal-during-payment");
-              formModal.classList.add("form-modal-after-payment");
-            }
-            // Notify caller so analytics can record abandonment
-            try {
-              onDismiss?.();
-            } catch {}
-          },
-        },
+        order_note: request.notes ? JSON.stringify(request.notes) : undefined,
       };
 
-      // Defer to the next tick to ensure layout is settled before open
-      const razorpay = new window.Razorpay(options);
-      setTimeout(() => {
-        try {
-          razorpay.open();
-        } catch {
-          onError("Failed to open Razorpay modal");
-        }
-      }, 0);
-    } catch (error) {
-      // Remove CSS class from our form modal on error
-      const formModal = document.querySelector('[role="dialog"]');
-      if (formModal) {
-        formModal.classList.remove("form-modal-during-payment");
-        formModal.classList.add("form-modal-after-payment");
-      }
 
-      console.error("Payment initialization error:", error);
-      onError(
-        error instanceof Error ? error.message : "Payment initialization failed"
+      const response = await Cashfree.PGCreateOrder(orderRequest as any); // Type assertion to bypass potential type mismatch
+      const data = response.data;
+
+      if (data && data.payment_session_id) {
+        return {
+          paymentSessionId: data.payment_session_id,
+          orderId: data.order_id || "",
+          environment: Cashfree.XEnvironment === CFEnvironment.PRODUCTION ? "production" : "sandbox"
+        };
+      } else {
+        throw new Error("Failed to generate payment session ID");
+      }
+    } catch (error: any) {
+      console.error("Cashfree createOrder error:", error);
+      throw new Error(
+        error.message || "Failed to create payment order with Cashfree"
       );
-      // no-op
     }
   }
 
   /**
-   * Verify payment with server
+   * Verify payment status for an order
    */
-  static async verifyPayment(paymentResponse: {
-    razorpay_payment_id: string;
-    razorpay_order_id: string;
-    razorpay_signature: string;
-  }): Promise<PaymentVerificationResponse> {
-    // Check for debug mode
-    if (PaymentService.isDebugMode()) {
-      return PaymentService.mockVerifyPayment(paymentResponse);
-    }
-
+  static async verifyPayment(orderId: string): Promise<VerificationResult> {
     try {
-      const response = await fetch(this.PAYMENT_VERIFY_URL, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          paymentId: paymentResponse.razorpay_payment_id,
-          orderId: paymentResponse.razorpay_order_id,
-          signature: paymentResponse.razorpay_signature,
-        }),
-      });
+      const response = await Cashfree.PGOrderFetchPayments(orderId as any);
+      const payments = response.data;
 
-      if (!response.ok) {
-        const errorData = await response.json().catch(() => ({}));
-        throw new Error(
-          errorData.message || `HTTP error! status: ${response.status}`
-        );
-      }
+      // Check if any payment is successful
+      const successfulPayment = payments?.find(
+        (p: any) => p.payment_status === "SUCCESS"
+      );
 
-      const result: PaymentVerificationResponse = await response.json();
-      return result;
-    } catch (error) {
-      console.error("Payment verification error:", error);
-
-      if (error instanceof TypeError && error.message.includes("fetch")) {
+      if (successfulPayment) {
+        return {
+          success: true,
+          message: "Payment verified successfully",
+          data: successfulPayment,
+        };
+      } else {
         return {
           success: false,
-          error: "Network error",
-          message: "Please check your internet connection and try again.",
+          message: "Payment pending or failed",
         };
       }
-
-      if (error instanceof Error) {
-        return {
-          success: false,
-          error: "Verification failed",
-          message: error.message,
-        };
-      }
-
+    } catch (error: any) {
+      console.error("Cashfree verifyPayment error:", error);
       return {
         success: false,
-        error: "Unknown error",
-        message: "Payment verification failed. Please contact support.",
+        message: error.message || "Failed to verify payment",
       };
     }
-  }
-
-  /**
-   * Retry payment verification with exponential backoff
-   */
-  static async verifyPaymentWithRetry(
-    paymentResponse: {
-      razorpay_payment_id: string;
-      razorpay_order_id: string;
-      razorpay_signature: string;
-    },
-    maxRetries: number = 3
-  ): Promise<PaymentVerificationResponse> {
-    let lastError: PaymentVerificationResponse | null = null;
-
-    for (let attempt = 1; attempt <= maxRetries; attempt++) {
-      const result = await PaymentService.verifyPayment(paymentResponse);
-
-      if (result.success) {
-        return result;
-      }
-
-      lastError = result;
-
-      // Don't retry on validation errors
-      if (result.error === "Validation failed") {
-        break;
-      }
-
-      // Wait before retrying (exponential backoff)
-      if (attempt < maxRetries) {
-        const delay = Math.pow(2, attempt) * 1000; // 2s, 4s, 8s
-        await new Promise((resolve) => setTimeout(resolve, delay));
-      }
-    }
-
-    return (
-      lastError || {
-        success: false,
-        error: "Max retries exceeded",
-        message: "Payment verification failed after multiple attempts.",
-      }
-    );
   }
 }
 
-// Export convenience functions that properly reference the static methods
-export const initializePayment =
-  PaymentService.initializePayment.bind(PaymentService);
-export const verifyPayment = PaymentService.verifyPayment.bind(PaymentService);
-export const verifyPaymentWithRetry =
-  PaymentService.verifyPaymentWithRetry.bind(PaymentService);
