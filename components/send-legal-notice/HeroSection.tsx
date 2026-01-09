@@ -278,7 +278,7 @@ export function HeroSection({
               />
 
               {/* Floating Badges - Positioned on left side of image */}
-              <div className="absolute left-3 top-1/4 flex flex-col gap-2 sm:left-4 sm:gap-3">
+              <div className="absolute left-3 top-1/2 flex flex-col gap-2 sm:left-4 sm:gap-3">
                 {badges.slice(0, 2).map((badgeItem, index) => (
                   <div
                     key={index}
