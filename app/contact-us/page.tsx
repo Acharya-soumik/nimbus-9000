@@ -98,7 +98,7 @@ export default function ContactUsPage() {
                 <h3 className="text-xl font-semibold">Office Address</h3>
               </div>
               <div className="text-muted-foreground">
-                <p className="font-medium text-foreground mb-2">Business Name: PB Technologies</p>
+                <p className="font-medium text-foreground mb-2">Business Name: PRITAM BANIK</p>
                 <p>25, Mazaffar Ahmed Sarani</p>
                 <p>Ashrampara, Siliguri</p>
                 <p>West Bengal, Pin Code: 734001</p>
