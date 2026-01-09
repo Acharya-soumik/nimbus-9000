@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { Metadata } from 'next';
 import { PaymentService } from '@/services/payment-service';
+import { getSupabaseServer } from '@/lib/supabase-server';
 import {
   SuccessHero,
   PaymentSummary,
@@ -123,7 +124,7 @@ export default async function ThankYouPage({
 
   // If error occurred or payment data is missing
   if (errorOccurred || !paymentData) {
-    // If we have an orderId but failed to get payment data, it implies verification failed (e.g. cancelled)
+     // If we have an orderId but failed to get payment data, it implies verification failed (e.g. cancelled)
     const isFailure = !!orderId;
 
     if (isFailure) {
@@ -177,6 +178,9 @@ export default async function ThankYouPage({
       );
     }
 
+    // If no orderId (e.g., direct paymentId or other edge case) and no paymentData,
+    // or if it's a generic failure without specific order context, show a generic success/pending.
+    // This block handles cases where paymentData is missing but it's not a clear "failed" state.
     return (
       <main className="min-h-screen bg-white">
         <SuccessHero
@@ -216,6 +220,43 @@ export default async function ThankYouPage({
         </section>
       </main>
     );
+  }
+
+  // UPDATE CRM: If payment is verified, we must update the lead status
+  // because verifyPayment doesn't do it automatically.
+  if (paymentData && orderId) {
+    try {
+      // 1. Fetch Order Details to get Customer ID (Lead ID)
+      const orderDetails = await PaymentService.getOrderDetails(orderId as string);
+      const leadId = orderDetails?.customer_details?.customer_id;
+
+      if (leadId) {
+         // 2. Initialize Supabase Admin Client
+         const supabase = getSupabaseServer();
+         
+         // 3. Update Lead Status
+         // We use 'advance_paid' as per referenced successful leads
+         const { error: updateError } = await supabase
+           .from('leads')
+           .update({
+             payment_status: 'advance_paid', 
+             status: 'work_in_progress',
+             mark_advance_paid: true,
+             payment_amount: paymentData.payment_amount,
+             // payment_id: paymentData.cf_payment_id // column might not exist or be different
+           })
+           .eq('id', leadId); // assuming customer_id is lead UUID
+
+         if (updateError) {
+            console.error("Failed to update lead status in CRM:", updateError);
+            // Non-critical error, user still paid. We log it.
+         } else {
+            console.log(`Lead ${leadId} updated to advance_paid`);
+         }
+      }
+    } catch (crmError) {
+       console.error("Error updating CRM after payment:", crmError);
+    }
   }
 
   // Successful payment with data

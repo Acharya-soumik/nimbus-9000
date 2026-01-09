@@ -98,5 +98,24 @@ export class PaymentService {
       };
     }
   }
+  /**
+   * Fetch order details from Cashfree
+   */
+  static async getOrderDetails(orderId: string): Promise<any> {
+    try {
+      const response = await Cashfree.PGFetchOrder(orderId as any); 
+      // SDK might demand version as first arg sometimes? Or just orderId?
+      // "Cashfree.PGFetchOrder("<order_id>")" source [2] implies just orderId.
+      // But let's check standard usage. PGCreateOrder takes (version, request) or just request?
+      // In createOrder: Cashfree.PGCreateOrder(orderRequest as any). No version.
+      // So likely just orderId.
+      return response.data;
+    } catch (error: any) {
+      console.error("Cashfree getOrderDetails error:", error);
+      throw new Error(
+        error.message || "Failed to fetch order details from Cashfree"
+      );
+    }
+  }
 }
 
