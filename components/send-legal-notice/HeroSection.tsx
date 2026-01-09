@@ -41,11 +41,7 @@ export function HeroSection({
     "Custom Drafting",
     "48-Hour Delivery",
   ],
-  badges = [
-    { icon: "shield" as const, text: "Verified Bar Council Lawyers" },
-    { icon: "check" as const, text: "Nationwide Service 🇮🇳" },
-    { icon: "clock" as const, text: "Speed Post + Delivery Proof" },
-  ],
+  badges = [],
 }: HeroSectionProps) {
   const [dimensions, setDimensions] = useState({ width: 1920, height: 1080 });
   const [mounted, setMounted] = useState(false);

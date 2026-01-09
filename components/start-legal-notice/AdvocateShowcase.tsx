@@ -3,6 +3,7 @@
 import React from "react";
 import Image from "next/image";
 import { ShieldCheck, Scale, GraduationCap } from "lucide-react";
+import { InfiniteMovingCards } from "../aceternity/infinite-moving-cards";
 
 // Masked Data
 const advocates = [
@@ -67,18 +68,15 @@ export function AdvocateShowcase() {
 
         {/* Scrolling Container */}
         <div className="relative w-full">
-            {/* Gradient Fade Effects for Mobile Scrolling hints */}
-            <div className="absolute left-0 top-0 bottom-0 w-8 bg-gradient-to-r from-gray-50 to-transparent z-10 md:hidden pointer-events-none" />
-            <div className="absolute right-0 top-0 bottom-0 w-8 bg-gradient-to-l from-gray-50 to-transparent z-10 md:hidden pointer-events-none" />
-
-            <div 
-                className="flex overflow-x-auto pb-8 gap-6 snap-x snap-mandatory scrollbar-hide md:grid md:grid-cols-4 md:overflow-visible md:pb-0"
-                style={{ scrollBehavior: 'smooth' }}
-            >
-                {advocates.map((advocate) => (
+            <InfiniteMovingCards
+                items={advocates}
+                direction="left"
+                speed="slow"
+                pauseOnHover={false}
+                className="py-0"
+                renderItem={(advocate) => (
                     <div 
-                        key={advocate.id} 
-                        className="flex-shrink-0 w-[280px] md:w-auto snap-center bg-white rounded-2xl border border-gray-100 shadow-sm hover:shadow-md transition-shadow overflow-hidden group"
+                        className="w-[280px] bg-white rounded-2xl border border-gray-100 shadow-sm hover:shadow-md transition-shadow overflow-hidden group"
                     >
                         <div className="relative h-64 w-full bg-gray-100">
                             <Image 
@@ -100,26 +98,26 @@ export function AdvocateShowcase() {
                         </div>
                         
                         <div className="p-4 space-y-3">
-                             <div className="flex items-center gap-2 text-sm text-gray-700">
+                                <div className="flex items-center gap-2 text-sm text-gray-700">
                                 <Scale className="w-4 h-4 text-gray-400" />
                                 <span className="font-semibold">{advocate.specialty}</span>
-                             </div>
-                             <div className="flex items-center gap-2 text-sm text-gray-700">
+                                </div>
+                                <div className="flex items-center gap-2 text-sm text-gray-700">
                                 <GraduationCap className="w-4 h-4 text-gray-400" />
                                 <span>Exp: <span className="font-semibold text-gray-900">{advocate.experience}</span></span>
-                             </div>
-                             
-                             <div className="pt-3 border-t border-gray-100 flex flex-wrap gap-2">
+                                </div>
+                                
+                                <div className="pt-3 border-t border-gray-100 flex flex-wrap gap-2">
                                 {advocate.languages.map(lang => (
                                     <span key={lang} className="text-[10px] font-medium px-2 py-1 bg-gray-50 text-gray-600 rounded-md border border-gray-100">
                                         {lang}
                                     </span>
                                 ))}
-                             </div>
+                                </div>
                         </div>
                     </div>
-                ))}
-            </div>
+                )}
+            />
         </div>
         
         <p className="text-center text-xs text-gray-400 mt-6 md:mt-10 italic">

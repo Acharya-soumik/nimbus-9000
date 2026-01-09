@@ -149,7 +149,20 @@ export default function LandingPage() {
 
       <main className="pt-24 pb-24">
         {/* HERO SECTION */}
-        <section className="px-4 py-8 md:py-16 max-w-4xl mx-auto text-center relative">
+        <section className="relative w-full overflow-hidden py-8 md:py-16">
+          {/* Background Image & Overlay */}
+          <div className="absolute inset-0 z-0 select-none">
+            <Image 
+              src="/assets/send-legal-notice/hero.png" 
+              alt="Background" 
+              fill
+              className="object-cover opacity-80"
+              priority
+            />
+            <div className="absolute opacity-50 inset-0 bg-gradient-to-b from-gray-50 via-gray-200 to-white" />
+          </div>
+
+          <div className="relative z-10 px-4 max-w-4xl mx-auto text-center">
           <motion.div 
             initial="hidden"
             animate="visible"
@@ -195,7 +208,7 @@ export default function LandingPage() {
             </motion.div>
 
             {/* CTA */}
-            <motion.div variants={itemVariants} className="pt-6">
+            <motion.div variants={itemVariants} className="pt-6 hidden md:block">
               <button 
                 onClick={scrollToForm}
                 className="group relative inline-flex items-center justify-center gap-3 px-8 py-4 text-lg font-bold text-white transition-all duration-300 bg-gradient-to-br from-[#EF5A6F] to-[#DC2626] rounded-2xl shadow-[0_10px_20px_-10px_rgba(239,90,111,0.5)] hover:shadow-[0_20px_30px_-10px_rgba(239,90,111,0.6)] hover:scale-[1.02] active:scale-[0.98] w-full md:w-auto"
@@ -220,6 +233,8 @@ export default function LandingPage() {
               </div>
             </motion.div>
           </motion.div>
+
+          </div>
         </section>
 
         {/* TRUST SIGNALS - Glass Cards */}
