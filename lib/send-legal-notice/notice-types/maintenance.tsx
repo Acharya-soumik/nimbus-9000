@@ -7,9 +7,9 @@ export const maintenanceNoticeData: NoticeTypeData = {
   cluster: "family",
 
   seo: {
-    title: "Legal Notice for Maintenance | Claim Alimony | Section 125 CrPC",
+    title: "Send Maintenance Legal Notice to Husband Online | VakilTech",
     description:
-      "Not receiving financial support? Send a legal notice for maintenance under Section 125 CrPC. Claim claiming rights for wife, children, & parents. Expert drafting.",
+      "Seeking maintenance? Get a legal notice drafted & sent by experts. secure your rights for spousal and child support.",
     keywords: [
       "legal notice for maintenance",
       "maintenance claim section 125 crpc",

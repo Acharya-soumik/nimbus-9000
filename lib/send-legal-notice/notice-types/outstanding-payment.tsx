@@ -8,9 +8,9 @@ export const outstandingPaymentData: NoticeTypeData = {
   cluster: "money-recovery",
 
   seo: {
-    title: "Outstanding Payment Legal Notice | Recover Unpaid Invoices",
+    title: "Send Legal Notice for Outstanding Payment - Recover Dues Fast | VakilTech",
     description:
-      "Unpaid invoices? Send a legal notice for outstanding payment. Specialized for MSMEs & businesses. Claim 18% interest under MSMED Act. Start now.",
+      "Client not paying? Send a strong legal notice to recover your outstanding dues. fast, professional drafting to get you paid.",
     keywords: [
       "legal notice for outstanding payment format",
       "legal notice for recovery of outstanding dues",

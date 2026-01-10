@@ -8,10 +8,9 @@ export const workplaceHarassmentData: NoticeTypeData = {
   cluster: "employment",
 
   seo: {
-    title:
-      "Workplace Harassment? | Send POSH Notice | Start at ₹499",
+    title: "Send Legal Notice for Workplace Harassment - Get Justice | VakilTech",
     description:
-      "Facing workplace harassment? Get a confidential POSH Act notice sent today. Pay ₹499 to start + 2-hr callback. Approve the draft before paying ₹1000 balance.",
+      "Face workplace harassment? Take legal action with a strong notice. Confidential, professional, and supportive assistance.",
     keywords: [
       "workplace harassment legal notice",
       "sexual harassment notice",

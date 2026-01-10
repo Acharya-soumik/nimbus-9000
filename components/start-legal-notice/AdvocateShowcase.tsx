@@ -71,7 +71,7 @@ export function AdvocateShowcase() {
             <InfiniteMovingCards
                 items={advocates}
                 direction="left"
-                speed="slow"
+                speed="fast"
                 pauseOnHover={false}
                 className="py-0"
                 renderItem={(advocate) => (

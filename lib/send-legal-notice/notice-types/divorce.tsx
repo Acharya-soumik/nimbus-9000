@@ -7,9 +7,9 @@ export const divorceNoticeData: NoticeTypeData = {
   cluster: "family",
 
   seo: {
-    title: "Legal Notice for Divorce | Expert Drafted & Confidential | ₹1499",
+    title: "Affordable Divorce Legal Notice Online | VakilTech - Get Notice Drafted & Sent",
     description:
-      "Want to file for divorce? Send a professionally drafted legal notice for divorce. Expert family lawyers, 100% confidential, & valid in all Indian courts. Start now.",
+      "Initiate divorce proceedings with a professionally drafted legal notice. clear, affordable, and sensitive handling of your case.",
     keywords: [
       "legal notice for divorce",
       "divorce notice format india",
