@@ -461,6 +461,7 @@ export default function LegalNoticePage() {
         />
         {/* Popular Legal Notices Section */}
         <PopularLegalNotices
+          id="popular-notices"
           notices={[
             {
               id: "recovery-of-money",

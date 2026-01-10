@@ -48,7 +48,7 @@ const items: NavItem[] = [
         </Link>
         <div className="h-px bg-gray-100 dark:bg-gray-800 my-1" />
         <Link
-          href="/send-legal-notice"
+          href="/send-legal-notice#popular-notices"
           className="text-xs font-bold text-primary hover:text-primary/80 transition-colors uppercase tracking-wider block"
         >
           View All Notices →
@@ -92,9 +92,11 @@ export default function DesktopNavClient() {
               animate={{ opacity: 1, y: 0, scale: 1 }}
               exit={{ opacity: 0 }}
               transition={{ duration: 0.2 }}
-              className="absolute left-1/2 top-[calc(100%+12px)] -translate-x-1/2 bg-white dark:bg-black border rounded-xl shadow-xl p-4 w-72"
+              className="absolute left-1/2 top-full -translate-x-1/2 w-72 pt-3"
             >
-              {item.content}
+              <div className="bg-white dark:bg-black border rounded-xl shadow-xl p-4">
+                {item.content}
+              </div>
             </motion.div>
           )}
         </div>

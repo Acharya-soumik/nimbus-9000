@@ -31,6 +31,7 @@ export interface NoticeType {
 }
 
 export interface PopularLegalNoticesProps {
+  id?: string;
   className?: string;
   /** Section label/eyebrow text */
   label?: string;
@@ -235,6 +236,7 @@ const defaultNotices: NoticeType[] = [
  * ============================================================================= */
 
 export function PopularLegalNotices({
+  id,
   className,
   label = "LEGAL SOLUTIONS",
   title = "Popular",
@@ -257,6 +259,7 @@ export function PopularLegalNotices({
 
   return (
     <section
+      id={id}
       className={cn(
         "relative overflow-hidden py-16 px-4 sm:px-6 lg:px-8 lg:py-20",
         className
