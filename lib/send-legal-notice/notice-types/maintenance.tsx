@@ -73,7 +73,7 @@ export const maintenanceNoticeData: NoticeTypeData = {
     ],
     finalCta: {
       text: "Stop requesting and start claiming. Your financial dignity is protected by law.",
-      buttonText: "Draft Maintenance Notice Now",
+      buttonText: "Claim Maintenance Now",
     },
   },
 

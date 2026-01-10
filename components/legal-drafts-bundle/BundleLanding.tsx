@@ -113,11 +113,11 @@ export function BundleLanding() {
         <div className="container mx-auto flex flex-col md:flex-row justify-between items-center gap-2 text-center md:text-left">
           <span className="font-semibold flex items-center gap-2">
             <TrendingUp className="w-4 h-4" />
-            +500 New Templates Added This Month
+            3500+ Legal Templates Added - Updated for 2026
           </span>
           <span className="font-bold flex items-center gap-2">
             <Clock className="w-4 h-4" />
-            Limited Time Offer - 80% OFF
+            Save Thousands in Legal Fees - 80% OFF
           </span>
         </div>
       </div>
@@ -219,7 +219,7 @@ export function BundleLanding() {
               ) : (
                 <>
                   <Download className="w-5 h-5 mr-2" />
-                  Buy Now - ₹{selectedBundleData?.price}
+                  Instant Download - ₹{selectedBundleData?.price}
                 </>
               )}
             </Button>
@@ -441,7 +441,7 @@ export function BundleLanding() {
               ) : (
                 <>
                   <Download className="w-5 h-5 mr-2" />
-                  Get Started Now - ₹{selectedBundleData?.price}
+                  Instant Download - ₹{selectedBundleData?.price}
                 </>
               )}
             </Button>

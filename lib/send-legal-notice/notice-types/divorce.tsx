@@ -86,7 +86,7 @@ export const divorceNoticeData: NoticeTypeData = {
     ],
     finalCta: {
       text: "Divorce is legally complex and emotionally taxing. Let our experts handle the legal formalities while you focus on your future.",
-      buttonText: "Draft Divorce Notice Now",
+      buttonText: "Book Confidential Consultation",
     },
   },
 

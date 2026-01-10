@@ -41,7 +41,7 @@ export const breachOfContractData: NoticeTypeData = {
   content: {
     h1: "Legal Notice for Breach of Contract in India",
     introduction:
-      "When a party fails to fulfill contractual obligations, you have legal remedies under the Indian Contract Act 1872. A breach of contract notice formally demands performance or compensation and is prerequisite before filing suit for specific performance or damages. This notice applies to all contracts—business agreements, service contracts, sale agreements, employment contracts, and partnership agreements.",
+      "When a party fails to fulfill contractual obligations, you have legal remedies under the Indian Contract Act 1872. A breach of contract notice formally demands performance or compensation and is prerequisite before filing suit for specific performance or [damages](/guide/civil-suit-procedure). This notice applies to all contracts—business agreements, service contracts, sale agreements, employment contracts, and partnership agreements.",
     sections: breachOfContractSections,
     finalCta: {
       text: "Don't let contract breaches harm your business. Take legal action to enforce your rights and recover losses.",

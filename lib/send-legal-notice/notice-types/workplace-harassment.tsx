@@ -44,7 +44,7 @@ export const workplaceHarassmentData: NoticeTypeData = {
     sections: workplaceHarassmentSections,
     finalCta: {
       text: "No one should face harassment at work. Take legal action to protect your dignity and career.",
-      buttonText: "File Harassment Notice Now",
+      buttonText: "Get Legal Protection Now",
     },
   },
 

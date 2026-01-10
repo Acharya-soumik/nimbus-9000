@@ -36,8 +36,23 @@ export const consumerComplaintNoticeData: NoticeTypeData = {
   content: {
     h1: "Consumer Complaint Legal Notice in India",
     introduction:
-      "If you've received a defective product, faced deficiency in service, been charged unfairly, or encountered any unfair trade practice, you have strong rights under the Consumer Protection Act 2019. A consumer complaint legal notice is the mandatory first step before approaching a consumer forum, demanding compensation, refund, or service rectification.",
-    sections: [],
+      "If you've received a defective product, faced deficiency in service, been charged unfairly, or encountered any unfair trade practice, you have strong rights under the Consumer Protection Act 2019. A consumer complaint legal notice is the mandatory first step before approaching a consumer forum. For a detailed understanding, read our [Consumer Protection Guide](/guide/consumer-protection).",
+    sections: [
+      {
+        heading: "Common Grounds for Consumer Complaints",
+        content: "You can file a complaint for various issues:",
+        listItems: [
+          "Defective Goods: Manufacturing defaults or poor quality",
+          "Deficiency in Service: Negligence or failure to deliver promised service",
+          "Unfair Trade Practices: Misleading ads or false claims",
+          "Overcharging: Charging above MRP",
+        ],
+      },
+      {
+        heading: "Consumer Forum Jurisdiction",
+        content: "Drafting a notice is the first step. If unresolved, you can approach the District Commission (up to ₹1 Cr), State Commission (₹1 Cr - ₹10 Cr), or National Commission (> ₹10 Cr).",
+      }
+    ],
     finalCta: {
       text: "Don't let businesses exploit you. Assert your consumer rights and send a legal notice today.",
       buttonText: "Draft Consumer Complaint",

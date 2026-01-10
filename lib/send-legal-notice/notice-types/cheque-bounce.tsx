@@ -24,7 +24,7 @@ export const chequeBounceData: NoticeTypeData = {
     badge: "CHEQUE BOUNCE - SECTION 138",
     headline: "Cheque Bounced? Take Legal Action Now!",
     subheadline:
-      "Expert legal notices for dishonoured cheques under Section 138 of NI Act",
+      "Expert legal notices for dishonoured cheques under Section 138 of NI Act. Flat fee ₹1,499.",
     flipWords: [
       "Criminal Action",
       "Mandatory Notice",
@@ -44,7 +44,7 @@ export const chequeBounceData: NoticeTypeData = {
     sections: chequeBounceSections,
     finalCta: {
       text: "Time is running out. You only have 30 days from the date of the return memo to act. Send your Section 138 notice immediately.",
-      buttonText: "Draft Cheque Bounce Notice Now",
+      buttonText: "Draft Cheque Bounce Notice - ₹1,499",
     },
   },
 
@@ -104,6 +104,7 @@ export const chequeBounceData: NoticeTypeData = {
           },
           { text: "Complaint to be filed within 30 days after notice period expiry" },
           { text: "Punishment: Up to 2 years jail or 2x fine" },
+          { text: "Stop Payment: Also considered an offence under Section 138" },
         ],
       },
     ],

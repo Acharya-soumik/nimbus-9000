@@ -44,7 +44,7 @@ export const outstandingPaymentData: NoticeTypeData = {
     sections: outstandingPaymentSections,
     finalCta: {
       text: "Don't let unpaid invoices hurt your business cash flow. Send a professional payment demand notice today.",
-      buttonText: "Draft Payment Recovery Notice",
+      buttonText: "Recover Your Dues Now",
     },
   },
 
