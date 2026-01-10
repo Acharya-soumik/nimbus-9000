@@ -15,6 +15,8 @@ import {
   sampleAgreements,
   agreementDeliverables,
   agreementProcessDetails,
+  heroFlipWords,
+  heroFeatureBadges,
 } from "@/components/agreement-drafting";
 import {
   HowWeWorkTimeline,
@@ -112,7 +114,22 @@ export default function AgreementDraftingPage() {
       <PageViewTracker serviceType="Agreement Drafting" />
 
       {/* Hero Section with Teal Theme */}
-      <AgreementHeroSection />
+      {/* Hero Section with Teal Theme */}
+      <AgreementHeroSection
+        title="Agreement Drafting"
+        subtitle="Services"
+        price={999}
+        flipWords={heroFlipWords}
+        featureBadges={heroFeatureBadges}
+        imageSrc="/assets/our-services/agreement-drafting.png"
+        imageAlt="Agreement Drafting Services"
+        serviceName="Agreement Drafting"
+        pricingFeatures={[
+          "Lawyer Drafted",
+          "Custom Clauses",
+          "Delivered in 24 Hrs",
+        ]}
+      />
 
       {/* Agreement Types Grid */}
       <AgreementTypesGrid
