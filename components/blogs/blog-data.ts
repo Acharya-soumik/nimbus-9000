@@ -489,6 +489,88 @@ const sampleContentDivorce = `
 </dl>
 `;
 
+const sampleContentBNS = `
+<p>With the implementation of the Bharatiya Nyaya Sanhita (BNS), 2023, the landscape of criminal laws in India has evolved. Section 356 of the BNS now governs the offense of defamation, replacing Sections 499 and 500 of the Indian Penal Code (IPC).</p>
+
+<h2>What is Defamation under Section 356 BNS?</h2>
+<p>Defamation is the act of communicating false statements about a person that injure their reputation. Under Section 356 BNS, whoever, by words either spoken or intended to be read, or by signs or visible representations, makes or publishes any imputation concerning any person intending to harm, or knowing or having reason to believe that such imputation will harm, the reputation of such person, is said to defame that person.</p>
+
+<h2>Key Changes from IPC to BNS</h2>
+<p>While the core definition remains similar to the IPC, the BNS aims to streamline the legal framework. The punishment for defamation under Section 356 includes simple imprisonment for a term which may extend to two years, or with fine, or with both, or with community service.</p>
+
+<h2>Types of Defamation</h2>
+<ul>
+  <li><strong>Libel:</strong> Defamation in a permanent form, such as written words or images.</li>
+  <li><strong>Slander:</strong> Defamation in a transient form, such as spoken words or gestures.</li>
+</ul>
+
+<h2>Exceptions to Defamation</h2>
+<p>Not everything negative said about someone is defamation. Section 356 BNS provides exceptions, including:</p>
+<ol>
+  <li><strong>Imputation of Truth:</strong> It is not defamation to impute anything which is true concerning any person, if it be for the public good.</li>
+  <li><strong>Public Conduct:</strong> Opinions expressed in good faith respecting the conduct of a public servant in the discharge of his public functions.</li>
+  <li><strong>Court Proceedings:</strong> Faithful reports of court proceedings are protected.</li>
+</ol>
+
+<h2>Legal Remedies: Civil vs. Criminal</h2>
+<p>Victims of defamation have two legal routes:</p>
+<ul>
+  <li><strong>Criminal Defamation (Section 356 BNS):</strong> The focus is on punishment (imprisonment/fine). You file a complaint before the Magistrate.</li>
+  <li><strong>Civil Defamation (Tort Law):</strong> The focus is on compensation for damages to reputation. You file a civil suit for damages.</li>
+</ul>
+
+<h2>How to Proceed?</h2>
+<p>If your reputation has been harmed by false statements, the first step is often to send a legal notice. A <strong><a href="/send-legal-notice/criminal-defamation-legal-notice">Criminal Defamation Legal Notice</a></strong> warns the offender to retract their statement and apologize, or face legal action.</p>
+
+<blockquote>
+  <p>"Your reputation is a valuable asset. The law provides strong remedies to protect it from baseless attacks."</p>
+</blockquote>
+
+<p>Consult with our expert lawyers to understand if your case qualifies for defamation under the new Section 356 BNS.</p>
+`;
+
+const sampleContentFormat = `
+<p>Unpaid dues can cripple a business or cause severe personal financial stress. When gentle reminders fail, a well-drafted legal notice is often the most effective tool to recover your money without immediately going to court.</p>
+
+<h2>Why Send a Legal Notice for Non-Payment?</h2>
+<p>A legal notice serves as a formal warning. It demonstrates that you are serious about recovering your dues and are prepared to take legal action if necessary. It is also a mandatory prerequisite for many legal proceedings involving debt recovery.</p>
+
+<h2>Essential Elements of a Legal Notice Format</h2>
+<p>To be legally valid and effective, your notice for outstanding payment must include:</p>
+<ol>
+  <li><strong>Sender and Recipient Details:</strong> Full names, addresses, and descriptions.</li>
+  <li><strong>Context of the Debt:</strong> Clearly state how the debt arose (e.g., goods supplied, services rendered, loan agreement).</li>
+  <li><strong>Evidence of Liability:</strong> Reference specific invoices, contracts, emails, or cheques that prove the debt exists.</li>
+  <li><strong>Specific Amount Due:</strong> Clearly state the exact principal amount and any applicable interest.</li>
+  <li><strong>Timeline for Payment:</strong> Give a reasonable time (usually 15 days) to clear the dues.</li>
+  <li><strong>Consequences of Non-Compliance:</strong> Clearly state that civil or criminal legal action will follow if payment is not made.</li>
+</ol>
+
+<h2>Basic Template Structure</h2>
+<div style="background-color: #f9fafb; padding: 20px; border-radius: 8px; border: 1px solid #e5e7eb; font-family: monospace; font-size: 0.9em;">
+  <p><strong>Ref: Legal Notice for Recovery of Dues of Rs. [Amount]</strong></p>
+  <p>To,<br>[Name of Defaulter]<br>[Address]</p>
+  <p>Sir/Madam,</p>
+  <p>Under instruction from my client [Your Name/Company], I hereby serve upon you the following legal notice:</p>
+  <p>1. That my client supplied goods/services to you vide Invoice No. [Number] dated [Date]...</p>
+  <p>...</p>
+  <p>4. That despite repeated reminders, you have failed to clear the outstanding amount of Rs. [Amount].</p>
+  <p>I therefore call upon you to pay the said amount within 15 days of receipt of this notice, failing which my client shall be constrained to initiate legal proceedings against you...</p>
+  <p>Copy retained in my office for record.</p>
+  <p>[Advocate's Signature]</p>
+</div>
+
+<h2>Common Mistakes to Avoid</h2>
+<ul>
+  <li><strong>Vague Details:</strong> Ensure dates, amounts, and invoice numbers are accurate.</li>
+  <li><strong>Threatening Language:</strong> Keep the tone professional and legal, not abusive.</li>
+  <li><strong>Missing Deadline:</strong> Always specify a clear deadline for payment.</li>
+</ul>
+
+<h2>Get a Professional Draft</h2>
+<p>While templates give you an idea, a notice drafted by a lawyer carries significantly more weight. You can <strong><a href="/send-legal-notice/legal-notice-for-outstanding-payment">send a professionally drafted Legal Notice for Outstanding Payment</a></strong> through VakilTech starting at just ₹1,499.</p>
+`;
+
 /**
  * Mock Blog Posts
  */
@@ -1000,6 +1082,111 @@ export const mockPosts: BlogPost[] = [
         },
       ],
       "wp:term": [[mockCategories[3]]], // Family Law
+    },
+  },
+
+  {
+    id: 10,
+    slug: "section-356-bns-defamation-law-india",
+    date: "2025-01-12T10:00:00",
+    modified: "2025-01-12T10:00:00",
+    title: {
+      rendered: "Section 356 BNS: Guide to Defamation Law in India",
+    },
+    excerpt: {
+      rendered:
+        "<p>Understanding the new Section 356 BNS which replaces IPC 499/500 for defamation. Learn about types of defamation, punishment, and legal remedies available.</p>",
+    },
+    content: { rendered: sampleContentBNS },
+    author: 1,
+    featured_media: 10,
+    categories: [1], // Legal Notices
+    tags: [1], // Legal Notice
+    _embedded: {
+      author: [mockAuthors[0]],
+      "wp:featuredmedia": [
+        {
+          source_url: "https://images.unsplash.com/photo-1589578527966-fd71f37e31cb?w=1200&h=630&fit=crop",
+          alt_text: "Law books and scales of justice",
+          media_details: {
+            sizes: {
+              thumbnail: {
+                source_url: "https://images.unsplash.com/photo-1589578527966-fd71f37e31cb?w=150&h=150&fit=crop",
+                width: 150,
+                height: 150,
+              },
+              medium: {
+                source_url: "https://images.unsplash.com/photo-1589578527966-fd71f37e31cb?w=300&h=200&fit=crop",
+                width: 300,
+                height: 200,
+              },
+              large: {
+                source_url: "https://images.unsplash.com/photo-1589578527966-fd71f37e31cb?w=1024&h=683&fit=crop",
+                width: 1024,
+                height: 683,
+              },
+              full: {
+                source_url: "https://images.unsplash.com/photo-1589578527966-fd71f37e31cb?w=1200&h=630&fit=crop",
+                width: 1200,
+                height: 630,
+              },
+            },
+          },
+        },
+      ],
+      "wp:term": [[mockCategories[0]]],
+    },
+  },
+  {
+    id: 11,
+    slug: "legal-notice-format-non-payment-dues",
+    date: "2025-01-14T11:00:00",
+    modified: "2025-01-14T11:00:00",
+    title: {
+      rendered: "Legal Notice Format for Non-Payment of Dues: Free Template & Guide",
+    },
+    excerpt: {
+      rendered:
+        "<p>Learn how to draft a strong legal notice for recovery of money. Includes essential elements, common mistakes to avoid, and a basic format reference.</p>",
+    },
+    content: { rendered: sampleContentFormat },
+    author: 2,
+    featured_media: 11,
+    categories: [1], // Legal Notices
+    tags: [1, 7], // Legal Notice, Cheque/Money
+    _embedded: {
+      author: [mockAuthors[1]],
+      "wp:featuredmedia": [
+        {
+          source_url: "https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?w=1200&h=630&fit=crop",
+          alt_text: "Financial documents and calculator",
+          media_details: {
+            sizes: {
+              thumbnail: {
+                source_url: "https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?w=150&h=150&fit=crop",
+                width: 150,
+                height: 150,
+              },
+              medium: {
+                source_url: "https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?w=300&h=200&fit=crop",
+                width: 300,
+                height: 200,
+              },
+              large: {
+                source_url: "https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?w=1024&h=683&fit=crop",
+                width: 1024,
+                height: 683,
+              },
+              full: {
+                source_url: "https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?w=1200&h=630&fit=crop",
+                width: 1200,
+                height: 630,
+              },
+            },
+          },
+        },
+      ],
+      "wp:term": [[mockCategories[0]]],
     },
   },
 ];

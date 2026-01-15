@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Send Legal Notice Online | Drafted by Advocates | Start ₹499",
+  title: "Send Legal Notice Online | Drafted by Expert Lawyers | Start ₹1,499",
   description:
-    "Get a strong legal notice drafted by experienced advocates. We handle drafting, sending & tracking to help you get results. Valid in court. Start with ₹499.",
+    "Get professional legal notice drafted and sent by licensed advocates. Money recovery, Cheque bounce, Property disputes & more. Valid in court. Track online.",
   keywords: [
     "legal notice online",
     "lawyer notice",
@@ -19,9 +19,9 @@ export const metadata: Metadata = {
     "vakiltech",
   ],
   openGraph: {
-    title: "Send Legal Notice Online | Drafted by Advocates | Start ₹499",
+    title: "Send Legal Notice Online | Drafted by Expert Lawyers | Start ₹1,499",
     description:
-      "Get a strong legal notice drafted by experienced advocates. We handle drafting, sending & tracking to help you get results. Valid in court. Start with ₹499.",
+      "Get professional legal notice drafted and sent by licensed advocates. Money recovery, Cheque bounce, Property disputes & more. Valid in court. Track online.",
     type: "website",
     url: "https://vakiltech.in/send-legal-notice",
     siteName: "vakiltech",

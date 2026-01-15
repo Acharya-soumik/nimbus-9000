@@ -217,7 +217,7 @@ export default function LegalDraftsBundlePage() {
     "@type": "Article",
     headline: "3500+ Legal Drafts Templates Bundle | Instant Download at ₹499",
     description:
-      "Download 3500+ professional legal drafts instantly at ₹499 (80% OFF). Ready-to-use legal templates in Hindi, English & Marathi.",
+      "Download 3500+ professional legal drafts instantly at ₹499 (80% OFF). Ready-to-use legal templates in Hindi, English & Marathi. Includes agreements, contracts, notices.",
     author: {
       "@type": "Organization",
       name: "VakilTech Legal Team",

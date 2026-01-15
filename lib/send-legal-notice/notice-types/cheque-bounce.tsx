@@ -40,7 +40,7 @@ export const chequeBounceData: NoticeTypeData = {
   content: {
     h1: "Cheque Bounce Legal Notice Under Section 138 of NI Act",
     introduction:
-      "When a cheque is dishonoured due to insufficient funds, it is a criminal offence. You have the legal right to send a mandatory notice under Section 138 of the Negotiable Instruments Act, 1881. This notice must be sent strictly within 30 days of receiving the cheque return memo. Failure to adhere to this timeline can invalidate your legal claim.",
+      "Facing a Cheque Bounce Issue? Get a Legal Notice Drafted and Sent Quickly. When a cheque is dishonoured due to insufficient funds, it is a criminal offence. You have the legal right to send a mandatory notice under Section 138 of the Negotiable Instruments Act, 1881. This notice must be sent strictly within 30 days of receiving the cheque return memo.",
     sections: chequeBounceSections,
     finalCta: {
       text: "Time is running out. You only have 30 days from the date of the return memo to act. Send your Section 138 notice immediately.",

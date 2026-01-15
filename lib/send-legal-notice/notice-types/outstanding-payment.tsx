@@ -40,11 +40,11 @@ export const outstandingPaymentData: NoticeTypeData = {
   content: {
     h1: "Legal Notice for Outstanding Payment - Business Recovery",
     introduction:
-      "If your business is owed payment for goods or services delivered, a legal notice for outstanding payment is your first step toward recovery. This notice formally demands payment and creates legal grounds for further action if payment is not received.",
+      "If you are looking for the correct legal notice format for non-payment of dues, our experts can help. A professionally drafted legal notice formally demands payment and creates strong legal grounds for recovery under the Indian Contract Act and MSMED Act.",
     sections: outstandingPaymentSections,
     finalCta: {
       text: "Don't let unpaid invoices hurt your business cash flow. Send a professional payment demand notice today.",
-      buttonText: "Recover Your Dues Now",
+      buttonText: "Send Notice Now",
     },
   },
 

@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title:
-    "Online Agreement Drafting Services India | Legal Contracts | vakiltech",
+    "Online Agreement Drafting Services | Rental, Employment, NDA | VakilTech",
   description:
     "Professional agreement drafting services online from ₹999. Rental agreements, employment contracts, NDAs, partnership deeds & more. Drafted by Licensed Advocates. Get your custom legal agreement in 48 hours.",
   keywords: [
@@ -19,7 +19,7 @@ export const metadata: Metadata = {
     "vakiltech",
   ],
   openGraph: {
-    title: "Online Agreement Drafting Services India | vakiltech",
+    title: "Online Agreement Drafting Services | Rental, Employment, NDA | VakilTech",
     description:
       "Professional agreement drafting services online from ₹999. Rental agreements, employment contracts, NDAs & more. Drafted by Licensed Advocates.",
     type: "website",

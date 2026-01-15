@@ -7,7 +7,7 @@ export const unpaidSalaryData: NoticeTypeData = {
   cluster: "money-recovery",
 
   seo: {
-    title: "Legal Notice for Unpaid Salary - Recover Dues (Fast & Legal)",
+    title: "Legal Notice for Unpaid Salary - Recover Dues (Fast & Legal) | VakilTech",
     description:
       "Employer not paying salary? Send a legal notice for unpaid salary and dues. Drafted by expert labour lawyers. 100% confidential. Start at ₹499.",
     keywords: [
@@ -42,7 +42,7 @@ export const unpaidSalaryData: NoticeTypeData = {
     sections: [],
     finalCta: {
       text: "Don't let employers exploit you. Your salary is your legal right. Send a notice today to recover what you're owed.",
-      buttonText: "Start Salary Recovery - ₹1,499",
+      buttonText: "Send Legal Notice - ₹1,499",
     },
   },
 

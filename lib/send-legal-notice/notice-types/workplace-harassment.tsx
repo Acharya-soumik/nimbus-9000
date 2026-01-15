@@ -40,11 +40,11 @@ export const workplaceHarassmentData: NoticeTypeData = {
   content: {
     h1: "Legal Notice for Workplace Harassment in India",
     introduction:
-      "If you're facing sexual harassment, bullying, or hostile work environment, the law protects you. Under the Sexual Harassment of Women at Workplace (Prevention, Prohibition and Redressal) Act 2013 (POSH Act), employers must investigate complaints and take action. This notice demands immediate investigation, disciplinary action against harassers, and compensation for the trauma you've suffered.",
+      "Facing harassment? Sending a legal notice for mental harassment or workplace sexual harassment is a critical step to assert your rights. Under the POSH Act 2013, this notice compels the employer to constitute an Internal Complaints Committee (ICC) and investigate the matter within 90 days.",
     sections: workplaceHarassmentSections,
     finalCta: {
       text: "No one should face harassment at work. Take legal action to protect your dignity and career.",
-      buttonText: "Get Legal Protection Now",
+      buttonText: "Send Harassment Legal Notice",
     },
   },
 

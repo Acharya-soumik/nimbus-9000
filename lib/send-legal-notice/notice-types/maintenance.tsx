@@ -39,7 +39,7 @@ export const maintenanceNoticeData: NoticeTypeData = {
   content: {
     h1: "Legal Notice for Maintenance in India",
     introduction:
-      "A legal notice for maintenance is a formal demand for financial support sent to a person who is legally bound to support their dependents but has refused or neglected to do so. Under Indian law (specifically Section 125 of the Code of Criminal Procedure), wives, children (legitimate or illegitimate), and aging parents have a strong legal right to claim maintenance. Sending a legal notice is often the first and most effective step to secure these rights without immediately stepping into a courtroom.",
+      "Seeking Maintenance? Get a Legal Notice Drafted & Sent by Experts. A legal notice for maintenance is a formal demand for financial support sent to a person who is legally bound to support their dependents but has refused or neglected to do so. Under Indian law (specifically Section 125 of the Code of Criminal Procedure), wives, children (legitimate or illegitimate), and aging parents have a strong legal right to claim maintenance. Sending a legal notice is often the first and most effective step to secure these rights without immediately stepping into a courtroom.",
     sections: [
       {
         heading: "Who Can Claim Maintenance?",
@@ -73,7 +73,7 @@ export const maintenanceNoticeData: NoticeTypeData = {
     ],
     finalCta: {
       text: "Stop requesting and start claiming. Your financial dignity is protected by law.",
-      buttonText: "Claim Maintenance Now",
+      buttonText: "Send Maintenance Notice",
     },
   },
 

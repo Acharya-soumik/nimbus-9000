@@ -7,7 +7,7 @@ export const criminalDefamationData: NoticeTypeData = {
   cluster: "criminal",
 
   seo: {
-    title: "Legal Notice for Defamation (Criminal) - Draft & Send Online",
+    title: "Send Criminal Defamation Legal Notice - Draft & Send Online | VakilTech",
     description:
       "Stop false allegations now. Send a professional Legal Notice for Criminal Defamation under Section 356 BNS 2023. Claim damages & demand apology. Drafted by expert lawyers. Starting ₹1,499.",
     keywords: [
@@ -128,7 +128,7 @@ export const criminalDefamationData: NoticeTypeData = {
     ],
     finalCta: {
       text: "Don't Customarily Accept Insults. Fight Back Legally.",
-      buttonText: "Consult & Send Notice - ₹1,499",
+      buttonText: "Send Criminal Defamation Legal Notice - ₹1,499",
     },
   },
 
