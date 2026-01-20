@@ -27,7 +27,7 @@ export function RelatedContentSection({
 
   return (
     <section className={cn("py-12 bg-muted/30 rounded-lg", className)}>
-      <div className="container px-4 md:px-6">
+      <div className="container px-4 md:px-6 mx-auto">
         <h2 className="text-2xl font-bold mb-8 text-text-heading">{title}</h2>
 
         <div className="grid md:grid-cols-2 gap-8">

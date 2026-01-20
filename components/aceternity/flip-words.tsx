@@ -52,7 +52,7 @@ export const FlipWords = ({
     <span
       ref={containerRef}
       className={cn(
-        "inline-block transition-opacity duration-500 ease-out",
+        "inline-block text-center transition-opacity duration-500 ease-out relative  top-[4px] md:top-[7px]",
         className
       )}
       key={currentIndex}
@@ -67,11 +67,11 @@ export const FlipWords = ({
         @keyframes flipIn {
           0% {
             opacity: 0;
-            transform: translateY(10px);
+            transform: translateY(8px);
           }
           100% {
             opacity: 1;
-            transform: translateY(0);
+            transform: translateY(0px);
           }
         }
       `}</style>

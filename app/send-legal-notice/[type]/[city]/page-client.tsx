@@ -6,6 +6,7 @@ import { CityData, getAllCities } from "@/lib/data/cities";
 // Import existing components
 import { HeroSection } from "@/components/send-legal-notice/HeroSection";
 import { CitySpecificSection } from "@/components/send-legal-notice/CitySpecificSection";
+import { AdvocateShowcase } from "@/components/start-legal-notice/AdvocateShowcase";
 import { HowWeWorkTimeline } from "@/components/send-legal-notice/HowWeWorkTimeline";
 import { TestimonialsSection } from "@/components/send-legal-notice/testimonials-section";
 import { FAQSection } from "@/components/ui/faq-section";
@@ -68,9 +69,12 @@ export function LegalNoticeCityPageClient({
       {/* City-Specific Section (NEW) */}
       <CitySpecificSection cityData={cityData} noticeType={noticeData} />
 
+      {/* Drafted By Senior Advocates */}
+      <AdvocateShowcase />
+
       {/* Local Courts Section */}
       <section className="py-12 bg-muted">
-        <div className="container max-w-4xl">
+        <div className="container max-w-4xl mx-auto px-2">
           <h2 className="text-2xl font-bold mb-6">
             Legal Notice Format for {cityData.name} Courts
           </h2>
@@ -101,7 +105,7 @@ export function LegalNoticeCityPageClient({
       <TestimonialsSection /> 
 
       {/* FAQ (City-specific + general) */}
-      <div className="container max-w-4xl py-12">
+      <div className=" max-w-4xl py-12">
         <FAQSection 
             title={`FAQs about Legal Notice in ${cityData.name}`}
             faqs={[...citySpecificFAQs, ...noticeData.faqs]} 
@@ -110,7 +114,7 @@ export function LegalNoticeCityPageClient({
 
       {/* Other Cities Section */}
       <section className="py-12 bg-gray-50">
-        <div className="container">
+        <div className="">
           <h2 className="text-2xl font-bold mb-6 text-center">
             Also Available in Other Cities
           </h2>

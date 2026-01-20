@@ -18,6 +18,7 @@ import {
   type SampleNoticeContent,
   Breadcrumb,
 } from "@/components/send-legal-notice";
+import { AdvocateShowcase } from "@/components/start-legal-notice/AdvocateShowcase";
 import { PostNoticeClarity } from "@/components/send-legal-notice/PostNoticeClarity";
 import { PricingPlans } from "@/components/send-legal-notice/PricingPlans";
 import { FAQSection } from "@/components/ui/faq-section";
@@ -30,6 +31,7 @@ import { StrengthCalculatorPromo } from "@/components/send-legal-notice/Strength
 import { trackEvent, trackLandingPageView } from "@/lib/mixpanel";
 import { RelatedContentSection } from "@/components/ui/related-content";
 import { InContentLink } from "@/components/ui/in-content-link";
+import { getAllCities } from "@/lib/data/cities";
 
 // Lazy load modals to improve INP (reduces initial bundle and defers hydration)
 const DiscountOfferModal = dynamic(
@@ -396,6 +398,9 @@ export default function LegalNoticePage() {
         {/* Strength Calculator Promo (Moved Up) */}
         <StrengthCalculatorPromo />
 
+        {/* Drafted By Senior Advocates */}
+        <AdvocateShowcase />
+
         {/* How We Work Section */}
         <HowWeWorkTimeline />
         
@@ -654,10 +659,12 @@ export default function LegalNoticePage() {
         <TestimonialsSection className="bg-background-gray" />
         {/* Serving Cities Section */}
         <ServingCitiesSection
-          onCityClick={(cityId) => {
-            console.log("City clicked:", cityId);
-            scrollToForm();
-          }}
+          cities={getAllCities().map((city) => ({
+            id: city.id,
+            name: city.name,
+            state: city.state,
+            href: `/send-legal-notice/legal-notice-for-money-recovery/${city.slug}`,
+          }))}
           onViewAllClick={() => {
             console.log("View all cities clicked");
             scrollToForm();

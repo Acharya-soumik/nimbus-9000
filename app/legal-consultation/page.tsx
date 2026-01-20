@@ -10,7 +10,6 @@ import { PageViewTracker } from "@/components/analytics/PageViewTracker";
 import { trackLandingPageView } from "@/lib/mixpanel";
 
 // Design System
-import { MeshGradient } from "@paper-design/shaders-react";
 import { FlipWords } from "@/components/aceternity/flip-words";
 
 // Reusable components from legal-notice
@@ -185,34 +184,20 @@ function ConsultationHeroSection() {
             <div className="relative">
               <div className="relative aspect-16/10 w-full max-w-lg overflow-hidden rounded-2xl">
                 <Image
-                  src="/assets/send-legal-notice/hero.png"
+                  src="/assets/our-services/consultation.png"
                   alt="Legal consultation illustration"
                   fill
-                  className="object-cover"
+                  className="object-contain"
                   priority
                 />
                 {/* Expert Consultation Badge */}
                 <div className="absolute bottom-4 left-1/2 -translate-x-1/2">
                   <div className="rounded-xl bg-white/95 px-5 py-3 shadow-lg backdrop-blur-sm">
                     <div className="mb-1 flex justify-center">
-                      <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-primary/10">
-                        <svg
-                          className="h-4 w-4 text-primary"
-                          viewBox="0 0 24 24"
-                          fill="none"
-                          stroke="currentColor"
-                          strokeWidth="2"
-                        >
-                          <path d="M15 10l-4 4l6 6l4-16l-18 7l4 2l2 6l3-4" />
-                        </svg>
-                      </div>
+                      <p className="text-center text-sm font-semibold text-text-heading">
+                        Speak to an Expert
+                      </p>
                     </div>
-                    <p className="text-center text-sm font-semibold text-text-heading">
-                      Speak to an Expert
-                    </p>
-                    <p className="text-center text-xs text-text-muted">
-                      Our advocates understand your situation.
-                    </p>
                   </div>
                 </div>
               </div>

@@ -36,12 +36,14 @@ export function HeroSection({
   className,
   badge = "India's #1 Legal Platform",
   headline = "Resolve Disputes. Without Court.",
-  subheadline = "Lawyer-drafted legal notices. Sent via Speed Post. 100% Online.",
+  subheadline = "Lawyer-drafted legal notices. 100% Online.",
   flipWords = [
     "Money Recovery",
     "Cheque Bounce",
     "Property Disputes",
     "Consumer Complaints",
+    "Divorce",
+    "Criminal Complaints",
   ],
   badges = [],
 }: HeroSectionProps) {
@@ -197,36 +199,20 @@ export function HeroSection({
 
             {/* Hero Image - Desktop (below badges) */}
             <div className="relative">
-              <div className="relative aspect-16/10 w-full max-w-lg overflow-hidden rounded-2xl">
+              <div className="relative aspect-[5/4] w-full max-w-lg overflow-hidden rounded-2xl">
                 <Image
                   src="/assets/send-legal-notice/hero.png"
                   alt="Legal consultation illustration"
                   fill
-                  className="object-cover"
+                  className="object-contain"
                   fetchPriority="high"
                   priority
                 />
                 {/* Expert Consultation Badge */}
                 <div className="absolute bottom-4 left-1/2 -translate-x-1/2">
                   <div className="rounded-xl bg-white/95 px-5 py-3 shadow-lg backdrop-blur-sm">
-                    <div className="mb-1 flex justify-center">
-                      <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-primary/10">
-                        <svg
-                          className="h-4 w-4 text-primary"
-                          viewBox="0 0 24 24"
-                          fill="none"
-                          stroke="currentColor"
-                          strokeWidth="2"
-                        >
-                          <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
-                        </svg>
-                      </div>
-                    </div>
                     <p className="text-center text-sm font-semibold text-text-heading">
-                      Expert Legal Consultation
-                    </p>
-                    <p className="text-center text-xs text-text-muted">
-                      Our lawyers analyze your case in detail.
+                      Vakiltech filtered lawyers
                     </p>
                   </div>
                 </div>

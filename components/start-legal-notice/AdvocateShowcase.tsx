@@ -70,8 +70,8 @@ export function AdvocateShowcase() {
         <div className="relative w-full">
             <InfiniteMovingCards
                 items={advocates}
-                direction="left"
-                speed="fast"
+                direction="right"
+                speed="normal"
                 pauseOnHover={false}
                 className="py-0"
                 renderItem={(advocate) => (

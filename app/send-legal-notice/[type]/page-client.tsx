@@ -17,6 +17,7 @@ import {
   TestimonialsSection,
   PostNoticeRoadmap,
 } from "@/components/send-legal-notice";
+import { AdvocateShowcase } from "@/components/start-legal-notice/AdvocateShowcase";
 import { FAQSection } from "@/components/ui/faq-section";
 import { WhatsAppFloater } from "@/components/ui/whatsapp-floater";
 import { StickyCTABar } from "@/components/legal-consultation/StickyCTABar";
@@ -251,6 +252,9 @@ export function LegalNoticeTypePageClient({
 
         {/* Strength Calculator Promo */}
         <StrengthCalculatorPromo />
+
+        {/* Drafted By Senior Advocates */}
+        <AdvocateShowcase />
 
         {/* Content Section with H1 and Introduction */}
         <section className="bg-white/70 py-12 lg:py-16">

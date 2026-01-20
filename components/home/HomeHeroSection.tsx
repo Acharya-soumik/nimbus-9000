@@ -2,8 +2,6 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
-import { cn } from "@/lib/utils";
-import { MeshGradient } from "@paper-design/shaders-react";
 import { FlipWords } from "@/components/aceternity/flip-words";
 import { UrgencyBadge } from "@/components/ui/urgency-badge";
 import { homeHeroContent, homeStats } from "./home-data";

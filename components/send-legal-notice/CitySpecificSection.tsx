@@ -14,7 +14,7 @@ interface CitySpecificSectionProps {
 export function CitySpecificSection({ cityData }: CitySpecificSectionProps) {
   return (
     <section className="py-12 bg-white">
-      <div className="container max-w-6xl">
+      <div className="container max-w-6xl mx-auto px-2">
         {/* City Stats */}
         <div className="grid md:grid-cols-4 gap-6 mb-12">
           <div className="text-center p-6 bg-primary/5 rounded-lg">

@@ -53,7 +53,7 @@ function ServiceCard({ service }: { service: Service }) {
 
       {/* Badge (Top Right or Corner) - Optional style tweak */}
       {service.badge && (
-        <div className="absolute -right-12 top-8 rotate-45 transform bg-red-600 px-12 py-1 text-center text-xs font-bold uppercase text-white shadow-lg z-20">
+        <div className="absolute -right-12 top-8 rotate-45 transform bg-neutral-950 border-y border-white/20 px-12 py-1.5 text-center text-[10px] font-bold uppercase tracking-widest text-white shadow-xl z-20">
           {service.badge}
         </div>
       )}
