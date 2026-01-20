@@ -3,6 +3,19 @@ import type { NextConfig } from "next";
 const nextConfig: NextConfig = {
   async redirects() {
     return [
+      // CANONICAL DOMAIN: Force non-www (Priority 1)
+      {
+        source: '/:path*',
+        has: [
+          {
+            type: 'host',
+            value: 'www.vakiltech.in',
+          },
+        ],
+        destination: 'https://vakiltech.in/:path*',
+        permanent: true,
+      },
+
       // Redirect /legal-notice to /send-legal-notice
       {
         source: '/legal-notice',
@@ -22,18 +35,7 @@ const nextConfig: NextConfig = {
         permanent: true,
       },
 
-      // Redirect multi-level paths (city-specific, etc.)
-      // /send-legal-notice/something/something-else → /send-legal-notice
-      {
-        source: '/send-legal-notice/:type/:city',
-        destination: '/send-legal-notice',
-        permanent: true,
-      },
-      {
-        source: '/send-legal-notice/in/:city',
-        destination: '/send-legal-notice',
-        permanent: true,
-      },
+
 
       // Other redirects
       {

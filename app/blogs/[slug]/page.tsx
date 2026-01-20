@@ -3,8 +3,8 @@ import {
   getPostBySlug,
   getRelatedPosts,
   getPopularPosts,
-  mockCategories,
-} from "@/components/blogs";
+} from "@/lib/blog";
+import { mockCategories } from "@/components/blogs/blog-data";
 import { BlogPostClient } from "./client";
 
 /* =============================================================================
@@ -27,20 +27,21 @@ export async function generateMetadata({ params }: BlogPostPageProps) {
     };
   }
 
-  // Strip HTML from excerpt for meta description
-  const description = post.excerpt.rendered.replace(/<[^>]*>/g, "").trim();
+  // Strip Markdown/HTML from excerpt for meta description if needed
+  // Since excerpt is likely plain text in frontmatter, we can use it directly
+  const description = post.excerpt || "";
 
   return {
-    title: `${post.title.rendered} | VakalatnaamaToday Blog`,
+    title: `${post.title} | VakalatnaamaToday Blog`,
     description,
     openGraph: {
-      title: post.title.rendered,
+      title: post.title,
       description,
       type: "article",
       publishedTime: post.date,
-      modifiedTime: post.modified,
-      images: post._embedded?.["wp:featuredmedia"]?.[0]?.source_url
-        ? [post._embedded["wp:featuredmedia"][0].source_url]
+      // modifiedTime: post.modified, // We don't have modified time in frontmatter yet
+      images: post.image
+        ? [post.image]
         : [],
     },
   };

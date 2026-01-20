@@ -262,8 +262,12 @@ const proseStyles = `
   }
 `;
 
+import ReactMarkdown from "react-markdown";
+import remarkGfm from "remark-gfm";
+import rehypeSlug from "rehype-slug";
+
 /* =============================================================================
- * MAIN COMPONENT
+ * CONTENT COMPONENT
  * ============================================================================= */
 
 /**
@@ -271,53 +275,40 @@ const proseStyles = `
  * Renders WordPress HTML content with proper styling
  */
 export function BlogPostContent({ content, className }: BlogPostContentProps) {
-  // Process content to add IDs to headings for TOC
-  const processedContent = React.useMemo(() => {
-    let processed = content;
-
-    // Add IDs to h2 and h3 headings for anchor links
-    processed = processed.replace(
-      /<h([23])([^>]*)>([^<]+)<\/h[23]>/gi,
-      (match, level, attrs, text) => {
-        // Check if ID already exists
-        if (attrs.includes("id=")) {
-          return match;
-        }
-        // Generate slug from heading text
-        const slug = text
-          .toLowerCase()
-          .replace(/[^a-z0-9]+/g, "-")
-          .replace(/^-|-$/g, "");
-        return `<h${level}${attrs} id="${slug}">${text}</h${level}>`;
-      }
-    );
-
-    // Wrap tables in responsive wrapper
-    processed = processed.replace(
-      /<table([^>]*)>/gi,
-      '<div class="table-wrapper"><table$1>'
-    );
-    processed = processed.replace(/<\/table>/gi, "</table></div>");
-
-    return processed;
-  }, [content]);
+  // Prose styles are handled by Tailwind typography plugin (prose class)
+  // We can customize specific elements via components prop in ReactMarkdown
 
   return (
     <>
-      {/* Inject prose styles */}
       <style dangerouslySetInnerHTML={{ __html: proseStyles }} />
-
-      {/* Content */}
-      <article
-        className={cn("blog-prose", className)}
-        dangerouslySetInnerHTML={{ __html: processedContent }}
-      />
+      <article className={cn("blog-prose", className)}>
+        <ReactMarkdown
+          remarkPlugins={[remarkGfm]}
+          rehypePlugins={[rehypeSlug]}
+          components={{
+            // Custom renderers if needed
+            img: ({ node, ...props }) => (
+              <span className="block my-8">
+                <img
+                  {...props}
+                  className="rounded-xl shadow-lg w-full"
+                  loading="lazy"
+                />
+              </span>
+            ),
+            table: ({ node, ...props }) => (
+              <div className="overflow-x-auto my-8 rounded-lg border border-border">
+                <table {...props} className="w-full text-sm text-left" />
+              </div>
+            ),
+          }}
+        >
+          {content}
+        </ReactMarkdown>
+      </article>
     </>
   );
 }
-
-export default BlogPostContent;
-
 
 
 

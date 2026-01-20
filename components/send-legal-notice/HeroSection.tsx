@@ -6,9 +6,11 @@ import { cn } from "@/lib/utils";
 import { PricingCard } from "./PricingCard";
 import { MeshGradient } from "@paper-design/shaders-react";
 import { FlipWords } from "@/components/aceternity/flip-words";
+import { UrgencyBadge } from "@/components/ui/urgency-badge";
 import { Breadcrumb } from "./Breadcrumb";
 import { Highlight } from "@/components/aceternity/hero-highlight";
 import { MultiStepForm } from "./MultiStepForm";
+import { LawyerCredentials } from "@/components/ui/lawyer-credentials";
 
 /**
  * Hero Section Props
@@ -152,10 +154,11 @@ export function HeroSection({
           {/* Left Column - Text Content */}
           <div className="pt-4">
             {/* Category Badge - Desktop Only */}
-            <div className="mb-6">
+            <div className="mb-6 flex items-center gap-3">
               <span className="inline-block rounded-full bg-background-pink-light px-4 py-2 text-xs font-bold uppercase tracking-widest text-primary">
                 {badge}
               </span>
+              <UrgencyBadge type="time" text="Drafted in 24 hrs" />
             </div>
 
             {/* Headline */}
@@ -172,6 +175,8 @@ export function HeroSection({
                 className="font-semibold text-primary"
               />
             </div>
+
+            <LawyerCredentials className="mb-8" />
 
             {/* Feature Badges - Desktop */}
             <div className="mb-8 flex flex-wrap gap-4">
@@ -253,13 +258,21 @@ export function HeroSection({
               <h1 className="mb-3 font-sans text-[1.75rem] font-bold leading-tight text-text-heading sm:text-3xl">
                 {headline}
               </h1>
-              <div className="text-sm text-text-medium sm:text-base">
+              <div className="text-sm text-text-medium sm:text-base mb-2">
                 <span>{subheadline || "Every Notice is"}</span>
                 <FlipWords
                   words={flipWords}
                   duration={2500}
                   className="font-semibold text-primary text-sm sm:text-base m-0 p-0 px-1"
                 />
+              </div>
+              
+              <div className="flex justify-center mb-4">
+                 <UrgencyBadge type="time" text="Drafted in 24 hrs" className="shadow-lg bg-white/90 backdrop-blur-sm" />
+              </div>
+
+              <div className="flex justify-center mb-4 px-4">
+                <LawyerCredentials className="bg-white/50 p-3 rounded-xl backdrop-blur-sm" />
               </div>
             </div>
 

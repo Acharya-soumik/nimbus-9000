@@ -68,19 +68,20 @@ function ListIcon({ className }: { className?: string }) {
  * PARSE HEADINGS FROM HTML
  * ============================================================================= */
 
-function parseHeadings(html: string, maxDepth: number): TOCItem[] {
+function parseHeadings(content: string, maxDepth: number): TOCItem[] {
   const items: TOCItem[] = [];
   
-  // Regex to match h2 and h3 tags with their content and id
-  const headingRegex = /<h([2-3])(?:[^>]*id="([^"]*)")?[^>]*>([^<]+)<\/h[2-3]>/gi;
+  // Regex to match Markdown headings
+  // Matches ## Text or ### Text
+  const headingRegex = /^(#{2,3})\s+(.+)$/gm;
   
   let match;
-  while ((match = headingRegex.exec(html)) !== null) {
-    const level = parseInt(match[1], 10);
+  while ((match = headingRegex.exec(content)) !== null) {
+    const level = match[1].length; // number of #
     if (level <= maxDepth) {
-      const text = match[3].trim();
-      // Generate ID from text if not present
-      const id = match[2] || text
+      const text = match[2].trim();
+      // Generate ID from text
+      const id = text
         .toLowerCase()
         .replace(/[^a-z0-9]+/g, "-")
         .replace(/^-|-$/g, "");

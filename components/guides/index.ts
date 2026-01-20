@@ -14,8 +14,6 @@ export {
   // Types
   type Guide,
   type GuideCategory,
-  type GuideAuthor,
-  type GuideMeta,
   
   // Mock Data
   mockGuides,
@@ -23,8 +21,6 @@ export {
   
   // Utility Functions
   calculateReadingTime,
-  getGuideMeta,
-  formatGuideDate,
   cleanExcerpt,
   getGuidesByCategory,
   getGuideBySlug,

@@ -7,9 +7,9 @@ export const maintenanceNoticeData: NoticeTypeData = {
   cluster: "family",
 
   seo: {
-    title: "Send Maintenance Legal Notice to Husband Online | VakilTech",
+    title: "Maintenance/Alimony Legal Notice – Expert Drafting in 24 Hours",
     description:
-      "Seeking maintenance? Get a legal notice drafted & sent by experts. secure your rights for spousal and child support.",
+      "Seeking maintenance? Legal notice for spousal & child support under Section 125 CrPC. Expert drafted. ₹1,499 | Protection guaranteed. Start today.",
     keywords: [
       "legal notice for maintenance",
       "maintenance claim section 125 crpc",

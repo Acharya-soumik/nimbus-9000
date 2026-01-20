@@ -153,8 +153,8 @@
    * Font sizes, weights, line heights, letter spacing
    * --------------------------------------------------------------------------- */
   /* Font Families */
-  --font-sans: "Acme", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
-    Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-sans: 'Hind', sans-serif;
+  --font-heading: 'Khand', sans-serif;
   --font-mono: "B612 Mono", "Courier New", Consolas, Monaco, "Andale Mono",
     "Ubuntu Mono", monospace;
   --font-serif: Georgia, "Times New Roman", Times, serif;
@@ -455,6 +455,7 @@
    * Expose custom fonts to Tailwind
    * --------------------------------------------------------------------------- */
   --font-sans: var(--font-sans);
+  --font-heading: var(--font-heading);
   --font-mono: var(--font-mono);
   --font-serif: var(--font-serif);
 
@@ -617,35 +618,6 @@
 }
 
 /* =============================================================================
- * FONT FACE DECLARATIONS
- * Load custom fonts with proper fallbacks
- * ============================================================================= */
-
-@font-face {
-  font-family: "Acme";
-  src: url("/fonts/acme/acme-regular.ttf") format("truetype");
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: "B612 Mono";
-  src: url("/fonts/b612-mono/b612-mono-regular.ttf") format("truetype");
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: "B612 Mono";
-  src: url("/fonts/b612-mono/b612-mono-bold.ttf") format("truetype");
-  font-weight: 700;
-  font-style: normal;
-  font-display: swap;
-}
-
-/* =============================================================================
  * BASE STYLES
  * Global element styling
  * ============================================================================= */
@@ -707,7 +679,12 @@ html {
     @apply border-border outline-ring/50;
   }
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground font-sans;
+  }
+  
+  /* Apply Amulya to headings */
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading);
   }
 }
 

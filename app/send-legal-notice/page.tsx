@@ -30,6 +30,8 @@ import { realSampleNotices } from "@/lib/send-legal-notice/real-sample-notices";
 import { PageViewTracker } from "@/components/analytics/PageViewTracker";
 import { StrengthCalculatorPromo } from "@/components/send-legal-notice/StrengthCalculatorPromo";
 import { trackEvent, trackLandingPageView } from "@/lib/mixpanel";
+import { RelatedContentSection } from "@/components/ui/related-content";
+import { InContentLink } from "@/components/ui/in-content-link";
 
 // Use the real money recovery notice
 const moneyRecoveryNotice: SampleNoticeContent =
@@ -612,6 +614,52 @@ export default function LegalNoticePage() {
             },
           ]}
         />
+        
+        {/* Related Content / Cross-Linking Strategy */}
+        <div className="bg-white">
+            <RelatedContentSection 
+                title="Frequently Needed Together"
+                items={[
+                    {
+                        type: "service",
+                        title: "Legal Consultation",
+                        description: "Discuss your case with an advocate before sending notice",
+                        href: "/legal-consultation"
+                    },
+                    {
+                        type: "service",
+                        title: "Agreement Drafting",
+                        description: "Draft settlement agreements after notice response",
+                        href: "/agreement-drafting"
+                    },
+                    {
+                        type: "service",
+                        title: "Legal Drafts Bundle",
+                        description: "3500+ templates for DIY legal work",
+                        href: "/legal-drafts-bundle"
+                    },
+                    {
+                        type: "guide",
+                        title: "Money Recovery Complete Guide",
+                        description: "Comprehensive guide on recovering dues in India",
+                        href: "/guides/money-recovery-complete-guide-india"
+                    },
+                    {
+                        type: "guide",
+                        title: "Cheque Bounce Case Procedure",
+                        description: "Step-by-step process for Section 138 cases",
+                        href: "/guides/cheque-bounce-case-procedure-india"
+                    },
+                    {
+                        type: "guide",
+                        title: "Divorce Process in India",
+                        description: "Understanding mutual and contested divorce",
+                        href: "/guides/divorce-process-india-complete-guide"
+                    }
+                ]}
+            />
+        </div>
+
         {/* Testimonials Section */}
         <TestimonialsSection className="bg-background-gray" />
         {/* Serving Cities Section */}
@@ -637,6 +685,11 @@ export default function LegalNoticePage() {
         <section className="mx-auto max-w-7xl space-y-12 px-4 py-12 sm:px-6 lg:px-8">
             <div className="text-center mb-8">
                 <h2 className="text-3xl font-bold text-text-heading">Legal Notice – Complete Guide</h2>
+                <p className="mt-4 text-text-medium max-w-2xl mx-auto">
+                    Whether you need a <InContentLink href="/send-legal-notice/legal-notice-for-money-recovery">money recovery notice</InContentLink> for
+                    unpaid debts or a <InContentLink href="/send-legal-notice/cheque-bounce-legal-notice">cheque bounce notice</InContentLink> under 
+                    Section 138, our advocates ensure your legal rights are protected.
+                </p>
             </div>
           {/* Variant 1 - Side by side on desktop */}
           <div id="info-variant-1" className="mx-auto max-w-md lg:max-w-none">

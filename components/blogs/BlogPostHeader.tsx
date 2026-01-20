@@ -4,7 +4,7 @@ import * as React from "react";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
 import { motion } from "motion/react";
-import { BlogPost, getPostMeta, formatPostDate } from "./blog-data";
+import { BlogPost, formatPostDate } from "./blog-data";
 
 /* =============================================================================
  * TYPE DEFINITIONS
@@ -183,39 +183,37 @@ export function BlogPostHeader({
   showShareButtons = false,
   className,
 }: BlogPostHeaderProps) {
-  const meta = getPostMeta(post);
-
   return (
     <header className={cn("", className)}>
       {/* Breadcrumb */}
       {showBreadcrumb && (
         <div className="mb-6">
           <Breadcrumb
-            category={meta.categoryNames?.[0]}
-            postTitle={post.title.rendered}
+            category={post.category}
+            postTitle={post.title}
           />
         </div>
       )}
 
       {/* Category Badge */}
-      {showCategory && meta.categoryNames?.[0] && (
+      {showCategory && post.category && (
         <motion.div
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.3, delay: 0.1 }}
         >
           <Link
-            href={`/blogs?category=${meta.categorySlug}`}
+            href={`/blogs?category=${post.category.toLowerCase().replace(/\s+/g, "-")}`}
             className="inline-block rounded-full bg-primary/10 px-4 py-1.5 text-sm font-semibold text-primary transition-colors hover:bg-primary/20"
           >
-            {meta.categoryNames[0]}
+            {post.category}
           </Link>
         </motion.div>
       )}
 
       {/* Title */}
       <div className="mt-4">
-        <AnimatedTitle title={post.title.rendered} />
+        <AnimatedTitle title={post.title} />
       </div>
 
       {/* Meta Information */}
@@ -226,19 +224,14 @@ export function BlogPostHeader({
         className="mt-6 flex flex-wrap items-center gap-4 sm:gap-6"
       >
         {/* Author */}
-        {showAuthor && meta.authorName && (
+        {showAuthor && post.author && (
           <div className="flex items-center gap-3">
-            {meta.authorAvatar && (
-              <img
-                src={meta.authorAvatar}
-                alt={meta.authorName}
-                className="h-12 w-12 rounded-full object-cover ring-2 ring-white shadow-sm"
-                loading="lazy"
-              />
-            )}
+             <div className="flex h-12 w-12 items-center justify-center rounded-full bg-primary/20 text-primary font-bold text-lg">
+                {post.author.charAt(0)}
+             </div>
             <div>
               <p className="text-xs text-text-muted">Written by</p>
-              <p className="font-semibold text-text-heading">{meta.authorName}</p>
+              <p className="font-semibold text-text-heading">{post.author}</p>
             </div>
           </div>
         )}
@@ -257,16 +250,16 @@ export function BlogPostHeader({
         )}
 
         {/* Reading Time */}
-        {showReadTime && (
+        {showReadTime && post.readingTime && (
           <div className="flex items-center gap-2 text-sm text-text-muted">
             <ClockIcon className="h-4 w-4" />
-            <span>{meta.readingTime} min read</span>
+            <span>{post.readingTime} min read</span>
           </div>
         )}
       </motion.div>
 
       {/* Featured Image */}
-      {meta.featuredImageUrl && (
+      {post.image && (
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -274,8 +267,8 @@ export function BlogPostHeader({
           className="mt-8 overflow-hidden rounded-2xl lg:rounded-3xl"
         >
           <img
-            src={meta.featuredImageUrl}
-            alt={post._embedded?.["wp:featuredmedia"]?.[0]?.alt_text || post.title.rendered}
+            src={post.image}
+            alt={post.title}
             className="aspect-video w-full object-cover"
           />
         </motion.div>

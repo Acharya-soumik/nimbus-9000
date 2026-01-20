@@ -36,8 +36,8 @@ export default function GuidesPage() {
       const query = searchQuery.toLowerCase();
       guides = guides.filter(
         (guide) =>
-          guide.title.rendered.toLowerCase().includes(query) ||
-          guide.excerpt.rendered.toLowerCase().includes(query)
+          guide.title.toLowerCase().includes(query) ||
+          guide.excerpt.toLowerCase().includes(query)
       );
     }
     

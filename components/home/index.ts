@@ -8,6 +8,7 @@
 export { HomeHeroSection } from "./HomeHeroSection";
 export { ServicesSection } from "./ServicesSection";
 export { CTABanner } from "./CTABanner";
+export { PopularServicesSection } from "./PopularServicesSection";
 
 // Data
 export {

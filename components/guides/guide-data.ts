@@ -6,15 +6,13 @@
 
 import { 
   BlogPost, 
-  BlogCategory, 
-  BlogAuthor,
-  mockAuthors,
-  calculateReadingTime,
-  getPostMeta,
+  BlogCategory,
   formatPostDate,
+  calculateReadingTime,
   cleanExcerpt,
-  BlogPostMeta,
-} from "@/components/blogs";
+} from "@/components/blogs/blog-data";
+
+
 
 /* =============================================================================
  * TYPE DEFINITIONS - Using Blog Types
@@ -23,8 +21,6 @@ import {
 // Guides use the same structure as blogs
 export type Guide = BlogPost;
 export type GuideCategory = BlogCategory;
-export type GuideAuthor = BlogAuthor;
-export type GuideMeta = BlogPostMeta;
 
 /* =============================================================================
  * GUIDE CATEGORIES
@@ -32,44 +28,39 @@ export type GuideMeta = BlogPostMeta;
 
 export const guideCategories: GuideCategory[] = [
   {
-    id: 1,
+    id: "money-recovery",
     name: "Money Recovery",
     slug: "money-recovery",
     description: "Complete guides on recovering money legally in India",
     count: 8,
-    parent: 0,
   },
   {
-    id: 2,
+    id: "property-law",
     name: "Property Law",
     slug: "property-law",
     description: "Comprehensive guides on property disputes and documentation",
     count: 6,
-    parent: 0,
   },
   {
-    id: 3,
+    id: "family-law",
     name: "Family Law",
     slug: "family-law",
     description: "In-depth guides on divorce, custody, and family matters",
     count: 7,
-    parent: 0,
   },
   {
-    id: 4,
+    id: "consumer-rights",
     name: "Consumer Rights",
     slug: "consumer-rights",
     description: "Your complete guide to consumer protection in India",
     count: 5,
-    parent: 0,
   },
   {
-    id: 5,
+    id: "employment-law",
     name: "Employment Law",
     slug: "employment-law",
     description: "Guides on employment rights and workplace disputes",
     count: 4,
-    parent: 0,
   },
 ];
 
@@ -675,199 +666,64 @@ const employmentGuideContent = `
 
 export const mockGuides: Guide[] = [
   {
-    id: 1,
     slug: "money-recovery-complete-guide-india",
     date: "2025-01-01T10:00:00",
-    modified: "2025-01-15T14:30:00",
-    title: {
-      rendered: "Money Recovery in India: Complete Legal Guide [2025]",
-    },
-    excerpt: {
-      rendered:
-        "<p>Comprehensive guide to recovering money legally in India. Learn about legal notices, summary suits, DRT, success rates, costs, and step-by-step procedures for personal loans, business debts, and cheque bounce cases.</p>",
-    },
-    content: { rendered: moneyRecoveryGuideContent },
-    author: 1,
-    featured_media: 1,
-    categories: [1],
-    tags: [1, 2],
-    _embedded: {
-      author: [mockAuthors[0]],
-      "wp:featuredmedia": [
-        {
-          source_url:
-            "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=1200&h=630&fit=crop",
-          alt_text: "Money recovery legal documents",
-          media_details: {
-            sizes: {
-              large: {
-                source_url:
-                  "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=1024&h=683&fit=crop",
-                width: 1024,
-                height: 683,
-              },
-            },
-          },
-        },
-      ],
-      "wp:term": [[guideCategories[0]]],
-    },
+    title: "Money Recovery in India: Complete Legal Guide [2025]",
+    excerpt: "Comprehensive guide to recovering money legally in India. Learn about legal notices, summary suits, DRT, success rates, costs, and step-by-step procedures for personal loans, business debts, and cheque bounce cases.",
+    content: moneyRecoveryGuideContent,
+    author: "Legal Expert",
+    image: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=1200&h=630&fit=crop",
+    category: "Money Recovery",
+    tags: ["Money Recovery", "Legal Notice"],
+    readingTime: 15,
   },
   {
-    id: 2,
     slug: "property-disputes-resolution-guide",
     date: "2025-01-05T09:00:00",
-    modified: "2025-01-18T11:00:00",
-    title: {
-      rendered: "Property Law in India: Complete Guide to Disputes & Rights [2025]",
-    },
-    excerpt: {
-      rendered:
-        "<p>Everything you need to know about property law in India - from buying property, resolving disputes, RERA complaints, to understanding your property rights. Expert guidance for homeowners and investors.</p>",
-    },
-    content: { rendered: propertyLawGuideContent },
-    author: 2,
-    featured_media: 2,
-    categories: [2],
-    tags: [3, 4],
-    _embedded: {
-      author: [mockAuthors[1]],
-      "wp:featuredmedia": [
-        {
-          source_url:
-            "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=1200&h=630&fit=crop",
-          alt_text: "Property documents and house keys",
-          media_details: {
-            sizes: {
-              large: {
-                source_url:
-                  "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=1024&h=683&fit=crop",
-                width: 1024,
-                height: 683,
-              },
-            },
-          },
-        },
-      ],
-      "wp:term": [[guideCategories[1]]],
-    },
+    title: "Property Law in India: Complete Guide to Disputes & Rights [2025]",
+    excerpt: "Everything you need to know about property law in India - from buying property, resolving disputes, RERA complaints, to understanding your property rights. Expert guidance for homeowners and investors.",
+    content: propertyLawGuideContent,
+    author: "Property Expert",
+    image: "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=1200&h=630&fit=crop",
+    category: "Property Law",
+    tags: ["Property", "Real Estate"],
+    readingTime: 20,
   },
   {
-    id: 3,
     slug: "divorce-process-india-guide",
     date: "2025-01-10T11:00:00",
-    modified: "2025-01-20T09:30:00",
-    title: {
-      rendered: "Divorce Process in India: Step-by-Step Legal Guide [2025]",
-    },
-    excerpt: {
-      rendered:
-        "<p>A complete guide to understanding divorce laws in India. Covers mutual consent vs contested divorce, grounds for divorce, alimony, child custody laws, and timelines for different religions under Indian law.</p>",
-    },
-    content: { rendered: divorceGuideContent },
-    author: 1,
-    featured_media: 3,
-    categories: [3],
-    tags: [5, 6],
-    _embedded: {
-      author: [mockAuthors[0]],
-      "wp:featuredmedia": [
-        {
-          source_url:
-            "https://images.unsplash.com/photo-1633613286991-611fe299c4be?w=1200&h=630&fit=crop",
-          alt_text: "Divorce legal concept",
-          media_details: {
-            sizes: {
-              large: {
-                source_url:
-                  "https://images.unsplash.com/photo-1633613286991-611fe299c4be?w=1024&h=683&fit=crop",
-                width: 1024,
-                height: 683,
-              },
-            },
-          },
-        },
-      ],
-      "wp:term": [[guideCategories[2]]],
-    },
+    title: "Divorce Process in India: Step-by-Step Legal Guide [2025]",
+    excerpt: "A complete guide to understanding divorce laws in India. Covers mutual consent vs contested divorce, grounds for divorce, alimony, child custody laws, and timelines for different religions under Indian law.",
+    content: divorceGuideContent,
+    author: "Family Law Expert",
+    image: "https://images.unsplash.com/photo-1633613286991-611fe299c4be?w=1200&h=630&fit=crop",
+    category: "Family Law",
+    tags: ["Divorce", "Family"],
+    readingTime: 18,
   },
   {
-    id: 4,
     slug: "consumer-rights-protection-guide",
     date: "2025-01-12T14:00:00",
-    modified: "2025-01-22T10:15:00",
-    title: {
-      rendered: "Consumer Rights Protection: Complete Guide to Filing Complaints [2025]",
-    },
-    excerpt: {
-      rendered:
-        "<p>Empower yourself with knowledge of the Consumer Protection Act 2019. Learn how to file complaints against defective goods, service deficiencies, and unfair trade practices in District, State, and National Commissions.</p>",
-    },
-    content: { rendered: consumerGuideContent },
-    author: 2,
-    featured_media: 4,
-    categories: [4],
-    tags: [7, 8],
-    _embedded: {
-      author: [mockAuthors[1]],
-      "wp:featuredmedia": [
-        {
-          source_url:
-            "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=1200&h=630&fit=crop",
-          alt_text: "Consumer rights protection",
-          media_details: {
-            sizes: {
-              large: {
-                source_url:
-                  "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=1024&h=683&fit=crop",
-                width: 1024,
-                height: 683,
-              },
-            },
-          },
-        },
-      ],
-      "wp:term": [[guideCategories[3]]],
-    },
+    title: "Consumer Rights Protection: Complete Guide to Filing Complaints [2025]",
+    excerpt: "Learn about your rights as a consumer in India. Step-by-step guide to filing consumer complaints, understanding the 2019 Act, e-commerce rules, and how to get compensation for defective goods and services.",
+    content: consumerGuideContent,
+    author: "Consumer Rights Expert",
+    image: "https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?w=1200&h=630&fit=crop",
+    category: "Consumer Rights",
+    tags: ["Consumer Protection", "Legal Rights"],
+    readingTime: 12,
   },
   {
-    id: 5,
-    slug: "employment-law-india-guide",
-    date: "2025-01-15T09:30:00",
-    modified: "2025-01-25T16:45:00",
-    title: {
-      rendered: "Employment Law in India: Employee Rights & Workplace Disputes [2025]",
-    },
-    excerpt: {
-      rendered:
-        "<p>Essential guide for employees in India. Understand your legal rights regarding employment contracts, wrongful termination, unpaid salary recovery, workplace harassment (POSH), and gratuity laws.</p>",
-    },
-    content: { rendered: employmentGuideContent },
-    author: 1,
-    featured_media: 5,
-    categories: [5],
-    tags: [9, 10],
-    _embedded: {
-      author: [mockAuthors[0]],
-      "wp:featuredmedia": [
-        {
-          source_url:
-            "https://images.unsplash.com/photo-1521791136064-7986c2920216?w=1200&h=630&fit=crop",
-          alt_text: "Employment law workplace",
-          media_details: {
-            sizes: {
-              large: {
-                source_url:
-                  "https://images.unsplash.com/photo-1521791136064-7986c2920216?w=1024&h=683&fit=crop",
-                width: 1024,
-                height: 683,
-              },
-            },
-          },
-        },
-      ],
-      "wp:term": [[guideCategories[4]]],
-    },
+    slug: "employment-rights-guide-india",
+    date: "2025-01-15T09:00:00",
+    title: "Employment Laws in India: Rights, Termination & Harassment [2025]",
+    excerpt: "Know your rights as an employee. Guide to employment contracts, wrongful termination, salary dues, POSH Act, and legal remedies for workplace disputes.",
+    content: employmentGuideContent,
+    author: "Employment Law Expert",
+    image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=1200&h=630&fit=crop",
+    category: "Employment Law",
+    tags: ["Employment", "Workplace Rights"],
+    readingTime: 16,
   },
 ];
 
@@ -877,10 +733,7 @@ export const mockGuides: Guide[] = [
 
 export function getGuidesByCategory(categorySlug: string | null): Guide[] {
   if (!categorySlug) return mockGuides;
-  return mockGuides.filter((guide) => {
-    const categories = guide._embedded?.["wp:term"]?.[0] || [];
-    return categories.some((cat) => cat.slug === categorySlug);
-  });
+  return mockGuides.filter((guide) => guide.category.toLowerCase().replace(/\s+/g, "-") === categorySlug);
 }
 
 export function getGuideBySlug(slug: string): Guide | undefined {
@@ -888,15 +741,8 @@ export function getGuideBySlug(slug: string): Guide | undefined {
 }
 
 export function getRelatedGuides(guide: Guide, limit = 3): Guide[] {
-  const guideCategories = guide._embedded?.["wp:term"]?.[0] || [];
-  const categorySlugs = guideCategories.map((cat) => cat.slug);
-
   return mockGuides
-    .filter((g) => {
-      if (g.id === guide.id) return false;
-      const gCats = g._embedded?.["wp:term"]?.[0] || [];
-      return gCats.some((cat) => categorySlugs.includes(cat.slug));
-    })
+    .filter((g) => g.slug !== guide.slug && g.category === guide.category)
     .slice(0, limit);
 }
 
@@ -905,4 +751,4 @@ export function getPopularGuides(limit = 5): Guide[] {
 }
 
 // Re-export utilities for guides
-export { calculateReadingTime, getPostMeta as getGuideMeta, formatPostDate as formatGuideDate, cleanExcerpt };
+export { calculateReadingTime, cleanExcerpt, formatPostDate };

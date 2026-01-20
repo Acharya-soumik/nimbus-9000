@@ -70,7 +70,7 @@ function GridVariant({
     <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
       {posts.slice(0, maxPosts).map((post, index) => (
         <motion.div
-          key={post.id}
+          key={post.slug}
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{
@@ -176,7 +176,7 @@ function CarouselVariant({
       >
         {displayPosts.map((post, index) => (
           <motion.div
-            key={post.id}
+            key={post.slug}
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{

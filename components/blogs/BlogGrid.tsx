@@ -315,7 +315,7 @@ export function BlogGrid({
           // Blog Cards
           posts.map((post, index) => (
             <BlogCard
-              key={post.id}
+              key={post.slug}
               post={post}
               variant={effectiveCardVariant}
               basePath={basePath}

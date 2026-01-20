@@ -7,9 +7,9 @@ export const unpaidSalaryData: NoticeTypeData = {
   cluster: "money-recovery",
 
   seo: {
-    title: "Legal Notice for Unpaid Salary - Recover Dues (Fast & Legal) | VakilTech",
+    title: "Unpaid Salary Legal Notice – Recover Employment Dues | 24hr Draft",
     description:
-      "Employer not paying salary? Send a legal notice for unpaid salary and dues. Drafted by expert labour lawyers. 100% confidential. Start at ₹499.",
+      "Employer not paying? Send legal notice for salary & dues under Labour Laws. Expert advocate drafting. ₹1,499 | Confidential service. Recover fees.",
     keywords: [
       "legal notice for unpaid salary format",
       "non payment of salary legal notice",

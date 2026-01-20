@@ -252,7 +252,7 @@ export function BlogSidebar({
           <SectionTitle>Popular Articles</SectionTitle>
           <div className="space-y-1">
             {popularPosts.slice(0, 5).map((post) => (
-              <BlogCard key={post.id} post={post} variant="compact" />
+              <BlogCard key={post.slug} post={post} variant="compact" />
             ))}
           </div>
         </div>
@@ -264,7 +264,7 @@ export function BlogSidebar({
           <SectionTitle>Recent Articles</SectionTitle>
           <div className="space-y-1">
             {recentPosts.slice(0, 3).map((post) => (
-              <BlogCard key={post.id} post={post} variant="compact" />
+              <BlogCard key={post.slug} post={post} variant="compact" />
             ))}
           </div>
         </div>

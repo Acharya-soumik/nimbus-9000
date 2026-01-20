@@ -1,5 +1,14 @@
 "use client";
 
+// Helper to format date
+function formatDate(dateString: string) {
+  return new Date(dateString).toLocaleDateString("en-US", {
+    month: "long",
+    day: "numeric",
+    year: "numeric",
+  });
+}
+
 import * as React from "react";
 import {
   BlogPost,
@@ -46,7 +55,7 @@ export function BlogPostClient({ post, relatedPosts }: BlogPostClientProps) {
       {/* Floating Share Buttons (Desktop) */}
       <ShareButtons
         url={currentUrl}
-        title={post.title.rendered}
+        title={post.title}
         variant="floating"
         platforms={["twitter", "facebook", "linkedin", "whatsapp"]}
       />
@@ -66,7 +75,7 @@ export function BlogPostClient({ post, relatedPosts }: BlogPostClientProps) {
         {/* Table of Contents */}
         <div className="mt-8 lg:hidden">
           <TableOfContents
-            content={post.content.rendered}
+            content={post.content}
             maxDepth={3}
             collapsed
             title="Table of Contents"
@@ -88,7 +97,7 @@ export function BlogPostClient({ post, relatedPosts }: BlogPostClientProps) {
             </HighlightBox>
 
             {/* Main Content */}
-            <BlogPostContent content={post.content.rendered} />
+            <BlogPostContent content={post.content} />
 
             {/* Mid-content Service Ad */}
             <ServiceAdCard
@@ -125,7 +134,7 @@ export function BlogPostClient({ post, relatedPosts }: BlogPostClientProps) {
               </h3>
               <ShareButtons
                 url={currentUrl}
-                title={post.title.rendered}
+                title={post.title}
                 variant="buttons"
                 platforms={[
                   "twitter",
@@ -138,28 +147,27 @@ export function BlogPostClient({ post, relatedPosts }: BlogPostClientProps) {
             </div>
 
             {/* Author Box */}
-            {post._embedded?.author?.[0] && (
+            {post.author && (
               <div className="mt-12 rounded-2xl bg-background-gray-light p-6 lg:p-8">
                 <div className="flex flex-col items-center gap-4 text-center sm:flex-row sm:text-left">
-                  {post._embedded.author[0].avatar_urls?.["96"] && (
+                  {/* Assuming post.authorAvatar is available or using a placeholder */}
+                  {/* {post.authorAvatar && (
                     <img
-                      src={post._embedded.author[0].avatar_urls["96"]}
-                      alt={post._embedded.author[0].name}
+                      src={post.authorAvatar}
+                      alt={post.author}
                       className="h-20 w-20 rounded-full object-cover"
                     />
-                  )}
+                  )} */}
+                  <div className="flex h-20 w-20 items-center justify-center rounded-full bg-primary/20 text-primary font-bold text-3xl">
+                    {post.author.charAt(0)}
+                  </div>
                   <div>
                     <p className="text-xs font-medium uppercase tracking-wide text-text-muted">
                       Written by
                     </p>
                     <h3 className="mt-1 text-lg font-bold text-text-heading">
-                      {post._embedded.author[0].name}
+                      {post.author}
                     </h3>
-                    {post._embedded.author[0].description && (
-                      <p className="mt-2 text-sm text-text-medium">
-                        {post._embedded.author[0].description}
-                      </p>
-                    )}
                   </div>
                 </div>
               </div>
@@ -171,7 +179,7 @@ export function BlogPostClient({ post, relatedPosts }: BlogPostClientProps) {
             <div className="sticky top-24 space-y-6">
               {/* Table of Contents */}
               <TableOfContents
-                content={post.content.rendered}
+                content={post.content}
                 maxDepth={3}
                 title="Table of Contents"
               />
@@ -183,7 +191,7 @@ export function BlogPostClient({ post, relatedPosts }: BlogPostClientProps) {
                 </h3>
                 <ShareButtons
                   url={currentUrl}
-                  title={post.title.rendered}
+                  title={post.title}
                   variant="icons"
                   platforms={[
                     "twitter",

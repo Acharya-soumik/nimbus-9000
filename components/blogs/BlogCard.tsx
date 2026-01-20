@@ -5,40 +5,12 @@ import Link from "next/link";
 import { cn } from "@/lib/utils";
 import {
   BlogPost,
-  getPostMeta,
   formatPostDate,
-  cleanExcerpt,
-} from "./blog-data";
+  calculateReadingTime,
+} from "@/components/blogs"; // Using updated imports
 
 /* =============================================================================
- * TYPE DEFINITIONS
- * ============================================================================= */
-
-export interface BlogCardProps {
-  /** Blog post data */
-  post: BlogPost;
-  /** Card variant */
-  variant?: "default" | "featured" | "horizontal" | "compact";
-  /** Show excerpt text */
-  showExcerpt?: boolean;
-  /** Show category badge */
-  showCategory?: boolean;
-  /** Show author info */
-  showAuthor?: boolean;
-  /** Show reading time */
-  showReadTime?: boolean;
-  /** Image aspect ratio */
-  imageAspectRatio?: "16:9" | "4:3" | "1:1";
-  /** Callback when category is clicked */
-  onCategoryClick?: (categorySlug: string) => void;
-  /** Base path for links (e.g., "/blogs" or "/guides") */
-  basePath?: string;
-  /** Additional CSS classes */
-  className?: string;
-}
-
-/* =============================================================================
- * ICON COMPONENTS
+ * ICONS
  * ============================================================================= */
 
 function ClockIcon({ className }: { className?: string }) {
@@ -59,32 +31,15 @@ function ClockIcon({ className }: { className?: string }) {
   );
 }
 
-function ArrowRightIcon({ className }: { className?: string }) {
-  return (
-    <svg
-      className={cn("h-4 w-4", className)}
-      fill="none"
-      viewBox="0 0 24 24"
-      stroke="currentColor"
-      strokeWidth={2}
-    >
-      <path
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        d="M13 7l5 5m0 0l-5 5m5-5H6"
-      />
-    </svg>
-  );
-}
-
 /* =============================================================================
- * ASPECT RATIO CLASSES
+ * CONSTANTS
  * ============================================================================= */
 
-const aspectRatioClasses = {
+const aspectRatioClasses: Record<string, string> = {
   "16:9": "aspect-video",
   "4:3": "aspect-[4/3]",
   "1:1": "aspect-square",
+  "video": "aspect-video",
 };
 
 /* =============================================================================
@@ -93,7 +48,6 @@ const aspectRatioClasses = {
 
 function DefaultCard({
   post,
-  meta,
   showExcerpt = true,
   showCategory = true,
   showAuthor = true,
@@ -102,7 +56,7 @@ function DefaultCard({
   basePath = "/blogs",
   onCategoryClick,
   className,
-}: BlogCardProps & { meta: ReturnType<typeof getPostMeta> }) {
+}: BlogCardProps) {
   return (
     <article
       className={cn(
@@ -112,12 +66,12 @@ function DefaultCard({
       )}
     >
       {/* Featured Image */}
-      {meta.featuredImageUrl && (
+      {post.image && (
         <Link href={`${basePath}/${post.slug}`} className="block overflow-hidden">
           <div className={cn(aspectRatioClasses[imageAspectRatio], "overflow-hidden")}>
             <img
-              src={meta.featuredImageUrl}
-              alt={post._embedded?.["wp:featuredmedia"]?.[0]?.alt_text || post.title.rendered}
+              src={post.image}
+              alt={post.title}
               className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
               loading="lazy"
             />
@@ -127,15 +81,15 @@ function DefaultCard({
 
       <div className="p-5 lg:p-6">
         {/* Category Badge */}
-        {showCategory && meta.categoryNames?.[0] && (
+        {showCategory && post.category && (
           <button
             onClick={(e) => {
               e.preventDefault();
-              onCategoryClick?.(meta.categorySlug || "");
+              onCategoryClick?.(post.category || "");
             }}
             className="inline-block rounded-full bg-primary/10 px-3 py-1 text-xs font-semibold text-primary transition-colors hover:bg-primary/20"
           >
-            {meta.categoryNames[0]}
+            {post.category}
           </button>
         )}
 
@@ -145,37 +99,29 @@ function DefaultCard({
             href={`${basePath}/${post.slug}`}
             className="line-clamp-2 transition-colors hover:text-primary"
           >
-            {post.title.rendered}
+            {post.title}
           </Link>
         </h3>
 
         {/* Excerpt */}
         {showExcerpt && (
           <p className="mt-2 text-sm text-text-medium line-clamp-3 lg:text-base">
-            {cleanExcerpt(post.excerpt.rendered, 120)}
+            {post.excerpt}
           </p>
         )}
 
         {/* Footer: Author & Meta */}
         <div className="mt-4 flex items-center justify-between">
-          {showAuthor && meta.authorName && (
+          {showAuthor && post.author && (
             <div className="flex items-center gap-2">
-              {meta.authorAvatar && (
-                <img
-                  src={meta.authorAvatar}
-                  alt={meta.authorName}
-                  className="h-8 w-8 rounded-full object-cover"
-                  loading="lazy"
-                />
-              )}
-              <span className="text-sm text-text-muted">{meta.authorName}</span>
+              <span className="text-sm text-text-muted">{post.author}</span>
             </div>
           )}
 
-          {showReadTime && (
+          {showReadTime && post.readingTime && (
             <div className="flex items-center gap-1 text-sm text-text-muted">
               <ClockIcon className="h-3.5 w-3.5" />
-              <span>{meta.readingTime} min</span>
+              <span>{post.readingTime} min</span>
             </div>
           )}
         </div>
@@ -190,14 +136,13 @@ function DefaultCard({
 
 function FeaturedCard({
   post,
-  meta,
   showCategory = true,
   showAuthor = true,
   showReadTime = true,
   basePath = "/blogs",
   onCategoryClick,
   className,
-}: BlogCardProps & { meta: ReturnType<typeof getPostMeta> }) {
+}: BlogCardProps) {
   return (
     <article
       className={cn(
@@ -209,10 +154,10 @@ function FeaturedCard({
       {/* Featured Image with Gradient Overlay */}
       <Link href={`${basePath}/${post.slug}`} className="block">
         <div className="relative aspect-[16/10] overflow-hidden lg:aspect-video">
-          {meta.featuredImageUrl && (
+          {post.image && (
             <img
-              src={meta.featuredImageUrl}
-              alt={post._embedded?.["wp:featuredmedia"]?.[0]?.alt_text || post.title.rendered}
+              src={post.image}
+              alt={post.title}
               className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
               loading="lazy"
             />
@@ -227,49 +172,41 @@ function FeaturedCard({
               <span className="rounded-full bg-primary px-3 py-1 text-xs font-bold uppercase tracking-wide">
                 Featured
               </span>
-              {showCategory && meta.categoryNames?.[0] && (
+              {showCategory && post.category && (
                 <button
                   onClick={(e) => {
                     e.preventDefault();
-                    onCategoryClick?.(meta.categorySlug || "");
+                    onCategoryClick?.(post.category || "");
                   }}
                   className="rounded-full bg-white/20 px-3 py-1 text-xs font-semibold backdrop-blur-sm transition-colors hover:bg-white/30"
                 >
-                  {meta.categoryNames[0]}
+                  {post.category}
                 </button>
               )}
             </div>
 
             {/* Title */}
             <h3 className="mt-3 text-xl font-bold leading-tight lg:text-2xl xl:text-3xl">
-              {post.title.rendered}
+              {post.title}
             </h3>
 
             {/* Excerpt */}
             <p className="mt-2 text-sm text-white/80 line-clamp-2 lg:text-base">
-              {cleanExcerpt(post.excerpt.rendered, 160)}
+              {post.excerpt}
             </p>
 
             {/* Meta */}
             <div className="mt-4 flex flex-wrap items-center gap-4 text-sm text-white/70">
-              {showAuthor && meta.authorName && (
+              {showAuthor && post.author && (
                 <div className="flex items-center gap-2">
-                  {meta.authorAvatar && (
-                    <img
-                      src={meta.authorAvatar}
-                      alt={meta.authorName}
-                      className="h-8 w-8 rounded-full border-2 border-white/30 object-cover"
-                      loading="lazy"
-                    />
-                  )}
-                  <span>{meta.authorName}</span>
+                  <span>{post.author}</span>
                 </div>
               )}
               <span>{formatPostDate(post.date)}</span>
-              {showReadTime && (
+              {showReadTime && post.readingTime && (
                 <div className="flex items-center gap-1">
                   <ClockIcon className="h-3.5 w-3.5" />
-                  <span>{meta.readingTime} min read</span>
+                  <span>{post.readingTime} min read</span>
                 </div>
               )}
             </div>
@@ -286,7 +223,6 @@ function FeaturedCard({
 
 function HorizontalCard({
   post,
-  meta,
   showExcerpt = true,
   showCategory = true,
   showAuthor = true,
@@ -294,7 +230,7 @@ function HorizontalCard({
   basePath = "/blogs",
   onCategoryClick,
   className,
-}: BlogCardProps & { meta: ReturnType<typeof getPostMeta> }) {
+}: BlogCardProps) {
   return (
     <article
       className={cn(
@@ -304,15 +240,15 @@ function HorizontalCard({
       )}
     >
       {/* Featured Image */}
-      {meta.featuredImageUrl && (
+      {post.image && (
         <Link
           href={`${basePath}/${post.slug}`}
           className="block w-full shrink-0 overflow-hidden sm:w-2/5"
         >
           <div className="aspect-video h-full overflow-hidden sm:aspect-auto sm:min-h-[180px]">
             <img
-              src={meta.featuredImageUrl}
-              alt={post._embedded?.["wp:featuredmedia"]?.[0]?.alt_text || post.title.rendered}
+              src={post.image}
+              alt={post.title}
               className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
               loading="lazy"
             />
@@ -323,15 +259,15 @@ function HorizontalCard({
       {/* Content */}
       <div className="flex flex-1 flex-col justify-center p-4 lg:p-5">
         {/* Category Badge */}
-        {showCategory && meta.categoryNames?.[0] && (
+        {showCategory && post.category && (
           <button
             onClick={(e) => {
               e.preventDefault();
-              onCategoryClick?.(meta.categorySlug || "");
+              onCategoryClick?.(post.category || "");
             }}
             className="inline-block w-fit rounded-full bg-primary/10 px-2.5 py-0.5 text-xs font-semibold text-primary transition-colors hover:bg-primary/20"
           >
-            {meta.categoryNames[0]}
+            {post.category}
           </button>
         )}
 
@@ -341,26 +277,26 @@ function HorizontalCard({
             href={`${basePath}/${post.slug}`}
             className="line-clamp-2 transition-colors hover:text-primary"
           >
-            {post.title.rendered}
+            {post.title}
           </Link>
         </h3>
 
         {/* Excerpt */}
         {showExcerpt && (
           <p className="mt-1.5 text-sm text-text-medium line-clamp-2">
-            {cleanExcerpt(post.excerpt.rendered, 100)}
+            {post.excerpt}
           </p>
         )}
 
         {/* Meta */}
         <div className="mt-3 flex flex-wrap items-center gap-3 text-xs text-text-muted">
-          {showAuthor && meta.authorName && (
-            <span>{meta.authorName}</span>
+          {showAuthor && post.author && (
+            <span>{post.author}</span>
           )}
-          {showReadTime && (
+          {showReadTime && post.readingTime && (
             <div className="flex items-center gap-1">
               <ClockIcon className="h-3 w-3" />
-              <span>{meta.readingTime} min</span>
+              <span>{post.readingTime} min</span>
             </div>
           )}
         </div>
@@ -375,11 +311,10 @@ function HorizontalCard({
 
 function CompactCard({
   post,
-  meta,
   showReadTime = true,
   basePath = "/blogs",
   className,
-}: BlogCardProps & { meta: ReturnType<typeof getPostMeta> }) {
+}: BlogCardProps) {
   return (
     <article
       className={cn(
@@ -388,18 +323,15 @@ function CompactCard({
       )}
     >
       {/* Thumbnail */}
-      {meta.featuredImageUrl && (
+      {post.image && (
         <Link
           href={`${basePath}/${post.slug}`}
           className="block shrink-0 overflow-hidden rounded-lg"
         >
           <div className="h-16 w-20 overflow-hidden lg:h-20 lg:w-24">
             <img
-              src={
-                post._embedded?.["wp:featuredmedia"]?.[0]?.media_details?.sizes
-                  ?.thumbnail?.source_url || meta.featuredImageUrl
-              }
-              alt={post._embedded?.["wp:featuredmedia"]?.[0]?.alt_text || post.title.rendered}
+              src={post.image}
+              alt={post.title}
               className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
               loading="lazy"
             />
@@ -414,14 +346,14 @@ function CompactCard({
             href={`${basePath}/${post.slug}`}
             className="line-clamp-2 transition-colors group-hover:text-primary"
           >
-            {post.title.rendered}
+            {post.title}
           </Link>
         </h4>
 
-        {showReadTime && (
+        {showReadTime && post.readingTime && (
           <div className="mt-1 flex items-center gap-1 text-xs text-text-muted">
             <ClockIcon className="h-3 w-3" />
-            <span>{meta.readingTime} min read</span>
+            <span>{post.readingTime} min read</span>
           </div>
         )}
       </div>
@@ -437,6 +369,21 @@ function CompactCard({
  * BlogCard Component
  * Displays a blog post card with multiple variant styles
  */
+export interface BlogCardProps {
+  post: BlogPost;
+  variant?: "default" | "horizontal" | "featured" | "compact";
+  showImage?: boolean;
+  showCategory?: boolean;
+  showDate?: boolean;
+  showExcerpt?: boolean;
+  showAuthor?: boolean;
+  showReadTime?: boolean;
+  imageAspectRatio?: string;
+  className?: string;
+  onCategoryClick?: (category: string) => void;
+  basePath?: string;
+}
+
 export function BlogCard({
   post,
   variant = "default",
@@ -449,11 +396,8 @@ export function BlogCard({
   onCategoryClick,
   className,
 }: BlogCardProps) {
-  const meta = getPostMeta(post);
-
   const commonProps = {
     post,
-    meta,
     showExcerpt,
     showCategory,
     showAuthor,
@@ -475,8 +419,6 @@ export function BlogCard({
       return <DefaultCard {...commonProps} />;
   }
 }
-
-export default BlogCard;
 
 
 

@@ -195,7 +195,7 @@ export function GuidePageClient({ post, relatedPosts }: GuidePageClientProps) {
         {/* Floating Share Buttons (Desktop) */}
         <ShareButtons
           url={currentUrl}
-          title={post.title.rendered}
+          title={post.title}
           variant="floating"
           platforms={["twitter", "facebook", "linkedin", "whatsapp"]}
         />
@@ -215,7 +215,7 @@ export function GuidePageClient({ post, relatedPosts }: GuidePageClientProps) {
           {/* Table of Contents */}
           <div className="mt-8 lg:hidden">
             <TableOfContents
-              content={post.content.rendered}
+              content={post.content}
               maxDepth={3}
               collapsed
               title="Table of Contents"
@@ -236,7 +236,7 @@ export function GuidePageClient({ post, relatedPosts }: GuidePageClientProps) {
               </HighlightBox>
 
               {/* Main Content */}
-              <GuidePostContent content={post.content.rendered} />
+              <GuidePostContent content={post.content} />
 
               {/* Mid-content Service Ad */}
               <ServiceAdCard
@@ -273,7 +273,7 @@ export function GuidePageClient({ post, relatedPosts }: GuidePageClientProps) {
                 </h3>
                 <ShareButtons
                   url={currentUrl}
-                  title={post.title.rendered}
+                  title={post.title}
                   variant="buttons"
                   platforms={[
                     "twitter",
@@ -286,28 +286,16 @@ export function GuidePageClient({ post, relatedPosts }: GuidePageClientProps) {
               </div>
 
               {/* Author Box */}
-              {post._embedded?.author?.[0] && (
+              {post.author && (
                 <div className="mt-12 rounded-2xl bg-background-gray-light p-6 lg:p-8">
                   <div className="flex flex-col items-center gap-4 text-center sm:flex-row sm:text-left">
-                    {post._embedded.author[0].avatar_urls?.["96"] && (
-                      <img
-                        src={post._embedded.author[0].avatar_urls["96"]}
-                        alt={post._embedded.author[0].name}
-                        className="h-20 w-20 rounded-full object-cover"
-                      />
-                    )}
                     <div>
                       <p className="text-xs font-medium uppercase tracking-wide text-text-muted">
                         Written by
                       </p>
                       <h3 className="mt-1 text-lg font-bold text-text-heading">
-                        {post._embedded.author[0].name}
+                        {post.author}
                       </h3>
-                      {post._embedded.author[0].description && (
-                        <p className="mt-2 text-sm text-text-medium">
-                          {post._embedded.author[0].description}
-                        </p>
-                      )}
                     </div>
                   </div>
                 </div>
@@ -319,7 +307,7 @@ export function GuidePageClient({ post, relatedPosts }: GuidePageClientProps) {
               <div className="sticky top-24 space-y-6">
                 {/* Table of Contents */}
                 <TableOfContents
-                  content={post.content.rendered}
+                  content={post.content}
                   maxDepth={3}
                   title="Table of Contents"
                 />
@@ -331,7 +319,7 @@ export function GuidePageClient({ post, relatedPosts }: GuidePageClientProps) {
                   </h3>
                   <ShareButtons
                     url={currentUrl}
-                    title={post.title.rendered}
+                    title={post.title}
                     variant="icons"
                     platforms={[
                       "twitter",

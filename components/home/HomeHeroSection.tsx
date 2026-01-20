@@ -5,80 +5,34 @@ import Link from "next/link";
 import { cn } from "@/lib/utils";
 import { MeshGradient } from "@paper-design/shaders-react";
 import { FlipWords } from "@/components/aceternity/flip-words";
+import { UrgencyBadge } from "@/components/ui/urgency-badge";
 import { homeHeroContent, homeStats } from "./home-data";
 
 /**
  * Home Hero Section Props
  */
-export interface HomeHeroSectionProps {
+interface HomeHeroSectionProps {
   className?: string;
 }
-
-/**
- * Home Page Hero Section
- *
- * A full-width hero section for the main landing page.
- * Features animated gradient background, headline with flip words,
- * trust badges, stats, and dual CTAs for both services.
- */
 export function HomeHeroSection({ className }: HomeHeroSectionProps) {
-  const [dimensions, setDimensions] = useState({ width: 1920, height: 1080 });
-  const [mounted, setMounted] = useState(false);
-
-  useEffect(() => {
-    setMounted(true);
-    const update = () =>
-      setDimensions({
-        width: window.innerWidth,
-        height: window.innerHeight,
-      });
-    update();
-    window.addEventListener("resize", update);
-    return () => window.removeEventListener("resize", update);
-  }, []);
+  // ... existing code ...
 
   return (
     <section
-      className={cn(
-        "relative w-full overflow-hidden min-h-[85vh] flex items-center",
-        className
-      )}
+      // ...
     >
-      {/* Animated Mesh Gradient Background */}
-      {/* <div className="absolute inset-0">
-        {mounted && (
-          <>
-            <MeshGradient
-              width={dimensions.width}
-              height={dimensions.height}
-              colors={[
-                "#FFFFFF",
-                "#FFFFFF",
-                "#FAFAFA",
-                "#F5F5F5",
-                "#FFEBEE",
-                "#EF5A6F",
-              ]}
-              speed={0.4}
-              distortion={0.8}
-              swirl={0.6}
-              grainMixer={0}
-              grainOverlay={0}
-              offsetX={0.1}
-            />
-            <div className="absolute inset-0 pointer-events-none bg-white/50" />
-          </>
-        )}
-      </div> */}
-
+      {/* ... */}
+      
       <div className="relative z-10 mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8 lg:py-16 w-full">
         <div className="text-center">
           {/* Badge */}
-          <div className="mb-6">
+          <div className="mb-6 flex flex-col items-center gap-3">
             <span className="inline-block rounded-full bg-background-pink-light px-4 py-2 text-xs font-bold uppercase tracking-widest text-primary">
               {homeHeroContent.badge}
             </span>
+            <UrgencyBadge type="live" text="15+ people booked consultation in last hour" />
           </div>
+
 
           {/* Main Headline */}
           <h1 className="mb-6 font-sans text-[2.5rem] font-bold leading-[1.1] text-text-heading sm:text-5xl lg:text-6xl xl:text-7xl">

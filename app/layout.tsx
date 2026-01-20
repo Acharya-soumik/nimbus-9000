@@ -1,5 +1,4 @@
 import type { Metadata, Viewport } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/ui/navbar/Navbar";
 import { Footer } from "@/components/blocks/footer-section";
@@ -12,16 +11,6 @@ import { MetaPixel } from "@/components/analytics/MetaPixel";
 import { MicrosoftClarity } from "@/components/analytics/MicrosoftClarity";
 import MixpanelManager from "@/components/analytics/MixpanelManager";
 import { Analytics } from "@vercel/analytics/next";
-
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
 
 export const viewport: Viewport = {
   width: "device-width",
@@ -122,6 +111,9 @@ export default function RootLayout({
         />
         <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png" />
         <meta name="theme-color" content="#EF5A6F" />
+
+        {/* Fonts: Fontshare CDN */}
+        <link href="https://api.fontshare.com/v2/css?f[]=hind@400&f[]=khand@700&display=swap" rel="stylesheet" />
 
         {/* Google Tag Manager - Loads after page interactive */}
         {gtmId && <GoogleTagManager gtmId={gtmId} />}
@@ -236,7 +228,7 @@ export default function RootLayout({
         />
       </head>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`antialiased`}
       >
         {/* GTM NoScript fallback */}
         {gtmId && <GoogleTagManagerNoScript gtmId={gtmId} />}

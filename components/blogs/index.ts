@@ -16,25 +16,14 @@ export {
   // Types
   type BlogPost,
   type BlogCategory,
-  type BlogAuthor,
-  type BlogPostMeta,
-  type BlogFeaturedMedia,
-  type BlogPostEmbedded,
   
   // Mock Data
-  mockPosts,
   mockCategories,
-  mockAuthors,
   
   // Utility Functions
-  calculateReadingTime,
-  getPostMeta,
   formatPostDate,
   cleanExcerpt,
-  getPostsByCategory,
-  getPostBySlug,
-  getRelatedPosts,
-  getPopularPosts,
+  calculateReadingTime,
 } from "./blog-data";
 
 /* =============================================================================

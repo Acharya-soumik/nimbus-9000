@@ -185,6 +185,7 @@ function DropdownFilter({
  * SIDEBAR VARIANT
  * ============================================================================= */
 
+
 function SidebarFilter({
   categories,
   selectedCategory,
@@ -193,13 +194,6 @@ function SidebarFilter({
   allLabel = "All Articles",
   className,
 }: CategoryFilterProps) {
-  // Group categories by parent for hierarchical display
-  const parentCategories = categories.filter((cat) => cat.parent === 0);
-  const childCategories = categories.filter((cat) => cat.parent !== 0);
-
-  const getChildrenForParent = (parentId: number) =>
-    childCategories.filter((cat) => cat.parent === parentId);
-
   return (
     <nav className={cn("space-y-1", className)} aria-label="Categories">
       {/* "All" Option */}
@@ -219,89 +213,41 @@ function SidebarFilter({
         )}
       </button>
 
-      {/* Parent Categories */}
-      {parentCategories.map((category) => {
-        const children = getChildrenForParent(category.id);
-        const isSelected = selectedCategory === category.slug;
-        const hasSelectedChild = children.some(
-          (child) => selectedCategory === child.slug
-        );
-
-        return (
-          <div key={category.id}>
-            <button
-              onClick={() => onCategoryChange(category.slug)}
-              className={cn(
-                "flex w-full items-center justify-between rounded-lg px-3 py-2.5 text-sm transition-colors",
-                "focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/50",
-                isSelected
-                  ? "bg-primary/10 font-semibold text-primary"
-                  : "text-text-body hover:bg-background-gray-light"
-              )}
-            >
-              <span className="flex items-center gap-2">
-                {children.length > 0 && (
-                  <ChevronRightIcon
-                    className={cn(
-                      "h-3 w-3 transition-transform",
-                      (isSelected || hasSelectedChild) && "rotate-90"
-                    )}
-                  />
-                )}
-                {category.name}
-              </span>
-              <span className="flex items-center gap-2">
-                {showCounts && (
-                  <span
-                    className={cn(
-                      "text-xs",
-                      isSelected ? "text-primary/70" : "text-text-muted"
-                    )}
-                  >
-                    {category.count}
-                  </span>
-                )}
-                {isSelected && (
-                  <span className="h-1.5 w-1.5 rounded-full bg-primary" />
-                )}
-              </span>
-            </button>
-
-            {/* Child Categories */}
-            {children.length > 0 && (isSelected || hasSelectedChild) && (
-              <div className="ml-4 mt-1 space-y-1 border-l border-border pl-3">
-                {children.map((child) => (
-                  <button
-                    key={child.id}
-                    onClick={() => onCategoryChange(child.slug)}
-                    className={cn(
-                      "flex w-full items-center justify-between rounded-lg px-3 py-2 text-sm transition-colors",
-                      "focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/50",
-                      selectedCategory === child.slug
-                        ? "bg-primary/10 font-medium text-primary"
-                        : "text-text-medium hover:bg-background-gray-light"
-                    )}
-                  >
-                    <span>{child.name}</span>
-                    {showCounts && (
-                      <span
-                        className={cn(
-                          "text-xs",
-                          selectedCategory === child.slug
-                            ? "text-primary/70"
-                            : "text-text-muted"
-                        )}
-                      >
-                        {child.count}
-                      </span>
-                    )}
-                  </button>
-                ))}
-              </div>
+      {/* Categories List */}
+      <div className="space-y-1 pt-1">
+        {categories.map((category) => (
+          <button
+            key={category.id}
+            onClick={() => onCategoryChange(category.slug)}
+            className={cn(
+              "flex w-full items-center justify-between rounded-lg px-3 py-2.5 text-sm transition-colors",
+              "focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/50",
+              selectedCategory === category.slug
+                ? "bg-primary/10 font-semibold text-primary"
+                : "text-text-body hover:bg-background-gray-light"
             )}
-          </div>
-        );
-      })}
+          >
+            <span>{category.name}</span>
+            <span className="flex items-center gap-2">
+              {showCounts && category.count !== undefined && (
+                <span
+                  className={cn(
+                    "text-xs",
+                    selectedCategory === category.slug
+                      ? "text-primary/70"
+                      : "text-text-muted"
+                  )}
+                >
+                  {category.count}
+                </span>
+              )}
+              {selectedCategory === category.slug && (
+                <span className="h-1.5 w-1.5 rounded-full bg-primary" />
+              )}
+            </span>
+          </button>
+        ))}
+      </div>
     </nav>
   );
 }

@@ -27,21 +27,19 @@ export async function generateMetadata({ params }: GuidePageProps) {
     };
   }
 
-  // Strip HTML from excerpt for meta description
-  const description = guide.excerpt.rendered.replace(/<[^>]*>/g, "").trim();
+  // Strip HTML from excerpt for meta description (if any)
+  const description = guide.excerpt.replace(/<[^>]*>/g, "").trim();
 
   return {
-    title: `${guide.title.rendered} | VakilTech Guides`,
+    title: `${guide.title} | VakilTech Guides`,
     description,
     openGraph: {
-      title: guide.title.rendered,
+      title: guide.title,
       description,
       type: "article",
       publishedTime: guide.date,
-      modifiedTime: guide.modified,
-      images: guide._embedded?.["wp:featuredmedia"]?.[0]?.source_url
-        ? [guide._embedded["wp:featuredmedia"][0].source_url]
-        : [],
+      // modifiedTime: guide.modified, // Optional if not present in new schema
+      images: guide.image ? [guide.image] : [],
     },
   };
 }
@@ -64,14 +62,14 @@ export default async function GuidePage({ params }: GuidePageProps) {
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "Article",
-    headline: guide.title.rendered,
-    description: guide.excerpt.rendered.replace(/<[^>]*>/g, "").trim(),
-    image: guide._embedded?.["wp:featuredmedia"]?.[0]?.source_url,
+    headline: guide.title,
+    description: guide.excerpt.replace(/<[^>]*>/g, "").trim(),
+    image: guide.image,
     datePublished: guide.date,
-    dateModified: guide.modified,
+    // dateModified: guide.modified,
     author: {
       "@type": "Person",
-      name: guide._embedded?.author?.[0]?.name || "VakilTech Legal Team",
+      name: guide.author || "VakilTech Legal Team",
     },
     publisher: {
       "@type": "Organization",

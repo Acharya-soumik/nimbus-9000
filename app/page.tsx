@@ -10,6 +10,7 @@ import {
   homeFeatures,
   homeTimelineSteps,
   homeFAQs,
+  PopularServicesSection,
 } from "@/components/home";
 
 // Reused Components from Legal Notice
@@ -95,6 +96,9 @@ export default function HomePage() {
 
       {/* Services Section */}
       <ServicesSection />
+
+      {/* Popular Services Links (New) */}
+      <PopularServicesSection />
 
       {/* Why Choose VakilTech */}
       <WhySaferSection

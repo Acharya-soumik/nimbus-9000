@@ -8,15 +8,16 @@ export const moneyRecoveryData: NoticeTypeData = {
   cluster: "money-recovery",
 
   seo: {
-    title: "Legal Notice for Money Recovery Format | Recover Dues | Start ₹499",
+    title: "Money Recovery Legal Notice – Get Your ₹ Back | Lawyer Drafted ₹1499",
     description:
-      "Draft & send a legal notice for money recovery in India. Expert lawyers, 24hrs drafting, valid in court. Recover your personal loans & business dues fast.",
+      "Recover your money legally. Expert-drafted demand notice under Civil Procedure Code. 95% recovery success rate. Starting ₹1,499. Get drafted in 24 hours.",
     keywords: [
       "legal notice for recovery of money",
       "money recovery legal notice format",
       "legal notice for non payment of dues",
       "recovery of money suit",
       "legal notice format for recovery of money",
+      "money recovery suit india",
     ],
   },
 

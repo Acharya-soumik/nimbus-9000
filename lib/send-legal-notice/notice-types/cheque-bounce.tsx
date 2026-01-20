@@ -8,15 +8,16 @@ export const chequeBounceData: NoticeTypeData = {
   cluster: "money-recovery",
 
   seo: {
-    title: "Send Cheque Bounce Legal Notice - Quick & Affordable | VakilTech",
+    title: "Cheque Bounce Legal Notice – Section 138 Expert | 24hr Draft ₹1499",
     description:
-      "Facing a Cheque Bounce Issue? Get a Legal Notice Drafted and Sent Quickly. Expert lawyers, flat fee ₹1499. start now.",
+      "Cheque dishonoured? File Section 138 legal notice with expert guidance. Bank-ready format, advocate support. ₹1,499 | 24hr service. Start recovery now.",
     keywords: [
       "cheque bounce legal notice format",
       "section 138 legal notice format",
       "cheque dishonour notice",
       "legal notice for cheque bounce to company",
       "138 notice format",
+      "negotiable instruments act notice",
     ],
   },
 

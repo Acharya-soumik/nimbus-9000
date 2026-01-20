@@ -4,7 +4,7 @@ import * as React from "react";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
 import { motion } from "motion/react";
-import { BlogPost, getPostMeta, cleanExcerpt } from "./blog-data";
+import { BlogPost, cleanExcerpt } from "./blog-data";
 
 /* =============================================================================
  * TYPE DEFINITIONS
@@ -203,8 +203,6 @@ function SearchInput({
  * ============================================================================= */
 
 function FeaturedPostCard({ post }: { post: BlogPost }) {
-  const meta = getPostMeta(post);
-
   return (
     <motion.article
       initial={{ opacity: 0, x: 40 }}
@@ -214,11 +212,11 @@ function FeaturedPostCard({ post }: { post: BlogPost }) {
     >
       <Link href={`/blogs/${post.slug}`} className="block">
         {/* Image */}
-        {meta.featuredImageUrl && (
+        {post.image && (
           <div className="aspect-video overflow-hidden">
             <img
-              src={meta.featuredImageUrl}
-              alt={post._embedded?.["wp:featuredmedia"]?.[0]?.alt_text || ""}
+              src={post.image}
+              alt={post.title}
               className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
               loading="lazy"
             />
@@ -228,25 +226,25 @@ function FeaturedPostCard({ post }: { post: BlogPost }) {
         <div className="p-4 lg:p-5">
           {/* Category & Reading Time */}
           <div className="flex items-center justify-between">
-            {meta.categoryNames?.[0] && (
+            {post.category && (
               <span className="rounded-full bg-primary/10 px-2.5 py-1 text-xs font-semibold text-primary">
-                {meta.categoryNames[0]}
+                {post.category}
               </span>
             )}
             <div className="flex items-center gap-1 text-xs text-text-muted">
               <ClockIcon className="h-3.5 w-3.5" />
-              <span>{meta.readingTime} min read</span>
+              <span>{post.readingTime} min read</span>
             </div>
           </div>
 
           {/* Title */}
           <h3 className="mt-3 text-base font-bold text-text-heading line-clamp-2 group-hover:text-primary lg:text-lg">
-            {post.title.rendered}
+            {post.title}
           </h3>
 
           {/* Excerpt */}
           <p className="mt-2 text-sm text-text-medium line-clamp-2">
-            {cleanExcerpt(post.excerpt.rendered, 100)}
+            {post.excerpt}
           </p>
 
           {/* Read More */}

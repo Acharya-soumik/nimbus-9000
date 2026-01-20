@@ -2,6 +2,7 @@ import { notFound } from "next/navigation";
 import { Metadata } from "next";
 import { getNoticeData } from "@/lib/send-legal-notice/notice-types-data";
 import { LegalNoticeTypePageClient } from "./page-client";
+import FAQSchema from "@/components/seo/FAQSchema";
 
 /* =============================================================================
  * PAGE COMPONENT (Server Component)
@@ -56,5 +57,17 @@ export default async function LegalNoticeTypePage({ params }: PageProps) {
     notFound();
   }
 
-  return <LegalNoticeTypePageClient data={data} />;
+  return (
+    <>
+      {data.faqs && (
+        <FAQSchema
+          faqs={data.faqs.map((f) => ({
+            question: f.question,
+            answer: f.answer as string,
+          }))}
+        />
+      )}
+      <LegalNoticeTypePageClient data={data} />
+    </>
+  );
 }

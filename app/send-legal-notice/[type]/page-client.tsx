@@ -21,6 +21,8 @@ import { FAQSection } from "@/components/ui/faq-section";
 import { WhatsAppFloater } from "@/components/ui/whatsapp-floater";
 import { StickyCTABar } from "@/components/legal-consultation/StickyCTABar";
 import { StrengthCalculatorPromo } from "@/components/send-legal-notice/StrengthCalculatorPromo";
+import { WhyVakilTechComparison } from "@/components/send-legal-notice/WhyVakilTechComparison";
+import { CTAInlineBox } from "@/components/ui/cta-inline-box";
 
 interface LegalNoticeTypePageClientProps {
   data: NoticeTypeData;
@@ -360,6 +362,17 @@ export function LegalNoticeTypePageClient({
         {/* Post Notice Roadmap */}
         <PostNoticeRoadmap data={data.postNoticeRoadmap} />
 
+        {/* Upsell to Consultation */}
+        <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
+            <CTAInlineBox 
+                title="Need Expert Guidance?"
+                description="Not sure if this is the right notice for your situation? Talk to a lawyer for personalized advice before proceeding."
+                ctaText="Book Consultation (₹299)"
+                ctaHref="/legal-consultation"
+                icon={<span className="text-2xl">⚖️</span>}
+            />
+        </div>
+
         {/* Legal Framework Section */}
         <section className="bg-white py-12 lg:py-16">
           <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
@@ -398,6 +411,9 @@ export function LegalNoticeTypePageClient({
 
         {/* Why Safer Section */}
         <WhySaferSection className="bg-background-gray-light" />
+
+        {/* Comparison Section */}
+        <WhyVakilTechComparison />
 
         {/* Sample Notice Section */}
         <SampleNoticeSection

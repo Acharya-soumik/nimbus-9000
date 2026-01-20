@@ -7,9 +7,9 @@ export const criminalDefamationData: NoticeTypeData = {
   cluster: "criminal",
 
   seo: {
-    title: "Send Criminal Defamation Legal Notice - Draft & Send Online | VakilTech",
+    title: "Criminal Defamation Legal Notice – Draft by Advocate in 24 Hours | VakilTech",
     description:
-      "Stop false allegations now. Send a professional Legal Notice for Criminal Defamation under Section 356 BNS 2023. Claim damages & demand apology. Drafted by expert lawyers. Starting ₹1,499.",
+      "Stop false accusations legally. Get a criminal defamation notice drafted by experienced advocates. ₹1,499 | 24hr delivery | 500+ notices sent. Start now.",
     keywords: [
       "legal notice for criminal defamation",
       "criminal defamation notice format india",

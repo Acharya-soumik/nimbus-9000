@@ -7,13 +7,15 @@ export const consumerComplaintNoticeData: NoticeTypeData = {
   cluster: "builder-consumer",
 
   seo: {
-    title: "Consumer Complaint? | File Legal Notice | Start ₹499",
+    title: "Consumer Complaint Legal Notice – Defective Product/Service | ₹1499",
     description:
-      "Defective product or poor service? Get a consumer complaint notice sent today. Pay ₹499 to start + 2-hr callback. Approve the draft before paying ₹1000.",
+      "Got a defective product? Send consumer complaint notice under CPA 2019. Full refund + compensation. Expert drafted ₹1,499. 24hr delivery.",
     keywords: [
       "consumer complaint legal notice",
       "defective product legal notice",
       "consumer rights notice",
+      "file consumer complaint online",
+      "consumer protection act notice format",
     ],
   },
 
