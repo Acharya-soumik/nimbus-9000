@@ -246,16 +246,45 @@ export function PopularLegalNotices({
   onNoticeClick,
 }: PopularLegalNoticesProps) {
   const [searchQuery, setSearchQuery] = React.useState("");
+  const [debouncedQuery, setDebouncedQuery] = React.useState("");
+  const [isPending, startTransition] = React.useTransition();
+  const debounceRef = React.useRef<NodeJS.Timeout | null>(null);
+
+  // Debounce search query updates
+  const handleSearchChange = React.useCallback((value: string) => {
+    setSearchQuery(value);
+    
+    // Clear existing timeout
+    if (debounceRef.current) {
+      clearTimeout(debounceRef.current);
+    }
+    
+    // Debounce the actual filtering (200ms)
+    debounceRef.current = setTimeout(() => {
+      startTransition(() => {
+        setDebouncedQuery(value);
+      });
+    }, 200);
+  }, []);
+
+  // Cleanup on unmount
+  React.useEffect(() => {
+    return () => {
+      if (debounceRef.current) {
+        clearTimeout(debounceRef.current);
+      }
+    };
+  }, []);
 
   const filteredNotices = React.useMemo(() => {
-    const query = searchQuery.toLowerCase().trim();
+    const query = debouncedQuery.toLowerCase().trim();
     if (!query) return notices.slice(0, 6);
     return notices.filter(
       (notice) =>
         notice.title.toLowerCase().includes(query) ||
         notice.description.toLowerCase().includes(query)
     );
-  }, [notices, searchQuery]);
+  }, [notices, debouncedQuery]);
 
   return (
     <section
@@ -294,9 +323,12 @@ export function PopularLegalNotices({
             <Input
               type="search"
               placeholder="Search for a legal notice (e.g., Divorce, Cheque Bounce)..."
-              className="h-12 w-full border-0 bg-transparent px-4 text-base shadow-none ring-0 placeholder:text-gray-400 focus-visible:ring-0 sm:text-base"
+              className={cn(
+                "h-12 w-full border-0 bg-transparent px-4 text-base shadow-none ring-0 placeholder:text-gray-400 focus-visible:ring-0 sm:text-base",
+                isPending && "opacity-70"
+              )}
               value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
+              onChange={(e) => handleSearchChange(e.target.value)}
             />
           </MovingBorderInputWrapper>
         </div>

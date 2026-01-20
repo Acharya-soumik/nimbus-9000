@@ -246,7 +246,7 @@ export function DiscountOfferModal({
         showCloseButton={false}
         drawerProps={{
           className: cn(
-            "!max-h-dvh !h-dvh !mt-0 !rounded-t-3xl flex flex-col",
+            "!max-h-dvh !h-dvh !mt-0 !rounded-t-3xl flex flex-col will-change-transform",
             className
           ),
         }}

@@ -299,6 +299,9 @@ function FormStep1({
   formTitle,
   onFormStart,
 }: Step1Props) {
+  // Use deferred value for validation to prevent input lag
+  const deferredPhoneNumber = React.useDeferredValue(phoneNumber);
+  
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (form.formState.isValid && !phoneValidationError && phoneNumber) {
@@ -306,37 +309,55 @@ function FormStep1({
     }
   };
 
-  const handlePhoneChange = (value: string) => {
-    // Remove country code if user enters it manually
+  // Memoize country code dial codes for faster lookup
+  const dialCodeSet = React.useMemo(
+    () => new Set(countryCodes.map((c) => c.dialCode)),
+    []
+  );
+
+  // Optimized phone change handler - only updates display value immediately
+  const handlePhoneChange = React.useCallback((value: string) => {
+    // Remove country code if user enters it manually (fast check)
     let cleanedValue = value;
-    countryCodes.forEach((country) => {
-      if (cleanedValue.startsWith(country.dialCode)) {
-        cleanedValue = cleanedValue.replace(country.dialCode, "");
+    for (const dialCode of dialCodeSet) {
+      if (cleanedValue.startsWith(dialCode)) {
+        cleanedValue = cleanedValue.slice(dialCode.length);
+        break; // Only check first match
       }
-    });
+    }
 
     // Remove non-digits
     cleanedValue = cleanedValue.replace(/\D/g, "");
     setPhoneNumber(cleanedValue);
+  }, [dialCodeSet, setPhoneNumber]);
 
-    // Validate
-    const validation = validatePhoneNumber(cleanedValue, selectedCountryCode);
-    setPhoneValidationError(validation.error || "");
-
-    if (validation.isValid && validation.formattedNumber) {
-      form.setValue("whatsappNumber", validation.formattedNumber, {
-        shouldValidate: true,
-      });
-    } else {
-      form.setValue(
-        "whatsappNumber",
-        selectedCountryCode.dialCode + cleanedValue,
-        {
-          shouldValidate: true,
-        }
-      );
+  // Deferred validation effect - runs after UI update
+  React.useEffect(() => {
+    if (!deferredPhoneNumber) {
+      setPhoneValidationError("");
+      return;
     }
-  };
+    
+    // Use requestIdleCallback for non-critical validation
+    const timeoutId = setTimeout(() => {
+      const validation = validatePhoneNumber(deferredPhoneNumber, selectedCountryCode);
+      setPhoneValidationError(validation.error || "");
+
+      if (validation.isValid && validation.formattedNumber) {
+        form.setValue("whatsappNumber", validation.formattedNumber, {
+          shouldValidate: true,
+        });
+      } else {
+        form.setValue(
+          "whatsappNumber",
+          selectedCountryCode.dialCode + deferredPhoneNumber,
+          { shouldValidate: true }
+        );
+      }
+    }, 100); // 100ms debounce for validation
+    
+    return () => clearTimeout(timeoutId);
+  }, [deferredPhoneNumber, selectedCountryCode, form, setPhoneValidationError]);
 
   return (
     <div className="relative">

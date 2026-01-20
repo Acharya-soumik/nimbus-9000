@@ -1,6 +1,7 @@
 "use client";
 
 import * as React from "react";
+import dynamic from "next/dynamic";
 import {
   HeroSection,
   HowWeWorkTimeline,
@@ -9,10 +10,7 @@ import {
   InfoSectionVariant3,
   PricingCard,
   MultiStepForm,
-  DiscountOfferModal,
-  ExitIntentModal,
   SampleNoticeSection,
-  SampleNoticeModal,
   PopularLegalNotices,
   ServingCitiesSection,
   TestimonialsSection,
@@ -32,6 +30,20 @@ import { StrengthCalculatorPromo } from "@/components/send-legal-notice/Strength
 import { trackEvent, trackLandingPageView } from "@/lib/mixpanel";
 import { RelatedContentSection } from "@/components/ui/related-content";
 import { InContentLink } from "@/components/ui/in-content-link";
+
+// Lazy load modals to improve INP (reduces initial bundle and defers hydration)
+const DiscountOfferModal = dynamic(
+  () => import("@/components/send-legal-notice/DiscountOfferModal"),
+  { ssr: false }
+);
+const ExitIntentModal = dynamic(
+  () => import("@/components/send-legal-notice/ExitIntentModal"),
+  { ssr: false }
+);
+const SampleNoticeModal = dynamic(
+  () => import("@/components/send-legal-notice/SampleNoticeModal"),
+  { ssr: false }
+);
 
 // Use the real money recovery notice
 const moneyRecoveryNotice: SampleNoticeContent =

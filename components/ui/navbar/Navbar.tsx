@@ -1,11 +1,11 @@
 "use client";
 
 import { useState, useEffect, useRef, useCallback } from "react";
-import { motion } from "motion/react";
 import Image from "next/image";
 import DesktopNav from "./DesktopNav";
 import MobileNavClient from "./MobileNavClient";
 import Link from "next/link";
+import { cn } from "@/lib/utils";
 
 import { usePathname } from "next/navigation";
 
@@ -18,32 +18,41 @@ export default function Navbar() {
   const scrollTimeoutRef = useRef<NodeJS.Timeout | null>(null);
   const lastScrollY = useRef(0);
 
+  const rafIdRef = useRef<number | null>(null);
+
   const handleScroll = useCallback(() => {
-    const currentScrollY = window.scrollY;
+    // Skip if RAF already scheduled - prevents queuing multiple callbacks
+    if (rafIdRef.current !== null) return;
 
-    // Always show navbar at the very top of the page
-    if (currentScrollY < 10) {
-      setIsAtTop(true);
-      setVisible(true);
-      return;
-    }
+    rafIdRef.current = requestAnimationFrame(() => {
+      const currentScrollY = window.scrollY;
 
-    setIsAtTop(false);
+      // Always show navbar at the very top of the page
+      if (currentScrollY < 10) {
+        setIsAtTop(true);
+        setVisible(true);
+        rafIdRef.current = null;
+        return;
+      }
 
-    // Hide navbar while scrolling
-    setVisible(false);
+      setIsAtTop(false);
 
-    // Clear existing timeout
-    if (scrollTimeoutRef.current) {
-      clearTimeout(scrollTimeoutRef.current);
-    }
+      // Hide navbar while scrolling
+      setVisible(false);
 
-    // Show navbar after scrolling stops (150ms delay)
-    scrollTimeoutRef.current = setTimeout(() => {
-      setVisible(true);
-    }, 150);
+      // Clear existing timeout
+      if (scrollTimeoutRef.current) {
+        clearTimeout(scrollTimeoutRef.current);
+      }
 
-    lastScrollY.current = currentScrollY;
+      // Show navbar after scrolling stops (150ms delay)
+      scrollTimeoutRef.current = setTimeout(() => {
+        setVisible(true);
+      }, 150);
+
+      lastScrollY.current = currentScrollY;
+      rafIdRef.current = null;
+    });
   }, []);
 
   useEffect(() => {
@@ -57,21 +66,21 @@ export default function Navbar() {
       if (scrollTimeoutRef.current) {
         clearTimeout(scrollTimeoutRef.current);
       }
+      if (rafIdRef.current !== null) {
+        cancelAnimationFrame(rafIdRef.current);
+      }
     };
   }, [handleScroll]);
 
   return (
-    <motion.header
-      initial={{ y: 0 }}
-      animate={{
-        y: visible ? 0 : -100,
-        opacity: visible ? 1 : 0,
-      }}
-      transition={{
-        duration: 0.3,
-        ease: "easeInOut",
-      }}
-      className="fixed top-0 inset-x-0 z-50 bg-white dark:bg-black border-b mb-[74px]"
+    <header
+      className={cn(
+        "fixed top-0 inset-x-0 z-50 bg-white dark:bg-black border-b mb-[74px]",
+        "transition-all duration-300 ease-in-out",
+        visible 
+          ? "translate-y-0 opacity-100" 
+          : "-translate-y-full opacity-0"
+      )}
     >
       <div className="mx-auto max-w-7xl h-[72px] flex items-center justify-between px-4">
         {/* Logo – server rendered */}
@@ -98,6 +107,6 @@ export default function Navbar() {
           <MobileNavClient />
         </div>
       </div>
-    </motion.header>
+    </header>
   );
 }

@@ -1,13 +1,5 @@
 "use client";
 import React from "react";
-import {
-  motion,
-  useAnimationFrame,
-  useMotionTemplate,
-  useMotionValue,
-  useTransform,
-} from "motion/react";
-import { useRef } from "react";
 import { cn } from "@/lib/utils";
 
 export function Button({
@@ -44,7 +36,7 @@ export function Button({
         className="absolute inset-0"
         style={{ borderRadius: `calc(${borderRadius} * 0.96)` }}
       >
-        <MovingBorder duration={duration} rx="30%" ry="30%">
+        <MovingBorder duration={duration}>
           <div
             className={cn(
               "h-20 w-20 bg-[radial-gradient(#0ea5e9_40%,transparent_60%)] opacity-[0.8]",
@@ -82,58 +74,46 @@ export const MovingBorder = ({
   ry?: string;
   [key: string]: any;
 }) => {
-  const pathRef = useRef<any>(null);
-  const progress = useMotionValue<number>(0);
-
-  useAnimationFrame((time) => {
-    const length = pathRef.current?.getTotalLength();
-    if (length) {
-      const pxPerMillisecond = length / duration;
-      progress.set((time * pxPerMillisecond) % length);
-    }
-  });
-
-  const x = useTransform(
-    progress,
-    (val) => pathRef.current?.getPointAtLength(val).x
-  );
-  const y = useTransform(
-    progress,
-    (val) => pathRef.current?.getPointAtLength(val).y
-  );
-
-  const transform = useMotionTemplate`translateX(${x}px) translateY(${y}px) translateX(-50%) translateY(-50%)`;
-
+  // Use pure CSS animation instead of useAnimationFrame
+  // This runs on the GPU and doesn't block the main thread
+  const animationDuration = `${duration}ms`;
+  
   return (
-    <>
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        preserveAspectRatio="none"
-        className="absolute h-full w-full"
-        width="100%"
-        height="100%"
-        {...otherProps}
-      >
-        <rect
-          fill="none"
-          width="100%"
-          height="100%"
-          rx={rx}
-          ry={ry}
-          ref={pathRef}
-        />
-      </svg>
-      <motion.div
+    <div className="absolute inset-0 overflow-hidden" style={{ borderRadius: rx || '30%' }}>
+      <div 
+        className="absolute w-20 h-20"
         style={{
-          position: "absolute",
-          top: 0,
-          left: 0,
-          display: "inline-block",
-          transform,
+          animation: `movingBorder ${animationDuration} linear infinite`,
+          top: '-10px',
+          left: '-10px',
         }}
       >
         {children}
-      </motion.div>
-    </>
+      </div>
+      <style jsx>{`
+        @keyframes movingBorder {
+          0% {
+            top: -10px;
+            left: -10px;
+          }
+          25% {
+            top: -10px;
+            left: calc(100% - 10px);
+          }
+          50% {
+            top: calc(100% - 10px);
+            left: calc(100% - 10px);
+          }
+          75% {
+            top: calc(100% - 10px);
+            left: -10px;
+          }
+          100% {
+            top: -10px;
+            left: -10px;
+          }
+        }
+      `}</style>
+    </div>
   );
 };

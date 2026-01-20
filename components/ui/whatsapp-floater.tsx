@@ -14,18 +14,54 @@ export function WhatsAppFloater({
   message = "Hello! I need help with a legal notice.",
   className,
 }: WhatsAppFloaterProps) {
+  const [isVisible, setIsVisible] = React.useState(false);
+  const [shouldAnimate, setShouldAnimate] = React.useState(true);
+  const containerRef = React.useRef<HTMLDivElement>(null);
+
+  // Check for reduced motion preference
+  React.useEffect(() => {
+    const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+    setShouldAnimate(!mediaQuery.matches);
+    
+    const handler = (e: MediaQueryListEvent) => setShouldAnimate(!e.matches);
+    mediaQuery.addEventListener('change', handler);
+    return () => mediaQuery.removeEventListener('change', handler);
+  }, []);
+
+  // Use Intersection Observer to only animate when visible
+  React.useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => setIsVisible(entry.isIntersecting),
+      { threshold: 0.1 }
+    );
+    
+    if (containerRef.current) {
+      observer.observe(containerRef.current);
+    }
+    
+    return () => observer.disconnect();
+  }, []);
+
   const handleClick = () => {
     const encodedMessage = encodeURIComponent(message);
     const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
     window.open(whatsappUrl, "_blank", "noopener,noreferrer");
   };
 
+  const animateClass = isVisible && shouldAnimate;
+
   return (
-    <div className={cn("fixed bottom-28 right-6 z-50 flex items-center justify-center", className)}>
-      {/* Spinning Text Ring */}
+    <div 
+      ref={containerRef}
+      className={cn("fixed bottom-28 right-6 z-50 flex items-center justify-center", className)}
+    >
+      {/* Spinning Text Ring - only animate when visible */}
       <div className="absolute inset-0 -m-6 flex items-center justify-center">
         <svg
-          className="h-28 w-28 animate-[spin_10s_linear_infinite]"
+          className={cn(
+            "h-28 w-28",
+            animateClass && "animate-[spin_15s_linear_infinite]"
+          )}
           viewBox="0 0 100 100"
         >
           <circle cx="50" cy="50" r="42" className="fill-white/80 dark:fill-slate-900/80" />
@@ -47,9 +83,10 @@ export function WhatsAppFloater({
         className="group relative flex h-14 w-14 items-center justify-center rounded-full bg-[#25D366] shadow-lg transition-all duration-300 hover:scale-110 hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-[#25D366] focus:ring-offset-2"
         aria-label="Chat on WhatsApp"
       >
-        {/* Ringing animation rings */}
-        <span className="absolute inset-0 animate-ping rounded-full bg-[#25D366] opacity-75 [animation-duration:2s]" />
-        <span className="absolute inset-0 animate-ping rounded-full bg-[#25D366] opacity-50 [animation-delay:0.5s] [animation-duration:2s]" />
+        {/* Single pulse ring - reduced from 2 continuous pings */}
+        {animateClass && (
+          <span className="absolute inset-0 animate-[pulse_3s_ease-in-out_infinite] rounded-full bg-[#25D366] opacity-40" />
+        )}
 
         {/* WhatsApp Icon */}
         <svg

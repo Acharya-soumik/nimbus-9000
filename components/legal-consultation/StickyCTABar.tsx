@@ -36,25 +36,44 @@ export function StickyCTABar({
   const [isFormInView, setIsFormInView] = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => {
-      const scrollY = window.scrollY;
-      setIsVisible(scrollY > showAfterScroll);
+    let rafId: number | null = null;
+    let lastScrollY = window.scrollY;
 
-      // Check if form section is in viewport
-      if (hideOnFormVisible && formSectionId) {
-        const formSection = document.getElementById(formSectionId);
-        if (formSection) {
-          const rect = formSection.getBoundingClientRect();
-          const isInView = rect.top < window.innerHeight && rect.bottom > 0;
-          setIsFormInView(isInView);
+    const handleScroll = () => {
+      // Skip if RAF already scheduled
+      if (rafId !== null) return;
+
+      rafId = requestAnimationFrame(() => {
+        const scrollY = window.scrollY;
+        
+        // Only update state if scroll position changed significantly (5px threshold)
+        if (Math.abs(scrollY - lastScrollY) > 5) {
+          lastScrollY = scrollY;
+          setIsVisible(scrollY > showAfterScroll);
+
+          // Check if form section is in viewport
+          if (hideOnFormVisible && formSectionId) {
+            const formSection = document.getElementById(formSectionId);
+            if (formSection) {
+              const rect = formSection.getBoundingClientRect();
+              const isInView = rect.top < window.innerHeight && rect.bottom > 0;
+              setIsFormInView(isInView);
+            }
+          }
         }
-      }
+        rafId = null;
+      });
     };
 
     window.addEventListener("scroll", handleScroll, { passive: true });
     handleScroll(); // Check initial state
 
-    return () => window.removeEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      if (rafId !== null) {
+        cancelAnimationFrame(rafId);
+      }
+    };
   }, [showAfterScroll, hideOnFormVisible, formSectionId]);
 
   // Don't render on desktop (lg breakpoint and above)
@@ -65,7 +84,7 @@ export function StickyCTABar({
     <div
       className={cn(
         // Base styles
-        "fixed bottom-0 left-0 right-0 z-50",
+        "fixed bottom-0 left-0 right-0 z-50 will-change-transform",
         "bg-white border-t border-gray-200 shadow-[0_-4px_20px_rgba(0,0,0,0.1)]",
         "px-4 py-3 safe-area-inset-bottom",
         // Only show on mobile/tablet

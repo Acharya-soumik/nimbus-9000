@@ -640,6 +640,18 @@ html {
   box-sizing: border-box;
 }
 
+/* Respect user preference for reduced motion - improves INP for accessibility users */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
 /* Mobile viewport height fix - prevents white space when keyboard opens */
 @media screen and (max-width: 768px) {
   /* Use a stable viewport height that doesn't change when keyboard appears */
