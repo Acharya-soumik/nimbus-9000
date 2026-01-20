@@ -34,14 +34,14 @@ export interface HeroSectionProps {
  */
 export function HeroSection({
   className,
-  badge = "Serving NationWide 🇮🇳",
-  headline = "We Don’t Just Send Legal Notices. We Help You Resolve Disputes.",
-  subheadline = "Lawyer-drafted legal notices with clear guidance on what to do next — without court visits.",
+  badge = "India's #1 Legal Platform",
+  headline = "Resolve Disputes. Without Court.",
+  subheadline = "Lawyer-drafted legal notices. Sent via Speed Post. 100% Online.",
   flipWords = [
-    "Expert Lawyers",
-    "Understanding You",
-    "Custom Drafting",
-    "48-Hour Delivery",
+    "Money Recovery",
+    "Cheque Bounce",
+    "Property Disputes",
+    "Consumer Complaints",
   ],
   badges = [],
 }: HeroSectionProps) {

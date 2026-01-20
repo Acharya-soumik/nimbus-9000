@@ -24,6 +24,7 @@ export interface Service {
   badge?: string;
   iconType: "notice" | "consultation";
   image?: string;
+  mostPopular?: boolean;
 }
 
 export interface HomeStat {
@@ -37,16 +38,16 @@ export interface HomeStat {
 // =============================================================================
 
 export const homeHeroContent = {
-  badge: "INDIA'S TRUSTED LEGAL PLATFORM",
-  headline: "Legal Solutions Made Simple",
-  highlightedText: "Affordable",
+  badge: "PREMIUM LEGAL NETWORK",
+  headline: "Quality Legal Experts.",
+  highlightedText: "Connect with",
   subheadline:
-    "From legal notices to expert consultations, get professional legal help without the complexity or high costs.",
+    "Get verified High Court advocates for notices, consultations, and agreements. Fast, reliable, and 100% online.",
   flipWords: [
     "Legal Notices",
-    "Expert Consultations",
-    "Document Review",
-    "Legal Advice",
+    "Consultations",
+    "Agreements",
+    "Property Disputes",
   ],
   stats: [
     { value: "15,000+", label: "Clients Served" },
@@ -68,12 +69,12 @@ export const services: Service[] = [
   {
     id: "legal-notice",
     title: "Legal Notice",
-    description: "Sent via Speed Post",
+    description: "Drafted by Senior Advocates",
     price: "Custom Drafted",
     originalPrice: "₹3,999",
     features: [
-      "Drafted by Licensed Advocate",
-      "Sent via Speed Post ",
+      "Senior Advocate Review",
+      "Sent via Speed Post",
       "Unlimited Revisions",
       "24/7 Support",
       "Delivery Tracking",
@@ -83,17 +84,18 @@ export const services: Service[] = [
     badge: "MOST POPULAR",
     iconType: "notice",
     image: "/assets/our-services/legal-notice.png",
+    mostPopular: true,
   },
   {
     id: "legal-consultation",
     title: "Legal Consultation",
-    description: "Talk to Expert Lawyers",
-    price: "no time constraints",
+    description: "Talk to High Court Experts",
+    price: "No Time Constraints",
     originalPrice: "₹999",
     features: [
-      "15-45 min detailed call",
-      "Licensed Advocate",
-      "Follow-up Support Included",
+      "15-45 Min Detailed Call",
+      "High Court Advocate",
+      "Clear Actionable Advice",
       "100% Confidential",
       "Same-Day Availability",
     ],
@@ -106,13 +108,13 @@ export const services: Service[] = [
   {
     id: "agreement-drafting",
     title: "Agreement Drafting",
-    description: "Custom Legal Contracts",
-    price: "detailed consultation",
+    description: "Ironclad Legal Contracts",
+    price: "Detailed Consultation",
     features: [
-      "Drafted by Licensed Advocate",
+      "Drafted by Experts",
       "Unlimited Revisions",
-      "24/7 Support",
-      "Delivery Tracking",
+      "100% Legal Safety",
+      "Custom Protection",
     ],
     href: "/agreement-drafting",
     ctaText: "Draft Agreement",
@@ -123,13 +125,13 @@ export const services: Service[] = [
   {
     id: "fssai-registration",
     title: "FSSAI License",
-    description: "Got Food Business?",
+    description: "Zero Rejection Guarantee",
     price: "Get License",
     originalPrice: "₹999",
     features: [
       "14-Digit License Number",
       "100% Online Process",
-      "Avoid Penalties",
+      "Avoid Fines",
       "Fast Delivery",
     ],
     href: "/fssai-registration",
@@ -141,13 +143,13 @@ export const services: Service[] = [
   {
     id: "trade-license",
     title: "Trade License",
-    description: "For Shops & Offices",
+    description: "Official Government Reg.",
     price: "Apply Now",
     originalPrice: "₹1,499",
     features: [
       "Municipal Compliance",
-      "Prevent Shop Sealing",
-      "Hassle-free Processing",
+      "Prevent Sealing",
+      "Hassle-free Process",
       "Valid for 1 Year",
     ],
     href: "/trade-license",
@@ -159,14 +161,14 @@ export const services: Service[] = [
   {
     id: "itr-filing",
     title: "ITR Filing",
-    description: "File Tax Returns",
+    description: "Expert Tax Filing",
     price: "@599",
     originalPrice: "₹1,999",
     features: [
       "CA Review & Filing",
       "Maximum Refund",
       "Notice Support",
-      "Plans for all incomes",
+      "All Income Plans",
     ],
     href: "/itr-filing",
     ctaText: "File ITR",
@@ -195,54 +197,54 @@ export const services: Service[] = [
 ];
 
 // =============================================================================
-// WHY VAKILTECH FEATURES (Generic for Home Page)
+// WHY VAKILTECH FEATURES
 // =============================================================================
 
 export const homeFeatures: SafetyFeature[] = [
   {
     image: "/assets/common/consut-lawyer.png",
-    title: "Expert Advocates",
+    title: "Verified Experts",
     description:
-      "Connect with verified Licensed Advocates, not junior lawyers.",
+      "We only partner with experienced High Court practitioners. Quality you can trust.",
   },
   {
     image: "/assets/common/save-money.png",
-    title: "Save 80% on Legal Fees",
-    description: "Quality legal services at a fraction of traditional costs.",
+    title: "Transparent Pricing",
+    description: "Premium legal services at fixed, affordable rates. No hidden costs.",
   },
   {
     image: "/assets/common/sit-and-relax.png",
-    title: "100% Online Process",
-    description: "No office visits needed. Handle everything from your home.",
+    title: "Zero Court Visits",
+    description: "Minimal jhanjhat. Handle everything from your phone.",
   },
   {
     image: "/assets/common/postal-delivery.png",
-    title: "Fast & Reliable",
-    description: "Quick turnaround with real-time tracking and updates.",
+    title: "Track Every Step",
+    description: "Real-time updates via WhatsApp & Email. Sleep better.",
   },
 ];
 
 // =============================================================================
-// HOW IT WORKS (Generic Steps)
+// HOW IT WORKS
 // =============================================================================
 
 export const homeTimelineSteps: TimelineStep[] = [
   {
-    title: "Choose Your Service",
+    title: "Tell Us The Issue",
     description:
-      "Select from our range of legal services - notices, consultations, or document review.",
+      "Answer simple questions. No complicated legal jargon.",
     icon: "/assets/common/fill-form.png",
   },
   {
-    title: "Share Your Details",
+    title: "Expert Review",
     description:
-      "Fill a simple form with your requirements. Our AI helps you provide the right information.",
+      "A Senior Advocate reviews your case drafted by our team.",
     icon: "/assets/common/consut-lawyer.png",
   },
   {
-    title: "Get Expert Help",
+    title: "You Get Results",
     description:
-      "Our Licensed Advocates review your case and deliver professional legal assistance.",
+      "Notice sent or advice delivered. Professional and precise.",
     icon: "/assets/common/registered-post.png",
   },
 ];
@@ -256,37 +258,37 @@ export const homeFAQs: FAQItem[] = [
     id: "what-is-vakiltech",
     question: "What is VakilTech?",
     answer:
-      "VakilTech is India's trusted online legal services platform. We connect you with experienced Licensed Advocates for legal notices, consultations, and document services - all at affordable prices without the hassle of traditional lawyer visits.",
+      "Your online legal team. We connect you with verified High Court advocates for notices, consultations, and documents. Fixed prices. Zero office visits.",
   },
   {
     id: "services-offered",
-    question: "What services does VakilTech offer?",
+    question: "What services do you offer?",
     answer:
-      "We currently offer two main services: 1) Legal Notice drafting and delivery - professionally drafted notices sent via Speed Post for money recovery, property disputes, cheque bounce, etc. 2) Legal Consultation - video/phone consultations with expert advocates for any legal matter.",
+      "1. Legal Notices: Drafted by senior advocates, sent via Speed Post.\n2. Consultations: 15-min calls with experts.\n3. Documents: Rent agreements, wills, and contracts.",
   },
   {
     id: "how-different",
-    question: "How is VakilTech different from traditional lawyers?",
+    question: "Why choose VakilTech?",
     answer:
-      "VakilTech offers 80% lower costs, 100% online convenience, verified Licensed Advocates, transparent pricing with no hidden fees, and a money-back guarantee. Traditional lawyers often charge ₹2,000+ for a simple consultation, while we start at just ₹299.",
+      "Quality and Convenience. We combine the expertise of top lawyers with the ease of an online platform. You get premium service without the premium price tag.",
   },
   {
     id: "is-it-legitimate",
-    question: "Is VakilTech legitimate? Are the lawyers real?",
+    question: "Is this legitimate?",
     answer:
-      "Yes, absolutely. All our advocates are Bar Council registered with verifiable credentials. We've served 15,000+ clients with a 4.9/5 rating. Your legal matters are handled by experienced Licensed Advocates, not paralegals or AI.",
+      "100% Pakka. All our advocates are Bar Council registered. We've served 15,000+ happy clients. Your case is in safe hands.",
   },
   {
     id: "confidential",
-    question: "Is my information confidential?",
+    question: "Is my data safe?",
     answer:
-      "100% confidential. All communications are protected by advocate-client privilege. We use bank-grade encryption and never share your data with third parties. Your privacy is our top priority.",
+      "Yes. Encrypted and protected by advocate-client privilege. We never share your details with anyone. Period.",
   },
   {
     id: "refund-policy",
-    question: "What if I'm not satisfied?",
+    question: "What if I'm not happy?",
     answer:
-      "We offer a 100% money-back guarantee. If you're not satisfied with our service quality, contact us within 24 hours and we'll either resolve the issue or process a full refund - no questions asked.",
+      "Money-back guarantee. If you're not satisfied, tell us within 24 hours. We'll fix it or refund you. No questions asked.",
   },
 ];
 
@@ -295,15 +297,15 @@ export const homeFAQs: FAQItem[] = [
 // =============================================================================
 
 export const ctaBannerContent = {
-  headline: "Ready to Solve Your Legal Problem?",
+  headline: "Quality Legal Support. Just a Click Away.",
   subheadline:
-    "Join 15,000+ Indians who trust VakilTech for affordable, professional legal help.",
+    "Join 15,000+ satisfied clients who trust VakilTech for their legal needs.",
   primaryCta: {
-    text: "Get Started",
+    text: "Explore Services",
     href: "#services",
   },
   secondaryCta: {
-    text: "Talk to Us on WhatsApp",
+    text: "Chat on WhatsApp",
     href: "https://wa.me/917047683995",
   },
 };
@@ -318,8 +320,4 @@ export const homeStats: HomeStat[] = [
   { value: "30", label: "Expert Advocates", suffix: "+" },
   { value: "4.9", label: "Average Rating", suffix: "/5" },
 ];
-
-
-
-
 

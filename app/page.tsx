@@ -33,33 +33,33 @@ import { WhatsAppFloater } from "@/components/ui/whatsapp-floater";
 const homeTestimonials = [
   {
     quote:
-      "VakilTech made recovering my money so easy. The legal notice was professional and I got my ₹3.5 lakh back within 2 weeks!",
+      "Got my ₹3.5 lakh back in 2 weeks! The legal notice was super professional and effective.",
     name: "Priya Sharma",
     title: "Business Owner, Delhi",
   },
   {
     quote:
-      "The consultation helped me understand my rights in a property dispute. Clear advice that saved me lakhs in potential losses.",
+      "Saved me lakhs in potential losses. The advocate gave clear, direct advice in 15 minutes.",
     name: "Rajesh Kumar",
     title: "Software Engineer, Bangalore",
   },
   {
     quote:
-      "Excellent service for my cheque bounce case. The lawyer drafted a perfect notice and guided me through the whole process.",
+      "My tenant finally paid the pending rent. Fast service, no running around courts.",
+    name: "Meera Patel",
+    title: "Property Owner, Ahmedabad",
+  },
+  {
+    quote:
+      "Cheque bounce issue resolved. The draft was perfect and the delivery was tracked.",
     name: "Ananya Verma",
     title: "Freelancer, Mumbai",
   },
   {
     quote:
-      "Got a consultation about my employment contract. The advocate spotted issues I hadn't even considered. Highly recommended!",
+      "Better than my local lawyer and 10x cheaper. Highly recommended for contracts.",
     name: "Vikram Singh",
     title: "HR Manager, Hyderabad",
-  },
-  {
-    quote:
-      "Affordable and professional. The legal notice was delivered quickly and the tenant finally paid the pending rent.",
-    name: "Meera Patel",
-    title: "Property Owner, Ahmedabad",
   },
 ];
 

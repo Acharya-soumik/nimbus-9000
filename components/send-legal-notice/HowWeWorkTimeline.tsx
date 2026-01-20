@@ -36,21 +36,21 @@ export interface HowWeWorkTimelineProps {
  */
 const defaultSteps: TimelineStep[] = [
   {
-    title: "Case Review",
+    title: "You Tell Us",
     description:
-      "Share your details and documents. A licensed lawyer reviews your case and calls you for consultation.",
+      "Answer simple questions. Upload documents. Done in 5 mins.",
     icon: "/assets/common/fill-form.png",
   },
   {
-    title: "Drafting",
+    title: "We Draft",
     description:
-      "A custom legal notice is drafted based on your facts. You review and approve before anything is sent.",
+      "Expert lawyers draft your notice. You review and approve.",
     icon: "/assets/common/consut-lawyer.png",
   },
   {
-    title: "Dispatch",
+    title: "We Send",
     description:
-      "The notice is sent via Speed Post. You receive delivery proof and scanned copies.",
+      "Sent via Speed Post with tracking ID.",
     icon: "/assets/common/registered-post.png",
   },
 ];

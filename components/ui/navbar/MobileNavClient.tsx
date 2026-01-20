@@ -34,7 +34,7 @@ export default function MobileNavClient() {
             animate={{ x: 0 }}
             exit={{ x: "100%" }}
             transition={{ type: "tween", duration: 0.3 }}
-            className="fixed inset-0 z-50 bg-white dark:bg-black p-6"
+            className="fixed inset-0 z-[100] bg-[#ffffff] dark:bg-black p-6 h-[100dvh]"
           >
             <button
               className="mb-8 p-2 text-text-heading"

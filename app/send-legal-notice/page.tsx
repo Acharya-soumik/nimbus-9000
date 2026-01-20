@@ -54,76 +54,54 @@ const legalNoticeFAQs: FAQItem[] = [
   {
     id: "what-is-legal-notice",
     question: "What is a legal notice?",
-    answer: (
-      <div className="space-y-2">
-        <p>
-          A legal notice is a formal written communication that informs an
-          individual or entity about a legal matter. It serves as an official
-          record of intent to take legal action if the matter is not resolved.
-        </p>
-        <p>
-          Legal notices are commonly used in cases of breach of contract,
-          property disputes, cheque bounces, defamation, and other civil
-          matters.
-        </p>
-      </div>
-    ),
+    answer: "A formal warning sent to an opponent. It signals your intent to sue if the dispute isn't resolved.",
   },
   {
     id: "why-send-legal-notice",
     question: "Why should I send a legal notice?",
     answer:
-      "A legal notice serves multiple purposes: it formally documents your grievance, provides the recipient an opportunity to resolve the matter amicably, and establishes a record that you attempted to settle the dispute before approaching the court. It can often lead to resolution without expensive and time-consuming litigation.",
+      "It proves you tried to settle. Essential for court cases. Most disputes end here.",
   },
   {
     id: "how-long-response",
     question: "How long does the recipient have to respond?",
     answer:
-      "Typically, the recipient is given 15-30 days to respond to a legal notice, though this can vary depending on the nature of the case and applicable laws. The response period should be clearly mentioned in the notice itself.",
+      "Usually 15-30 days. We specify this in your notice.",
   },
   {
     id: "cost-legal-notice",
-    question: "How much does it cost to send a legal notice?",
+    question: "How much does it cost?",
     answer: (
       <div className="space-y-2">
         <p>
-          The cost varies based on the complexity of the case and the lawyer's
-          fees. With Vakil Tech, we offer transparent pricing starting from{" "}
-          <span className="font-semibold text-[oklch(64%_0.18_15)]">
-            ₹1,499
-          </span>
-          , making legal services accessible to everyone.
-        </p>
-        <p>
-          This includes drafting by Licensed Advocates, unlimited revisions,
-          sending via Speed Post, and 24/7 support.
+          Flat <span className="font-semibold text-[oklch(64%_0.18_15)]">₹1,499</span>. Includes everything: drafting, revisions, and Speed Post.
         </p>
       </div>
     ),
   },
   {
     id: "what-happens-after",
-    question: "What happens after sending a legal notice?",
+    question: "What happens after sending?",
     answer:
-      "After the notice is sent, the recipient may respond with their position, propose a settlement, or choose not to respond. If no satisfactory response is received within the specified time period, you can proceed with filing a case in court. The legal notice serves as evidence that you attempted resolution before litigation.",
+      "Wait for their reply. If they refuse to settle, you can file a court case. This notice is your proof.",
   },
   {
     id: "how-long-takes",
     question: "How long does the process take?",
     answer:
-      "With Vakil Tech, the drafting process typically takes 24-48 hours. Once drafted and approved by you, the notice is sent via Speed Post, which takes 5-7 business days for delivery. You'll receive tracking updates at every step.",
+      "Draft in 24 hours. Sent after your approval. Delivered in 5-7 days.",
   },
   {
     id: "do-i-need-lawyer",
-    question: "Do I need to visit a lawyer's office?",
+    question: "Do I need to visit a lawyer?",
     answer:
-      "No! Our entire process is 100% online. Simply fill out our form, and our experienced Licensed Advocates will draft your notice. You can review, request revisions, and approve everything from the comfort of your home.",
+      "No. We handle everything online. You stay home.",
   },
   {
     id: "what-documents-needed",
-    question: "What documents do I need to provide?",
+    question: "What documents do I need?",
     answer:
-      "The required documents vary by case type, but generally include: identity proof, relevant contracts or agreements, proof of transaction (for money recovery), correspondence with the other party, and any other supporting evidence. Our team will guide you on specific requirements after you submit your initial details.",
+      "ID proof and any evidence (bills, agreements, chats). We'll guide you after you sign up.",
   },
 ];
 

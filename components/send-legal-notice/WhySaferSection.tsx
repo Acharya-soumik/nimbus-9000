@@ -29,24 +29,24 @@ export interface WhySaferSectionProps {
 const defaultFeatures: SafetyFeature[] = [
   {
     image: "/assets/common/consut-lawyer.png",
-    title: "Custom Drafted by Lawyers",
+    title: "Expert Drafted",
     description:
-      "Detailed understanding of your case and custom drafted for you.",
+      "Valid in all Indian courts.",
   },
   {
     image: "/assets/common/sit-and-relax.png",
-    title: "No Court Visits Required",
-    description: "Resolve disputes from the comfort of your home.",
+    title: "Zero Court Visits",
+    description: "100% digital process.",
   },
   {
     image: "/assets/common/postal-delivery.png",
-    title: "Rapid Drafting (24 hrs)",
-    description: "Drafts ready for review in 24 hours.",
+    title: "Ready in 24 Hrs",
+    description: "Fastest turnaround.",
   },
   {
     image: "/assets/common/save-money.png",
-    title: "Cost-Efficient vs Local Lawyers",
-    description: "Save 80% compared to local lawyers.",
+    title: "Save 80% Cost",
+    description: "Transparent ₹1,499 pricing.",
   },
 ];
 

@@ -185,22 +185,22 @@ export function InfoSectionVariant1({
   features = [
     {
       icon: <DocumentIcon />,
-      title: "Creates Evidence",
+      title: "Legal Proof",
       description:
-        "Serves as admissible proof in court that you attempted to resolve the dispute amicably.",
+        "Admissible in court.",
     },
     {
       icon: <SpeedometerIcon />,
-      title: "Faster Resolution",
+      title: "Fast Results",
       description:
-        "Most disputes are settled immediately after receiving a notice, avoiding court entirely.",
+        "65% disputes settled instantly.",
       badge: { text: "65% Success", color: "success" as const },
     },
     {
       icon: <WalletIcon />,
-      title: "Saves Money",
+      title: "Save Money",
       description:
-        "Reduces litigation costs significantly by forcing a pre-litigation settlement.",
+        "Avoid expensive litigation.",
     },
   ],
   avatars = [{ initials: "/A" }, { initials: "/A" }],
