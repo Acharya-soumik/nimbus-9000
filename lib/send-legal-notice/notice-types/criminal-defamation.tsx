@@ -7,9 +7,9 @@ export const criminalDefamationData: NoticeTypeData = {
   cluster: "criminal",
 
   seo: {
-    title: "Criminal Defamation Legal Notice – Draft by Advocate in 24 Hours | VakilTech",
+    title: "Criminal Defamation Notice – Section 356 BNS | ₹1,499 | 24hr Draft",
     description:
-      "Stop false accusations legally. Get a criminal defamation notice drafted by experienced advocates. ₹1,499 | 24hr delivery | 500+ notices sent. Start now.",
+      "False accusations damaging your reputation? Send a Section 356 BNS notice. Expert-drafted. 2-year jail penalty for defamer. ₹1,499. Act now.",
     keywords: [
       "legal notice for criminal defamation",
       "criminal defamation notice format india",
@@ -115,7 +115,7 @@ export const criminalDefamationData: NoticeTypeData = {
         ],
       },
       {
-        heading: "Why Choose VakilTalk?",
+        heading: "Why Choose VakilTech?",
         content:
           "Defamation cases are sensitive. A poorly drafted notice can be used against you or dismissed as vague. Our experienced criminal lawyers ensure your notice is legally watertight.",
         listItems: [
@@ -308,9 +308,9 @@ export const criminalDefamationData: NoticeTypeData = {
     },
     {
       id: "lawyer-fee",
-      question: "Why should I use VakilTalk instead of a local lawyer?",
+      question: "Why should I use VakilTech instead of a local lawyer?",
       answer:
-        "VakilTalk offers specialized digital-first legal services. Our experts specialize in defamation and cyber laws. We offer a transparent flat fee of ₹1,499 for the notice, whereas local lawyers may charge anywhere from ₹5,000 to ₹15,000 with varying quality. Plus, we handle everything online without you needing to visit court chambers.",
+        "VakilTech offers specialized digital-first legal services. Our experts specialize in defamation and cyber laws. We offer a transparent flat fee of ₹1,499 for the notice, whereas local lawyers may charge anywhere from ₹5,000 to ₹15,000 with varying quality. Plus, we handle everything online without you needing to visit court chambers.",
     },
     {
       id: "jurisdiction",

@@ -8,9 +8,9 @@ export const chequeBounceData: NoticeTypeData = {
   cluster: "money-recovery",
 
   seo: {
-    title: "Cheque Bounce Legal Notice – Section 138 Expert | 24hr Draft ₹1499",
+    title: "Cheque Bounce Notice – Section 138 NI Act | Get 2x Compensation | ₹1,499",
     description:
-      "Cheque dishonoured? File Section 138 legal notice with expert guidance. Bank-ready format, advocate support. ₹1,499 | 24hr service. Start recovery now.",
+      "Cheque bounced? Send mandatory Section 138 notice within 30 days. Recover amount + 2x compensation. Expert-drafted. ₹1,499. Act fast.",
     keywords: [
       "cheque bounce legal notice format",
       "section 138 legal notice format",

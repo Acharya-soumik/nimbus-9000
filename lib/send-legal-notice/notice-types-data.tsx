@@ -21,6 +21,9 @@ import {
   employeeMisconductData,
   domesticViolenceData,
   breachOfContractData,
+  bankLoanSettlementData,
+  professionalFeesRecoveryData,
+  amenitiesSocietyBuilderData,
 } from "./notice-types";
 
 // Re-export NoticeTypeData type
@@ -49,6 +52,9 @@ export {
   employeeMisconductData,
   domesticViolenceData,
   breachOfContractData,
+  bankLoanSettlementData,
+  professionalFeesRecoveryData,
+  amenitiesSocietyBuilderData,
 };
 
 export const noticeTypesData: Record<string, NoticeTypeData> = {
@@ -73,6 +79,9 @@ export const noticeTypesData: Record<string, NoticeTypeData> = {
   "employee-misconduct-legal-notice": employeeMisconductData,
   "domestic-violence-legal-notice": domesticViolenceData,
   "breach-of-contract-legal-notice": breachOfContractData,
+  "bank-loan-settlement": bankLoanSettlementData,
+  "professional-fees-recovery": professionalFeesRecoveryData,
+  "amenities-society-builder": amenitiesSocietyBuilderData,
 };
 
 export function getNoticeData(slug: string): NoticeTypeData | null {
