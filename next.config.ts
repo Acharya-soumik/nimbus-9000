@@ -37,6 +37,13 @@ const nextConfig: NextConfig = {
 
 
 
+      // Blog redirects (old slugs to new canonical URLs)
+      {
+        source: '/blogs/defamation-bns-section-356',
+        destination: '/blogs/section-356-bns-defamation-law-india',
+        permanent: true,
+      },
+
       // Other redirects
       {
         source: '/consultation/:path*',
