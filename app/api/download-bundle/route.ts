@@ -5,6 +5,8 @@ import {
   BundleType,
   BUNDLE_FILE_MAPPING,
 } from "@/lib/s3-service";
+import { PaymentService } from "@/services/payment-service";
+import { getSupabaseServer } from "@/lib/supabase-server";
 
 /**
  * API Route: Generate pre-signed download URL for legal bundle
@@ -49,16 +51,52 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // TODO: Optionally verify transactionId in your database/payment system
-    // This ensures only users who actually paid can download
-    // Example:
-    // const isValidTransaction = await verifyTransaction(transactionId);
-    // if (!isValidTransaction) {
-    //   return NextResponse.json(
-    //     { error: "Invalid transaction" },
-    //     { status: 403 }
-    //   );
-    // }
+    // Verify transaction and log sale
+    try {
+      // 1. Verify Payment with Cashfree
+      const verification = await PaymentService.verifyPayment(transactionId);
+      
+      if (!verification.success) {
+        console.error(`Payment verification failed for transaction ${transactionId}:`, verification.message);
+        // We might choose to block download here, but for now let's just log error
+        // return NextResponse.json({ error: "Payment not verified" }, { status: 403 });
+      } else {
+        // 2. Log sale to Supabase
+        const supabase = getSupabaseServer();
+        const paymentData = verification.data; // This might be the Payment object
+        
+        // Check if already logged
+        const { data: existingSale } = await supabase
+          .from("bundle_sales")
+          .select("id")
+          .eq("transaction_id", transactionId)
+          .single();
+          
+        if (!existingSale) {
+          // Insert new sale record
+          const { error: insertError } = await supabase
+            .from("bundle_sales")
+            .insert({
+              transaction_id: transactionId,
+              bundle_type: bundleType,
+              amount: paymentData?.payment_amount || 0,
+              customer_name: paymentData?.customer_details?.customer_name || paymentData?.payment_group?.name || null,
+              customer_phone: paymentData?.customer_details?.customer_phone || paymentData?.payment_group?.phone || null,
+              customer_email: paymentData?.customer_details?.customer_email || paymentData?.payment_group?.email || null,
+              status: "completed"
+            });
+            
+          if (insertError) {
+             console.error("Failed to log bundle sale:", insertError);
+          } else {
+             console.log(`Bundle sale logged for transaction ${transactionId}`);
+          }
+        }
+      }
+    } catch (verifyError) {
+      console.error("Error during payment verification/logging:", verifyError);
+      // specific error handling if needed
+    }
 
     // Generate pre-signed URLs (valid for 1 hour)
     const downloadUrls = await generateBundleDownloadUrls(

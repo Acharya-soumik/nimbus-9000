@@ -59,7 +59,8 @@ export function BundleLanding() {
           notes: {
              bundleId: selectedBundle,
              type: "legal-drafts-bundle"
-          }
+          },
+          returnUrl: `${window.location.origin}/legal-drafts-bundle-success?transaction_id={order_id}&amount=${price}&bundle=${selectedBundle}`
         }),
       });
 

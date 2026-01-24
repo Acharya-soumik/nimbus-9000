@@ -4,7 +4,7 @@ import { PaymentService } from "@/services/payment-service";
 export async function POST(req: NextRequest) {
   try {
     const body = await req.json();
-    const { amount, customerName, customerPhone, customerId, notes } = body;
+    const { amount, customerName, customerPhone, customerId, notes, returnUrl } = body;
 
     if (!amount || !customerName || !customerPhone || !customerId) {
       return NextResponse.json(
@@ -20,6 +20,7 @@ export async function POST(req: NextRequest) {
       customerPhone,
       customerId,
       notes,
+      returnUrl,
     });
 
     return NextResponse.json({ paymentSessionId, orderId, environment });
