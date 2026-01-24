@@ -122,7 +122,7 @@ export function PaymentSummary({
     style: 'currency',
     currency: 'INR',
     minimumFractionDigits: 0,
-  }).format(amount / 100); // Convert paise to rupees
+  }).format(amount); // Amount is already in rupees
 
   return (
     <div

@@ -66,7 +66,7 @@ export const sendPaymentConfirmation = async (data: LeadEmailData, amount: numbe
         html: `
           <h2>Payment Received</h2>
           <p>Dear ${data.name},</p>
-          <p>Thank you for your payment. We have received <strong>₹${(amount / 100).toFixed(2)}</strong> for <strong>${data.service}</strong>.</p>
+          <p>Thank you for your payment. We have received <strong>₹${amount}</strong> for <strong>${data.service}</strong>.</p>
           <p><strong>Reference ID:</strong> ${paymentId}</p>
           <p><strong>Lead ID:</strong> ${data.customId}</p>
           <p>Our team will begin processing your request immediately.</p>
@@ -93,7 +93,7 @@ export const sendPaymentConfirmation = async (data: LeadEmailData, amount: numbe
         <p><strong>Email:</strong> ${data.email || 'N/A'}</p>
         <p><strong>Phone:</strong> ${data.phone}</p>
         <p><strong>Service:</strong> ${data.service}</p>
-        <p><strong>Amount:</strong> ₹${(amount / 100).toFixed(2)}</p>
+        <p><strong>Amount:</strong> ₹${amount}</p>
         <p><strong>Payment ID:</strong> ${paymentId}</p>
         <p><strong>Lead ID:</strong> ${data.customId}</p>
         <hr />
