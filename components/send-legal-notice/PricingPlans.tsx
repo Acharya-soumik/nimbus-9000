@@ -3,7 +3,7 @@
 import * as React from "react";
 import { cn } from "@/lib/utils";
 import { motion } from "framer-motion";
-import { trackEvent } from "@/lib/mixpanel";
+import { trackEvent, MP_EVENTS } from "@/lib/mixpanel";
 import { Check, X, Shield, Clock, FileText, Phone } from "lucide-react";
 
 interface PricingPlan {
@@ -62,7 +62,7 @@ export function PricingPlans({ onPlanSelect, selectedPlanId = "smart" }: Pricing
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            trackEvent("Pricing Section Viewed", {
+            trackEvent(MP_EVENTS.PRICING_SECTION_VIEWED, {
                 service_type: "Legal Notice", // or dynamic if prop passed
                 section: "pricing_plans"
             });
@@ -101,7 +101,7 @@ export function PricingPlans({ onPlanSelect, selectedPlanId = "smart" }: Pricing
               <div
                 key={plan.id}
                 onClick={() => {
-                  trackEvent("Checkout Started", {
+                  trackEvent(MP_EVENTS.CHECKOUT_STARTED, {
                     service_type: "Legal Notice",
                     plan_name: plan.name,
                     amount: plan.price,

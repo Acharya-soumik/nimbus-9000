@@ -23,7 +23,14 @@ import {
   trackFormStep,
   trackFormSubmission,
 } from "@/lib/analytics/dataLayer";
-import { trackEvent } from "@/lib/mixpanel";
+
+import { 
+  trackEvent, 
+  trackLeadCreated, 
+  identifyUser, 
+  trackPaymentFailed,
+  MP_EVENTS 
+} from "@/lib/mixpanel";
 import { load } from "@cashfreepayments/cashfree-js";
 // @ts-ignore
 import icons from "payments-icons-library";
@@ -1245,7 +1252,23 @@ export function MultiStepForm({
       const data = await response.json();
       setLeadId(data.leadId);
 
-      // Track form submission (Lead event) with Advanced Matching data
+      // Track Lead Creation & Identify User (Mixpanel)
+      identifyUser(data.leadId, {
+          name: completeData.fullName,
+          phone: completeData.whatsappNumber,
+          city: completeData.city,
+          notice_type: completeData.noticeType
+      });
+
+      trackLeadCreated({
+          lead_id: data.leadId,
+          notice_type: completeData.noticeType || serviceType,
+          source: "web_form",
+          city: completeData.city,
+          service_type: serviceText.apiService
+      });
+
+      // Track form submission (GTM & Legacy)
       trackFormSubmission(
         serviceType,
         serviceText.formTitle,
@@ -1281,7 +1304,7 @@ export function MultiStepForm({
     setIsProcessingPayment(true);
     onPaymentStart?.();
 
-    trackEvent("Payment Initiated", {
+    trackEvent(MP_EVENTS.CHECKOUT_STARTED, { // Was Payment Initiated
         service_type: serviceType,
         amount: currentPrice,
         currency: "INR",
@@ -1327,10 +1350,10 @@ export function MultiStepForm({
       // Note: Verification usually happens on the return URL page (thank-you page)
     } catch (error) {
       console.error("Payment initiation failed:", error);
-      trackEvent("Payment Failed", {
-        service_type: serviceType,
+      trackPaymentFailed({
+        reason: "initiation_failed",
         amount: currentPrice,
-        error_type: "initiation_failed",
+        service_type: serviceType,
         error_message: error instanceof Error ? error.message : "Unknown error"
       });
       toast.error("Payment failed. Please try again.");

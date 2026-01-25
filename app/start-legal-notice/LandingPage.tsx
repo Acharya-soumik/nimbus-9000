@@ -16,7 +16,7 @@ import {
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { motion, Variants } from "motion/react";
-import { trackLandingPageView, trackEvent } from "@/lib/mixpanel";
+import { trackPageView, trackCTAClicked, MP_EVENTS } from "@/lib/mixpanel";
 
 // Reusable Components
 import MultiStepForm from "@/components/send-legal-notice/MultiStepForm";
@@ -105,15 +105,12 @@ export default function LandingPage() {
   const [isPaymentProcessing, setIsPaymentProcessing] = useState(false);
 
   const scrollToForm = () => {
-    trackEvent("CTA Clicked", {
-        section: "Hero/Sticky",
-        action: "Scroll to Form"
-    });
+    trackCTAClicked("Hero/Sticky", "Scroll to Form");
     document.getElementById("start-notice-form")?.scrollIntoView({ behavior: "smooth" });
   };
 
   React.useEffect(() => {
-    trackLandingPageView("Legal Notice (Ads)", undefined, { 
+    trackPageView("landing", { 
         source: 'google_ads_landing_page' 
     });
   }, []);

@@ -2,7 +2,7 @@
 
 import * as React from "react";
 import { cn } from "@/lib/utils";
-import { trackEvent } from "@/lib/mixpanel";
+import { trackEvent, MP_EVENTS } from "@/lib/mixpanel";
 
 /* =============================================================================
  * TYPE DEFINITIONS
@@ -180,7 +180,7 @@ export function SampleNoticeSection({
             {/* Download/View Button */}
             <button
               onClick={() => {
-                trackEvent("Sample Notice Viewed", {
+                trackEvent(MP_EVENTS.SAMPLE_NOTICE_VIEWED, {
                     category: noticeCategory,
                     view_mode: "preview_card"
                 });

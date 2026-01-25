@@ -3,7 +3,7 @@
  * Optimized for performance with minimal overhead
  */
 
-import { trackEvent, trackPageView as mixpanelTrackPageView, identifyUser } from "@/lib/mixpanel";
+import { trackEvent, trackPageView as mixpanelTrackPageView, identifyUser, MP_EVENTS } from "@/lib/mixpanel";
 
 // Extend Window interface for dataLayer
 declare global {
@@ -34,7 +34,7 @@ export const trackPageView = (pagePath: string, serviceType: string) => {
   });
 
   // Mixpanel Page View
-  mixpanelTrackPageView(serviceType, {
+  mixpanelTrackPageView("other", {
     path: pagePath,
     service_type: serviceType
   });
@@ -59,7 +59,7 @@ export const trackFormStart = (
   });
 
   // Mixpanel
-  trackEvent("Form Started", {
+  trackEvent(MP_EVENTS.FORM_STARTED, {
     form_name: formName,
     service_type: serviceType
   });
@@ -92,7 +92,7 @@ export const trackFormStep = (
     });
 
     // Mixpanel
-    trackEvent("Form Step Completed", {
+    trackEvent(MP_EVENTS.FORM_STEP_COMPLETED, {
       form_name: formName,
       service_type: serviceType,
       step_number: step,
@@ -160,7 +160,7 @@ export const trackFormSubmission = (
   });
 
   // Mixpanel
-  trackEvent("Form Submitted", {
+  trackEvent(MP_EVENTS.FORM_SUBMITTED, {
       form_name: formName,
       service_type: serviceType,
       value: price || 0,
@@ -244,7 +244,7 @@ export const trackCTAClick = (
   });
 
   // Mixpanel
-  trackEvent("CTA Clicked", {
+  trackEvent(MP_EVENTS.CTA_CLICKED, {
       cta_text: ctaText,
       service_type: serviceType,
       location: location,

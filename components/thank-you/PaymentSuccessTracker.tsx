@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef } from "react";
-import { trackEvent, identifyUser } from "@/lib/mixpanel";
+import { trackEvent, identifyUser, trackPaymentCompleted } from "@/lib/mixpanel";
 
 interface PaymentSuccessTrackerProps {
   paymentId: string;
@@ -26,23 +26,15 @@ export function PaymentSuccessTracker({
     if (trackedRef.current) return;
     trackedRef.current = true;
 
-    // Track Payment Success
-    trackEvent("Payment Success", {
-      payment_id: paymentId,
+    // Track Payment Success using new helper
+    trackPaymentCompleted({
       amount: amount,
-      service_type: serviceType,
-      plan_id: planId,
-      currency: "INR"
+      currency: "INR",
+      product: serviceType,
+      payment_method: "online", // Default fallback
+      payment_id: paymentId,
+      plan_id: planId
     });
-
-    // If we have contact info, we can identify or set people properties
-    if (email || phone) {
-        // We typically identify on login. Here we might just set properties associated with the current session/user
-        // If we want to treat this as a "Signup", we could identify here.
-        // For safely, let's just track the event. 
-        // If we really want to identify:
-        // identifyUser(email || phone || paymentId); 
-    }
 
   }, [paymentId, amount, serviceType, planId, email, phone]);
 

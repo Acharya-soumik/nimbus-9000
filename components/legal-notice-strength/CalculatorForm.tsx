@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { cn } from "@/lib/utils";
-import { trackEvent } from "@/lib/mixpanel";
+import { trackEvent, trackStrengthCheckerCompleted, MP_EVENTS } from "@/lib/mixpanel";
 import type { Question, NoticeType, Option } from "./calculator-data";
 import { getNoticeTypeConfig } from "./calculator-data";
 import type { AnswerValue, CaseSession } from "./scoring-utils";
@@ -34,7 +34,7 @@ export function CalculatorForm({
   const [answers, setAnswers] = React.useState<Record<string, AnswerValue>>({});
 
   React.useEffect(() => {
-    trackEvent("Strength Checker Started", {
+    trackEvent(MP_EVENTS.STRENGTH_CHECKER_STARTED, {
       notice_type: noticeType,
     });
   }, [noticeType]);
@@ -65,11 +65,11 @@ export function CalculatorForm({
       };
       const result = calculateCaseStrength(session);
 
-      trackEvent("Strength Checker Completed", {
-        notice_type: noticeType,
-        score: result.score,
-        confidence: result.confidence,
-      });
+      const category: "strong" | "medium" | "weak" = 
+          result.score >= 75 ? "strong" : 
+          result.score >= 40 ? "medium" : "weak";
+
+      trackStrengthCheckerCompleted(result.score, category, noticeType);
 
       onComplete(result);
     }
